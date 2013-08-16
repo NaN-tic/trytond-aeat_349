@@ -1,0 +1,10 @@
+<tree string="AEAT 349 Ammendment">
+    <field name="report"/>
+    <field name="party_name"/>
+    <field name="party_vat"/>
+    <field name="operation_key"/>
+    <field name="ammendment_fiscalyear_code"/>
+    <field name="ammendment_period"/>
+    <field name="base"/>
+    <field name="original_base"/>
+</tree>

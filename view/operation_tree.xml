@@ -1,0 +1,7 @@
+<tree string="AEAT 349 Operation">
+    <field name="report"/>
+    <field name="party_name"/>
+    <field name="party_vat"/>
+    <field name="operation_key"/>
+    <field name="base"/>
+</tree>

@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!--The COPYRIGHT file at the top level of this repository
+contains the full copyright notices and license terms. -->
+<form string="AEAT 349 Report">
+    <label name="company"/>
+    <field name="company"/>
+    <label name="period"/>
+    <field name="period"/>
+    <label name="fiscalyear"/>
+    <field name="fiscalyear"/>
+    <label name="fiscalyear_code"/>
+    <field name="fiscalyear_code"/>
+    <label name="company_vat"/>
+    <field name="company_vat"/>
+    <label name="previous_number"/>
+    <field name="previous_number"/>
+    <notebook colspan="4">
+        <page string="General" id="general">
+            <label name="contact_name"/>
+            <field name="contact_name"/>
+            <label name="contact_phone"/>
+            <field name="contact_phone"/>
+            <label name="representative_vat"/>
+            <field name="representative_vat"/>
+            <newline/>
+            <label name="support_type"/>
+            <field name="support_type"/>
+            <label name="type"/>
+            <field name="type"/>
+            <newline/>
+            <separator string="Totals" id="totals" colspan="4"/>
+            <label name="operation_amount"/>
+            <field name="operation_amount"/>
+            <label name="ammendment_amount"/>
+            <field name="ammendment_amount"/>
+        </page>
+        <page string="Operations" id="operations">
+	        <field name="operations" colspan="4"/>
+        </page>
+        <page string="Ammendments" id="ammendments">
+            <field name="ammendments" colspan="4"/>
+        </page>
+    </notebook>
+    <group id="state" colspan="2" col="6">
+        <label name="state"/>
+        <field name="state"/>
+        <label name="calculation_date"/>
+        <field name="calculation_date"/>
+        <label name="file_"/>
+        <field name="file_"/>
+    </group>
+    <group id="buttons" colspan="2">
+        <button name="draft" string="Draft"/>
+        <button name="calculate" string="Calculate"/>
+        <button name="process" string="Process"/>
+        <button name="cancel" string="Cancel"/>
+    </group>
+</form>

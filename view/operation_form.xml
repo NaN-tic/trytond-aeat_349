@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--The COPYRIGHT file at the top level of this repository
+contains the full copyright notices and license terms. -->
+<form string="AEAT 349 Operation">
+    <label name="report"/>
+    <field name="report" colspan="3"/>
+    <label name="party_name"/>
+    <field name="party_name"/>
+    <label name="party_vat"/>
+    <field name="party_vat"/>
+    <label name="operation_key"/>
+    <field name="operation_key"/>
+    <label name="base"/>
+    <field name="base"/>
+</form>

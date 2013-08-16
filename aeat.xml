@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tryton>
+    <data>
+        <record model="res.group" id="group_aeat_349_admin">
+            <field name="name">AEAT 349 Administration</field>
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_aeat_349_admin">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_aeat_349_admin"/>
+        </record>
+        <record model="res.user-res.group" id="user_trigger_group_aeat_349_admin">
+            <field name="user" ref="res.user_trigger"/>
+            <field name="group" ref="group_aeat_349_admin"/>
+        </record>
+        <record model="res.group" id="group_aeat_349">
+            <field name="name">AEAT 349</field>
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_aeat_349">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_aeat_349"/>
+        </record>
+        <record model="res.user-res.group" id="user_trigger_group_aeat_349">
+            <field name="user" ref="res.user_trigger"/>
+            <field name="group" ref="group_aeat_349"/>
+        </record>
+
+        <record model="ir.ui.view" id="aeat_349_report_form_view">
+            <field name="model">aeat.349.report</field>
+            <field name="type">form</field>
+            <field name="name">report_form</field>
+        </record>
+        <record model="ir.ui.view" id="aeat_349_report_tree_view">
+            <field name="model">aeat.349.report</field>
+            <field name="type">tree</field>
+            <field name="name">report_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_aeat_349_report">
+            <field name="name">AEAT 349 Report</field>
+            <field name="res_model">aeat.349.report</field>
+            <field name="search_value"></field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_aeat_349_report_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="aeat_349_report_tree_view"/>
+            <field name="act_window" ref="act_aeat_349_report"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_aeat_349_report_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="aeat_349_report_form_view"/>
+            <field name="act_window" ref="act_aeat_349_report"/>
+        </record>
+        <record model="ir.model.access" id="access_aeat_349_report">
+            <field name="model" search="[('model', '=', 'aeat.349.report')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_aeat_349_report_admin">
+            <field name="model" search="[('model', '=', 'aeat.349.report')]"/>
+            <field name="group" ref="group_aeat_349_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="aeat_349_report_operation_form_view">
+            <field name="model">aeat.349.report.operation</field>
+            <field name="type">form</field>
+            <field name="name">operation_form</field>
+        </record>
+        <record model="ir.ui.view" id="aeat_349_report_operation_tree_view">
+            <field name="model">aeat.349.report.operation</field>
+            <field name="type">tree</field>
+            <field name="name">operation_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_aeat_349_report_operation">
+            <field name="name">AEAT 349 Report Operation</field>
+            <field name="res_model">aeat.349.report.operation</field>
+            <field name="search_value"></field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_aeat_349_report_operation_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="aeat_349_report_operation_tree_view"/>
+            <field name="act_window" ref="act_aeat_349_report_operation"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_aeat_349_report_operation_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="aeat_349_report_operation_form_view"/>
+            <field name="act_window" ref="act_aeat_349_report_operation"/>
+        </record>
+        <record model="ir.model.access" id="access_aeat_349_report_operation">
+            <field name="model" search="[('model', '=', 'aeat.349.report.operation')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_aeat_349_report_operation_admin">
+            <field name="model" search="[('model', '=', 'aeat.349.report.operation')]"/>
+            <field name="group" ref="group_aeat_349_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="aeat_349_report_ammendment_form_view">
+            <field name="model">aeat.349.report.ammendment</field>
+            <field name="type">form</field>
+            <field name="name">ammendment_form</field>
+        </record>
+        <record model="ir.ui.view" id="aeat_349_report_ammendment_tree_view">
+            <field name="model">aeat.349.report.ammendment</field>
+            <field name="type">tree</field>
+            <field name="name">ammendment_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_aeat_349_report_ammendment">
+            <field name="name">AEAT 349 Report Operation</field>
+            <field name="res_model">aeat.349.report.ammendment</field>
+            <field name="search_value"></field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_aeat_349_report_ammendment_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="aeat_349_report_ammendment_tree_view"/>
+            <field name="act_window" ref="act_aeat_349_report_ammendment"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_aeat_349_report_ammendment_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="aeat_349_report_ammendment_form_view"/>
+            <field name="act_window" ref="act_aeat_349_report_ammendment"/>
+        </record>
+        <record model="ir.model.access" id="access_aeat_349_report_ammendment">
+            <field name="model" search="[('model', '=', 'aeat.349.report.ammendment')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_aeat_349_report_ammendment_admin">
+            <field name="model" search="[('model', '=', 'aeat.349.report.ammendment')]"/>
+            <field name="group" ref="group_aeat_349_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <!-- Menus -->
+        <menuitem action="act_aeat_349_report" id="menu_aeat_349_report"
+            parent="account.menu_reporting" sequence="349"
+            name="AEAT 349 Report"/>
+        <menuitem action="act_aeat_349_report_operation"
+            id="menu_aeat_349_report_operation"
+            parent="menu_aeat_349_report" sequence="10"
+            name="AEAT 349 Report Operation"/>
+        <menuitem action="act_aeat_349_report_ammendment"
+            id="menu_aeat_349_report_ammendment"
+            parent="menu_aeat_349_report" sequence="20"
+            name="AEAT 349 Report Ammendment"/>
+    </data>
+</tryton>
