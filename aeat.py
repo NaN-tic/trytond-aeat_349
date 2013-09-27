@@ -4,28 +4,31 @@ from decimal import Decimal
 from retrofix import aeat349
 import retrofix
 
+
 from trytond.model import Workflow, ModelSQL, ModelView, fields
+from trytond.pool import Pool
 from trytond.pyson import Eval
+from trytond.transaction import Transaction
 
 __all__ = ['Report', 'Operation', 'Ammendment']
 
 PERIOD = [
-    ('1T','First quarter'),
-    ('2T','Second quarter'),
-    ('3T','Third quarter'),
-    ('4T','Fourth quarter'),
-    ('01','January'),
-    ('02','February'),
-    ('03','March'),
-    ('04','April'),
-    ('05','May'),
-    ('06','June'),
-    ('07','July'),
-    ('08','August'),
-    ('09','September'),
-    ('10','October'),
-    ('11','November'),
-    ('12','December'),
+    ('1T', 'First quarter'),
+    ('2T', 'Second quarter'),
+    ('3T', 'Third quarter'),
+    ('4T', 'Fourth quarter'),
+    ('01', 'January'),
+    ('02', 'February'),
+    ('03', 'March'),
+    ('04', 'April'),
+    ('05', 'May'),
+    ('06', 'June'),
+    ('07', 'July'),
+    ('08', 'August'),
+    ('09', 'September'),
+    ('10', 'October'),
+    ('11', 'November'),
+    ('12', 'December'),
     ]
 
 OPERATION_KEY = [
@@ -57,7 +60,9 @@ class Report(Workflow, ModelSQL, ModelView):
     previous_number = fields.Char('Previous Declaration Number', size=13,
         states={
             'readonly': Eval('state') == 'done',
-            }, depends=['state'])
+            'invisible': Eval('type') == 'N',
+            'required': Eval('type') != 'N',
+            }, depends=['state', 'type'])
     representative_vat = fields.Char('L.R. VAT number', size=9,
         help='Legal Representative VAT number.', states={
             'required': Eval('state') == 'calculated',
@@ -68,25 +73,25 @@ class Report(Workflow, ModelSQL, ModelView):
             'readonly': Eval('state') == 'done',
             }, depends=['state'])
     fiscalyear_code = fields.Integer('Fiscal Year Code',
-        on_change_with=['fiscalyear'], required=True)
+        on_change_with=['fiscalyear'], required=True, depends=['fiscalyear'])
     company_vat = fields.Char('VAT number', size=9, states={
             'required': Eval('state') == 'calculated',
             'readonly': Eval('state') == 'done',
-            }, depends=['state'])
+            }, on_change_with=['company'], depends=['state', 'company'])
     type = fields.Selection([
-            ('N','Normal'),
-            ('C','Complementary'),
-            ('S','Substitutive')
+            ('N', 'Normal'),
+            ('C', 'Complementary'),
+            ('S', 'Substitutive')
             ], 'Statement Type', required=True, states={
-            'readonly': Eval('state') == 'done',
+                'readonly': Eval('state') == 'done',
             }, depends=['state'])
     support_type = fields.Selection([
-            ('C','DVD'),
-            ('T','Telematics'),
+            ('C', 'DVD'),
+            ('T', 'Telematics'),
             ], 'Support Type', required=True, states={
-            'readonly': Eval('state') == 'done',
+                'readonly': Eval('state') == 'done',
             }, depends=['state'])
-    calculation_date = fields.DateTime("Calculation Date")
+    calculation_date = fields.DateTime("Calculation Date", readonly=True)
     state = fields.Selection([
             ('draft', 'Draft'),
             ('calculated', 'Calculated'),
@@ -125,8 +130,8 @@ class Report(Workflow, ModelSQL, ModelView):
                     'in Invoice Record "%(record)s" in report "%(report)s".'),
                 'negative_amounts': ('Negative amounts are not valid in Party '
                     'Record "%(record)s" in report "%(report)s"'),
-                'invalid_currency': ('Currency in AEAT 340 report "%s" must be '
-                    'Euro.')
+                'invalid_currency': ('Currency in AEAT 340 report "%s" must be'
+                    ' Euro.')
                 })
         cls._buttons.update({
                 'draft': {
@@ -165,6 +170,16 @@ class Report(Workflow, ModelSQL, ModelView):
     def default_type():
         return 'N'
 
+    @staticmethod
+    def default_company():
+        return Transaction().context.get('company')
+
+    @staticmethod
+    def default_fiscalyear():
+        FiscalYear = Pool().get('account.fiscalyear')
+        return FiscalYear.find(
+            Transaction().context.get('company'), exception=False)
+
     def get_rec_name(self, name):
         return '%s - %s/%s' % (self.company.rec_name,
             self.fiscalyear.name, self.period)
@@ -180,6 +195,11 @@ class Report(Workflow, ModelSQL, ModelView):
             except ValueError:
                 code = None
         return code
+
+    def on_change_with_company_vat(self):
+        if self.company:
+            return self.company.party.vat_code
+        return None
 
     @classmethod
     def validate(cls, reports):
@@ -223,6 +243,49 @@ class Report(Workflow, ModelSQL, ModelView):
     @ModelView.button
     @Workflow.transition('calculated')
     def calculate(cls, reports):
+        pool = Pool()
+        Data = pool.get('aeat.349.record')
+        Operation = pool.get('aeat.349.report.operation')
+
+        with Transaction().set_user(0):
+            Operation.delete(Operation.search([
+                ('report', 'in', [r.id for r in reports])]))
+
+        for report in reports:
+            fiscalyear = report.fiscalyear
+            multiplier = 1
+            period = report.period
+            if 'T' in period:
+                period = period[0]
+                multiplier = 3
+
+            start_month = int(period) * multiplier
+            end_month = start_month + multiplier
+
+            to_create = {}
+            for record in Data.search([('fiscalyear', '=', fiscalyear.id),
+                ('month', '>=', start_month),
+                ('month', '<', end_month)
+            ]):
+
+                key = '%s-%s-%s' % (report.id, record.party_vat,
+                    record.operation_key)
+
+                if key in to_create:
+                    to_create[key]['base'] += record.base
+                    to_create[key]['records'][0][1].append(record.id)
+                else:
+                    to_create[key] = {
+                        'base': record.base,
+                        'party_vat': record.party_vat,
+                        'party_name': record.party_name,
+                        'operation_key': record.operation_key,
+                        'report': report.id,
+                        'records': [('set', [record.id])],
+                    }
+        with Transaction().set_user(0, set_context=True):
+            Operation.create(to_create.values())
+
         cls.write(reports, {
                 'calculation_date': datetime.datetime.now(),
                 })
@@ -251,20 +314,20 @@ class Report(Workflow, ModelSQL, ModelView):
         record = retrofix.Record(aeat349.PRESENTER_HEADER_RECORD)
         record.fiscalyear = str(self.fiscalyear_code)
         record.nif = self.company_vat
-        #record.presenter_name = 
+        #record.presenter_name =
         record.support_type = self.support_type
         record.contact_phone = self.contact_phone
         record.contact_name = self.contact_name
-        #record.declaration_number = 
-        #record.complementary = 
-        #record.replacement = 
+        #record.declaration_number =
+        record.complementary = '' if self.type == 'N' else self.type
+        record.replacement = self.previous_number
         record.previous_declaration_number = self.previous_number
         record.period = self.period
         record.operation_count = len(self.operations)
         record.operation_amount = self.operation_amount
         record.ammendment_count = len(self.ammendments)
         record.ammendment_amount = self.ammendment_amount
-        #record.representative_nif = 
+        #record.representative_nif =
         records.append(record)
         for line in itertools.chain(self.operations, self.ammendments):
             record = line.get_record()
@@ -284,12 +347,15 @@ class Operation(ModelSQL, ModelView):
     __name__ = 'aeat.349.report.operation'
     _rec_name = 'party_name'
 
-    report = fields.Many2One('aeat.349.report', 'AEAT 349 Report')
+    report = fields.Many2One('aeat.349.report', 'AEAT 349 Report',
+        required=True)
     party_vat = fields.Char('VAT', size=17)
     party_name = fields.Char('Party Name', size=40)
     operation_key = fields.Selection(OPERATION_KEY, 'Operation key',
         required=True)
     base = fields.Numeric('Base Operation Amount', digits=(16, 2))
+    records = fields.One2Many('aeat.349.record', 'operation',
+        'AEAT 349 Records', readonly=True)
 
     def get_record(self):
         record = retrofix.Record(aeat349.OPERATOR_RECORD)

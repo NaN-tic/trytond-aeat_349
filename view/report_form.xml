@@ -12,6 +12,8 @@ contains the full copyright notices and license terms. -->
     <field name="fiscalyear_code"/>
     <label name="company_vat"/>
     <field name="company_vat"/>
+    <label name="type"/>
+    <field name="type"/>
     <label name="previous_number"/>
     <field name="previous_number"/>
     <notebook colspan="4">

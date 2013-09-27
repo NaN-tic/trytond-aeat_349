@@ -1,0 +1,839 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:aeat.349.report:"
+msgid "Contact name in report \"%s\" must contain name and surname"
+msgstr "El nom del contacte de l'informe \"%s\" ha de contenir nom i cognoms."
+
+msgctxt "error:aeat.349.report:"
+msgid "Currency in AEAT 340 report \"%s\" must be Euro."
+msgstr "La moneda del informe AEAT 349 \"%s\" ha de ser Euro."
+
+msgctxt "error:aeat.349.report:"
+msgid ""
+"Missing country or VAT information in Invoice Record \"%(record)s\" in "
+"report \"%(report)s\"."
+msgstr ""
+"Falta el pais o el NIF al registre de factures \"%(record)s\" de l'informe "
+"\"%(report)s\"."
+
+msgctxt "error:aeat.349.report:"
+msgid ""
+"Negative amounts are not valid in Party Record \"%(record)s\" in report "
+"\"%(report)s\""
+msgstr ""
+"El imports negatius són invàlids. Registre \"%(record)s\" per l'informe "
+"\"%(report)s\"."
+
+msgctxt "error:aeat.349.type:"
+msgid "Operation key must be unique."
+msgstr "La Clau operació ha de ser única."
+
+msgctxt "error:aeat.349.type:"
+msgid "unique_operation_key"
+msgstr "unique_operation_key"
+
+msgctxt "field:account.invoice.line,aeat349_available_keys:"
+msgid "AEAT 349 Available Keys"
+msgstr "Claus Disponibles AEAT 349 "
+
+msgctxt "field:account.invoice.line,aeat349_operation_key:"
+msgid "AEAT 349 Operation Key"
+msgstr "Clau Operació AEAT 349"
+
+msgctxt "field:account.tax,aeat349_default_in_operation_key:"
+msgid "Default In Operation Key"
+msgstr "Clau d'operació per defecte (Factures Compra)"
+
+msgctxt "field:account.tax,aeat349_default_out_operation_key:"
+msgid "Default Out Operation Key"
+msgstr "Clau d'operació per defecte (Factures Venda)"
+
+msgctxt "field:account.tax,aeat349_operation_keys:"
+msgid "Available Operation Keys"
+msgstr "Claus d'operació disponibles"
+
+msgctxt "field:aeat.349.reasign.records.end,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:aeat.349.reasign.records.start,aeat_349_type:"
+msgid "Operation Key"
+msgstr "Clau operació"
+
+msgctxt "field:aeat.349.reasign.records.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:aeat.349.recalculate.records.end,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:aeat.349.recalculate.records.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:aeat.349.record,base:"
+msgid "Base Operation Amount"
+msgstr "Import base Operacions"
+
+msgctxt "field:aeat.349.record,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:aeat.349.record,create_date:"
+msgid "Create Date"
+msgstr "Data creació"
+
+msgctxt "field:aeat.349.record,create_uid:"
+msgid "Create User"
+msgstr "Usuari creació"
+
+msgctxt "field:aeat.349.record,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Exercici fiscal"
+
+msgctxt "field:aeat.349.record,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:aeat.349.record,invoice:"
+msgid "Invoice"
+msgstr "Factura"
+
+msgctxt "field:aeat.349.record,month:"
+msgid "Month"
+msgstr "Mes"
+
+msgctxt "field:aeat.349.record,operation:"
+msgid "Operation"
+msgstr "Operació"
+
+msgctxt "field:aeat.349.record,operation_key:"
+msgid "Operation key"
+msgstr "Clau operació"
+
+msgctxt "field:aeat.349.record,party_name:"
+msgid "Party Name"
+msgstr "Nom del tercer"
+
+msgctxt "field:aeat.349.record,party_vat:"
+msgid "VAT"
+msgstr "CIF/NIF"
+
+msgctxt "field:aeat.349.record,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:aeat.349.record,write_date:"
+msgid "Write Date"
+msgstr "Data modificació"
+
+msgctxt "field:aeat.349.record,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
+
+msgctxt "field:aeat.349.report,ammendment_amount:"
+msgid "Ammendment Amount"
+msgstr "Import Rectificacions"
+
+msgctxt "field:aeat.349.report,ammendments:"
+msgid "Ammendments"
+msgstr "Rectificacions"
+
+msgctxt "field:aeat.349.report,calculation_date:"
+msgid "Calculation Date"
+msgstr "Data cálcul"
+
+msgctxt "field:aeat.349.report,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:aeat.349.report,company_vat:"
+msgid "VAT number"
+msgstr "Número CIF/NIF"
+
+msgctxt "field:aeat.349.report,contact_name:"
+msgid "Full Name"
+msgstr "Nom complet"
+
+msgctxt "field:aeat.349.report,contact_phone:"
+msgid "Phone"
+msgstr "Telèfon"
+
+msgctxt "field:aeat.349.report,create_date:"
+msgid "Create Date"
+msgstr "Data creació"
+
+msgctxt "field:aeat.349.report,create_uid:"
+msgid "Create User"
+msgstr "Usuari creació"
+
+msgctxt "field:aeat.349.report,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:aeat.349.report,file_:"
+msgid "File"
+msgstr "Fitxer"
+
+msgctxt "field:aeat.349.report,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Exercici fiscal"
+
+msgctxt "field:aeat.349.report,fiscalyear_code:"
+msgid "Fiscal Year Code"
+msgstr "Codi exercici fiscal"
+
+msgctxt "field:aeat.349.report,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:aeat.349.report,operation_amount:"
+msgid "Operation Amount"
+msgstr "Import operacions"
+
+msgctxt "field:aeat.349.report,operations:"
+msgid "Operations"
+msgstr "Operacions"
+
+msgctxt "field:aeat.349.report,period:"
+msgid "Period"
+msgstr "Període"
+
+msgctxt "field:aeat.349.report,previous_number:"
+msgid "Previous Declaration Number"
+msgstr "Número declaració previa"
+
+msgctxt "field:aeat.349.report,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:aeat.349.report,representative_vat:"
+msgid "L.R. VAT number"
+msgstr "NIF Representant legal"
+
+msgctxt "field:aeat.349.report,state:"
+msgid "State"
+msgstr "Estat"
+
+msgctxt "field:aeat.349.report,support_type:"
+msgid "Support Type"
+msgstr "Tipus de suport"
+
+msgctxt "field:aeat.349.report,type:"
+msgid "Statement Type"
+msgstr "Tipus de declaració"
+
+msgctxt "field:aeat.349.report,write_date:"
+msgid "Write Date"
+msgstr "Data modificació"
+
+msgctxt "field:aeat.349.report,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
+
+msgctxt "field:aeat.349.report.ammendment,ammendment_fiscalyear_code:"
+msgid "Ammendment Fiscal Year Code"
+msgstr "Codi Exercici Fiscal Rectificacions"
+
+msgctxt "field:aeat.349.report.ammendment,ammendment_period:"
+msgid "Period"
+msgstr "Període"
+
+msgctxt "field:aeat.349.report.ammendment,base:"
+msgid "Base Operation Amount"
+msgstr "Import base Operacions"
+
+msgctxt "field:aeat.349.report.ammendment,create_date:"
+msgid "Create Date"
+msgstr "Data creació"
+
+msgctxt "field:aeat.349.report.ammendment,create_uid:"
+msgid "Create User"
+msgstr "Usuari creació"
+
+msgctxt "field:aeat.349.report.ammendment,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:aeat.349.report.ammendment,operation_key:"
+msgid "Operation key"
+msgstr "Clau operació"
+
+msgctxt "field:aeat.349.report.ammendment,original_base:"
+msgid "Original Base"
+msgstr "Base Original"
+
+msgctxt "field:aeat.349.report.ammendment,party_name:"
+msgid "Party Name"
+msgstr "Nom del tercer"
+
+msgctxt "field:aeat.349.report.ammendment,party_vat:"
+msgid "VAT"
+msgstr "CIF/NIF"
+
+msgctxt "field:aeat.349.report.ammendment,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:aeat.349.report.ammendment,report:"
+msgid "AEAT 349 Report"
+msgstr "Informe AEAT 349"
+
+msgctxt "field:aeat.349.report.ammendment,write_date:"
+msgid "Write Date"
+msgstr "Data modificació"
+
+msgctxt "field:aeat.349.report.ammendment,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
+
+msgctxt "field:aeat.349.report.operation,base:"
+msgid "Base Operation Amount"
+msgstr "Import base Operacions"
+
+msgctxt "field:aeat.349.report.operation,create_date:"
+msgid "Create Date"
+msgstr "Data creació"
+
+msgctxt "field:aeat.349.report.operation,create_uid:"
+msgid "Create User"
+msgstr "Usuari creació"
+
+msgctxt "field:aeat.349.report.operation,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:aeat.349.report.operation,operation_key:"
+msgid "Operation key"
+msgstr "Clau operació"
+
+msgctxt "field:aeat.349.report.operation,party_name:"
+msgid "Party Name"
+msgstr "Nom del tercer"
+
+msgctxt "field:aeat.349.report.operation,party_vat:"
+msgid "VAT"
+msgstr "CIF/NIF"
+
+msgctxt "field:aeat.349.report.operation,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:aeat.349.report.operation,record:"
+msgid "AEAT 349 Record"
+msgstr "Registre AEAT 349"
+
+msgctxt "field:aeat.349.report.operation,records:"
+msgid "AEAT 349 Records"
+msgstr "Registres AEAT 349"
+
+msgctxt "field:aeat.349.report.operation,report:"
+msgid "AEAT 349 Report"
+msgstr "Informe AEAT 349"
+
+msgctxt "field:aeat.349.report.operation,write_date:"
+msgid "Write Date"
+msgstr "Data modificació"
+
+msgctxt "field:aeat.349.report.operation,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
+
+msgctxt "field:aeat.349.type,create_date:"
+msgid "Create Date"
+msgstr "Data creació"
+
+msgctxt "field:aeat.349.type,create_uid:"
+msgid "Create User"
+msgstr "Usuari creació"
+
+msgctxt "field:aeat.349.type,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:aeat.349.type,operation_key:"
+msgid "Operation key"
+msgstr "Clau operació"
+
+msgctxt "field:aeat.349.type,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:aeat.349.type,write_date:"
+msgid "Write Date"
+msgstr "Data modificació"
+
+msgctxt "field:aeat.349.type,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
+
+msgctxt "field:aeat.349.type-account.tax,aeat_349_type:"
+msgid "Operation Key"
+msgstr "Clau operació"
+
+msgctxt "field:aeat.349.type-account.tax,create_date:"
+msgid "Create Date"
+msgstr "Data creació"
+
+msgctxt "field:aeat.349.type-account.tax,create_uid:"
+msgid "Create User"
+msgstr "Usuari creació"
+
+msgctxt "field:aeat.349.type-account.tax,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:aeat.349.type-account.tax,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:aeat.349.type-account.tax,tax:"
+msgid "Tax"
+msgstr "Impost"
+
+msgctxt "field:aeat.349.type-account.tax,write_date:"
+msgid "Write Date"
+msgstr "Data modificació"
+
+msgctxt "field:aeat.349.type-account.tax,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
+
+msgctxt "help:aeat.349.report,contact_name:"
+msgid "Must have name and surname."
+msgstr "Ha de contenir nom i cognoms"
+
+msgctxt "help:aeat.349.report,representative_vat:"
+msgid "Legal Representative VAT number."
+msgstr "NIF Representant legal"
+
+msgctxt "model:aeat.349.reasign.records.end,name:"
+msgid "Reasign AEAT 349 Records End"
+msgstr "Final Reasigna Registres AEAT 349"
+
+msgctxt "model:aeat.349.reasign.records.start,name:"
+msgid "Reasign AEAT 349 Records Start"
+msgstr "Inici Reasigna Registres AEAT 349"
+
+msgctxt "model:aeat.349.recalculate.records.end,name:"
+msgid "Recalculate AEAT 349 Records End"
+msgstr "Final Recalcula Registres AEAT 349"
+
+msgctxt "model:aeat.349.recalculate.records.start,name:"
+msgid "Recalculate AEAT 349 Records Start"
+msgstr "Inici Recalcula Registres AEAT 349"
+
+msgctxt "model:aeat.349.record,name:"
+msgid "AEAT 349 Record"
+msgstr "Registre AEAT 349"
+
+msgctxt "model:aeat.349.report,name:"
+msgid "AEAT 349 Report"
+msgstr "Informe AEAT 349"
+
+msgctxt "model:aeat.349.report.ammendment,name:"
+msgid "AEAT 349 Ammendment"
+msgstr "Rectificació AEAT 349 "
+
+msgctxt "model:aeat.349.report.operation,name:"
+msgid "AEAT 349 Operation"
+msgstr "Operació AEAT 349"
+
+msgctxt "model:aeat.349.type,name:"
+msgid "AEAT 349 Type"
+msgstr "Tipus AEAT 349 "
+
+msgctxt "model:aeat.349.type-account.tax,name:"
+msgid "AEAT 349 Type-Tax Relation"
+msgstr "Relació Impostos-Tipus AEAT 349 "
+
+msgctxt "model:ir.action,name:act_aeat_349_reasign"
+msgid "Reasign AEAT 349 Records"
+msgstr "Reasigna Registres AEAT 349"
+
+msgctxt "model:ir.action,name:act_aeat_349_recalculate"
+msgid "Recalculate AEAT 349 Records"
+msgstr "Recalcula Registres AEAT 349"
+
+msgctxt "model:ir.action,name:act_aeat_349_record"
+msgid "AEAT 349 Record "
+msgstr "Registre AEAT 349"
+
+msgctxt "model:ir.action,name:act_aeat_349_report"
+msgid "AEAT 349 Report"
+msgstr "Informe AEAT 349"
+
+msgctxt "model:ir.action,name:act_aeat_349_report_ammendment"
+msgid "AEAT 349 Report Operation"
+msgstr "Operacions Informe AEAT 349"
+
+msgctxt "model:ir.action,name:act_aeat_349_report_operation"
+msgid "AEAT 349 Report Operation"
+msgstr "Operacions Informe AEAT 349"
+
+msgctxt "model:ir.action.act_window,name:act_aeat_349_record"
+msgid "AEAT 349 Record "
+msgstr "Registre AEAT 349"
+
+msgctxt "model:ir.action.act_window,name:act_aeat_349_report"
+msgid "AEAT 349 Report"
+msgstr "Informe AEAT 349"
+
+msgctxt "model:ir.action.act_window,name:act_aeat_349_report_ammendment"
+msgid "AEAT 349 Report Operation"
+msgstr "Operacions Informe AEAT 349"
+
+msgctxt "model:ir.action.act_window,name:act_aeat_349_report_operation"
+msgid "AEAT 349 Report Operation"
+msgstr "Operacions Informe AEAT 349"
+
+msgctxt "model:ir.action.wizard,name:act_aeat_349_reasign"
+msgid "Reasign AEAT 349 Records"
+msgstr "Reasigna Registres AEAT 349"
+
+msgctxt "model:ir.action.wizard,name:act_aeat_349_recalculate"
+msgid "Recalculate AEAT 349 Records"
+msgstr "Recalcula Registres AEAT 349"
+
+msgctxt "model:ir.ui.menu,name:menu_aeat_349_record"
+msgid "AEAT 349 Record"
+msgstr "Registre AEAT 349"
+
+msgctxt "model:ir.ui.menu,name:menu_aeat_349_report"
+msgid "AEAT 349 Report"
+msgstr "Informe AEAT 349"
+
+msgctxt "model:ir.ui.menu,name:menu_aeat_349_report_ammendment"
+msgid "AEAT 349 Report Ammendment"
+msgstr "Rectificacions Informe AEAT 349"
+
+msgctxt "model:ir.ui.menu,name:menu_aeat_349_report_operation"
+msgid "AEAT 349 Report Operation"
+msgstr "Operacions Informe AEAT 349"
+
+msgctxt "model:res.group,name:group_aeat_349"
+msgid "AEAT 349"
+msgstr "AEAT 349"
+
+msgctxt "model:res.group,name:group_aeat_349_admin"
+msgid "AEAT 349 Administration"
+msgstr "Administració AEAT 349"
+
+msgctxt "selection:aeat.349.record,operation_key:"
+msgid "A - Intra-Community acquisition"
+msgstr "A - Compres intercomunitaries"
+
+msgctxt "selection:aeat.349.record,operation_key:"
+msgid "E - Intra-Community supplies"
+msgstr "E - Entregues intracomunitaries excemptes"
+
+msgctxt "selection:aeat.349.record,operation_key:"
+msgid ""
+"H - Intra-Community supplies without taxes delivered by legal representative"
+msgstr ""
+"H - Entregues intracomunitaries de béns posteriors a una importació excempta"
+" enviada per un representant legal"
+
+msgctxt "selection:aeat.349.record,operation_key:"
+msgid "I - Intra-Community services acquisitions"
+msgstr "I - Adquisicions intracomunitaries de serveis"
+
+msgctxt "selection:aeat.349.record,operation_key:"
+msgid "M - Intra-Community supplies without taxes"
+msgstr ""
+"M - Entregues intracomunitaries de béns posteriors a una importació excempta"
+
+msgctxt "selection:aeat.349.record,operation_key:"
+msgid "S - Intra-Community services"
+msgstr "S - Prestacións intracomunitaries de serveis"
+
+msgctxt "selection:aeat.349.record,operation_key:"
+msgid "T - Triangular operations"
+msgstr "T - Operacions triangulars"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "April"
+msgstr "Abril"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "August"
+msgstr "Agost"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "December"
+msgstr "Desembre"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "February"
+msgstr "Febrer"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "First quarter"
+msgstr "Primer trimestre"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "Fourth quarter"
+msgstr "Quart trimestre"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "January"
+msgstr "Gener"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "July"
+msgstr "Juliol"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "June"
+msgstr "Juny"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "March"
+msgstr "Març"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "May"
+msgstr "Maig"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "November"
+msgstr "Novembre"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "October"
+msgstr "Octubre"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "Second quarter"
+msgstr "Segon trimestre"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "September"
+msgstr "Setembre"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "Third quarter"
+msgstr "Tercer trimestre"
+
+msgctxt "selection:aeat.349.report,state:"
+msgid "Calculated"
+msgstr "Calculat"
+
+msgctxt "selection:aeat.349.report,state:"
+msgid "Cancelled"
+msgstr "Cancel·lat"
+
+msgctxt "selection:aeat.349.report,state:"
+msgid "Done"
+msgstr "Realitzat"
+
+msgctxt "selection:aeat.349.report,state:"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "selection:aeat.349.report,support_type:"
+msgid "DVD"
+msgstr "DVD"
+
+msgctxt "selection:aeat.349.report,support_type:"
+msgid "Telematics"
+msgstr "Telemàtic"
+
+msgctxt "selection:aeat.349.report,type:"
+msgid "Complementary"
+msgstr "Complementaria"
+
+msgctxt "selection:aeat.349.report,type:"
+msgid "Normal"
+msgstr "Normal"
+
+msgctxt "selection:aeat.349.report,type:"
+msgid "Substitutive"
+msgstr "Substitutiva"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "April"
+msgstr "Abril"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "August"
+msgstr "Agost"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "December"
+msgstr "Desembre"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "February"
+msgstr "Febrer"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "First quarter"
+msgstr "Primer trimestre"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "Fourth quarter"
+msgstr "Quart trimestre"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "January"
+msgstr "Gener"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "July"
+msgstr "Juliol"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "June"
+msgstr "Juny"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "March"
+msgstr "Març"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "May"
+msgstr "Maig"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "November"
+msgstr "Novembre"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "October"
+msgstr "Octubre"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "Second quarter"
+msgstr "Segon trimestre"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "September"
+msgstr "Setembre"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "Third quarter"
+msgstr "Tercer trimestre"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "A - Intra-Community acquisition"
+msgstr "A - Compres intercomunitaries"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "E - Intra-Community supplies"
+msgstr "E - Entregues intracomunitaries excemptes"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid ""
+"H - Intra-Community supplies without taxes delivered by legal representative"
+msgstr ""
+"H - Entregues intracomunitaries de béns posteriors a una importació excempta"
+" enviada per un representant legal"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "I - Intra-Community services acquisitions"
+msgstr "I - Adquisicions intracomunitaries de serveis"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "M - Intra-Community supplies without taxes"
+msgstr ""
+"M - Entregues intracomunitaries de béns posteriors a una importació excempta"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "S - Intra-Community services"
+msgstr "S - Prestacións intracomunitaries de serveis"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "T - Triangular operations"
+msgstr "T - Operacions triangulars"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "A - Intra-Community acquisition"
+msgstr "A - Compres intercomunitaries"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "E - Intra-Community supplies"
+msgstr "E - Entregues intracomunitaries excemptes"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid ""
+"H - Intra-Community supplies without taxes delivered by legal representative"
+msgstr ""
+"H - Entregues intracomunitaries de béns posteriors a una importació excempta"
+" enviada per un representant legal"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "I - Intra-Community services acquisitions"
+msgstr "I - Adquisicions intracomunitaries de serveis"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "M - Intra-Community supplies without taxes"
+msgstr ""
+"M - Entregues intracomunitaries de béns posteriors a una importació excempta"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "S - Intra-Community services"
+msgstr "S - Prestacións intracomunitaries de serveis"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "T - Triangular operations"
+msgstr "T - Operacions triangulars"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "A - Intra-Community acquisition"
+msgstr "A - Compres intercomunitaries"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "E - Intra-Community supplies"
+msgstr "E - Entregues intracomunitaries excemptes"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid ""
+"H - Intra-Community supplies without taxes delivered by legal representative"
+msgstr ""
+"H - Entregues intracomunitaries de béns posteriors a una importació excempta"
+" enviada per un representant legal"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "I - Intra-Community services acquisitions"
+msgstr "I - Adquisicions intracomunitaries de serveis"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "M - Intra-Community supplies without taxes"
+msgstr ""
+"M - Entregues intracomunitaries de béns posteriors a una importació excempta"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "S - Intra-Community services"
+msgstr "S - Prestacións intracomunitaries de serveis"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "T - Triangular operations"
+msgstr "T - Operacions triangulars"
+
+msgctxt "wizard_button:aeat.349.reasign.records,done,end:"
+msgid "Ok"
+msgstr "D'acord"
+
+msgctxt "wizard_button:aeat.349.reasign.records,start,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "wizard_button:aeat.349.reasign.records,start,reasign:"
+msgid "Reasign"
+msgstr "Reasigna"
+
+msgctxt "wizard_button:aeat.349.recalculate.records,done,end:"
+msgid "Ok"
+msgstr "D'acord"
+
+msgctxt "wizard_button:aeat.349.recalculate.records,start,calculate:"
+msgid "Calculate"
+msgstr "Calcula"
+
+msgctxt "wizard_button:aeat.349.recalculate.records,start,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
