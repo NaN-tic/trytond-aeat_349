@@ -6,9 +6,9 @@ from trytond.transaction import Transaction
 from sql.operators import In
 from .aeat import OPERATION_KEY
 
-__all__ = ['Type', 'TypeTax', 'Record', 'Tax', 'Invoice', 'InvoiceLine',
-    'Recalculate349RecordStart', 'Recalculate349RecordEnd',
-    'Recalculate349Record', 'Reasign349RecordStart',
+__all__ = ['Type', 'TypeTax', 'TypeTaxTemplate', 'Record', 'TaxTemplate',
+    'Tax', 'Invoice', 'InvoiceLine', 'Recalculate349RecordStart',
+    'Recalculate349RecordEnd', 'Recalculate349Record', 'Reasign349RecordStart',
     'Reasign349RecordEnd', 'Reasign349Record']
 
 __metaclass__ = PoolMeta
@@ -50,6 +50,18 @@ class TypeTax(ModelSQL):
         select=True, required=True)
 
 
+class TypeTaxTemplate(ModelSQL):
+    """
+    AEAT 349 Type-Tax Template Relation
+    """
+    __name__ = 'aeat.349.type-account.tax.template'
+
+    aeat_349_type = fields.Many2One('aeat.349.type', 'Operation Key',
+        ondelete='CASCADE', select=True, required=True)
+    tax = fields.Many2One('account.tax.template', 'Tax Template',
+        ondelete='CASCADE', select=True, required=True)
+
+
 class Record(ModelSQL, ModelView):
     """
     AEAT 349 Record
@@ -73,6 +85,41 @@ class Record(ModelSQL, ModelView):
     invoice = fields.Many2One('account.invoice', 'Invoice', readonly=True)
     operation = fields.Many2One('aeat.349.report.operation', 'Operation',
         readonly=True)
+
+
+class TaxTemplate(ModelSQL, ModelView):
+    'Account Tax Template'
+    __name__ = 'account.tax.template'
+    aeat349_operation_keys = fields.Many2Many(
+        'aeat.349.type-account.tax.template', 'tax', 'aeat_349_type',
+        'Available Operation Keys')
+    aeat349_default_out_operation_key = fields.Many2One('aeat.349.type',
+        'Default Out Operation Key',
+        domain=[('id', 'in', Eval('aeat349_operation_keys', []))],
+        depends=['aeat349_operation_keys'])
+    aeat349_default_in_operation_key = fields.Many2One('aeat.349.type',
+        'Default In Operation Key',
+        domain=[('id', 'in', Eval('aeat349_operation_keys', []))],
+        depends=['aeat349_operation_keys'])
+
+    def _get_tax_value(self, tax=None):
+        res = super(TaxTemplate, self)._get_tax_value()
+
+        res['aeat349_operation_keys'] = []
+        if tax and len(tax.aeat_349_operation_keys) > 0:
+            res['aeat349_operation_keys'].append(['unlink_all'])
+        if len(self.aeat349_operation_keys) > 0:
+            ids = [c.id for c in self.aeat349_operation_keys]
+            res['aeat349_operation_keys'].append(['set', ids])
+        for direction in ('in', 'out'):
+            field = "aeat349_default_%s_operation_key" % (direction)
+            if not tax or getattr(tax, field) != getattr(self, field):
+                value = getattr(self, field)
+                if value:
+                    res[field] = getattr(self, field).id
+                else:
+                    res[field] = None
+        return res
 
 
 class Tax:

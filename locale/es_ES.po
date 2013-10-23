@@ -54,6 +54,18 @@ msgctxt "field:account.tax,aeat349_operation_keys:"
 msgid "Available Operation Keys"
 msgstr "Claves Operación disponibles"
 
+msgctxt "field:account.tax.template,aeat349_default_in_operation_key:"
+msgid "Default In Operation Key"
+msgstr "Clave Operaciones por defecto (Facturas compras)"
+
+msgctxt "field:account.tax.template,aeat349_default_out_operation_key:"
+msgid "Default Out Operation Key"
+msgstr "Clave Operaciones por defecto (Facturas ventas)"
+
+msgctxt "field:account.tax.template,aeat349_operation_keys:"
+msgid "Available Operation Keys"
+msgstr "Claves Operación disponibles"
+
 msgctxt "field:aeat.349.reasign.records.end,id:"
 msgid "ID"
 msgstr "ID"
@@ -246,6 +258,10 @@ msgctxt "field:aeat.349.report.ammendment,base:"
 msgid "Base Operation Amount"
 msgstr "Importe Base Operaciones"
 
+msgctxt "field:aeat.349.report.ammendment,company:"
+msgid "Company"
+msgstr "Empresa"
+
 msgctxt "field:aeat.349.report.ammendment,create_date:"
 msgid "Create Date"
 msgstr "Fecha de creación"
@@ -294,6 +310,10 @@ msgctxt "field:aeat.349.report.operation,base:"
 msgid "Base Operation Amount"
 msgstr "Importe Base Operaciones"
 
+msgctxt "field:aeat.349.report.operation,company:"
+msgid "Company"
+msgstr "Empresa"
+
 msgctxt "field:aeat.349.report.operation,create_date:"
 msgid "Create Date"
 msgstr "Fecha de creación"
@@ -321,10 +341,6 @@ msgstr "CIF/NIF"
 msgctxt "field:aeat.349.report.operation,rec_name:"
 msgid "Name"
 msgstr "Nombre"
-
-msgctxt "field:aeat.349.report.operation,record:"
-msgid "AEAT 349 Record"
-msgstr "Registro AEAT 349"
 
 msgctxt "field:aeat.349.report.operation,records:"
 msgid "AEAT 349 Records"
@@ -402,6 +418,38 @@ msgctxt "field:aeat.349.type-account.tax,write_uid:"
 msgid "Write User"
 msgstr "Usuario modificación"
 
+msgctxt "field:aeat.349.type-account.tax.template,aeat_349_type:"
+msgid "Operation Key"
+msgstr "Clave Operación"
+
+msgctxt "field:aeat.349.type-account.tax.template,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:aeat.349.type-account.tax.template,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt "field:aeat.349.type-account.tax.template,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:aeat.349.type-account.tax.template,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:aeat.349.type-account.tax.template,tax:"
+msgid "Tax Template"
+msgstr "Plantilla de impuesto"
+
+msgctxt "field:aeat.349.type-account.tax.template,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:aeat.349.type-account.tax.template,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
 msgctxt "help:aeat.349.report,contact_name:"
 msgid "Must have name and surname."
 msgstr "Debe contener nombre i apellidos."
@@ -449,6 +497,10 @@ msgstr "Tipo AEAT 349"
 msgctxt "model:aeat.349.type-account.tax,name:"
 msgid "AEAT 349 Type-Tax Relation"
 msgstr "Relación Impuesto- Tipo AEAT 349"
+
+msgctxt "model:aeat.349.type-account.tax.template,name:"
+msgid "AEAT 349 Type-Tax Template Relation"
+msgstr "Relación Plantilla impuesto- Tipo AEAT 349"
 
 msgctxt "model:ir.action,name:act_aeat_349_reasign"
 msgid "Reasign AEAT 349 Records"
@@ -805,6 +857,104 @@ msgstr "S - Prestaciones intercomunitarias de servicios"
 msgctxt "selection:aeat.349.type,operation_key:"
 msgid "T - Triangular operations"
 msgstr "T - Operaciones triangulares"
+
+msgctxt "view:account.tax.template:"
+msgid "AEAT 349"
+msgstr "AEAT 349"
+
+msgctxt "view:account.tax:"
+msgid "AEAT 349"
+msgstr "AEAT 349"
+
+msgctxt "view:aeat.349.reasign.records.end:"
+msgid "AEAT 349 Data Reassigment Done"
+msgstr "Reasignación información model AEAT 349 finalizada."
+
+msgctxt "view:aeat.349.reasign.records.end:"
+msgid "The AEAT 349 records have been reasigned."
+msgstr "Los registros AEAT 349 han sido reasignados."
+
+msgctxt "view:aeat.349.reasign.records.start:"
+msgid "AEAT 349 Data Reasignation"
+msgstr "Reasignación información model AEAT 349"
+
+msgctxt "view:aeat.349.reasign.records.start:"
+msgid "Select Operation Key to reasign invoices:"
+msgstr "Selecciona una clave para reasignar las facturas."
+
+msgctxt "view:aeat.349.recalculate.records.end:"
+msgid "AEAT 349 Data Recalculation Done"
+msgstr "Recálculo información model AEAT 349 finalizada."
+
+msgctxt "view:aeat.349.recalculate.records.end:"
+msgid "The AEAT 349 records have been recalculated."
+msgstr "Los registros AEAT 349 han sido recalculados."
+
+msgctxt "view:aeat.349.recalculate.records.start:"
+msgid "AEAT 349 Data Recalculation"
+msgstr "Recálculo información model AEAT 349"
+
+msgctxt "view:aeat.349.recalculate.records.start:"
+msgid "Note that this operation may take a few minutes."
+msgstr "Tenga en cuenta que esta operación puede tardar unos minutos."
+
+msgctxt "view:aeat.349.recalculate.records.start:"
+msgid "The AEAT 349 Data for selected invoices will be recalculated."
+msgstr ""
+"La información del modelo AEAT 349 para las facturas seleccionadas serà "
+"recalculada."
+
+msgctxt "view:aeat.349.record:"
+msgid "AEAT 349 Record"
+msgstr "Registro AEAT 349"
+
+msgctxt "view:aeat.349.report.ammendment:"
+msgid "AEAT 349 Ammendment"
+msgstr "Rectificación AEAT 349"
+
+msgctxt "view:aeat.349.report.operation:"
+msgid "AEAT 349 Operation"
+msgstr "Operación AEAT 349"
+
+msgctxt "view:aeat.349.report:"
+msgid "AEAT 349 Report"
+msgstr "Informe AEAT 349"
+
+msgctxt "view:aeat.349.report:"
+msgid "Ammendments"
+msgstr "Rectificaciones"
+
+msgctxt "view:aeat.349.report:"
+msgid "Calculate"
+msgstr "Calcular"
+
+msgctxt "view:aeat.349.report:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "view:aeat.349.report:"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt "view:aeat.349.report:"
+msgid "General"
+msgstr "General"
+
+msgctxt "view:aeat.349.report:"
+msgid "Operations"
+msgstr "Operaciones"
+
+msgctxt "view:aeat.349.report:"
+msgid "Process"
+msgstr "Procesar"
+
+msgctxt "view:aeat.349.report:"
+msgid "Totals"
+msgstr "Totales"
+
+msgctxt "view:aeat.349.type:"
+msgid "AEAT 349 Type"
+msgstr "Tipo AEAT 349"
 
 msgctxt "wizard_button:aeat.349.reasign.records,done,end:"
 msgid "Ok"

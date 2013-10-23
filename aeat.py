@@ -347,6 +347,9 @@ class Operation(ModelSQL, ModelView):
     __name__ = 'aeat.349.report.operation'
     _rec_name = 'party_name'
 
+    company = fields.Function(fields.Many2One('company.company', 'Company',
+        required=True, on_change_with=['report']), 'on_change_with_report',
+        searcher='search_company')
     report = fields.Many2One('aeat.349.report', 'AEAT 349 Report',
         required=True)
     party_vat = fields.Char('VAT', size=17)
@@ -356,6 +359,14 @@ class Operation(ModelSQL, ModelView):
     base = fields.Numeric('Base Operation Amount', digits=(16, 2))
     records = fields.One2Many('aeat.349.record', 'operation',
         'AEAT 349 Records', readonly=True)
+
+    def on_change_with_report(self, name=None):
+        if self.report:
+            return self.report.company
+
+    @classmethod
+    def search_company(cls, name, clause):
+        return [('report.%s' % name,) + tuple(clause[1:])]
 
     def get_record(self):
         record = retrofix.Record(aeat349.OPERATOR_RECORD)
@@ -372,6 +383,7 @@ class Ammendment(ModelSQL, ModelView):
     """
     __name__ = 'aeat.349.report.ammendment'
 
+    company = fields.Many2One('company.company', 'Company', required=True)
     report = fields.Many2One('aeat.349.report', 'AEAT 349 Report')
     party_vat = fields.Char('VAT', size=17, on_change_with=[
             'party_vat', 'country'])
@@ -383,6 +395,10 @@ class Ammendment(ModelSQL, ModelView):
             required=True)
     base = fields.Numeric('Base Operation Amount', digits=(16, 2))
     original_base = fields.Numeric('Original Base', digits=(16, 2))
+
+    @staticmethod
+    def default_company():
+        return Transaction().context.get('company')
 
     def get_record(self):
         record = retrofix.Record(aeat349.AMMENDMENT_RECORD)

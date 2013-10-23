@@ -54,6 +54,18 @@ msgctxt "field:account.tax,aeat349_operation_keys:"
 msgid "Available Operation Keys"
 msgstr "Claus d'operació disponibles"
 
+msgctxt "field:account.tax.template,aeat349_default_in_operation_key:"
+msgid "Default In Operation Key"
+msgstr "Clau d'operació per defecte (Factures Compra)"
+
+msgctxt "field:account.tax.template,aeat349_default_out_operation_key:"
+msgid "Default Out Operation Key"
+msgstr "Clau d'operació per defecte (Factures Venda)"
+
+msgctxt "field:account.tax.template,aeat349_operation_keys:"
+msgid "Available Operation Keys"
+msgstr "Claus d'operació disponibles"
+
 msgctxt "field:aeat.349.reasign.records.end,id:"
 msgid "ID"
 msgstr "ID"
@@ -246,6 +258,10 @@ msgctxt "field:aeat.349.report.ammendment,base:"
 msgid "Base Operation Amount"
 msgstr "Import base Operacions"
 
+msgctxt "field:aeat.349.report.ammendment,company:"
+msgid "Company"
+msgstr "Empresa"
+
 msgctxt "field:aeat.349.report.ammendment,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
@@ -294,6 +310,10 @@ msgctxt "field:aeat.349.report.operation,base:"
 msgid "Base Operation Amount"
 msgstr "Import base Operacions"
 
+msgctxt "field:aeat.349.report.operation,company:"
+msgid "Company"
+msgstr "Empresa"
+
 msgctxt "field:aeat.349.report.operation,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
@@ -321,10 +341,6 @@ msgstr "CIF/NIF"
 msgctxt "field:aeat.349.report.operation,rec_name:"
 msgid "Name"
 msgstr "Nom"
-
-msgctxt "field:aeat.349.report.operation,record:"
-msgid "AEAT 349 Record"
-msgstr "Registre AEAT 349"
 
 msgctxt "field:aeat.349.report.operation,records:"
 msgid "AEAT 349 Records"
@@ -402,6 +418,38 @@ msgctxt "field:aeat.349.type-account.tax,write_uid:"
 msgid "Write User"
 msgstr "Usuari modificació"
 
+msgctxt "field:aeat.349.type-account.tax.template,aeat_349_type:"
+msgid "Operation Key"
+msgstr "Clau operació"
+
+msgctxt "field:aeat.349.type-account.tax.template,create_date:"
+msgid "Create Date"
+msgstr "Data creació"
+
+msgctxt "field:aeat.349.type-account.tax.template,create_uid:"
+msgid "Create User"
+msgstr "Usuari creació"
+
+msgctxt "field:aeat.349.type-account.tax.template,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:aeat.349.type-account.tax.template,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:aeat.349.type-account.tax.template,tax:"
+msgid "Tax Template"
+msgstr "Plantilla d'impost"
+
+msgctxt "field:aeat.349.type-account.tax.template,write_date:"
+msgid "Write Date"
+msgstr "Data modificació"
+
+msgctxt "field:aeat.349.type-account.tax.template,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
+
 msgctxt "help:aeat.349.report,contact_name:"
 msgid "Must have name and surname."
 msgstr "Ha de contenir nom i cognoms"
@@ -449,6 +497,10 @@ msgstr "Tipus AEAT 349 "
 msgctxt "model:aeat.349.type-account.tax,name:"
 msgid "AEAT 349 Type-Tax Relation"
 msgstr "Relació Impostos-Tipus AEAT 349 "
+
+msgctxt "model:aeat.349.type-account.tax.template,name:"
+msgid "AEAT 349 Type-Tax Template Relation"
+msgstr "Relació Plantilla d'impostos-Tipus AEAT 349 "
 
 msgctxt "model:ir.action,name:act_aeat_349_reasign"
 msgid "Reasign AEAT 349 Records"
@@ -813,6 +865,104 @@ msgstr "S - Prestacións intracomunitaries de serveis"
 msgctxt "selection:aeat.349.type,operation_key:"
 msgid "T - Triangular operations"
 msgstr "T - Operacions triangulars"
+
+msgctxt "view:account.tax.template:"
+msgid "AEAT 349"
+msgstr "AEAT 349"
+
+msgctxt "view:account.tax:"
+msgid "AEAT 349"
+msgstr "AEAT 349"
+
+msgctxt "view:aeat.349.reasign.records.end:"
+msgid "AEAT 349 Data Reassigment Done"
+msgstr "Reassignació registres AEAT 349 Feta"
+
+msgctxt "view:aeat.349.reasign.records.end:"
+msgid "The AEAT 349 records have been reasigned."
+msgstr "Els regisres AEAT 349 han estat reasignats."
+
+msgctxt "view:aeat.349.reasign.records.start:"
+msgid "AEAT 349 Data Reasignation"
+msgstr "Reassignació registres AEAT 349"
+
+msgctxt "view:aeat.349.reasign.records.start:"
+msgid "Select Operation Key to reasign invoices:"
+msgstr "Selecciona clau per reassignar les factures"
+
+msgctxt "view:aeat.349.recalculate.records.end:"
+msgid "AEAT 349 Data Recalculation Done"
+msgstr "Recálcul registres AEAT 349 Feta"
+
+msgctxt "view:aeat.349.recalculate.records.end:"
+msgid "The AEAT 349 records have been recalculated."
+msgstr "Els regisres AEAT 349 han estat recalculats."
+
+msgctxt "view:aeat.349.recalculate.records.start:"
+msgid "AEAT 349 Data Recalculation"
+msgstr "Recálcul registres AEAT 349"
+
+msgctxt "view:aeat.349.recalculate.records.start:"
+msgid "Note that this operation may take a few minutes."
+msgstr "Tingueu en compte que aquesta operació pot trigar uns minuts."
+
+msgctxt "view:aeat.349.recalculate.records.start:"
+msgid "The AEAT 349 Data for selected invoices will be recalculated."
+msgstr ""
+"La informació del model AEAT 349 de les factures seleccionades es "
+"recalcularà."
+
+msgctxt "view:aeat.349.record:"
+msgid "AEAT 349 Record"
+msgstr "Registre AEAT 349"
+
+msgctxt "view:aeat.349.report.ammendment:"
+msgid "AEAT 349 Ammendment"
+msgstr "Rectificació AEAT 349 "
+
+msgctxt "view:aeat.349.report.operation:"
+msgid "AEAT 349 Operation"
+msgstr "Operació AEAT 349"
+
+msgctxt "view:aeat.349.report:"
+msgid "AEAT 349 Report"
+msgstr "Informe AEAT 349"
+
+msgctxt "view:aeat.349.report:"
+msgid "Ammendments"
+msgstr "Rectificacions"
+
+msgctxt "view:aeat.349.report:"
+msgid "Calculate"
+msgstr "Calcula"
+
+msgctxt "view:aeat.349.report:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "view:aeat.349.report:"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "view:aeat.349.report:"
+msgid "General"
+msgstr "General"
+
+msgctxt "view:aeat.349.report:"
+msgid "Operations"
+msgstr "Operacions"
+
+msgctxt "view:aeat.349.report:"
+msgid "Process"
+msgstr "Processa"
+
+msgctxt "view:aeat.349.report:"
+msgid "Totals"
+msgstr "Totals"
+
+msgctxt "view:aeat.349.type:"
+msgid "AEAT 349 Type"
+msgstr "Tipus AEAT 349 "
 
 msgctxt "wizard_button:aeat.349.reasign.records,done,end:"
 msgid "Ok"
