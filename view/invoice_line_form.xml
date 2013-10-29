@@ -4,6 +4,6 @@ contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/form/notebook/page[@id='general']/field[@name='taxes']" position="after">
             <label name="aeat349_operation_key"/>
-            <field name="aeat349_operation_key"/>
+            <field name="aeat349_operation_key" colspan="3"/>
     </xpath>
 </data>
