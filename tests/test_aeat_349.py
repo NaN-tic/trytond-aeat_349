@@ -16,9 +16,9 @@ from trytond.tests.test_tryton import test_view, test_depends
 from trytond.backend.sqlite.database import Database as SQLiteDatabase
 
 
-class TestCase(unittest.TestCase):
+class Aeat349TestCase(unittest.TestCase):
     '''
-    Test module.
+    Test AEAT 349 module.
     '''
 
     def setUp(self):
@@ -49,7 +49,8 @@ def doctest_dropdb(test):
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
-    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestCase))
+    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
+            Aeat349TestCase))
     suite.addTests(doctest.DocFileSuite('scenario_aeat349.rst',
             setUp=doctest_dropdb, tearDown=doctest_dropdb, encoding='utf-8',
             optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
