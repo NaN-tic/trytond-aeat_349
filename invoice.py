@@ -103,7 +103,7 @@ class TaxTemplate(ModelSQL, ModelView):
         depends=['aeat349_operation_keys'])
 
     def _get_tax_value(self, tax=None):
-        res = super(TaxTemplate, self)._get_tax_value()
+        res = super(TaxTemplate, self)._get_tax_value(tax)
 
         res['aeat349_operation_keys'] = []
         if tax and len(tax.aeat_349_operation_keys) > 0:
