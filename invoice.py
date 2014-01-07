@@ -106,7 +106,7 @@ class TaxTemplate(ModelSQL, ModelView):
         res = super(TaxTemplate, self)._get_tax_value(tax)
 
         res['aeat349_operation_keys'] = []
-        if tax and len(tax.aeat_349_operation_keys) > 0:
+        if tax and len(tax.aeat349_operation_keys) > 0:
             res['aeat349_operation_keys'].append(['unlink_all'])
         if len(self.aeat349_operation_keys) > 0:
             ids = [c.id for c in self.aeat349_operation_keys]
