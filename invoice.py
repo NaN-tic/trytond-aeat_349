@@ -137,15 +137,23 @@ class Tax:
         depends=['aeat349_operation_keys'])
 
 
+STATES = {
+    'invisible': Eval('type') != 'line',
+    }
+DEPENDS = ['type']
+
+
 class InvoiceLine:
     __name__ = 'account.invoice.line'
     aeat349_available_keys = fields.Function(fields.One2Many('aeat.349.type',
         None, 'AEAT 349 Available Keys', on_change_with=['taxes', 'product'],
-        depends=['taxes', 'product']), 'on_change_with_aeat349_available_keys')
+        states=STATES, depends=DEPENDS + ['taxes', 'product']),
+        'on_change_with_aeat349_available_keys')
     aeat349_operation_key = fields.Many2One('aeat.349.type',
         'AEAT 349 Operation Key', on_change_with=['taxes', 'invoice_type',
             'aeat349_operation_key', '_parent_invoice.type', 'product'],
-        depends=['aeat349_available_keys', 'taxes', 'invoice_type', 'product'],
+        states=STATES, depends=DEPENDS + ['aeat349_available_keys', 'taxes',
+            'invoice_type', 'product'],
         domain=[('id', 'in', Eval('aeat349_available_keys', []))],)
 
     @classmethod
@@ -197,6 +205,8 @@ class InvoiceLine:
         Invoice = Pool().get('account.invoice')
         Taxes = Pool().get('account.tax')
         for vals in vlist:
+            if vals.get('type', 'line') != 'line':
+                continue
             if not vals.get('aeat349_operation_key') and vals.get('taxes'):
                 invoice_type = vals.get('invoice_type')
                 if not invoice_type and vals.get('invoice'):
@@ -223,6 +233,8 @@ class Invoice:
             if not invoice.move:
                 continue
             for line in invoice.lines:
+                if line.type != 'line':
+                    continue
                 if line.aeat349_operation_key:
                     operation_key = line.aeat349_operation_key.operation_key
                     key = "%d-%s" % (invoice.id, operation_key)
