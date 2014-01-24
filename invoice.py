@@ -242,15 +242,15 @@ class Invoice:
                         to_create[key]['base'] += line.amount
                     else:
                         to_create[key] = {
-                                'company': invoice.company.id,
-                                'fiscalyear': invoice.move.period.fiscalyear,
-                                'month': invoice.invoice_date.month,
-                                'party_name': invoice.party.rec_name,
-                                'party_vat': invoice.party.vat_code,
-                                'base': line.amount,
-                                'operation_key': operation_key,
-                                'invoice': invoice.id,
-                        }
+                            'company': invoice.company.id,
+                            'fiscalyear': invoice.move.period.fiscalyear,
+                            'month': invoice.invoice_date.month,
+                            'party_name': invoice.party.rec_name[:40],
+                            'party_vat': invoice.party.vat_code,
+                            'base': line.amount,
+                            'operation_key': operation_key,
+                            'invoice': invoice.id,
+                            }
 
         with Transaction().set_user(0, set_context=True):
             Record.delete(Record.search([('invoice', 'in',
