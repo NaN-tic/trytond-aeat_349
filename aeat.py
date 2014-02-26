@@ -65,7 +65,6 @@ class Report(Workflow, ModelSQL, ModelView):
             }, depends=['state', 'type'])
     representative_vat = fields.Char('L.R. VAT number', size=9,
         help='Legal Representative VAT number.', states={
-            'required': Eval('state') == 'calculated',
             'readonly': Eval('state') == 'done',
             }, depends=['state'])
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
@@ -75,7 +74,7 @@ class Report(Workflow, ModelSQL, ModelView):
     fiscalyear_code = fields.Integer('Fiscal Year Code',
         on_change_with=['fiscalyear'], required=True, depends=['fiscalyear'])
     company_vat = fields.Char('VAT number', size=9, states={
-            'required': Eval('state') == 'calculated',
+            'required': True,
             'readonly': Eval('state') == 'done',
             }, on_change_with=['company'], depends=['state', 'company'])
     type = fields.Selection([
@@ -101,11 +100,11 @@ class Report(Workflow, ModelSQL, ModelView):
     period = fields.Selection(PERIOD, 'Period', sort=False, required=True)
     contact_name = fields.Char('Full Name', size=40,
         help='Must have name and surname.', states={
-            'required': Eval('state') == 'calculated',
+            'required': True,
             'readonly': Eval('state') == 'confirmed',
             }, depends=['state'])
     contact_phone = fields.Char('Phone', size=9, states={
-            'required': Eval('state') == 'calculated',
+            'required': True,
             'readonly': Eval('state') == 'confirmed',
             }, depends=['state'])
     operations = fields.One2Many('aeat.349.report.operation', 'report',
@@ -256,10 +255,12 @@ class Report(Workflow, ModelSQL, ModelView):
             multiplier = 1
             period = report.period
             if 'T' in period:
-                period = period[0]
+                period = int(period[0])-1
                 multiplier = 3
+                start_month = period * multiplier + 1
+            else:
+                start_month = int(period) * multiplier
 
-            start_month = int(period) * multiplier
             end_month = start_month + multiplier
 
             to_create = {}
