@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import datetime
 import itertools
 from decimal import Decimal
@@ -9,6 +10,7 @@ from trytond.model import Workflow, ModelSQL, ModelView, fields
 from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
+import unicodedata
 
 __all__ = ['Report', 'Operation', 'Ammendment']
 
@@ -43,6 +45,16 @@ OPERATION_KEY = [
     ]
 
 _ZERO = Decimal('0.0')
+
+src_chars = """àáäâÀÁÄÂèéëêÈÉËÊìíïîÌÍÏÎòóöôÒÓÖÔùúüûÙÚÜÛçñºª·¤ '"()/*-+?!&$[]{}@#`'^:;<>=~%\\"""
+src_chars = unicode( src_chars, 'iso-8859-1' )
+dst_chars = """aaaaAAAAeeeeEEEEiiiiIIIIooooOOOOuuuuUUUUcnoa.e______________________________"""
+dst_chars = unicode( dst_chars, 'iso-8859-1' )
+
+def unaccent(text):
+     if isinstance( text, str ):
+         text = unicode( text, 'iso-8859-1', errors='replace')
+     return unicodedata.normalize('NFKD', text ).encode('ASCII', 'ignore')
 
 
 class Report(Workflow, ModelSQL, ModelView):
@@ -315,20 +327,20 @@ class Report(Workflow, ModelSQL, ModelView):
         record = retrofix.Record(aeat349.PRESENTER_HEADER_RECORD)
         record.fiscalyear = str(self.fiscalyear_code)
         record.nif = self.company_vat
-        #record.presenter_name =
+        record.presenter_name = self.company.party.name
         record.support_type = self.support_type
         record.contact_phone = self.contact_phone
         record.contact_name = self.contact_name
-        #record.declaration_number =
+        record.declaration_number = str(self.id)
         record.complementary = '' if self.type == 'N' else self.type
         record.replacement = self.previous_number
         record.previous_declaration_number = self.previous_number
         record.period = self.period
         record.operation_count = len(self.operations)
-        record.operation_amount = self.operation_amount
+        record.operation_amount = self.operation_amount or _ZERO
         record.ammendment_count = len(self.ammendments)
-        record.ammendment_amount = self.ammendment_amount
-        #record.representative_nif =
+        record.ammendment_amount = self.ammendment_amount or _ZERO
+        record.representative_nif = self.representative_vat
         records.append(record)
         for line in itertools.chain(self.operations, self.ammendments):
             record = line.get_record()
@@ -336,7 +348,7 @@ class Report(Workflow, ModelSQL, ModelView):
             record.nif = self.company_vat
             records.append(record)
         data = retrofix.record.write(records)
-        data = data.encode('iso-8859-1')
+        data = unaccent(data)
         self.file_ = buffer(data)
         self.save()
 
@@ -374,7 +386,7 @@ class Operation(ModelSQL, ModelView):
         record.party_vat = self.party_vat
         record.party_name = self.party_name
         record.operation_key = self.operation_key
-        record.base = self.base
+        record.base = self.base or _ZERO
         return record
 
 
