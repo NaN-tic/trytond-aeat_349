@@ -119,6 +119,8 @@ class TaxTemplate(ModelSQL, ModelView):
                     res[field] = getattr(self, field).id
                 else:
                     res[field] = None
+        if not res['aeat349_operation_keys']:
+            del res['aeat349_operation_keys']
         return res
 
 
