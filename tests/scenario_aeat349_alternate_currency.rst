@@ -1,6 +1,6 @@
-================
-Invoice Scenario
-================
+===================================
+Invoice Scenario Alternate Currency
+===================================
 
 Imports::
     >>> import datetime
@@ -37,6 +37,16 @@ Create company::
     ...         rate=Decimal('1.0'), currency=currency).save()
     ... else:
     ...     currency, = currencies
+    >>> currencies = Currency.find([('code', '=', 'USD')])
+    >>> if not currencies:
+    ...     usd = Currency(name='US Dollar', symbol=u'$', code='USD',
+    ...         rounding=Decimal('0.01'), mon_grouping='[]',
+    ...         mon_decimal_point='.')
+    ...     usd.save()
+    ...     CurrencyRate(date=today + relativedelta(month=1, day=1),
+    ...         rate=Decimal('2.0'), currency=usd).save()
+    ... else:
+    ...     usd, = currencies
     >>> Company = Model.get('company.company')
     >>> Party = Model.get('party.party')
     >>> company_config = Wizard('company.company.config')
@@ -191,6 +201,7 @@ Create out invoice::
     >>> invoice = Invoice()
     >>> invoice.party = party
     >>> invoice.payment_term = payment_term
+    >>> invoice.currency = usd
     >>> line = InvoiceLine()
     >>> invoice.lines.append(line)
     >>> line.product = product
@@ -199,7 +210,7 @@ Create out invoice::
     True
     >>> line.aeat349_operation_key.operation_key == 'E'
     True
-    >>> line.amount == Decimal(200)
+    >>> line.amount == Decimal(400)
     True
     >>> line = InvoiceLine()
     >>> invoice.lines.append(line)
@@ -231,6 +242,7 @@ Create in invoice::
     >>> invoice.type = 'in_invoice'
     >>> invoice.party = party
     >>> invoice.payment_term = payment_term
+    >>> invoice.currency = usd
     >>> invoice.invoice_date = today
     >>> line = InvoiceLine()
     >>> invoice.lines.append(line)
@@ -240,7 +252,7 @@ Create in invoice::
     True
     >>> line.aeat349_operation_key.operation_key == 'A'
     True
-    >>> line.amount == Decimal(125)
+    >>> line.amount == Decimal(250)
     True
     >>> line = InvoiceLine()
     >>> invoice.lines.append(line)

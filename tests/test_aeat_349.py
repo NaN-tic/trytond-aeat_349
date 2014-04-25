@@ -54,6 +54,10 @@ def suite():
     suite.addTests(doctest.DocFileSuite('scenario_aeat349.rst',
             setUp=doctest_dropdb, tearDown=doctest_dropdb, encoding='utf-8',
             optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
+    suite.addTests(doctest.DocFileSuite(
+            'scenario_aeat349_alternate_currency.rst',
+            setUp=doctest_dropdb, tearDown=doctest_dropdb, encoding='utf-8',
+            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
     return suite
 
 if __name__ == '__main__':

@@ -229,7 +229,9 @@ class Invoice:
 
     @classmethod
     def create_aeat349_records(cls, invoices):
-        Record = Pool().get('aeat.349.record')
+        pool = Pool()
+        Record = pool.get('aeat.349.record')
+        Currency = pool.get('currency.currency')
         to_create = {}
         for invoice in invoices:
             if not invoice.move or invoice.state == 'cancel':
@@ -240,8 +242,15 @@ class Invoice:
                 if line.aeat349_operation_key:
                     operation_key = line.aeat349_operation_key.operation_key
                     key = "%d-%s" % (invoice.id, operation_key)
+                    amount = line.amount
+                    if invoice.currency != invoice.company.currency:
+                        with Transaction().set_context(
+                                date=invoice.currency_date):
+                            amount = Currency.compute(
+                                invoice.currency, amount,
+                                invoice.company.currency)
                     if key in to_create:
-                        to_create[key]['base'] += line.amount
+                        to_create[key]['base'] += amount
                     else:
                         to_create[key] = {
                             'company': invoice.company.id,
@@ -249,7 +258,7 @@ class Invoice:
                             'month': invoice.invoice_date.month,
                             'party_name': invoice.party.rec_name[:40],
                             'party_vat': invoice.party.vat_code,
-                            'base': line.amount,
+                            'base': amount,
                             'operation_key': operation_key,
                             'invoice': invoice.id,
                             }
@@ -358,6 +367,9 @@ class Reasign349Record(Wizard):
                 if value in line.aeat349_available_keys:
                     lines.append(line.id)
                     invoice_ids.add(invoice.id)
+
+        if not invoice_ids:
+            return 'done'
 
         line = Line.__table__()
         #Update to allow to modify key for posted invoices
