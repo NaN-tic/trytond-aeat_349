@@ -225,6 +225,47 @@ Create out invoice::
     >>> rec1.base == Decimal(200)
     True
 
+Create out credit note::
+
+    >>> invoice = Invoice()
+    >>> invoice.type = 'out_credit_note'
+    >>> invoice.party = party
+    >>> invoice.payment_term = payment_term
+    >>> line = InvoiceLine()
+    >>> invoice.lines.append(line)
+    >>> line.product = product
+    >>> line.quantity = 1
+    >>> len(line.taxes) == 1
+    True
+    >>> line.aeat349_operation_key.operation_key == 'E'
+    True
+    >>> line.amount == Decimal(40)
+    True
+    >>> line = InvoiceLine()
+    >>> invoice.lines.append(line)
+    >>> line.account = revenue
+    >>> line.description = 'Test'
+    >>> line.quantity = 1
+    >>> line.unit_price = Decimal(20)
+    >>> line.aeat349_operation_key == None
+    True
+    >>> line.amount == Decimal(20)
+    True
+    >>> invoice.save()
+    >>> Invoice.post([invoice.id], config.context)
+    >>> rec1, = Record.find([('invoice', '=', invoice.id)])
+    >>> rec1.party_name == 'Party'
+    True
+    >>> rec1.party_vat == '00000000T'
+    True
+    >>> rec1.month == today.month
+    True
+    >>> rec1.operation_key == 'E'
+    True
+    >>> rec1.base == Decimal('-40')
+    True
+
+
 Create in invoice::
 
     >>> invoice = Invoice()
@@ -266,6 +307,48 @@ Create in invoice::
     >>> rec1.base == Decimal(125)
     True
 
+Create in credit note::
+
+    >>> invoice = Invoice()
+    >>> invoice.type = 'in_credit_note'
+    >>> invoice.party = party
+    >>> invoice.payment_term = payment_term
+    >>> invoice.invoice_date = today
+    >>> line = InvoiceLine()
+    >>> invoice.lines.append(line)
+    >>> line.product = product
+    >>> line.quantity = 1
+    >>> len(line.taxes) == 1
+    True
+    >>> line.aeat349_operation_key.operation_key == 'A'
+    True
+    >>> line.amount == Decimal(25)
+    True
+    >>> line = InvoiceLine()
+    >>> invoice.lines.append(line)
+    >>> line.account = expense
+    >>> line.description = 'Test'
+    >>> line.quantity = 1
+    >>> line.unit_price = Decimal(20)
+    >>> line.aeat349_operation_key == None
+    True
+    >>> line.amount == Decimal(20)
+    True
+    >>> invoice.save()
+    >>> Invoice.post([invoice.id], config.context)
+    >>> rec1, = Record.find([('invoice', '=', invoice.id)])
+    >>> rec1.party_name == 'Party'
+    True
+    >>> rec1.party_vat == '00000000T'
+    True
+    >>> rec1.month == today.month
+    True
+    >>> rec1.operation_key == 'A'
+    True
+    >>> rec1.base == Decimal('-25')
+    True
+
+
 Generate 349 Report::
 
     >>> Report = Model.get('aeat.349.report')
@@ -279,7 +362,7 @@ Generate 349 Report::
     >>> report.save()
     >>> Report.calculate([report.id], config.context)
     >>> report.reload()
-    >>> report.operation_amount == Decimal(325)
+    >>> report.operation_amount == Decimal(260)
     True
     >>> report.ammendment_amount == Decimal(0)
     True
