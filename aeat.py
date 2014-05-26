@@ -83,12 +83,12 @@ class Report(Workflow, ModelSQL, ModelView):
         required=True, states={
             'readonly': Eval('state') == 'done',
             }, depends=['state'])
-    fiscalyear_code = fields.Integer('Fiscal Year Code',
-        on_change_with=['fiscalyear'], required=True, depends=['fiscalyear'])
+    fiscalyear_code = fields.Integer('Fiscal Year Code', required=True,
+        depends=['fiscalyear'])
     company_vat = fields.Char('VAT number', size=9, states={
             'required': True,
             'readonly': Eval('state') == 'done',
-            }, on_change_with=['company'], depends=['state', 'company'])
+            }, depends=['state', 'company'])
     type = fields.Selection([
             ('N', 'Normal'),
             ('C', 'Complementary'),
@@ -198,6 +198,7 @@ class Report(Workflow, ModelSQL, ModelView):
     def get_currency(self, name):
         return self.company.currency.id
 
+    @fields.depends('fiscalyear')
     def on_change_with_fiscalyear_code(self):
         code = self.fiscalyear.code if self.fiscalyear else None
         if code:
@@ -207,6 +208,7 @@ class Report(Workflow, ModelSQL, ModelView):
                 code = None
         return code
 
+    @fields.depends('company')
     def on_change_with_company_vat(self):
         if self.company:
             return self.company.party.vat_code
@@ -361,7 +363,7 @@ class Operation(ModelSQL, ModelView):
     _rec_name = 'party_name'
 
     company = fields.Function(fields.Many2One('company.company', 'Company',
-        required=True, on_change_with=['report']), 'on_change_with_report',
+            required=True), 'on_change_with_report',
         searcher='search_company')
     report = fields.Many2One('aeat.349.report', 'AEAT 349 Report',
         required=True)
@@ -373,6 +375,7 @@ class Operation(ModelSQL, ModelView):
     records = fields.One2Many('aeat.349.record', 'operation',
         'AEAT 349 Records', readonly=True)
 
+    @fields.depends('report')
     def on_change_with_report(self, name=None):
         if self.report:
             return self.report.company
@@ -398,8 +401,7 @@ class Ammendment(ModelSQL, ModelView):
 
     company = fields.Many2One('company.company', 'Company', required=True)
     report = fields.Many2One('aeat.349.report', 'AEAT 349 Report')
-    party_vat = fields.Char('VAT', size=17, on_change_with=[
-            'party_vat', 'country'])
+    party_vat = fields.Char('VAT', size=17)
     party_name = fields.Char('Party Name', size=40)
     operation_key = fields.Selection(OPERATION_KEY, 'Operation key',
         required=True)
