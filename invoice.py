@@ -110,7 +110,7 @@ class TaxTemplate(ModelSQL, ModelView):
             res['aeat349_operation_keys'].append(['unlink_all'])
         if len(self.aeat349_operation_keys) > 0:
             ids = [c.id for c in self.aeat349_operation_keys]
-            res['aeat349_operation_keys'].append(['set', ids])
+            res['aeat349_operation_keys'].append(['add', ids])
         for direction in ('in', 'out'):
             field = "aeat349_default_%s_operation_key" % (direction)
             if not tax or getattr(tax, field) != getattr(self, field):
@@ -218,7 +218,7 @@ class InvoiceLine:
                     invoice_type = invoice.type
                 taxes_ids = []
                 for key, value in vals.get('taxes'):
-                    if key in ['add', 'set']:
+                    if key == 'add':
                         taxes_ids.extend(value)
 
                 vals['aeat349_operation_key'] = cls.get_aeat349_operation_key(
