@@ -181,7 +181,7 @@ class InvoiceLine:
         return list(set(keys))
 
     @fields.depends('taxes', 'invoice_type', 'aeat349_operation_key',
-        '_parent_invoice.type', 'product')
+        '_parent_invoice.type', 'product', 'invoice')
     def on_change_with_aeat349_operation_key(self):
         if self.aeat349_operation_key:
             return self.aeat349_operation_key.id
@@ -190,7 +190,7 @@ class InvoiceLine:
             type_ = self.invoice.type
         elif self.invoice_type:
             type_ = self.invoice_type
-        if not type_:
+        else:
             return
 
         return self.get_aeat349_operation_key(type_, self.taxes)
