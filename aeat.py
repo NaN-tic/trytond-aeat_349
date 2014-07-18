@@ -296,7 +296,7 @@ class Report(Workflow, ModelSQL, ModelView):
                         'party_name': record.party_name,
                         'operation_key': record.operation_key,
                         'report': report.id,
-                        'records': [('set', [record.id])],
+                        'records': [('add', [record.id])],
                     }
         with Transaction().set_user(0, set_context=True):
             Operation.create(to_create.values())
