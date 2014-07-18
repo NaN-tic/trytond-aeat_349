@@ -257,10 +257,13 @@ class Invoice:
                     if key in to_create:
                         to_create[key]['base'] += amount
                     else:
+                        month = (invoice.accounting_date.month
+                             if invoice.accounting_date
+                             else invoice.invoice_date.month)
                         to_create[key] = {
                             'company': invoice.company.id,
                             'fiscalyear': invoice.move.period.fiscalyear,
-                            'month': invoice.invoice_date.month,
+                            'month': month,
                             'party_name': invoice.party.rec_name[:40],
                             'party_vat': invoice.party.vat_code,
                             'base': amount,
