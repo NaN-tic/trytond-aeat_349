@@ -105,22 +105,36 @@ class TaxTemplate(ModelSQL, ModelView):
     def _get_tax_value(self, tax=None):
         res = super(TaxTemplate, self)._get_tax_value(tax)
 
-        res['aeat349_operation_keys'] = []
+        old_ids = set()
+        new_ids = set()
         if tax and len(tax.aeat349_operation_keys) > 0:
-            res['aeat349_operation_keys'].append(['unlink_all'])
+            old_ids = set([c.id for c in tax.aeat349_operation_keys])
         if len(self.aeat349_operation_keys) > 0:
-            ids = [c.id for c in self.aeat349_operation_keys]
-            res['aeat349_operation_keys'].append(['add', ids])
-        for direction in ('in', 'out'):
-            field = "aeat349_default_%s_operation_key" % (direction)
-            if not tax or getattr(tax, field) != getattr(self, field):
-                value = getattr(self, field)
-                if value:
-                    res[field] = getattr(self, field).id
-                else:
-                    res[field] = None
-        if not res['aeat349_operation_keys']:
-            del res['aeat349_operation_keys']
+            new_ids = set([c.id for c in self.aeat349_operation_keys])
+            for direction in ('in', 'out'):
+                field = "aeat349_default_%s_operation_key" % (direction)
+                if not tax or getattr(tax, field) != getattr(self, field):
+                    value = getattr(self, field)
+                    if value and value.id in new_ids:
+                        res[field] = value.id
+                    else:
+                        res[field] = None
+        else:
+            if tax and tax.aeat349_default_in_operation_key:
+                res['aeat349_default_in_operation_key'] = None
+            if tax and tax.aeat349_default_out_operation_key:
+                res['aeat349_default_out_operation_key'] = None
+        if old_ids or new_ids:
+            key = 'aeat349_operation_keys'
+            res[key] = []
+            to_remove = old_ids - new_ids
+            if to_remove:
+                res[key].append(['remove', list(to_remove)])
+            to_add = new_ids - old_ids
+            if to_add:
+                res[key].append(['add', list(to_add)])
+            if not res[key]:
+                del res[key]
         return res
 
 
