@@ -291,6 +291,15 @@ class Invoice:
             Record.create(to_create.values())
 
     @classmethod
+    def draft(cls, invoices):
+        pool = Pool()
+        Record = pool.get('aeat.349.record')
+        super(Invoice, cls).draft(invoices)
+        with Transaction().set_user(0, set_context=True):
+            Record.delete(Record.search([('invoice', 'in',
+                            [i.id for i in invoices])]))
+
+    @classmethod
     def post(cls, invoices):
         super(Invoice, cls).post(invoices)
         cls.create_aeat349_records(invoices)
