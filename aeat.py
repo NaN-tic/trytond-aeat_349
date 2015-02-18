@@ -211,7 +211,7 @@ class Report(Workflow, ModelSQL, ModelView):
     @fields.depends('company')
     def on_change_with_company_vat(self):
         if self.company:
-            return self.company.party.vat_code
+            return self.company.party.vat_number
         return None
 
     @classmethod
