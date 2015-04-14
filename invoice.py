@@ -4,6 +4,7 @@ from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from sql.operators import In
+from sql import Literal
 from .aeat import OPERATION_KEY
 
 __all__ = ['Type', 'TypeTax', 'TypeTaxTemplate', 'Record', 'TaxTemplate',
@@ -60,6 +61,18 @@ class TypeTaxTemplate(ModelSQL):
         ondelete='CASCADE', select=True, required=True)
     tax = fields.Many2One('account.tax.template', 'Tax Template',
         ondelete='CASCADE', select=True, required=True)
+
+    @classmethod
+    def __register__(cls, module_name):
+        ModelData = Pool().get('ir.model.data')
+        cursor = Transaction().cursor
+        sql_table = ModelData.__table__()
+        # Meld aeat_349_es into aeat_349
+        cursor.execute(*sql_table.update(
+                columns=[sql_table.module],
+                values=[module_name],
+                where=sql_table.module == Literal('aeat_349_es')))
+        super(TypeTaxTemplate, cls).__register__(module_name)
 
 
 class Record(ModelSQL, ModelView):
