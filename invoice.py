@@ -64,10 +64,18 @@ class TypeTaxTemplate(ModelSQL):
 
     @classmethod
     def __register__(cls, module_name):
-        ModelData = Pool().get('ir.model.data')
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        Module = pool.get('ir.module.module')
         cursor = Transaction().cursor
+        module_table = Module.__table__()
         sql_table = ModelData.__table__()
         # Meld aeat_349_es into aeat_349
+        cursor.execute(*module_table.update(
+                columns=[module_table.state],
+                values=[Literal('uninstalled')],
+                where=module_table.name == Literal('aeat_349_es')
+                ))
         cursor.execute(*sql_table.update(
                 columns=[sql_table.module],
                 values=[module_name],
