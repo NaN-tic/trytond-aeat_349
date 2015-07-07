@@ -5,7 +5,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 msgctxt "error:aeat.349.report:"
 msgid "Contact name in report \"%s\" must contain name and surname"
 msgstr ""
-"El nombre del contacto del informe \"%s\" debe estar formado por nombre i "
+"El nombre del contacto del informe \"%s\" debe estar formado por nombre y "
 "apellidos"
 
 msgctxt "error:aeat.349.report:"
@@ -452,7 +452,7 @@ msgstr "Usuario modificación"
 
 msgctxt "help:aeat.349.report,contact_name:"
 msgid "Must have name and surname."
-msgstr "Debe contener nombre i apellidos."
+msgstr "Debe contener nombre y apellidos."
 
 msgctxt "help:aeat.349.report,representative_vat:"
 msgid "Legal Representative VAT number."
