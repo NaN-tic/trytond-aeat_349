@@ -351,7 +351,7 @@ class Report(Workflow, ModelSQL, ModelView):
             records.append(record)
         data = retrofix.record.write(records)
         data = unaccent(data)
-        self.file_ = buffer(data)
+        self.file_ = bytes(data)
         self.save()
 
 
