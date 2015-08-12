@@ -3,7 +3,7 @@
     <field name="fiscalyear"/>
     <field name="period"/>
     <field name="state"/>
-    <field name="calculation_date"/>
+    <field name="calculation_date" widget="date"/>
     <button name="draft" string="Draft" tree_invisible="1"/>
     <button name="calculate" string="Calculate" tree_invisible="1"/>
     <button name="process" string="Process" tree_invisible="1"/>
