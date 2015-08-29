@@ -196,17 +196,20 @@ class InvoiceLine:
     def __setup__(cls):
         super(InvoiceLine, cls).__setup__()
 
+    @fields.depends('invoice', 'taxes')
     def on_change_product(self):
         Taxes = Pool().get('account.tax')
-        res = super(InvoiceLine, self).on_change_product()
+
+        super(InvoiceLine, self).on_change_product()
         if self.invoice and self.invoice.type:
             type_ = self.invoice.type
         elif self.invoice_type:
             type_ = self.invoice_type
-        if 'taxes' in res:
-            res['aeat349_operation_key'] = self.get_aeat349_operation_key(
-                        type_, Taxes.browse(res['taxes']))
-        return res
+
+        self.aeat349_operation_key = None
+        if type_ and self.taxes:
+            self.aeat349_operation_key = self.get_aeat349_operation_key(
+                        type_, Taxes.browse(self.taxes))
 
     @fields.depends('taxes', 'product')
     def on_change_with_aeat349_available_keys(self, name=None):
