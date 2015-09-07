@@ -127,9 +127,11 @@ class Report(Workflow, ModelSQL, ModelView):
         'Ammendments')
     ammendment_amount = fields.Function(fields.Numeric(
             'Ammendment Amount', digits=(16, 2)), 'get_totals')
-    file_ = fields.Binary('File', states={
+    file_ = fields.Binary('File', filename='filename', states={
             'invisible': Eval('state') != 'done',
             })
+    filename = fields.Function(fields.Char("File Name"),
+        'get_filename')
 
     @classmethod
     def __setup__(cls):
@@ -198,14 +200,15 @@ class Report(Workflow, ModelSQL, ModelView):
     def get_currency(self, name):
         return self.company.currency.id
 
+    def get_filename(self, name):
+        return 'aeat349-%s-%s.txt' % (
+            self.fiscalyear_code, self.period)
+
     @fields.depends('fiscalyear')
     def on_change_with_fiscalyear_code(self):
-        code = self.fiscalyear.code if self.fiscalyear else None
-        if code:
-            try:
-                code = int(code)
-            except ValueError:
-                code = None
+        code = None
+        if self.fiscalyear:
+            code = self.fiscalyear.start_date.year
         return code
 
     @fields.depends('company')

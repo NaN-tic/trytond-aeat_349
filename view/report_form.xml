@@ -40,7 +40,7 @@ contains the full copyright notices and license terms. -->
             <field name="ammendment_amount"/>
         </page>
         <page string="Operations" id="operations">
-	        <field name="operations" colspan="4"/>
+            <field name="operations" colspan="4"/>
         </page>
         <page string="Ammendments" id="ammendments">
             <field name="ammendments" colspan="4"/>
@@ -53,6 +53,7 @@ contains the full copyright notices and license terms. -->
         <field name="calculation_date"/>
         <label name="file_"/>
         <field name="file_"/>
+        <field name="filename" invisible="1"/>
     </group>
     <group id="buttons" colspan="2">
         <button name="draft" string="Draft"/>
