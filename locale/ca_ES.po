@@ -190,6 +190,10 @@ msgctxt "field:aeat.349.report,file_:"
 msgid "File"
 msgstr "Fitxer"
 
+msgctxt "field:aeat.349.report,filename:"
+msgid "File Name"
+msgstr "Nom fitxer"
+
 msgctxt "field:aeat.349.report,fiscalyear:"
 msgid "Fiscal Year"
 msgstr "Exercici fiscal"
@@ -566,7 +570,7 @@ msgctxt "model:ir.ui.menu,name:menu_aeat_349_report_operation"
 msgid "AEAT 349 Report Operation"
 msgstr "Operacions Informe AEAT 349"
 
-msgctxt "model:res.group,name:group_aeat_349"
+msgctxt "model:res.group,name:"
 msgid "AEAT 349"
 msgstr "AEAT 349"
 
@@ -939,6 +943,10 @@ msgstr "Calcula"
 msgctxt "view:aeat.349.report:"
 msgid "Cancel"
 msgstr "Cancel·la"
+
+msgctxt "view:aeat.349.report:"
+msgid "Declaration Number"
+msgstr "Número declaració"
 
 msgctxt "view:aeat.349.report:"
 msgid "Draft"
