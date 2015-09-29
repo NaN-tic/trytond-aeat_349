@@ -66,7 +66,7 @@ class TypeTaxTemplate(ModelSQL):
     def __register__(cls, module_name):
         pool = Pool()
         ModelData = pool.get('ir.model.data')
-        Module = pool.get('ir.module.module')
+        Module = pool.get('ir.module')
         cursor = Transaction().cursor
         module_table = Module.__table__()
         sql_table = ModelData.__table__()
