@@ -156,8 +156,11 @@ Create tax::
 Create party::
 
     >>> Party = Model.get('party.party')
-    >>> party = Party(name='Party', vat_number='00000000T')
+    >>> party = Party(name='Party')
     >>> party.save()
+    >>> Identifier = Model.get('party.identifier')
+    >>> identifier = Identifier(party=party, type='eu_vat', number='ES00000000T')
+    >>> identifier.save()
 
 Create product::
 
