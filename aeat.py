@@ -206,6 +206,8 @@ class Report(Workflow, ModelSQL, ModelView):
                 code = int(code)
             except ValueError:
                 code = None
+        else:
+            code = None
         return code
 
     @fields.depends('company')
