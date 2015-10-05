@@ -3,7 +3,8 @@ import datetime
 import itertools
 from decimal import Decimal
 from retrofix import aeat349
-from retrofix.record import Record, write as retrofix_write
+import retrofix
+
 
 from trytond.model import Workflow, ModelSQL, ModelView, fields
 from trytond.pool import Pool
@@ -45,27 +46,15 @@ OPERATION_KEY = [
 
 _ZERO = Decimal('0.0')
 
+src_chars = """àáäâÀÁÄÂèéëêÈÉËÊìíïîÌÍÏÎòóöôÒÓÖÔùúüûÙÚÜÛçñºª·¤ '"()/*-+?!&$[]{}@#`'^:;<>=~%\\"""
+src_chars = unicode( src_chars, 'iso-8859-1' )
+dst_chars = """aaaaAAAAeeeeEEEEiiiiIIIIooooOOOOuuuuUUUUcnoa.e______________________________"""
+dst_chars = unicode( dst_chars, 'iso-8859-1' )
 
-def remove_accents(unicode_string):
-    if isinstance(unicode_string, str):
-        unicode_string_bak = unicode_string
-        try:
-            unicode_string = unicode_string_bak.decode('iso-8859-1')
-        except UnicodeDecodeError:
-            try:
-                unicode_string = unicode_string_bak.decode('utf-8')
-            except UnicodeDecodeError:
-                return unicode_string_bak
-
-    if not isinstance(unicode_string, unicode):
-        return unicode_string
-
-    unicode_string_nfd = ''.join(
-        (c for c in unicodedata.normalize('NFD', unicode_string)
-            if (unicodedata.category(c) != 'Mn')
-            ))
-    # It converts nfd to nfc to allow unicode.decode()
-    return unicodedata.normalize('NFC', unicode_string_nfd)
+def unaccent(text):
+     if isinstance( text, str ):
+         text = unicode( text, 'iso-8859-1', errors='replace')
+     return unicodedata.normalize('NFKD', text ).encode('ASCII', 'ignore')
 
 
 class Report(Workflow, ModelSQL, ModelView):
@@ -217,18 +206,18 @@ class Report(Workflow, ModelSQL, ModelView):
 
     @fields.depends('fiscalyear')
     def on_change_with_fiscalyear_code(self):
-        code = None
-        if self.fiscalyear:
-            code = self.fiscalyear.start_date.year
+        code = self.fiscalyear.code if self.fiscalyear else None
+        if code:
+            try:
+                code = int(code)
+            except ValueError:
+                code = None
         return code
 
     @fields.depends('company')
     def on_change_with_company_vat(self):
         if self.company:
-            vat_code = self.company.party.vat_code
-            if vat_code and vat_code.startswith('ES'):
-                return vat_code[2:]
-            return vat_code
+            return self.company.party.vat_number
         return None
 
     @classmethod
@@ -343,7 +332,7 @@ class Report(Workflow, ModelSQL, ModelView):
 
     def create_file(self):
         records = []
-        record = Record(aeat349.PRESENTER_HEADER_RECORD)
+        record = retrofix.Record(aeat349.PRESENTER_HEADER_RECORD)
         record.fiscalyear = str(self.fiscalyear_code)
         record.nif = self.company_vat
         record.presenter_name = self.company.party.name
@@ -366,11 +355,9 @@ class Report(Workflow, ModelSQL, ModelView):
             record.fiscalyear = str(self.fiscalyear_code)
             record.nif = self.company_vat
             records.append(record)
-        data = retrofix_write(records)
-        data = remove_accents(data).upper()
-        if isinstance(data, unicode):
-            data = data.encode('iso-8859-1')
-        self.file_ = bytes(data)
+        data = retrofix.record.write(records)
+        data = unaccent(data)
+        self.file_ = buffer(data)
         self.save()
 
 
@@ -381,8 +368,9 @@ class Operation(ModelSQL, ModelView):
     __name__ = 'aeat.349.report.operation'
     _rec_name = 'party_name'
 
-    company = fields.Function(fields.Many2One('company.company', 'Company'),
-        'on_change_with_report', searcher='search_company')
+    company = fields.Function(fields.Many2One('company.company', 'Company',
+            required=True), 'on_change_with_report',
+        searcher='search_company')
     report = fields.Many2One('aeat.349.report', 'AEAT 349 Report',
         required=True)
     party_vat = fields.Char('VAT', size=17)
@@ -403,7 +391,7 @@ class Operation(ModelSQL, ModelView):
         return [('report.%s' % name,) + tuple(clause[1:])]
 
     def get_record(self):
-        record = Record(aeat349.OPERATOR_RECORD)
+        record = retrofix.Record(aeat349.OPERATOR_RECORD)
         record.party_vat = self.party_vat
         record.party_name = self.party_name
         record.operation_key = self.operation_key
@@ -434,11 +422,11 @@ class Ammendment(ModelSQL, ModelView):
         return Transaction().context.get('company')
 
     def get_record(self):
-        record = Record(aeat349.AMMENDMENT_RECORD)
-        record.party_vat = self.party_vat
+        record = retrofix.Record(aeat349.AMMENDMENT_RECORD)
+        record.party_vat = self.country.code.upper()
         record.party_name = self.party_name
         record.operation_key = self.operation_key
-        record.ammendment_fiscalyear = str(self.ammendment_fiscalyear_code)
+        record.ammendment_fiscalyear = self.ammendment_fiscalyear_code
         record.ammendment_period = self.ammendment_period
         record.base = self.base
         record.original_base = self.original_base
