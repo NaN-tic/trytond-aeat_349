@@ -205,11 +205,12 @@ class InvoiceLine:
             type_ = self.invoice.type
         elif self.invoice_type:
             type_ = self.invoice_type
-
         self.aeat349_operation_key = None
         if type_ and self.taxes:
+            with Transaction().set_user(0):
+                taxes = Taxes.browse(self.taxes)
             self.aeat349_operation_key = self.get_aeat349_operation_key(
-                        type_, Taxes.browse(self.taxes))
+                        type_, taxes)
 
     @fields.depends('taxes', 'product')
     def on_change_with_aeat349_available_keys(self, name=None):
@@ -258,9 +259,10 @@ class InvoiceLine:
                 for key, value in vals.get('taxes'):
                     if key == 'add':
                         taxes_ids.extend(value)
-
+                with Transaction().set_user(0):
+                    taxes = Taxes.browse(taxes_ids)
                 vals['aeat349_operation_key'] = cls.get_aeat349_operation_key(
-                    invoice_type, Taxes.browse(taxes_ids))
+                    invoice_type, taxes)
         return super(InvoiceLine, cls).create(vlist)
 
 
