@@ -204,8 +204,10 @@ class InvoiceLine:
         elif self.invoice_type:
             type_ = self.invoice_type
         if 'taxes' in res:
+            with Transaction().set_user(0):
+                taxes = Taxes.browse(res['taxes'])
             res['aeat349_operation_key'] = self.get_aeat349_operation_key(
-                        type_, Taxes.browse(res['taxes']))
+                        type_, taxes)
         return res
 
     @fields.depends('taxes', 'product')
@@ -255,9 +257,10 @@ class InvoiceLine:
                 for key, value in vals.get('taxes'):
                     if key == 'add':
                         taxes_ids.extend(value)
-
+                with Transaction().set_user(0):
+                    taxes = Taxes.browse(taxes_ids)
                 vals['aeat349_operation_key'] = cls.get_aeat349_operation_key(
-                    invoice_type, Taxes.browse(taxes_ids))
+                    invoice_type, taxes)
         return super(InvoiceLine, cls).create(vlist)
 
 
