@@ -303,9 +303,9 @@ class Invoice:
                             'fiscalyear': invoice.move.period.fiscalyear,
                             'month': month,
                             'party_name': invoice.party.rec_name[:40],
-                            'party_vat': invoice.party.vat_code \
-                                if (invoice.party.vat_code \
-                                and len(invoice.party.vat_code) <= 17) \
+                            'party_vat': invoice.party.vat_code[2:]
+                                if (invoice.party.vat_code
+                                    and len(invoice.party.vat_code[2:]) <= 17)
                                 else '',
                             'base': amount,
                             'operation_key': operation_key,
