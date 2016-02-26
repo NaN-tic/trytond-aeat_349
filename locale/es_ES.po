@@ -60,7 +60,7 @@ msgstr "Clave de operación por defecto (facturas de cliente)"
 
 msgctxt "field:account.tax.template,aeat349_operation_keys:"
 msgid "Available Operation Keys"
-msgstr "Claves de operación disponibles"
+msgstr "Claves Operación disponibles"
 
 msgctxt "field:aeat.349.reasign.records.end,id:"
 msgid "ID"
@@ -68,7 +68,7 @@ msgstr "ID"
 
 msgctxt "field:aeat.349.reasign.records.start,aeat_349_type:"
 msgid "Operation Key"
-msgstr "Clave de operación"
+msgstr "Clave Operación"
 
 msgctxt "field:aeat.349.reasign.records.start,id:"
 msgid "ID"
