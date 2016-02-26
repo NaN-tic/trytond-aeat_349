@@ -40,11 +40,11 @@ msgstr "Clave de operación AEAT 349"
 
 msgctxt "field:account.tax,aeat349_default_in_operation_key:"
 msgid "Default In Operation Key"
-msgstr "Clave de operaciones por defecto (facturas de proveedor)"
+msgstr "Clave de operación por defecto (facturas de proveedor)"
 
 msgctxt "field:account.tax,aeat349_default_out_operation_key:"
 msgid "Default Out Operation Key"
-msgstr "Clave de operaciones por defecto (facturas de cliente)"
+msgstr "Clave de operación por defecto (facturas de cliente)"
 
 msgctxt "field:account.tax,aeat349_operation_keys:"
 msgid "Available Operation Keys"
@@ -52,11 +52,11 @@ msgstr "Claves de operación disponibles"
 
 msgctxt "field:account.tax.template,aeat349_default_in_operation_key:"
 msgid "Default In Operation Key"
-msgstr "Clave de operaciones por defecto (facturas de proveedor)"
+msgstr "Clave de operación por defecto (facturas de proveedor)"
 
 msgctxt "field:account.tax.template,aeat349_default_out_operation_key:"
 msgid "Default Out Operation Key"
-msgstr "Clave de operaciones por defecto (facturas de cliente)"
+msgstr "Clave de operación por defecto (facturas de cliente)"
 
 msgctxt "field:account.tax.template,aeat349_operation_keys:"
 msgid "Available Operation Keys"
@@ -460,19 +460,19 @@ msgstr "NIF del representante legal."
 
 msgctxt "model:aeat.349.reasign.records.end,name:"
 msgid "Reasign AEAT 349 Records End"
-msgstr "Final Reasignar Registros AEAT 349"
+msgstr "Final reasignar registros AEAT 349"
 
 msgctxt "model:aeat.349.reasign.records.start,name:"
 msgid "Reasign AEAT 349 Records Start"
-msgstr "Inicio Reasignar Registros AEAT 349"
+msgstr "Inicio reasignar registros AEAT 349"
 
 msgctxt "model:aeat.349.recalculate.records.end,name:"
 msgid "Recalculate AEAT 349 Records End"
-msgstr "Final Recalcular Registros AEAT 349"
+msgstr "Final recalcular registros AEAT 349"
 
 msgctxt "model:aeat.349.recalculate.records.start,name:"
 msgid "Recalculate AEAT 349 Records Start"
-msgstr "Inicio Recalcular Registros AEAT 349"
+msgstr "Inicio recalcular registros AEAT 349"
 
 msgctxt "model:aeat.349.record,name:"
 msgid "AEAT 349 Record"
@@ -504,11 +504,11 @@ msgstr "Relación plantilla de impuesto-Tipo AEAT 349"
 
 msgctxt "model:ir.action,name:act_aeat_349_reasign"
 msgid "Reasign AEAT 349 Records"
-msgstr "Reasignar Registros AEAT 349"
+msgstr "Reasignar registros AEAT 349"
 
 msgctxt "model:ir.action,name:act_aeat_349_recalculate"
 msgid "Recalculate AEAT 349 Records"
-msgstr "Recalcular Registros AEAT 349"
+msgstr "Recalcular registros AEAT 349"
 
 msgctxt "model:ir.action,name:act_aeat_349_record"
 msgid "AEAT 349 Record "
@@ -519,12 +519,12 @@ msgid "AEAT 349 Report"
 msgstr "Informe AEAT 349"
 
 msgctxt "model:ir.action,name:act_aeat_349_report_ammendment"
-msgid "AEAT 349 Report Operation"
-msgstr "Operación Informe AEAT 349"
+msgid "AEAT 349 Report Ammendment"
+msgstr "Rectificación informe AEAT 349"
 
 msgctxt "model:ir.action,name:act_aeat_349_report_operation"
 msgid "AEAT 349 Report Operation"
-msgstr "Operación Informe AEAT 349"
+msgstr "Operación informe AEAT 349"
 
 msgctxt "model:ir.action.act_window,name:act_aeat_349_record"
 msgid "AEAT 349 Record "
@@ -535,8 +535,8 @@ msgid "AEAT 349 Report"
 msgstr "Informe AEAT 349"
 
 msgctxt "model:ir.action.act_window,name:act_aeat_349_report_ammendment"
-msgid "AEAT 349 Report Operation"
-msgstr "Operación Informe AEAT 349"
+msgid "AEAT 349 Report Ammendment"
+msgstr "Rectificación Informe AEAT 349"
 
 msgctxt "model:ir.action.act_window,name:act_aeat_349_report_operation"
 msgid "AEAT 349 Report Operation"
@@ -544,11 +544,11 @@ msgstr "Operación Informe AEAT 349"
 
 msgctxt "model:ir.action.wizard,name:act_aeat_349_reasign"
 msgid "Reasign AEAT 349 Records"
-msgstr "Reasignar Registros AEAT 349"
+msgstr "Reasignar registros AEAT 349"
 
 msgctxt "model:ir.action.wizard,name:act_aeat_349_recalculate"
 msgid "Recalculate AEAT 349 Records"
-msgstr "Recalcular Registros AEAT 349"
+msgstr "Recalcular registros AEAT 349"
 
 msgctxt "model:ir.ui.menu,name:menu_aeat_349_record"
 msgid "AEAT 349 Record"
@@ -560,11 +560,11 @@ msgstr "Informes AEAT 349"
 
 msgctxt "model:ir.ui.menu,name:menu_aeat_349_report_ammendment"
 msgid "AEAT 349 Report Ammendment"
-msgstr "Rectificaciones Informe AEAT 349"
+msgstr "Registros de rectificaciones AEAT 349"
 
 msgctxt "model:ir.ui.menu,name:menu_aeat_349_report_operation"
 msgid "AEAT 349 Report Operation"
-msgstr "Operaciones Informe AEAT 349"
+msgstr "Registros de operaciones AEAT 349"
 
 msgctxt "model:res.group,name:group_aeat_349_admin"
 msgid "AEAT 349 Administration"
