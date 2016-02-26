@@ -106,7 +106,7 @@
             <field name="name">ammendment_tree</field>
         </record>
         <record model="ir.action.act_window" id="act_aeat_349_report_ammendment">
-            <field name="name">AEAT 349 Report Operation</field>
+            <field name="name">AEAT 349 Report Ammendment</field>
             <field name="res_model">aeat.349.report.ammendment</field>
             <field name="search_value"></field>
         </record>
