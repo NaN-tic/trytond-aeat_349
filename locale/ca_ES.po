@@ -190,6 +190,10 @@ msgctxt "field:aeat.349.report,file_:"
 msgid "File"
 msgstr "Fitxer"
 
+msgctxt "field:aeat.349.report,filename:"
+msgid "File Name"
+msgstr "Nom fitxer"
+
 msgctxt "field:aeat.349.report,fiscalyear:"
 msgid "Fiscal Year"
 msgstr "Exercici fiscal"
@@ -939,6 +943,10 @@ msgstr "Calcula"
 msgctxt "view:aeat.349.report:"
 msgid "Cancel"
 msgstr "Cancel·la"
+
+msgctxt "view:aeat.349.report:"
+msgid "Declaration Number"
+msgstr "Número declaració"
 
 msgctxt "view:aeat.349.report:"
 msgid "Draft"

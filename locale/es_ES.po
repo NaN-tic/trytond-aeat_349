@@ -96,11 +96,11 @@ msgstr "Empresa"
 
 msgctxt "field:aeat.349.record,create_date:"
 msgid "Create Date"
-msgstr "Fecha de creación"
+msgstr "Fecha creación"
 
 msgctxt "field:aeat.349.record,create_uid:"
 msgid "Create User"
-msgstr "Usuario de creación"
+msgstr "Usuario creación"
 
 msgctxt "field:aeat.349.record,fiscalyear:"
 msgid "Fiscal Year"
@@ -176,11 +176,11 @@ msgstr "Teléfono"
 
 msgctxt "field:aeat.349.report,create_date:"
 msgid "Create Date"
-msgstr "Fecha de creación"
+msgstr "Fecha creación"
 
 msgctxt "field:aeat.349.report,create_uid:"
 msgid "Create User"
-msgstr "Usuario de creación"
+msgstr "Usuario creación"
 
 msgctxt "field:aeat.349.report,currency:"
 msgid "Currency"
@@ -189,6 +189,10 @@ msgstr "Moneda"
 msgctxt "field:aeat.349.report,file_:"
 msgid "File"
 msgstr "Archivo"
+
+msgctxt "field:aeat.349.report,filename:"
+msgid "File Name"
+msgstr "Nombre fichero"
 
 msgctxt "field:aeat.349.report,fiscalyear:"
 msgid "Fiscal Year"
@@ -264,11 +268,11 @@ msgstr "Empresa"
 
 msgctxt "field:aeat.349.report.ammendment,create_date:"
 msgid "Create Date"
-msgstr "Fecha de creación"
+msgstr "Fecha creación"
 
 msgctxt "field:aeat.349.report.ammendment,create_uid:"
 msgid "Create User"
-msgstr "Usuario de creación"
+msgstr "Usuario creación"
 
 msgctxt "field:aeat.349.report.ammendment,id:"
 msgid "ID"
@@ -316,11 +320,11 @@ msgstr "Empresa"
 
 msgctxt "field:aeat.349.report.operation,create_date:"
 msgid "Create Date"
-msgstr "Fecha de creación"
+msgstr "Fecha creación"
 
 msgctxt "field:aeat.349.report.operation,create_uid:"
 msgid "Create User"
-msgstr "Usuario de creación"
+msgstr "Usuario creación"
 
 msgctxt "field:aeat.349.report.operation,id:"
 msgid "ID"
@@ -360,11 +364,11 @@ msgstr "Usuario modificación"
 
 msgctxt "field:aeat.349.type,create_date:"
 msgid "Create Date"
-msgstr "Fecha de creación"
+msgstr "Fecha creación"
 
 msgctxt "field:aeat.349.type,create_uid:"
 msgid "Create User"
-msgstr "Usuario de creación"
+msgstr "Usuario creación"
 
 msgctxt "field:aeat.349.type,id:"
 msgid "ID"
@@ -392,11 +396,11 @@ msgstr "Clave Operación"
 
 msgctxt "field:aeat.349.type-account.tax,create_date:"
 msgid "Create Date"
-msgstr "Fecha de creación"
+msgstr "Fecha creación"
 
 msgctxt "field:aeat.349.type-account.tax,create_uid:"
 msgid "Create User"
-msgstr "Usuario de creación"
+msgstr "Usuario creación"
 
 msgctxt "field:aeat.349.type-account.tax,id:"
 msgid "ID"
@@ -424,11 +428,11 @@ msgstr "Clave Operación"
 
 msgctxt "field:aeat.349.type-account.tax.template,create_date:"
 msgid "Create Date"
-msgstr "Fecha de creación"
+msgstr "Fecha creación"
 
 msgctxt "field:aeat.349.type-account.tax.template,create_uid:"
 msgid "Create User"
-msgstr "Usuario de creación"
+msgstr "Usuario creación"
 
 msgctxt "field:aeat.349.type-account.tax.template,id:"
 msgid "ID"
@@ -931,6 +935,10 @@ msgstr "Calcular"
 msgctxt "view:aeat.349.report:"
 msgid "Cancel"
 msgstr "Cancelar"
+
+msgctxt "view:aeat.349.report:"
+msgid "Declaration Number"
+msgstr "Número declaración"
 
 msgctxt "view:aeat.349.report:"
 msgid "Draft"
