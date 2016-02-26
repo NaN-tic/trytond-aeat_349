@@ -504,7 +504,7 @@ msgstr "Relació plantilla d'impost-Tipus AEAT 349"
 
 msgctxt "model:ir.action,name:act_aeat_349_reasign"
 msgid "Reasign AEAT 349 Records"
-msgstr "Reassigna registres AEAT 349"
+msgstr "Reasigna Registres AEAT 349"
 
 msgctxt "model:ir.action,name:act_aeat_349_recalculate"
 msgid "Recalculate AEAT 349 Records"
@@ -914,7 +914,7 @@ msgstr "Registre AEAT 349"
 
 msgctxt "view:aeat.349.report.ammendment:"
 msgid "AEAT 349 Ammendment"
-msgstr "Rectificació AEAT 349"
+msgstr "Rectificació AEAT 349 "
 
 msgctxt "view:aeat.349.report.operation:"
 msgid "AEAT 349 Operation"
