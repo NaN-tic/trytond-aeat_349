@@ -22,7 +22,6 @@ class Type(ModelSQL, ModelView):
     Keys types for AEAT 349 Report
     """
     __name__ = 'aeat.349.type'
-    _rec_name = 'operation_key'
 
     operation_key = fields.Selection(OPERATION_KEY, 'Operation key',
         required=True)
@@ -35,6 +34,13 @@ class Type(ModelSQL, ModelView):
             ('operation_key_uniq', Unique(t, t.operation_key),
                 'Operation key must be unique.')
             ]
+
+    def get_rec_name(self, name):
+        opts = self.fields_get('operation_key')['operation_key']['selection']
+        for key, value in opts:
+            if self.operation_key == key:
+                return value
+        return self.operation_key
 
 
 class TypeTax(ModelSQL):
