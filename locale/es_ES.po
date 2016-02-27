@@ -36,7 +36,7 @@ msgstr "Claves disponibles AEAT 349"
 
 msgctxt "field:account.invoice.line,aeat349_operation_key:"
 msgid "AEAT 349 Operation Key"
-msgstr "Clave de operación AEAT 349"
+msgstr "Clave operación AEAT 349"
 
 msgctxt "field:account.tax,aeat349_default_in_operation_key:"
 msgid "Default In Operation Key"
@@ -596,7 +596,7 @@ msgstr ""
 
 msgctxt "selection:aeat.349.record,operation_key:"
 msgid "S - Intra-Community services"
-msgstr "S - Prestaciones intercomunitarias de servicios"
+msgstr "S - Prestaciones intracomunitarias de servicios"
 
 msgctxt "selection:aeat.349.record,operation_key:"
 msgid "T - Triangular operations"
@@ -792,7 +792,7 @@ msgstr ""
 
 msgctxt "selection:aeat.349.report.ammendment,operation_key:"
 msgid "S - Intra-Community services"
-msgstr "S - Prestaciones intercomunitarias de servicios"
+msgstr "S - Prestaciones intracomunitarias de servicios"
 
 msgctxt "selection:aeat.349.report.ammendment,operation_key:"
 msgid "T - Triangular operations"
@@ -824,7 +824,7 @@ msgstr ""
 
 msgctxt "selection:aeat.349.report.operation,operation_key:"
 msgid "S - Intra-Community services"
-msgstr "S - Prestaciones intercomunitarias de servicios"
+msgstr "S - Prestaciones intracomunitarias de servicios"
 
 msgctxt "selection:aeat.349.report.operation,operation_key:"
 msgid "T - Triangular operations"
@@ -856,7 +856,7 @@ msgstr ""
 
 msgctxt "selection:aeat.349.type,operation_key:"
 msgid "S - Intra-Community services"
-msgstr "S - Prestaciones intercomunitarias de servicios"
+msgstr "S - Prestaciones intracomunitarias de servicios"
 
 msgctxt "selection:aeat.349.type,operation_key:"
 msgid "T - Triangular operations"

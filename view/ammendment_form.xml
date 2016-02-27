@@ -3,13 +3,13 @@
 contains the full copyright notices and license terms. -->
 <form string="AEAT 349 Ammendment">
     <label name="report"/>
-    <field name="report" colspan="4"/>
+    <field name="report" colspan="3"/>
     <label name="party_name"/>
     <field name="party_name"/>
     <label name="party_vat"/>
     <field name="party_vat"/>
     <label name="operation_key"/>
-    <field name="operation_key"/>
+    <field name="operation_key" colspan="3"/>
     <label name="ammendment_fiscalyear_code"/>
     <field name="ammendment_fiscalyear_code"/>
     <label name="ammendment_period"/>
