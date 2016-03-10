@@ -71,7 +71,7 @@ class TypeTaxTemplate(ModelSQL):
         pool = Pool()
         ModelData = pool.get('ir.model.data')
         Module = pool.get('ir.module')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         module_table = Module.__table__()
         sql_table = ModelData.__table__()
         # Meld aeat_349_es into aeat_349
@@ -420,7 +420,7 @@ class Reasign349Record(Wizard):
     def transition_reasign(self):
         Invoice = Pool().get('account.invoice')
         Line = Pool().get('account.invoice.line')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         invoices = Invoice.browse(Transaction().context['active_ids'])
 
         value = self.start.aeat_349_type
