@@ -46,15 +46,27 @@ OPERATION_KEY = [
 
 _ZERO = Decimal('0.0')
 
-src_chars = """àáäâÀÁÄÂèéëêÈÉËÊìíïîÌÍÏÎòóöôÒÓÖÔùúüûÙÚÜÛçñºª·¤ '"()/*-+?!&$[]{}@#`'^:;<>=~%\\"""
-src_chars = unicode( src_chars, 'iso-8859-1' )
-dst_chars = """aaaaAAAAeeeeEEEEiiiiIIIIooooOOOOuuuuUUUUcnoa.e______________________________"""
-dst_chars = unicode( dst_chars, 'iso-8859-1' )
 
-def unaccent(text):
-     if isinstance( text, str ):
-         text = unicode( text, 'iso-8859-1', errors='replace')
-     return unicodedata.normalize('NFKD', text ).encode('ASCII', 'ignore')
+def remove_accents(unicode_string):
+    if isinstance(unicode_string, str):
+        unicode_string_bak = unicode_string
+        try:
+            unicode_string = unicode_string_bak.decode('iso-8859-1')
+        except UnicodeDecodeError:
+            try:
+                unicode_string = unicode_string_bak.decode('utf-8')
+            except UnicodeDecodeError:
+                return unicode_string_bak
+
+    if not isinstance(unicode_string, unicode):
+        return unicode_string
+
+    unicode_string_nfd = ''.join(
+        (c for c in unicodedata.normalize('NFD', unicode_string)
+            if (unicodedata.category(c) != 'Mn')
+            ))
+    # It converts nfd to nfc to allow unicode.decode()
+    return unicodedata.normalize('NFC', unicode_string_nfd)
 
 
 class Report(Workflow, ModelSQL, ModelView):
@@ -353,7 +365,9 @@ class Report(Workflow, ModelSQL, ModelView):
             record.nif = self.company_vat
             records.append(record)
         data = retrofix.record.write(records)
-        data = unaccent(data)
+        data = remove_accents(data).upper()
+        if isinstance(data, unicode):
+            data = data.encode('iso-8859-1')
         self.file_ = bytes(data)
         self.save()
 
