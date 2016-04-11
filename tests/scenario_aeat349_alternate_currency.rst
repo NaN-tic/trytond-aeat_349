@@ -135,7 +135,7 @@ Create out invoice::
     >>> rec1.party_name
     u'Party'
     >>> rec1.party_vat
-    u'00000000T'
+    u'ES00000000T'
     >>> rec1.month == today.month
     True
     >>> rec1.operation_key
@@ -146,7 +146,7 @@ Create out invoice::
 Create in invoice::
 
     >>> invoice = Invoice()
-    >>> invoice.type = 'in_invoice'
+    >>> invoice.type = 'in'
     >>> invoice.party = party
     >>> invoice.payment_term = payment_term
     >>> invoice.currency = usd
@@ -175,7 +175,7 @@ Create in invoice::
     >>> rec1.party_name
     u'Party'
     >>> rec1.party_vat
-    u'00000000T'
+    u'ES00000000T'
     >>> rec1.month == today.month
     True
     >>> rec1.operation_key

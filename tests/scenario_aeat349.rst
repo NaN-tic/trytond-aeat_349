@@ -135,7 +135,7 @@ Create out invoice::
     >>> rec1.party_name
     u'Party'
     >>> rec1.party_vat
-    u'00000000T'
+    u'ES00000000T'
     >>> rec1.month == today.month
     True
     >>> rec1.operation_key
@@ -146,34 +146,33 @@ Create out invoice::
 Create out credit note::
 
     >>> invoice = Invoice()
-    >>> invoice.type = 'out_credit_note'
     >>> invoice.party = party
     >>> invoice.payment_term = payment_term
     >>> line = invoice.lines.new()
     >>> line.product = product
-    >>> line.quantity = 1
+    >>> line.quantity = -1
     >>> line.unit_price = Decimal(40)
     >>> len(line.taxes)
     1
     >>> line.aeat349_operation_key.operation_key
     u'E'
     >>> line.amount
-    Decimal('40.00')
+    Decimal('-40.00')
     >>> line = invoice.lines.new()
     >>> line.account = revenue
     >>> line.description = 'Test'
-    >>> line.quantity = 1
+    >>> line.quantity = -1
     >>> line.unit_price = Decimal(20)
     >>> line.aeat349_operation_key == None
     True
     >>> line.amount
-    Decimal('20.00')
+    Decimal('-20.00')
     >>> invoice.click('post')
     >>> rec1, = Record.find([('invoice', '=', invoice.id)])
     >>> rec1.party_name
     u'Party'
     >>> rec1.party_vat
-    u'00000000T'
+    u'ES00000000T'
     >>> rec1.month == today.month
     True
     >>> rec1.operation_key
@@ -184,7 +183,7 @@ Create out credit note::
 Create in invoice::
 
     >>> invoice = Invoice()
-    >>> invoice.type = 'in_invoice'
+    >>> invoice.type = 'in'
     >>> invoice.party = party
     >>> invoice.payment_term = payment_term
     >>> invoice.invoice_date = today
@@ -212,7 +211,7 @@ Create in invoice::
     >>> rec1.party_name
     u'Party'
     >>> rec1.party_vat
-    u'00000000T'
+    u'ES00000000T'
     >>> rec1.month == today.month
     True
     >>> rec1.operation_key
@@ -223,35 +222,35 @@ Create in invoice::
 Create in credit note::
 
     >>> invoice = Invoice()
-    >>> invoice.type = 'in_credit_note'
+    >>> invoice.type = 'in'
     >>> invoice.party = party
     >>> invoice.payment_term = payment_term
     >>> invoice.invoice_date = today
     >>> line = invoice.lines.new()
     >>> line.product = product
-    >>> line.quantity = 1
+    >>> line.quantity = -1
     >>> line.unit_price = Decimal(25)
     >>> len(line.taxes)
     1
     >>> line.aeat349_operation_key.operation_key
     u'A'
     >>> line.amount
-    Decimal('25.00')
+    Decimal('-25.00')
     >>> line = invoice.lines.new()
     >>> line.account = expense
     >>> line.description = 'Test'
-    >>> line.quantity = 1
+    >>> line.quantity = -1
     >>> line.unit_price = Decimal(20)
     >>> line.aeat349_operation_key == None
     True
     >>> line.amount
-    Decimal('20.00')
+    Decimal('-20.00')
     >>> invoice.click('post')
     >>> rec1, = Record.find([('invoice', '=', invoice.id)])
     >>> rec1.party_name
     u'Party'
     >>> rec1.party_vat
-    u'00000000T'
+    u'ES00000000T'
     >>> rec1.month == today.month
     True
     >>> rec1.operation_key
