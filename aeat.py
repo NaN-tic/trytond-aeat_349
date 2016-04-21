@@ -440,7 +440,7 @@ class Ammendment(ModelSQL, ModelView):
         record.party_vat = self.party_vat
         record.party_name = self.party_name
         record.operation_key = self.operation_key
-        record.ammendment_fiscalyear = self.ammendment_fiscalyear_code
+        record.ammendment_fiscalyear = str(self.ammendment_fiscalyear_code)
         record.ammendment_period = self.ammendment_period
         record.base = self.base
         record.original_base = self.original_base
