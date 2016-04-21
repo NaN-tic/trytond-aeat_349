@@ -437,7 +437,7 @@ class Ammendment(ModelSQL, ModelView):
 
     def get_record(self):
         record = retrofix.Record(aeat349.AMMENDMENT_RECORD)
-        record.party_vat = self.country.code.upper()
+        record.party_vat = self.party_vat
         record.party_name = self.party_name
         record.operation_key = self.operation_key
         record.ammendment_fiscalyear = self.ammendment_fiscalyear_code
