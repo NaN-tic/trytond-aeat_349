@@ -240,7 +240,7 @@ class InvoiceLine:
 
     @classmethod
     def get_aeat349_operation_key(cls, invoice_type, taxes):
-        type_ = 'in' if invoice_type[0:2] == 'in' else 'out'
+        type_ = 'in' if invoice_type == 'in' else 'out'
         for tax in taxes:
             name = 'aeat349_default_%s_operation_key' % type_
             value = getattr(tax, name)
