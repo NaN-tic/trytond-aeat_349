@@ -203,13 +203,13 @@ class InvoiceLine:
     @fields.depends('invoice', 'taxes')
     def on_change_product(self):
         Taxes = Pool().get('account.tax')
-
         super(InvoiceLine, self).on_change_product()
+        type_ = Transaction().context.get('type')
+
         if self.invoice and self.invoice.type:
             type_ = self.invoice.type
-        elif self.invoice_type:
-            type_ = self.invoice_type
         self.aeat349_operation_key = None
+
         if type_ and self.taxes:
             with Transaction().set_user(0):
                 taxes = Taxes.browse(self.taxes)
