@@ -2,15 +2,15 @@
 import datetime
 import itertools
 from decimal import Decimal
-from retrofix import aeat349
-import retrofix
+import unicodedata
 
+from retrofix import aeat349
+from retrofix.record import Record, write as retrofix_write
 
 from trytond.model import Workflow, ModelSQL, ModelView, fields
 from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
-import unicodedata
 
 __all__ = ['Report', 'Operation', 'Ammendment']
 
@@ -344,7 +344,7 @@ class Report(Workflow, ModelSQL, ModelView):
 
     def create_file(self):
         records = []
-        record = retrofix.Record(aeat349.PRESENTER_HEADER_RECORD)
+        record = Record(aeat349.PRESENTER_HEADER_RECORD)
         record.fiscalyear = str(self.fiscalyear_code)
         record.nif = self.company_vat
         record.presenter_name = self.company.party.name
@@ -367,7 +367,7 @@ class Report(Workflow, ModelSQL, ModelView):
             record.fiscalyear = str(self.fiscalyear_code)
             record.nif = self.company_vat
             records.append(record)
-        data = retrofix.record.write(records)
+        data = retrofix_write(records)
         data = remove_accents(data).upper()
         if isinstance(data, unicode):
             data = data.encode('iso-8859-1')
@@ -405,7 +405,7 @@ class Operation(ModelSQL, ModelView):
         return [('report.%s' % name,) + tuple(clause[1:])]
 
     def get_record(self):
-        record = retrofix.Record(aeat349.OPERATOR_RECORD)
+        record = Record(aeat349.OPERATOR_RECORD)
         record.party_vat = self.party_vat
         record.party_name = self.party_name
         record.operation_key = self.operation_key
@@ -436,7 +436,7 @@ class Ammendment(ModelSQL, ModelView):
         return Transaction().context.get('company')
 
     def get_record(self):
-        record = retrofix.Record(aeat349.AMMENDMENT_RECORD)
+        record = Record(aeat349.AMMENDMENT_RECORD)
         record.party_vat = self.party_vat
         record.party_name = self.party_name
         record.operation_key = self.operation_key
