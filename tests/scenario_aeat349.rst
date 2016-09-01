@@ -249,7 +249,6 @@ Create in credit note::
     >>> rec1.base
     Decimal('-25.00')
 
-
 Generate 349 Report::
 
     >>> Report = Model.get('aeat.349.report')
@@ -269,3 +268,10 @@ Generate 349 Report::
     2
     >>> len(report.ammendments)
     0
+
+Test report is generated correctly::
+
+    >>> report.file_
+    >>> report.click('process')
+    >>> bool(report.file_)
+    True
