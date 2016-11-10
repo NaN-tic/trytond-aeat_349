@@ -1815,4 +1815,5 @@ this repository contains the full copyright notices and license terms. -->
             <field name="aeat349_default_in_operation_key" ref="aeat_349_key_A"/>
         </record>
     </data>
+    <data depends="account_es" grouped="1"/>
 </tryton>
