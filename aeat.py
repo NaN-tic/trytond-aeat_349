@@ -229,11 +229,9 @@ class Report(Workflow, ModelSQL, ModelView):
     @fields.depends('company')
     def on_change_with_company_vat(self):
         if self.company:
-            vat_code = self.company.party.vat_code
-            if vat_code and vat_code.startswith('ES'):
-                return vat_code[2:]
-            return vat_code
-        return None
+            tax_identifier = self.company.party.tax_identifier
+            if tax_identifier and tax_identifier.code.startswith('ES'):
+                return tax_identifier.code[2:]
 
     @classmethod
     def validate(cls, reports):

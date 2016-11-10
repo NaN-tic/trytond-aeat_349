@@ -310,7 +310,8 @@ class Invoice:
                             'fiscalyear': invoice.move.period.fiscalyear,
                             'month': month,
                             'party_name': invoice.party.rec_name[:40],
-                            'party_vat': invoice.party.vat_code,
+                            'party_vat': (invoice.party.tax_identifier.code
+                                if invoice.party.tax_identifier else ''),
                             'base': amount,
                             'operation_key': operation_key,
                             'invoice': invoice.id,
