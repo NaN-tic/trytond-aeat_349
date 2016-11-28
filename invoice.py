@@ -436,7 +436,7 @@ class Reasign349Record(Wizard):
             return 'done'
 
         line = Line.__table__()
-        #Update to allow to modify key for posted invoices
+        # Update to allow to modify key for posted invoices
         cursor.execute(*line.update(columns=[line.aeat349_operation_key],
                 values=[value.id], where=In(line.id, lines)))
 

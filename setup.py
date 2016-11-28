@@ -20,6 +20,7 @@ def read(fname):
         os.path.join(os.path.dirname(__file__), fname),
         'r', encoding='utf-8').read()
 
+
 def get_require_version(name):
     if minor_version % 2:
         require = '%s >= %s.%s.dev0, < %s.%s'
