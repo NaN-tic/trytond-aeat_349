@@ -205,6 +205,7 @@ class InvoiceLine:
         Taxes = Pool().get('account.tax')
 
         super(InvoiceLine, self).on_change_product()
+        type_ = None
         if self.invoice and self.invoice.type:
             type_ = self.invoice.type
         elif self.invoice_type:
