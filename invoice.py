@@ -196,10 +196,6 @@ class InvoiceLine:
             'invoice_type', 'product'],
         domain=[('id', 'in', Eval('aeat349_available_keys', []))],)
 
-    @classmethod
-    def __setup__(cls):
-        super(InvoiceLine, cls).__setup__()
-
     @fields.depends('invoice', 'taxes')
     def on_change_product(self):
         Taxes = Pool().get('account.tax')
