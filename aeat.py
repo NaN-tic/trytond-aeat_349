@@ -46,15 +46,16 @@ OPERATION_KEY = [
 
 _ZERO = Decimal('0.0')
 
-src_chars = """àáäâÀÁÄÂèéëêÈÉËÊìíïîÌÍÏÎòóöôÒÓÖÔùúüûÙÚÜÛçñºª·¤ '"()/*-+?!&$[]{}@#`'^:;<>=~%\\"""
-src_chars = unicode( src_chars, 'iso-8859-1' )
+src_chars = """àáäâÀÁÄÂèéëêÈÉËÊìíïîÌÍÏÎòóöôÒÓÖÔùúüûÙÚÜÛçñºª·¤ '"()"/*-+?!&$[]{}@#`'^:;<>=~%\\"""
+src_chars = unicode(src_chars, 'iso-8859-1')
 dst_chars = """aaaaAAAAeeeeEEEEiiiiIIIIooooOOOOuuuuUUUUcnoa.e______________________________"""
-dst_chars = unicode( dst_chars, 'iso-8859-1' )
+dst_chars = unicode(dst_chars, 'iso-8859-1')
+
 
 def unaccent(text):
-     if isinstance( text, str ):
-         text = unicode( text, 'iso-8859-1', errors='replace')
-     return unicodedata.normalize('NFKD', text ).encode('ASCII', 'ignore')
+    if isinstance(text, str):
+        text = unicode(text, 'iso-8859-1', errors='replace')
+    return unicodedata.normalize('NFKD', text).encode('ASCII', 'ignore')
 
 
 class Report(Workflow, ModelSQL, ModelView):
@@ -217,7 +218,10 @@ class Report(Workflow, ModelSQL, ModelView):
     @fields.depends('company')
     def on_change_with_company_vat(self):
         if self.company:
-            return self.company.party.vat_number
+            vat_code = self.company.party.vat_code
+            if vat_code and vat_code.startswith('ES'):
+                return vat_code[2:]
+            return vat_code
         return None
 
     @classmethod
@@ -275,7 +279,7 @@ class Report(Workflow, ModelSQL, ModelView):
             multiplier = 1
             period = report.period
             if 'T' in period:
-                period = int(period[0])-1
+                period = int(period[0]) - 1
                 multiplier = 3
                 start_month = period * multiplier + 1
             else:
