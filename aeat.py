@@ -334,6 +334,18 @@ class Report(Workflow, ModelSQL, ModelView):
     def draft(cls, reports):
         pass
 
+    def auto_sequence(self):
+        pool = Pool()
+        Report = pool.get('aeat.349.report')
+        count = Report.search([
+                ('state', '=', 'done'),
+                ],
+            order=[
+                ('fiscalyear', 'DESC'),
+                ('period', 'DESC'),
+            ], count=True)
+        return count + 1
+
     def create_file(self):
         records = []
         record = Record(aeat349.PRESENTER_HEADER_RECORD)
@@ -343,7 +355,10 @@ class Report(Workflow, ModelSQL, ModelView):
         record.support_type = self.support_type
         record.contact_phone = self.contact_phone
         record.contact_name = self.contact_name
-        record.declaration_number = str(self.id)
+        record.declaration_number = int('349{}{}{:0>4}'.format(
+            self.fiscalyear_code,
+            self.period,
+            self.auto_sequence()))
         record.complementary = '' if self.type == 'N' else self.type
         record.replacement = self.previous_number
         record.previous_declaration_number = self.previous_number
