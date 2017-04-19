@@ -359,10 +359,10 @@ class Report(Workflow, ModelSQL, ModelView):
         record.support_type = self.support_type
         record.contact_phone = self.contact_phone
         record.contact_name = self.contact_name
-        record.declaration_number = int('349{}{}{:0>4}'.format(
+        record.declaration_number = '349{}{}{:0>4}'.format(
             self.fiscalyear_code,
             self.period,
-            self.auto_sequence()))
+            self.auto_sequence())
         record.complementary = '' if self.type == 'N' else self.type
         record.replacement = self.previous_number
         record.previous_declaration_number = self.previous_number
