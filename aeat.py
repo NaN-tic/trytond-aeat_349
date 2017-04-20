@@ -3,8 +3,7 @@ import datetime
 import itertools
 from decimal import Decimal
 from retrofix import aeat349
-import retrofix
-
+from retrofix.record import Record, write as retrofix_write
 
 from trytond.model import Workflow, ModelSQL, ModelView, fields
 from trytond.pool import Pool
@@ -359,10 +358,15 @@ class Report(Workflow, ModelSQL, ModelView):
         record.support_type = self.support_type
         record.contact_phone = self.contact_phone
         record.contact_name = self.contact_name
-        record.declaration_number = '349{}{}{:0>4}'.format(
+        try:
+            period = int(self.period)
+            period = self.period
+        except ValueError:
+            period = '0%s' % self.period[:1]
+        record.declaration_number = int('349{}{}{:0>4}'.format(
             self.fiscalyear_code,
-            self.period,
-            self.auto_sequence())
+            period,
+            self.auto_sequence()))
         record.complementary = '' if self.type == 'N' else self.type
         record.replacement = self.previous_number
         record.previous_declaration_number = self.previous_number
@@ -448,7 +452,7 @@ class Ammendment(ModelSQL, ModelView):
 
     def get_record(self):
         record = retrofix.Record(aeat349.AMMENDMENT_RECORD)
-        record.party_vat = self.country.code.upper()
+        record.party_vat = self.country.code
         record.party_name = self.party_name
         record.operation_key = self.operation_key
         record.ammendment_fiscalyear = self.ammendment_fiscalyear_code
