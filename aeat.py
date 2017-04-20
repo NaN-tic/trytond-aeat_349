@@ -158,7 +158,7 @@ class Report(Workflow, ModelSQL, ModelView):
                     'in Invoice Record "%(record)s" in report "%(report)s".'),
                 'negative_amounts': ('Negative amounts are not valid in Party '
                     'Record "%(record)s" in report "%(report)s"'),
-                'invalid_currency': ('Currency in AEAT 340 report "%s" must be'
+                'invalid_currency': ('Currency in AEAT 349 report "%s" must be'
                     ' Euro.')
                 })
         cls._buttons.update({
