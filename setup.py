@@ -12,7 +12,10 @@ try:
 except ImportError:
     from ConfigParser import ConfigParser
 
-MODULE2PREFIX = {}
+MODULE2PREFIX = {
+    'account_es': 'trytonspain',
+    'account_es_pyme': 'trytonspain',
+}
 
 
 def read(fname):
@@ -26,8 +29,8 @@ def get_require_version(name):
         require = '%s >= %s.%s.dev0, < %s.%s'
     else:
         require = '%s >= %s.%s, < %s.%s'
-    require %= (name, major_version, minor_version,
-        major_version, minor_version + 1)
+    require %= (
+        name, major_version, minor_version, major_version, minor_version + 1)
     return require
 
 
@@ -57,7 +60,8 @@ if minor_version % 2:
     # Add development index for testing with proteus
     dependency_links.append('https://trydevpi.tryton.org/')
 
-setup(name=name,
+setup(
+    name=name,
     version=version,
     description='Tryton Aeat 349 Module',
     long_description=read('README'),
@@ -70,12 +74,12 @@ setup(name=name,
     packages=[
         'trytond.modules.aeat_349',
         'trytond.modules.aeat_349.tests',
-        ],
+    ],
     package_data={
-        'trytond.modules.aeat_349': (info.get('xml', [])
-            + ['tryton.cfg', 'view/*.xml', 'locale/*.po', '*.odt',
-                'icons/*.svg', 'tests/*.rst']),
-        },
+        'trytond.modules.aeat_349': (info.get('xml', []) + [
+            'tryton.cfg', 'view/*.xml', 'locale/*.po', '*.odt',
+            'icons/*.svg', 'tests/*.rst']),
+    },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Plugins',
@@ -105,7 +109,7 @@ setup(name=name,
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy',
         'Topic :: Office/Business',
-        ],
+    ],
     license='GPL-3',
     install_requires=requires,
     dependency_links=dependency_links,
@@ -121,5 +125,5 @@ setup(name=name,
     convert_2to3_doctests=[
         'tests/scenario_aeat349_alternate_currency.rst',
         'tests/scenario_aeat349.rst',
-        ],
-    )
+    ],
+)
