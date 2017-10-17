@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -7,7 +7,7 @@ msgid "Contact name in report \"%s\" must contain name and surname"
 msgstr "El nom del contacte de l'informe \"%s\" ha de contenir nom i cognoms."
 
 msgctxt "error:aeat.349.report:"
-msgid "Currency in AEAT 340 report \"%s\" must be Euro."
+msgid "Currency in AEAT 349 report \"%s\" must be Euro."
 msgstr "La moneda de l'informe AEAT 349 \"%s\" ha de ser Euro."
 
 msgctxt "error:aeat.349.report:"
@@ -196,7 +196,7 @@ msgstr "Exercici fiscal"
 
 msgctxt "field:aeat.349.report,fiscalyear_code:"
 msgid "Fiscal Year Code"
-msgstr "Codi exercici fiscal"
+msgstr "Any exercici fiscal"
 
 msgctxt "field:aeat.349.report,id:"
 msgid "ID"

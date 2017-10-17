@@ -154,7 +154,7 @@ class Report(Workflow, ModelSQL, ModelView):
                     'in Invoice Record "%(record)s" in report "%(report)s".'),
                 'negative_amounts': ('Negative amounts are not valid in Party '
                     'Record "%(record)s" in report "%(report)s"'),
-                'invalid_currency': ('Currency in AEAT 340 report "%s" must be'
+                'invalid_currency': ('Currency in AEAT 349 report "%s" must be'
                     ' Euro.')
                 })
         cls._buttons.update({
@@ -217,9 +217,12 @@ class Report(Workflow, ModelSQL, ModelView):
 
     @fields.depends('fiscalyear')
     def on_change_with_fiscalyear_code(self):
-        code = None
-        if self.fiscalyear:
-            code = self.fiscalyear.start_date.year
+        code = self.fiscalyear.code if self.fiscalyear else None
+        if code:
+            try:
+                code = int(code)
+            except ValueError:
+                code = None
         return code
 
     @fields.depends('company')
@@ -286,7 +289,7 @@ class Report(Workflow, ModelSQL, ModelView):
             multiplier = 1
             period = report.period
             if 'T' in period:
-                period = int(period[0])-1
+                period = int(period[0]) - 1
                 multiplier = 3
                 start_month = period * multiplier + 1
             else:
@@ -362,10 +365,14 @@ class Report(Workflow, ModelSQL, ModelView):
         record.support_type = self.support_type
         record.contact_phone = self.contact_phone
         record.contact_name = self.contact_name
-        record.declaration_number = '349{}{}{:0>4}'.format(
+        try:
+            period = int(self.period)
+        except ValueError:
+            period = '0%s' % self.period[:1]
+        record.declaration_number = int('349{}{}{:0>4}'.format(
             self.fiscalyear_code,
-            self.period,
-            self.auto_sequence())
+            period,
+            self.auto_sequence()))
         record.complementary = '' if self.type == 'N' else self.type
         record.replacement = self.previous_number
         record.previous_declaration_number = self.previous_number
@@ -396,8 +403,9 @@ class Operation(ModelSQL, ModelView):
     __name__ = 'aeat.349.report.operation'
     _rec_name = 'party_name'
 
-    company = fields.Function(fields.Many2One('company.company', 'Company'),
-        'on_change_with_report', searcher='search_company')
+    company = fields.Function(fields.Many2One('company.company', 'Company',
+            required=True), 'on_change_with_report',
+        searcher='search_company')
     report = fields.Many2One('aeat.349.report', 'AEAT 349 Report',
         required=True)
     party_vat = fields.Char('VAT', size=17)
@@ -450,10 +458,10 @@ class Ammendment(ModelSQL, ModelView):
 
     def get_record(self):
         record = Record(aeat349.AMMENDMENT_RECORD)
-        record.party_vat = self.party_vat
+        record.party_vat = self.country.code
         record.party_name = self.party_name
         record.operation_key = self.operation_key
-        record.ammendment_fiscalyear = str(self.ammendment_fiscalyear_code)
+        record.ammendment_fiscalyear = self.ammendment_fiscalyear_code
         record.ammendment_period = self.ammendment_period
         record.base = self.base
         record.original_base = self.original_base

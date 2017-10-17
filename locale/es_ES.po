@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -9,7 +9,7 @@ msgstr ""
 "apellidos."
 
 msgctxt "error:aeat.349.report:"
-msgid "Currency in AEAT 340 report \"%s\" must be Euro."
+msgid "Currency in AEAT 349 report \"%s\" must be Euro."
 msgstr "La moneda del informe AEAT 349 \"%s\" debe ser Euro."
 
 msgctxt "error:aeat.349.report:"
@@ -196,7 +196,7 @@ msgstr "Ejercicio fiscal"
 
 msgctxt "field:aeat.349.report,fiscalyear_code:"
 msgid "Fiscal Year Code"
-msgstr "Código ejercicio fiscal"
+msgstr "Año ejercicio fiscal"
 
 msgctxt "field:aeat.349.report,id:"
 msgid "ID"
