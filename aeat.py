@@ -366,7 +366,6 @@ class Report(Workflow, ModelSQL, ModelView):
         record.contact_name = self.contact_name
         try:
             period = int(self.period)
-            period = self.period
         except ValueError:
             period = '0%s' % self.period[:1]
         record.declaration_number = int('349{}{}{:0>4}'.format(
