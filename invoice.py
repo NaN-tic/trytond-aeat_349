@@ -306,7 +306,7 @@ class Invoice:
                             'company': invoice.company.id,
                             'fiscalyear': invoice.move.period.fiscalyear,
                             'month': month,
-                            'party_name': invoice.party.rec_name[:40],
+                            'party_name': invoice.party.name[:40],
                             'party_vat': (invoice.party.tax_identifier.code
                                 if invoice.party.tax_identifier else ''),
                             'base': amount,
