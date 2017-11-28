@@ -291,11 +291,11 @@ class Report(Workflow, ModelSQL, ModelView):
             end_month = start_month + multiplier
 
             to_create = {}
-            for record in Data.search([('fiscalyear', '=', fiscalyear.id),
-                ('month', '>=', start_month),
-                ('month', '<', end_month)
-            ]):
-
+            for record in Data.search([
+                    ('fiscalyear', '=', fiscalyear.id),
+                    ('month', '>=', start_month),
+                    ('month', '<', end_month)
+                    ]):
                 key = '%s-%s-%s' % (report.id, record.party_vat,
                     record.operation_key)
 
@@ -397,9 +397,8 @@ class Operation(ModelSQL, ModelView):
     __name__ = 'aeat.349.report.operation'
     _rec_name = 'party_name'
 
-    company = fields.Function(fields.Many2One('company.company', 'Company',
-            required=True), 'on_change_with_report',
-        searcher='search_company')
+    company = fields.Function(fields.Many2One('company.company', 'Company'),
+        'on_change_with_company', searcher='search_company')
     report = fields.Many2One('aeat.349.report', 'AEAT 349 Report',
         required=True)
     party_vat = fields.Char('VAT', size=17)
@@ -411,9 +410,8 @@ class Operation(ModelSQL, ModelView):
         'AEAT 349 Records', readonly=True)
 
     @fields.depends('report')
-    def on_change_with_report(self, name=None):
-        if self.report:
-            return self.report.company
+    def on_change_with_company(self, name=None):
+        return self.report and self.report.company and self.report.company.id
 
     @classmethod
     def search_company(cls, name, clause):
