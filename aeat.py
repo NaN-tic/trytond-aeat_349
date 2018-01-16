@@ -288,7 +288,7 @@ class Report(Workflow, ModelSQL, ModelView):
             multiplier = 1
             period = report.period
             if 'T' in period:
-                period = int(period[0])-1
+                period = int(period[0]) - 1
                 multiplier = 3
                 start_month = period * multiplier + 1
             else:
