@@ -43,7 +43,7 @@ major_version, minor_version, _ = version.split('.', 2)
 major_version = int(major_version)
 minor_version = int(minor_version)
 
-requires = []
+requires = ['retrofix']
 for dep in info.get('depends', []):
     if not re.match(r'(ir|res)(\W|$)', dep):
         prefix = MODULE2PREFIX.get(dep, 'trytond')
@@ -119,5 +119,6 @@ setup(name='%s_%s' % (PREFIX, MODULE),
     use_2to3=True,
     convert_2to3_doctests=[
         'tests/scenario_aeat_349.rst',
+        'tests/scenario_aeat349_alternate_currency.rst',
         ],
     )
