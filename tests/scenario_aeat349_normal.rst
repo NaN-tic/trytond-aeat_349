@@ -20,7 +20,7 @@ Imports::
 
 Install aeat_349 module::
 
-    >>> config = activate_modules(['aeat_349', 'account_es'])
+    >>> config = activate_modules(['aeat_349', 'account_es_normal'])
 
 Create company::
 
