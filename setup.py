@@ -14,7 +14,10 @@ except ImportError:
 
 MODULE = 'aeat_349'
 PREFIX = 'trytonspain'
-MODULE2PREFIX = {}
+MODULE2PREFIX = {
+    'account_es_normal': 'trytonspain',
+    'account_es_pyme': 'trytonspain',
+    }
 
 
 def read(fname):
@@ -54,9 +57,26 @@ tests_require = [get_require_version('proteus'),
     get_require_version('trytond_account_es'),
     get_require_version('trytonspain_account_es_normal'),
     get_require_version('trytonspain_account_es_pyme'),
-    get_require_version('trytond_account_invoice'),
     ]
-dependency_links = []
+series = '%s.%s' % (major_version, minor_version)
+if minor_version % 2:
+    branch = 'default'
+else:
+    branch = series
+dependency_links = [
+    ('hg+https://bitbucket.org/trytonspain/'
+        'trytond-account_es_normal@%(branch)s'
+        '#egg=trytonspain-account_es_normal-%(series)s' % {
+            'branch': branch,
+            'series': series,
+            }),
+    ('hg+https://bitbucket.org/trytonspain/'
+        'trytond-account_es_pyme@%(branch)s'
+        '#egg=trytonspain-account_es_pyme-%(series)s' % {
+            'branch': branch,
+            'series': series,
+            }),
+    ]
 if minor_version % 2:
     # Add development index for testing with proteus
     dependency_links.append('https://trydevpi.tryton.org/')
@@ -125,5 +145,7 @@ setup(name='%s_%s' % (PREFIX, MODULE),
     convert_2to3_doctests=[
         'tests/scenario_aeat_349.rst',
         'tests/scenario_aeat349_alternate_currency.rst',
+        'tests/scenario_aeat349_normal.rst',
+        'tests/scenario_aeat349_pyme.rst',
         ],
     )
