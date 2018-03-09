@@ -56,9 +56,9 @@ contains the full copyright notices and license terms. -->
         <field name="filename" invisible="1"/>
     </group>
     <group id="buttons" colspan="2">
-        <button name="draft" string="Draft"/>
-        <button name="calculate" string="Calculate"/>
-        <button name="process" string="Process"/>
-        <button name="cancel" string="Cancel"/>
+        <button name="draft"/>
+        <button name="calculate"/>
+        <button name="process"/>
+        <button name="cancel"/>
     </group>
 </form>

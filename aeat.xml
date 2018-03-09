@@ -56,6 +56,30 @@ contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
+        <record model="ir.model.button" id="aeat_349_report_draft_button">
+            <field name="name">draft</field>
+            <field name="string">Draft</field>
+            <field name="model" search="[('model', '=', 'aeat.349.report')]"/>
+        </record>
+
+        <record model="ir.model.button" id="aeat_349_report_calculate_button">
+            <field name="name">calculate</field>
+            <field name="string">Calculate</field>
+            <field name="model" search="[('model', '=', 'aeat.349.report')]"/>
+        </record>
+
+        <record model="ir.model.button" id="aeat_349_report_process_button">
+            <field name="name">process</field>
+            <field name="string">Process</field>
+            <field name="model" search="[('model', '=', 'aeat.349.report')]"/>
+        </record>
+
+        <record model="ir.model.button" id="aeat_349_report_cancel_button">
+            <field name="name">cancel</field>
+            <field name="string">Cancel</field>
+            <field name="model" search="[('model', '=', 'aeat.349.report')]"/>
+        </record>
+
         <record model="ir.ui.view" id="aeat_349_report_operation_form_view">
             <field name="model">aeat.349.report.operation</field>
             <field name="type">form</field>
