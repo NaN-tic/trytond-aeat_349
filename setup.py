@@ -15,7 +15,8 @@ except ImportError:
 MODULE = 'aeat_349'
 PREFIX = 'trytonspain'
 MODULE2PREFIX = {
-    'account_es_normal': 'trytonspain',
+    'account_es': 'trytonspain',
+    'account_es_normal_pyme': 'trytonspain',
     'account_es_pyme': 'trytonspain',
     }
 
@@ -54,8 +55,8 @@ for dep in info.get('depends', []):
 requires.append(get_require_version('trytond'))
 
 tests_require = [get_require_version('proteus'),
-    get_require_version('trytond_account_es'),
-    get_require_version('trytonspain_account_es_normal'),
+    get_require_version('trytonspain_account_es'),
+    get_require_version('trytonspain_account_es_normal_pyme'),
     get_require_version('trytonspain_account_es_pyme'),
     ]
 series = '%s.%s' % (major_version, minor_version)
@@ -65,8 +66,14 @@ else:
     branch = series
 dependency_links = [
     ('hg+https://bitbucket.org/trytonspain/'
-        'trytond-account_es_normal@%(branch)s'
-        '#egg=trytonspain-account_es_normal-%(series)s' % {
+        'trytond-account_es@%(branch)s'
+        '#egg=trytonspain-account_es-%(series)s' % {
+            'branch': branch,
+            'series': series,
+            }),
+    ('hg+https://bitbucket.org/trytonspain/'
+        'trytond-account_es_normal_pyme@%(branch)s'
+        '#egg=trytonspain-account_es_normal_pyme-%(series)s' % {
             'branch': branch,
             'series': series,
             }),
