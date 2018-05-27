@@ -44,11 +44,21 @@ Create chart of accounts::
     >>> expense = accounts['expense']
     >>> account_tax = accounts['tax']
 
+Create AEAT 349::
+
+    >>> A349Type = Model.get('aeat.349.type')
+    >>> operation_key_e, = A349Type.find([('operation_key', '=', 'E')])
+    >>> operation_key_a, = A349Type.find([('operation_key', '=', 'A')])
+
 Create tax::
 
     >>> Tax = Model.get('account.tax')
     >>> TaxCode = Model.get('account.tax.code')
     >>> tax = create_tax(Decimal('.10'))
+    >>> tax.aeat349_operation_keys.append(operation_key_e)
+    >>> tax.aeat349_operation_keys.append(operation_key_a)
+    >>> tax.aeat349_default_out_operation_key = operation_key_e
+    >>> tax.aeat349_default_in_operation_key = operation_key_a
     >>> tax.save()
     >>> invoice_base_code = create_tax_code(tax, 'base', 'invoice')
     >>> invoice_base_code.save()

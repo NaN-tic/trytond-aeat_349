@@ -18,7 +18,7 @@ Imports::
     ...     set_fiscalyear_invoice_sequences, create_payment_term
     >>> today = datetime.date.today()
 
-Install aeat_349 Module::
+Install aeat_349 module::
 
     >>> config = activate_modules('aeat_349')
 
@@ -45,11 +45,21 @@ Create chart of accounts::
     >>> expense = accounts['expense']
     >>> account_tax = accounts['tax']
 
+Create AEAT 349::
+
+    >>> A349Type = Model.get('aeat.349.type')
+    >>> operation_key_e, = A349Type.find([('operation_key', '=', 'E')])
+    >>> operation_key_a, = A349Type.find([('operation_key', '=', 'A')])
+
 Create tax::
 
     >>> Tax = Model.get('account.tax')
     >>> TaxCode = Model.get('account.tax.code')
     >>> tax = create_tax(Decimal('.10'))
+    >>> tax.aeat349_operation_keys.append(operation_key_e)
+    >>> tax.aeat349_operation_keys.append(operation_key_a)
+    >>> tax.aeat349_default_out_operation_key = operation_key_e
+    >>> tax.aeat349_default_in_operation_key = operation_key_a
     >>> tax.save()
     >>> invoice_base_code = create_tax_code(tax, 'base', 'invoice')
     >>> invoice_base_code.save()
@@ -64,7 +74,8 @@ Create party::
 
     >>> Party = Model.get('party.party')
     >>> party = Party(name='Party')
-    >>> identifier = party.identifiers.new(type='eu_vat', code='ES00000000T')
+    >>> identifier = party.identifiers.new(type='eu_vat',
+    ...     code='ES00000000T')
     >>> party.save()
 
 Create product::
@@ -192,3 +203,10 @@ Generate 349 Report::
     2
     >>> len(report.ammendments)
     0
+
+Test report is generated correctly::
+
+    >>> report.file_
+    >>> report.click('process')
+    >>> bool(report.file_)
+    True
