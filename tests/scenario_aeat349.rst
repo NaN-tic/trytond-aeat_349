@@ -77,6 +77,17 @@ Create party::
     ...     code='ES00000000T')
     >>> party.save()
 
+Create account category::
+
+    >>> ProductCategory = Model.get('product.category')
+    >>> account_category = ProductCategory(name="Account Category")
+    >>> account_category.accounting = True
+    >>> account_category.account_expense = expense
+    >>> account_category.account_revenue = revenue
+    >>> account_category.customer_taxes.append(tax)
+    >>> account_category.supplier_taxes.append(Tax(tax.id))
+    >>> account_category.save()
+
 Create product::
 
     >>> ProductUom = Model.get('product.uom')
@@ -88,11 +99,7 @@ Create product::
     >>> template.default_uom = unit
     >>> template.type = 'service'
     >>> template.list_price = Decimal('40')
-    >>> template.account_expense = expense
-    >>> template.account_revenue = revenue
-    >>> template.customer_taxes.append(tax)
-    >>> tax, = Tax.find([])
-    >>> template.supplier_taxes.append(tax)
+    >>> template.account_category = account_category
     >>> product, = template.products
     >>> product.cost_price = Decimal('25')
     >>> template.save()
