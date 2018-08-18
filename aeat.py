@@ -50,7 +50,7 @@ _ZERO = Decimal('0.0')
 
 def remove_accents(unicode_string):
     str_ = str if sys.version_info < (3, 0) else bytes
-    unicode_ = unicode if sys.version_info < (3, 0) else str
+    unicode_ = str if sys.version_info < (3, 0) else str
     if isinstance(unicode_string, str_):
         unicode_string_bak = unicode_string
         try:
@@ -266,7 +266,7 @@ class Report(Workflow, ModelSQL, ModelView):
             res['ammendment_count'][report.id] = len(report.ammendments)
             res['ammendment_amount'][report.id] = (sum([
                         x.base for x in report.ammendments]) or Decimal('0.0'))
-        for key in res.keys():
+        for key in list(res.keys()):
             if key not in names:
                 del res[key]
         return res
@@ -318,7 +318,7 @@ class Report(Workflow, ModelSQL, ModelView):
                         'records': [('add', [record.id])],
                     }
         with Transaction().set_user(0, set_context=True):
-            Operation.create(to_create.values())
+            Operation.create(list(to_create.values()))
 
         cls.write(reports, {
                 'calculation_date': datetime.datetime.now(),
@@ -389,7 +389,7 @@ class Report(Workflow, ModelSQL, ModelView):
             records.append(record)
         data = retrofix_write(records)
         data = remove_accents(data).upper()
-        if isinstance(data, unicode):
+        if isinstance(data, str):
             data = data.encode('iso-8859-1')
         self.file_ = self.__class__.file_.cast(data)
         self.save()

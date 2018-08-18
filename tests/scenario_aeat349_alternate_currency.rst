@@ -126,7 +126,7 @@ Create out invoice::
     >>> len(line.taxes)
     1
     >>> line.aeat349_operation_key.operation_key
-    u'E'
+    'E'
     >>> line.amount
     Decimal('400.00')
     >>> line = invoice.lines.new()
@@ -141,13 +141,13 @@ Create out invoice::
     >>> invoice.click('post')
     >>> rec1, = Record.find([('invoice', '=', invoice.id)])
     >>> rec1.party_name
-    u'Party'
+    'Party'
     >>> rec1.party_vat
-    u'ES00000000T'
+    'ES00000000T'
     >>> rec1.month == today.month
     True
     >>> rec1.operation_key
-    u'E'
+    'E'
     >>> rec1.base
     Decimal('800.00')
 
@@ -166,7 +166,7 @@ Create in invoice::
     >>> len(line.taxes)
     1
     >>> line.aeat349_operation_key.operation_key
-    u'A'
+    'A'
     >>> line.amount
     Decimal('250.00')
     >>> line = invoice.lines.new()
@@ -181,13 +181,13 @@ Create in invoice::
     >>> invoice.click('post')
     >>> rec1, = Record.find([('invoice', '=', invoice.id)])
     >>> rec1.party_name
-    u'Party'
+    'Party'
     >>> rec1.party_vat
-    u'ES00000000T'
+    'ES00000000T'
     >>> rec1.month == today.month
     True
     >>> rec1.operation_key
-    u'A'
+    'A'
     >>> rec1.base
     Decimal('500.00')
 

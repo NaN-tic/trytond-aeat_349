@@ -161,8 +161,7 @@ class TaxTemplate(ModelSQL, ModelView):
         return res
 
 
-class Tax:
-    __metaclass__ = PoolMeta
+class Tax(metaclass=PoolMeta):
     __name__ = 'account.tax'
 
     aeat349_operation_keys = fields.Many2Many('aeat.349.type-account.tax',
@@ -183,8 +182,7 @@ STATES = {
 DEPENDS = ['type']
 
 
-class InvoiceLine:
-    __metaclass__ = PoolMeta
+class InvoiceLine(metaclass=PoolMeta):
     __name__ = 'account.invoice.line'
     aeat349_available_keys = fields.Function(fields.One2Many('aeat.349.type',
         None, 'AEAT 349 Available Keys',
@@ -267,8 +265,7 @@ class InvoiceLine:
         return super(InvoiceLine, cls).create(vlist)
 
 
-class Invoice:
-    __metaclass__ = PoolMeta
+class Invoice(metaclass=PoolMeta):
     __name__ = 'account.invoice'
 
     @classmethod
@@ -317,7 +314,7 @@ class Invoice:
         with Transaction().set_user(0, set_context=True):
             Record.delete(Record.search([('invoice', 'in',
                             [i.id for i in invoices])]))
-            Record.create(to_create.values())
+            Record.create(list(to_create.values()))
 
     @classmethod
     def draft(cls, invoices):

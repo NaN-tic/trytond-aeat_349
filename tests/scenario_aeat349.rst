@@ -124,7 +124,7 @@ Create out invoice::
     >>> len(line.taxes)
     1
     >>> line.aeat349_operation_key.operation_key
-    u'E'
+    'E'
     >>> line.amount
     Decimal('200.00')
     >>> line = invoice.lines.new()
@@ -139,13 +139,13 @@ Create out invoice::
     >>> invoice.click('post')
     >>> rec1, = Record.find([('invoice', '=', invoice.id)])
     >>> rec1.party_name
-    u'Party'
+    'Party'
     >>> rec1.party_vat
-    u'ES00000000T'
+    'ES00000000T'
     >>> rec1.month == today.month
     True
     >>> rec1.operation_key
-    u'E'
+    'E'
     >>> rec1.base
     Decimal('200.00')
 
@@ -161,7 +161,7 @@ Create out credit note::
     >>> len(line.taxes)
     1
     >>> line.aeat349_operation_key.operation_key
-    u'E'
+    'E'
     >>> line.amount
     Decimal('-40.00')
     >>> line = invoice.lines.new()
@@ -176,13 +176,13 @@ Create out credit note::
     >>> invoice.click('post')
     >>> rec1, = Record.find([('invoice', '=', invoice.id)])
     >>> rec1.party_name
-    u'Party'
+    'Party'
     >>> rec1.party_vat
-    u'ES00000000T'
+    'ES00000000T'
     >>> rec1.month == today.month
     True
     >>> rec1.operation_key
-    u'E'
+    'E'
     >>> rec1.base
     Decimal('-40.00')
 
@@ -200,7 +200,7 @@ Create in invoice::
     >>> len(line.taxes)
     1
     >>> line.aeat349_operation_key.operation_key
-    u'A'
+    'A'
     >>> line.amount
     Decimal('125.00')
     >>> line = invoice.lines.new()
@@ -215,13 +215,13 @@ Create in invoice::
     >>> invoice.click('post')
     >>> rec1, = Record.find([('invoice', '=', invoice.id)])
     >>> rec1.party_name
-    u'Party'
+    'Party'
     >>> rec1.party_vat
-    u'ES00000000T'
+    'ES00000000T'
     >>> rec1.month == today.month
     True
     >>> rec1.operation_key
-    u'A'
+    'A'
     >>> rec1.base
     Decimal('125.00')
 
@@ -239,7 +239,7 @@ Create in credit note::
     >>> len(line.taxes)
     1
     >>> line.aeat349_operation_key.operation_key
-    u'A'
+    'A'
     >>> line.amount
     Decimal('-25.00')
     >>> line = invoice.lines.new()
@@ -254,13 +254,13 @@ Create in credit note::
     >>> invoice.click('post')
     >>> rec1, = Record.find([('invoice', '=', invoice.id)])
     >>> rec1.party_name
-    u'Party'
+    'Party'
     >>> rec1.party_vat
-    u'ES00000000T'
+    'ES00000000T'
     >>> rec1.month == today.month
     True
     >>> rec1.operation_key
-    u'A'
+    'A'
     >>> rec1.base
     Decimal('-25.00')
 
