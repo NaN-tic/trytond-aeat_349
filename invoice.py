@@ -292,9 +292,6 @@ class Invoice:
                             amount = Currency.compute(
                                 invoice.currency, amount,
                                 invoice.company.currency)
-                    invoice_type = line.invoice_type or invoice.type
-                    if 'credit_note' in invoice_type:
-                        amount = amount.copy_negate()
                     if key in to_create:
                         to_create[key]['base'] += amount
                     else:
