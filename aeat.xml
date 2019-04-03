@@ -161,6 +161,7 @@ contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.rule.group" id="rule_group_aeat349">
+            <field name="name">User in company</field>
             <field name="model" search="[('model', '=', 'aeat.349.report')]"/>
             <field name="global_p" eval="True"/>
         </record>
@@ -172,6 +173,7 @@ contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.rule.group" id="rule_group_aeat349_operation">
+            <field name="name">User in company</field>
             <field name="model"
                 search="[('model', '=', 'aeat.349.report.operation')]"/>
             <field name="global_p" eval="True"/>
@@ -184,6 +186,7 @@ contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.rule.group" id="rule_group_aeat349_ammendment">
+            <field name="name">User in company</field>
             <field name="model"
                 search="[('model', '=', 'aeat.349.report.ammendment')]"/>
             <field name="global_p" eval="True"/>
@@ -197,6 +200,7 @@ contains the full copyright notices and license terms. -->
 
 
         <record model="ir.rule.group" id="rule_group_aeat349_record">
+            <field name="name">User in company</field>
             <field name="model" search="[('model', '=', 'aeat.349.record')]"/>
             <field name="global_p" eval="True"/>
         </record>

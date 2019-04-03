@@ -11,6 +11,8 @@ from retrofix.record import Record, write as retrofix_write
 from trytond.model import Workflow, ModelSQL, ModelView, fields
 from trytond.pool import Pool
 from trytond.pyson import Eval
+from trytond.i18n import gettext
+from trytond.exceptions import UserError
 from trytond.transaction import Transaction
 
 __all__ = ['Report', 'Operation', 'Ammendment']
@@ -151,16 +153,6 @@ class Report(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Report, cls).__setup__()
-        cls._error_messages.update({
-                'contact_name': ('Contact name in report "%s" must contain '
-                    'name and surname'),
-                'missing_country_vat': ('Missing country or VAT information '
-                    'in Invoice Record "%(record)s" in report "%(report)s".'),
-                'negative_amounts': ('Negative amounts are not valid in Party '
-                    'Record "%(record)s" in report "%(report)s"'),
-                'invalid_currency': ('Currency in AEAT 349 report "%s" must be'
-                    ' Euro.')
-                })
         cls._buttons.update({
                 'draft': {
                     'invisible': ~Eval('state').in_(['calculated',
@@ -241,7 +233,9 @@ class Report(Workflow, ModelSQL, ModelView):
 
     def check_euro(self):
         if self.currency.code != 'EUR':
-            self.raise_user_error('invalid_currency', self.rec_name)
+            raise UserError(gettext('aeat_349.msg_invalid_currency',
+                name=self.path,
+                ))
 
     def check_names(self):
         """
@@ -250,7 +244,9 @@ class Report(Workflow, ModelSQL, ModelView):
         if self.state != 'done':
             return
         if not self.contact_name or len(self.contact_name.split()) < 2:
-            self.raise_user_error('contact_name', self.rec_name)
+            raise UserError(gettext('aeat_349.msg_contact_name',
+                name=self.path,
+                ))
 
     @classmethod
     def get_totals(cls, reports, names):
