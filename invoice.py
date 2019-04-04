@@ -184,8 +184,8 @@ DEPENDS = ['type']
 
 class InvoiceLine(metaclass=PoolMeta):
     __name__ = 'account.invoice.line'
-    aeat349_available_keys = fields.Function(fields.One2Many('aeat.349.type',
-        None, 'AEAT 349 Available Keys',
+    aeat349_available_keys = fields.Function(fields.Many2Many('aeat.349.type',
+        None, None, 'AEAT 349 Available Keys',
         states=STATES, depends=DEPENDS + ['taxes', 'product']),
         'on_change_with_aeat349_available_keys')
     aeat349_operation_key = fields.Many2One('aeat.349.type',
