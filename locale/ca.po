@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:aeat.349.type:"
-msgid "Operation key must be unique."
-msgstr "La clau d'operació ha de ser única."
-
 msgctxt "field:account.invoice.line,aeat349_available_keys:"
 msgid "AEAT 349 Available Keys"
 msgstr "Claus disponibles AEAT 349"
@@ -107,7 +103,7 @@ msgid "VAT"
 msgstr "CIF/NIF"
 
 msgctxt "field:aeat.349.record,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr "Nom"
 
 msgctxt "field:aeat.349.record,write_date:"
@@ -195,7 +191,7 @@ msgid "Previous Declaration Number"
 msgstr "Número declaració anterior"
 
 msgctxt "field:aeat.349.report,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr "Nom"
 
 msgctxt "field:aeat.349.report,representative_vat:"
@@ -267,7 +263,7 @@ msgid "VAT"
 msgstr "CIF/NIF"
 
 msgctxt "field:aeat.349.report.ammendment,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr "Nom"
 
 msgctxt "field:aeat.349.report.ammendment,report:"
@@ -315,7 +311,7 @@ msgid "VAT"
 msgstr "CIF/NIF"
 
 msgctxt "field:aeat.349.report.operation,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr "Nom"
 
 msgctxt "field:aeat.349.report.operation,records:"
@@ -351,7 +347,7 @@ msgid "Operation key"
 msgstr "Clau d'operació"
 
 msgctxt "field:aeat.349.type,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr "Nom"
 
 msgctxt "field:aeat.349.type,write_date:"
@@ -379,7 +375,7 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:aeat.349.type-account.tax,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr "Nom"
 
 msgctxt "field:aeat.349.type-account.tax,tax:"
@@ -411,7 +407,7 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:aeat.349.type-account.tax.template,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr "Nom"
 
 msgctxt "field:aeat.349.type-account.tax.template,tax:"
@@ -528,11 +524,44 @@ msgstr "Recalcula registres AEAT 349"
 
 msgctxt "model:ir.message,text:msg_contact_name"
 msgid "Contact name in report \"%(name)s\" must contain name and surname"
-msgstr "El nom del contacte de l'informe \"%(name)s\" ha de contenir nom i cognoms."
+msgstr ""
+"El nom del contacte de l'informe \"%(name)s\" ha de contenir nom i cognoms."
 
 msgctxt "model:ir.message,text:msg_invalid_currency"
 msgid "Currency in AEAT 349 report \"%(name)s\" must be Euro."
 msgstr "La moneda de l'informe AEAT 349 \"%(name)s\" ha de ser Euro."
+
+msgctxt "model:ir.model.button,string:aeat_349_report_calculate_button"
+msgid "Calculate"
+msgstr "Calcula"
+
+msgctxt "model:ir.model.button,string:aeat_349_report_cancel_button"
+msgid "Cancel"
+msgstr "Cancel·lat"
+
+msgctxt "model:ir.model.button,string:aeat_349_report_draft_button"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "model:ir.model.button,string:aeat_349_report_process_button"
+msgid "Process"
+msgstr "Processa"
+
+msgctxt "model:ir.rule.group,name:rule_group_aeat349"
+msgid "User in company"
+msgstr "Usuari a l'empresa"
+
+msgctxt "model:ir.rule.group,name:rule_group_aeat349_ammendment"
+msgid "User in company"
+msgstr "Usuari a l'empresa"
+
+msgctxt "model:ir.rule.group,name:rule_group_aeat349_operation"
+msgid "User in company"
+msgstr "Usuari a l'empresa"
+
+msgctxt "model:ir.rule.group,name:rule_group_aeat349_record"
+msgid "User in company"
+msgstr "Usuari a l'empresa"
 
 msgctxt "model:ir.ui.menu,name:menu_aeat_349_record"
 msgid "AEAT 349 Record"
@@ -566,8 +595,8 @@ msgctxt "selection:aeat.349.record,operation_key:"
 msgid ""
 "H - Intra-Community supplies without taxes delivered by legal representative"
 msgstr ""
-"H - Entregues intracomunitàries de béns posteriors a una importació exempta"
-" enviades per un representant legal"
+"H - Entregues intracomunitàries de béns posteriors a una importació exempta "
+"enviades per un representant legal"
 
 msgctxt "selection:aeat.349.record,operation_key:"
 msgid "I - Intra-Community services acquisitions"
@@ -762,8 +791,8 @@ msgctxt "selection:aeat.349.report.ammendment,operation_key:"
 msgid ""
 "H - Intra-Community supplies without taxes delivered by legal representative"
 msgstr ""
-"H - Entregues intracomunitàries de béns posteriors a una importació exempta"
-" enviades per un representant legal"
+"H - Entregues intracomunitàries de béns posteriors a una importació exempta "
+"enviades per un representant legal"
 
 msgctxt "selection:aeat.349.report.ammendment,operation_key:"
 msgid "I - Intra-Community services acquisitions"
@@ -794,8 +823,8 @@ msgctxt "selection:aeat.349.report.operation,operation_key:"
 msgid ""
 "H - Intra-Community supplies without taxes delivered by legal representative"
 msgstr ""
-"H - Entregues intracomunitàries de béns posteriors a una importació exempta"
-" enviades per un representant legal"
+"H - Entregues intracomunitàries de béns posteriors a una importació exempta "
+"enviades per un representant legal"
 
 msgctxt "selection:aeat.349.report.operation,operation_key:"
 msgid "I - Intra-Community services acquisitions"
@@ -826,8 +855,8 @@ msgctxt "selection:aeat.349.type,operation_key:"
 msgid ""
 "H - Intra-Community supplies without taxes delivered by legal representative"
 msgstr ""
-"H - Entregues intracomunitàries de béns posteriors a una importació exempta"
-" enviades per un representant legal"
+"H - Entregues intracomunitàries de béns posteriors a una importació exempta "
+"enviades per un representant legal"
 
 msgctxt "selection:aeat.349.type,operation_key:"
 msgid "I - Intra-Community services acquisitions"
