@@ -172,7 +172,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="aeat_349_type" ref="aeat_349_key_T"/>
         </record>
         <record model="account.tax.template" id="account_es.iva_IC_compras_4_servicios">
-            <field name="aeat349_default_in_operation_key" ref="aeat_349_key_A"/>
+            <field name="aeat349_default_in_operation_key" ref="aeat_349_key_I"/>
         </record>
         <record model="aeat.349.type-account.tax.template" id="aeat_349_template_type_iva_IC_compras_4_servicios_1_A">
             <field name="tax" ref="account_es.iva_IC_compras_4_servicios_1"/>
@@ -191,7 +191,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="aeat_349_type" ref="aeat_349_key_T"/>
         </record>
         <record model="account.tax.template" id="account_es.iva_IC_compras_4_servicios_1">
-            <field name="aeat349_default_in_operation_key" ref="aeat_349_key_A"/>
+            <field name="aeat349_default_in_operation_key" ref="aeat_349_key_I"/>
         </record>
         <record model="aeat.349.type-account.tax.template" id="aeat_349_template_type_iva_IC_compras_4_servicios_2_A">
             <field name="tax" ref="account_es.iva_IC_compras_4_servicios_2"/>
@@ -210,7 +210,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="aeat_349_type" ref="aeat_349_key_T"/>
         </record>
         <record model="account.tax.template" id="account_es.iva_IC_compras_4_servicios_2">
-            <field name="aeat349_default_in_operation_key" ref="aeat_349_key_A"/>
+            <field name="aeat349_default_in_operation_key" ref="aeat_349_key_I"/>
         </record>
         <record model="aeat.349.type-account.tax.template" id="aeat_349_template_type_iva_IC_compras_10_bc_A">
             <field name="tax" ref="account_es.iva_IC_compras_10_bc"/>
@@ -343,7 +343,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="aeat_349_type" ref="aeat_349_key_T"/>
         </record>
         <record model="account.tax.template" id="account_es.iva_IC_compras_10_servicios">
-            <field name="aeat349_default_in_operation_key" ref="aeat_349_key_A"/>
+            <field name="aeat349_default_in_operation_key" ref="aeat_349_key_I"/>
         </record>
         <record model="aeat.349.type-account.tax.template" id="aeat_349_template_type_iva_IC_compras_10_servicios_1_A">
             <field name="tax" ref="account_es.iva_IC_compras_10_servicios_1"/>
@@ -362,7 +362,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="aeat_349_type" ref="aeat_349_key_T"/>
         </record>
         <record model="account.tax.template" id="account_es.iva_IC_compras_10_servicios_1">
-            <field name="aeat349_default_in_operation_key" ref="aeat_349_key_A"/>
+            <field name="aeat349_default_in_operation_key" ref="aeat_349_key_I"/>
         </record>
         <record model="aeat.349.type-account.tax.template" id="aeat_349_template_type_iva_IC_compras_10_servicios_2_A">
             <field name="tax" ref="account_es.iva_IC_compras_10_servicios_2"/>
@@ -381,7 +381,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="aeat_349_type" ref="aeat_349_key_T"/>
         </record>
         <record model="account.tax.template" id="account_es.iva_IC_compras_10_servicios_2">
-            <field name="aeat349_default_in_operation_key" ref="aeat_349_key_A"/>
+            <field name="aeat349_default_in_operation_key" ref="aeat_349_key_I"/>
         </record>
         <record model="aeat.349.type-account.tax.template" id="aeat_349_template_type_iva_IC_compras_21_bc_A">
             <field name="tax" ref="account_es.iva_IC_compras_21_bc"/>
@@ -514,7 +514,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="aeat_349_type" ref="aeat_349_key_T"/>
         </record>
         <record model="account.tax.template" id="account_es.iva_IC_compras_21_ser">
-            <field name="aeat349_default_in_operation_key" ref="aeat_349_key_A"/>
+            <field name="aeat349_default_in_operation_key" ref="aeat_349_key_I"/>
         </record>
         <record model="aeat.349.type-account.tax.template" id="aeat_349_template_type_iva_IC_compras_21_ser_1_A">
             <field name="tax" ref="account_es.iva_IC_compras_21_ser_1"/>
@@ -533,7 +533,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="aeat_349_type" ref="aeat_349_key_T"/>
         </record>
         <record model="account.tax.template" id="account_es.iva_IC_compras_21_ser_1">
-            <field name="aeat349_default_in_operation_key" ref="aeat_349_key_A"/>
+            <field name="aeat349_default_in_operation_key" ref="aeat_349_key_I"/>
         </record>
         <record model="aeat.349.type-account.tax.template" id="aeat_349_template_type_iva_IC_compras_21_ser_2_A">
             <field name="tax" ref="account_es.iva_IC_compras_21_ser_2"/>
@@ -552,7 +552,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="aeat_349_type" ref="aeat_349_key_T"/>
         </record>
         <record model="account.tax.template" id="account_es.iva_IC_compras_21_ser_2">
-            <field name="aeat349_default_in_operation_key" ref="aeat_349_key_A"/>
+            <field name="aeat349_default_in_operation_key" ref="aeat_349_key_I"/>
         </record>
         <record model="aeat.349.type-account.tax.template" id="aeat_349_template_type_igic_IO_E">
             <field name="tax" ref="account_es.igic_IO"/>
