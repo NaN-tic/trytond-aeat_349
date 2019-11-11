@@ -410,7 +410,7 @@ class Operation(ModelSQL, ModelView):
     records = fields.One2Many('aeat.349.record', 'operation',
         'AEAT 349 Records', readonly=True)
 
-    @fields.depends('report')
+    @fields.depends('report', '_parent_report.company')
     def on_change_with_company(self, name=None):
         return self.report and self.report.company and self.report.company.id
 
