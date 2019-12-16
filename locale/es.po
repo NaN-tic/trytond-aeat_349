@@ -538,7 +538,7 @@ msgstr "Calcular"
 
 msgctxt "model:ir.model.button,string:aeat_349_report_cancel_button"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancelar"
 
 msgctxt "model:ir.model.button,string:aeat_349_report_draft_button"
 msgid "Draft"
