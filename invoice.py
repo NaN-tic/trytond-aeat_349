@@ -275,7 +275,7 @@ class Invoice(metaclass=PoolMeta):
         Currency = pool.get('currency.currency')
         to_create = {}
         for invoice in invoices:
-            if not invoice.move or invoice.state == 'cancel':
+            if not invoice.move or invoice.state == 'cancelled':
                 continue
             for line in invoice.lines:
                 if line.type != 'line':
