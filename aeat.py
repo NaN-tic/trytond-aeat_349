@@ -234,7 +234,7 @@ class Report(Workflow, ModelSQL, ModelView):
     def check_euro(self):
         if self.currency.code != 'EUR':
             raise UserError(gettext('aeat_349.msg_invalid_currency',
-                name=self.path,
+                name=self.rec_name,
                 ))
 
     def check_names(self):
@@ -245,7 +245,7 @@ class Report(Workflow, ModelSQL, ModelView):
             return
         if not self.contact_name or len(self.contact_name.split()) < 2:
             raise UserError(gettext('aeat_349.msg_contact_name',
-                name=self.path,
+                name=self.rec_name,
                 ))
 
     @classmethod
