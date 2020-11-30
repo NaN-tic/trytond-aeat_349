@@ -3,13 +3,6 @@
 contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-        <record model="res.group" id="group_aeat_349_admin">
-            <field name="name">AEAT 349 Administration</field>
-        </record>
-        <record model="res.user-res.group" id="user_admin_group_aeat_349_admin">
-            <field name="user" ref="res.user_admin"/>
-            <field name="group" ref="group_aeat_349_admin"/>
-        </record>
         <record model="ir.ui.view" id="aeat_349_report_form_view">
             <field name="model">aeat.349.report</field>
             <field name="type">form</field>
@@ -44,7 +37,7 @@ contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.model.access" id="access_aeat_349_report_admin">
             <field name="model" search="[('model', '=', 'aeat.349.report')]"/>
-            <field name="group" ref="group_aeat_349_admin"/>
+            <field name="group" ref="account.group_account"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
@@ -107,7 +100,7 @@ contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.model.access" id="access_aeat_349_report_operation_admin">
             <field name="model" search="[('model', '=', 'aeat.349.report.operation')]"/>
-            <field name="group" ref="group_aeat_349_admin"/>
+            <field name="group" ref="account.group_account"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
@@ -148,7 +141,7 @@ contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.model.access" id="access_aeat_349_report_ammendment_admin">
             <field name="model" search="[('model', '=', 'aeat.349.report.ammendment')]"/>
-            <field name="group" ref="group_aeat_349_admin"/>
+            <field name="group" ref="account.group_account"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>

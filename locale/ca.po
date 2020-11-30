@@ -579,10 +579,6 @@ msgctxt "model:ir.ui.menu,name:menu_aeat_349_report_operation"
 msgid "AEAT 349 Report Operation"
 msgstr "Registres d'operacions AEAT 349"
 
-msgctxt "model:res.group,name:group_aeat_349_admin"
-msgid "AEAT 349 Administration"
-msgstr "Administració AEAT 349"
-
 msgctxt "selection:aeat.349.record,operation_key:"
 msgid "A - Intra-Community acquisition"
 msgstr "A - Adquisicions intracomunitàries subjectes"
