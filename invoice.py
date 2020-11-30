@@ -109,6 +109,12 @@ class Record(ModelSQL, ModelView):
     operation = fields.Many2One('aeat.349.report.operation', 'Operation',
         readonly=True)
 
+    @classmethod
+    def delete_record(cls, invoices):
+        with Transaction().set_user(0, set_context=True):
+            cls.delete(cls.search([('invoice', 'in',
+                            [i.id for i in invoices])]))
+
 
 class TaxTemplate(ModelSQL, ModelView):
     'Account Tax Template'
@@ -318,9 +324,7 @@ class Invoice(metaclass=PoolMeta):
         pool = Pool()
         Record = pool.get('aeat.349.record')
         super(Invoice, cls).draft(invoices)
-        with Transaction().set_user(0, set_context=True):
-            Record.delete(Record.search([('invoice', 'in',
-                            [i.id for i in invoices])]))
+        Record.delete_record(invoices)
 
     @classmethod
     def post(cls, invoices):
@@ -332,9 +336,7 @@ class Invoice(metaclass=PoolMeta):
         pool = Pool()
         Record = pool.get('aeat.349.record')
         super(Invoice, cls).cancel(invoices)
-        with Transaction().set_user(0, set_context=True):
-            Record.delete(Record.search([('invoice', 'in',
-                            [i.id for i in invoices])]))
+        Record.delete_record(invoices)
 
 
 class Recalculate349RecordStart(ModelView):
