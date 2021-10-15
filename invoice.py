@@ -281,7 +281,7 @@ class Invoice(metaclass=PoolMeta):
         Currency = pool.get('currency.currency')
         to_create = {}
         for invoice in invoices:
-            if not invoice.move or invoice.state == 'cancel':
+            if not invoice.move:
                 continue
             for line in invoice.lines:
                 if line.type != 'line':
@@ -330,12 +330,6 @@ class Invoice(metaclass=PoolMeta):
     def post(cls, invoices):
         super(Invoice, cls).post(invoices)
         cls.create_aeat349_records(invoices)
-
-    @classmethod
-    def cancel(cls, invoices):
-        pool = Pool()
-        Record = pool.get('aeat.349.record')
-        super(Invoice, cls).cancel(invoices)
 
 
 class Recalculate349RecordStart(ModelView):
