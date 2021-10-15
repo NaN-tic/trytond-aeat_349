@@ -336,7 +336,6 @@ class Invoice(metaclass=PoolMeta):
         pool = Pool()
         Record = pool.get('aeat.349.record')
         super(Invoice, cls).cancel(invoices)
-        Record.delete_record(invoices)
 
 
 class Recalculate349RecordStart(ModelView):
