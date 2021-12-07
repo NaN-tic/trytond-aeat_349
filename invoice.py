@@ -1,4 +1,4 @@
-from trytond.model import ModelSQL, ModelView, fields, Unique
+from trytond.model import ModelSQL, ModelView, Workflow, fields, Unique
 from trytond.wizard import Wizard, StateView, StateTransition, Button
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
@@ -330,6 +330,15 @@ class Invoice(metaclass=PoolMeta):
     def post(cls, invoices):
         super(Invoice, cls).post(invoices)
         cls.create_aeat349_records(invoices)
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('cancel')
+    def cancel(cls, invoices):
+        pool = Pool()
+        Record = pool.get('aeat.349.record')
+        super(Invoice, cls).draft(invoices)
+        Record.delete_record(invoices)
 
 
 class Recalculate349RecordStart(ModelView):
