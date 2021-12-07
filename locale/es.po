@@ -528,6 +528,13 @@ msgstr ""
 "El nombre del contacto del informe \"%(name)s\" debe estar formado por "
 "nombre y apellidos."
 
+msgctxt "model:ir.message,text:msg_forbiden_cancel"
+msgid ""
+"Not possible to cancel the invoice %(invoice)s becasue it's on AEAT349 "
+"report %(report)s."
+msgstr ""
+"No es posible cancelar la factura %(invoice)s porque se encuentra en el "
+
 msgctxt "model:ir.message,text:msg_invalid_currency"
 msgid "Currency in AEAT 349 report \"%(name)s\" must be Euro."
 msgstr "La moneda del informe AEAT 349 \"%s\" debe ser Euro."

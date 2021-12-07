@@ -5,6 +5,8 @@ from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from sql.operators import In
 from sql import Literal
+from trytond.i18n import gettext
+from trytond.exceptions import UserError
 from .aeat import OPERATION_KEY
 
 __all__ = ['Type', 'TypeTax', 'TypeTaxTemplate', 'Record', 'TaxTemplate',
@@ -337,8 +339,28 @@ class Invoice(metaclass=PoolMeta):
     def cancel(cls, invoices):
         pool = Pool()
         Record = pool.get('aeat.349.record')
-        super(Invoice, cls).draft(invoices)
-        Record.delete_record(invoices)
+
+        super(Invoice, cls).cancel(invoices)
+
+        invoices_to_delete = []
+        for invoice in invoices:
+            records = Record.search([
+                    ('invoice', '=', invoice.id),
+                    ])
+            if not records or len(records) > 1:
+                continue
+            if invoice.cancel_move:
+                record = records[0]
+                if record.operation:
+                    raise UserError(gettext('aeat_349.msg_forbiden_cancel',
+                            invoice=invoice.rec_name,
+                            report=record.operation.report.rec_name
+                            ))
+                default = {
+                    'base': -record.base
+                    }
+                Record.copy(records, default=default)
+        Record.delete_record(invoices_to_delete)
 
 
 class Recalculate349RecordStart(ModelView):
