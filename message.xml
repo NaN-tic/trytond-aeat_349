@@ -9,5 +9,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_invalid_currency">
             <field name="text">Currency in AEAT 349 report "%(name)s" must be Euro.</field>
         </record>
+        <record model="ir.message" id="msg_forbiden_cancel">
+            <field name="text">Not possible to cancel the invoice %(invoice)s becasue it's on AEAT349 report %(report)s.</field>
+        </record>
     </data>
 </tryton>
