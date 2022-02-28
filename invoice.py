@@ -335,11 +335,10 @@ class Invoice(metaclass=PoolMeta):
 
     @classmethod
     @ModelView.button
-    @Workflow.transition('cancel')
+    @Workflow.transition('cancelled')
     def cancel(cls, invoices):
         pool = Pool()
         Record = pool.get('aeat.349.record')
-
         super(Invoice, cls).cancel(invoices)
 
         invoices_to_delete = []
