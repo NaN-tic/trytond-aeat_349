@@ -7,9 +7,10 @@ import trytond.tests.test_tryton
 from trytond.tests.test_tryton import ModuleTestCase
 from trytond.tests.test_tryton import doctest_teardown
 from trytond.tests.test_tryton import doctest_checker
+from trytond.modules.company.tests import CompanyTestMixin
 
 
-class Aeat349TestCase(ModuleTestCase):
+class Aeat349TestCase(CompanyTestMixin, ModuleTestCase):
     'Test Aeat 349 module'
     module = 'aeat_349'
 
