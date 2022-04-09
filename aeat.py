@@ -181,10 +181,6 @@ class Report(Workflow, ModelSQL, ModelView):
         return 'draft'
 
     @staticmethod
-    def default_support_type():
-        return 'T'
-
-    @staticmethod
     def default_type():
         return 'N'
 
@@ -413,14 +409,12 @@ class Operation(ModelSQL, ModelView):
         states={
             'invisible': ~(Eval('operation_key') == 'C'),
             'required': Eval('operation_key') == 'C',
-            }
-        )
+            })
     substitution_name = fields.Char('Substitution Name', size=40,
         states={
             'invisible': ~(Eval('operation_key') == 'C'),
             'required': Eval('operation_key') == 'C',
-            }
-        )
+            })
 
     @fields.depends('report', '_parent_report.company')
     def on_change_with_company(self, name=None):
@@ -462,14 +456,12 @@ class Ammendment(ModelSQL, ModelView):
         states={
             'invisible': ~(Eval('operation_key') == 'C'),
             'required': Eval('operation_key') == 'C',
-            }
-        )
+            })
     substitution_name = fields.Char('Substitution Name', size=40,
         states={
             'invisible': ~(Eval('operation_key') == 'C'),
             'required': Eval('operation_key') == 'C',
-            }
-        )
+            })
 
     @staticmethod
     def default_company():
