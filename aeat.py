@@ -38,13 +38,15 @@ PERIOD = [
 
 OPERATION_KEY = [
     ('E', 'E - Intra-Community supplies'),
+    ('M', 'M - Intra-Community supplies without taxes'),
+    ('H', 'H - Intra-Community supplies without taxes delivered '
     ('A', 'A - Intra-Community acquisition'),
     ('T', 'T - Triangular operations'),
     ('S', 'S - Intra-Community services'),
-    ('I', 'I - Intra-Community services acquisitions'),
-    ('M', 'M - Intra-Community supplies without taxes'),
-    ('H', 'H - Intra-Community supplies without taxes delivered '
-        'by legal representative'),
+    ('I', 'I - Intra-Community services acquisitions by legal representative'),
+    ('R', 'R - Consignment sales agreements transfer'),
+    ('D', 'D - Return of goods sended previously from TAI'),
+    ('C', 'C - Substitutions of the employer or professional consignee'),
     ]
 
 _ZERO = Decimal('0.0')
@@ -113,12 +115,6 @@ class Report(Workflow, ModelSQL, ModelView):
             ], 'Statement Type', required=True, states={
                 'readonly': Eval('state') == 'done',
             }, depends=['state'])
-    support_type = fields.Selection([
-            ('C', 'DVD'),
-            ('T', 'Telematics'),
-            ], 'Support Type', required=True, states={
-                'readonly': Eval('state') == 'done',
-            }, depends=['state'])
     calculation_date = fields.DateTime("Calculation Date", readonly=True)
     state = fields.Selection([
             ('draft', 'Draft'),
@@ -128,7 +124,8 @@ class Report(Workflow, ModelSQL, ModelView):
             ], 'State', readonly=True)
     period = fields.Selection(PERIOD, 'Period', sort=False, required=True)
     contact_name = fields.Char('Full Name', size=40,
-        help='Must have name and surname.', states={
+        help='The first surname, a space, the second surname, a space and the'
+        'name, necessarily in this order.', states={
             'required': True,
             'readonly': Eval('state') == 'confirmed',
             }, depends=['state'])
@@ -357,7 +354,6 @@ class Report(Workflow, ModelSQL, ModelView):
         record.fiscalyear = str(self.fiscalyear_code)
         record.nif = self.company_vat
         record.presenter_name = self.company.party.name
-        record.support_type = self.support_type
         record.contact_phone = self.contact_phone
         record.contact_name = self.contact_name
         try:
@@ -368,8 +364,8 @@ class Report(Workflow, ModelSQL, ModelView):
             self.fiscalyear_code,
             period,
             self.auto_sequence()))
-        record.complementary = '' if self.type == 'N' else self.type
-        record.replacement = self.previous_number
+        record.complementary = self.type if self.type == 'C' else ''
+        record.replacement = self.type if self.type == 'S' else ''
         record.previous_declaration_number = self.previous_number
         record.period = self.period
         record.operation_count = len(self.operations)
@@ -412,6 +408,18 @@ class Operation(ModelSQL, ModelView):
     base = fields.Numeric('Base Operation Amount', digits=(16, 2))
     records = fields.One2Many('aeat.349.record', 'operation',
         'AEAT 349 Records', readonly=True)
+    substitution_nif = fields.Char('Substitution VAT', size=17,
+        states={
+            'invisible': ~Eval('operation_key') == 'C',
+            'required': Eval('operation_key') == 'C',
+            }
+        )
+    substitution_name = fields.Char('Substitution Name', size=40,
+        states={
+            'invisible': ~Eval('operation_key') == 'C',
+            'required': Eval('operation_key') == 'C',
+            }
+        )
 
     @fields.depends('report', '_parent_report.company')
     def on_change_with_company(self, name=None):
@@ -427,6 +435,8 @@ class Operation(ModelSQL, ModelView):
         record.party_name = self.party_name
         record.operation_key = self.operation_key
         record.base = self.base or _ZERO
+        record.substitution_nif = self.substitution_nif
+        record.substitution_name = self.substitution_name
         return record
 
 
@@ -447,6 +457,18 @@ class Ammendment(ModelSQL, ModelView):
             required=True)
     base = fields.Numeric('Base Operation Amount', digits=(16, 2))
     original_base = fields.Numeric('Original Base', digits=(16, 2))
+    substitution_nif = fields.Char('Substitution VAT', size=17,
+        states={
+            'invisible': ~Eval('operation_key') == 'C',
+            'required': Eval('operation_key') == 'C',
+            }
+        )
+    substitution_name = fields.Char('Substitution Name', size=40,
+        states={
+            'invisible': ~Eval('operation_key') == 'C',
+            'required': Eval('operation_key') == 'C',
+            }
+        )
 
     @staticmethod
     def default_company():
@@ -461,4 +483,6 @@ class Ammendment(ModelSQL, ModelView):
         record.ammendment_period = self.ammendment_period
         record.base = self.base
         record.original_base = self.original_base
+        record.substitution_nif = self.substitution_nif
+        record.substitution_name = self.substitution_name
         return record
