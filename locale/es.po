@@ -423,8 +423,12 @@ msgid "Write User"
 msgstr "Usuario de modificación"
 
 msgctxt "help:aeat.349.report,contact_name:"
-msgid "Must have name and surname."
-msgstr "Debe contener nombre y apellidos."
+msgid ""
+"The first surname, a space, the second surname, a space and the name, "
+"necessarily in this order."
+msgstr ""
+"Se consignará el primer apellido, un espacio, el segundo apellido, un espacio"
+" y el nombre completo, necesariamente en este orden."
 
 msgctxt "help:aeat.349.report,representative_vat:"
 msgid "Legal Representative VAT number."
@@ -619,6 +623,18 @@ msgstr "S - Prestaciones intracomunitarias de servicios"
 msgctxt "selection:aeat.349.record,operation_key:"
 msgid "T - Triangular operations"
 msgstr "T - Operaciones triangulares"
+
+msgctxt "selection:aeat.349.record,operation_key:"
+msgid "R - Consignment sales agreements transfer"
+msgstr "R - Transferencias de ventas de bienes en consigna"
+
+msgctxt "selection:aeat.349.record,operation_key:"
+msgid "D - Return of goods sended previously from TAI"
+msgstr "D -Devolución de bienes previamente enviados desde el TAI"
+
+msgctxt "selection:aeat.349.record,operation_key:"
+msgid "C - Substitutions of the employer or professional consignee"
+msgstr "C - Sustituciones del empresario o profesional destinatario"
 
 msgctxt "selection:aeat.349.report,period:"
 msgid "April"

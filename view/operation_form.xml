@@ -10,6 +10,10 @@ contains the full copyright notices and license terms. -->
     <field name="party_vat"/>
     <label name="operation_key"/>
     <field name="operation_key" colspan="3"/>
+    <label name="substitution_nif"/>
+    <field name="substitution_nif"/>
+    <label name="substitution_name"/>
+    <field name="substitution_name"/>
     <label name="base"/>
     <field name="base"/>
     <field name="records" colspan="4"/>

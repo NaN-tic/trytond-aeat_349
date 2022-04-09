@@ -28,8 +28,6 @@ contains the full copyright notices and license terms. -->
             <label name="representative_vat"/>
             <field name="representative_vat"/>
             <newline/>
-            <label name="support_type"/>
-            <field name="support_type"/>
             <label name="type"/>
             <field name="type"/>
             <newline/>
