@@ -39,7 +39,8 @@ PERIOD = [
 OPERATION_KEY = [
     ('E', 'E - Intra-Community supplies'),
     ('M', 'M - Intra-Community supplies without taxes'),
-    ('H', 'H - Intra-Community supplies without taxes delivered '
+    ('H', 'H - Intra-Community supplies without taxes delivered by legal '
+        'representative'),
     ('A', 'A - Intra-Community acquisition'),
     ('T', 'T - Triangular operations'),
     ('S', 'S - Intra-Community services'),
@@ -410,13 +411,13 @@ class Operation(ModelSQL, ModelView):
         'AEAT 349 Records', readonly=True)
     substitution_nif = fields.Char('Substitution VAT', size=17,
         states={
-            'invisible': ~Eval('operation_key') == 'C',
+            'invisible': ~(Eval('operation_key') == 'C'),
             'required': Eval('operation_key') == 'C',
             }
         )
     substitution_name = fields.Char('Substitution Name', size=40,
         states={
-            'invisible': ~Eval('operation_key') == 'C',
+            'invisible': ~(Eval('operation_key') == 'C'),
             'required': Eval('operation_key') == 'C',
             }
         )
@@ -459,13 +460,13 @@ class Ammendment(ModelSQL, ModelView):
     original_base = fields.Numeric('Original Base', digits=(16, 2))
     substitution_nif = fields.Char('Substitution VAT', size=17,
         states={
-            'invisible': ~Eval('operation_key') == 'C',
+            'invisible': ~(Eval('operation_key') == 'C'),
             'required': Eval('operation_key') == 'C',
             }
         )
     substitution_name = fields.Char('Substitution Name', size=40,
         states={
-            'invisible': ~Eval('operation_key') == 'C',
+            'invisible': ~(Eval('operation_key') == 'C'),
             'required': Eval('operation_key') == 'C',
             }
         )
