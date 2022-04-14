@@ -202,10 +202,6 @@ msgctxt "field:aeat.349.report,state:"
 msgid "State"
 msgstr "Estat"
 
-msgctxt "field:aeat.349.report,support_type:"
-msgid "Support Type"
-msgstr "Tipus de suport"
-
 msgctxt "field:aeat.349.report,type:"
 msgid "Statement Type"
 msgstr "Tipus de declaració"
@@ -714,14 +710,6 @@ msgstr "Realitzat"
 msgctxt "selection:aeat.349.report,state:"
 msgid "Draft"
 msgstr "Esborrany"
-
-msgctxt "selection:aeat.349.report,support_type:"
-msgid "DVD"
-msgstr "DVD"
-
-msgctxt "selection:aeat.349.report,support_type:"
-msgid "Telematics"
-msgstr "Telemàtic"
 
 msgctxt "selection:aeat.349.report,type:"
 msgid "Complementary"
