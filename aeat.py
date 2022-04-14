@@ -125,7 +125,7 @@ class Report(Workflow, ModelSQL, ModelView):
             ], 'State', readonly=True)
     period = fields.Selection(PERIOD, 'Period', sort=False, required=True)
     contact_name = fields.Char('Full Name', size=40,
-        help='The first surname, a space, the second surname, a space and the'
+        help='The first surname, a space, the second surname, a space and the '
         'name, necessarily in this order.', states={
             'required': True,
             'readonly': Eval('state') == 'confirmed',
@@ -175,6 +175,15 @@ class Report(Workflow, ModelSQL, ModelView):
                 ('done', 'cancelled'),
                 ('cancelled', 'draft'),
                 ))
+
+    @classmethod
+    def __register__(cls, module_name):
+        table = cls.__table_handler__(module_name)
+
+        support_type = table.column_exist('support_type')
+        super().__register__(module_name)
+        if support_type:
+            table.drop_column('support_type')
 
     @staticmethod
     def default_state():
