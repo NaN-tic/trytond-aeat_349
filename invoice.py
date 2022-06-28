@@ -219,6 +219,17 @@ class InvoiceLine(metaclass=PoolMeta):
             self.aeat349_operation_key = self.get_aeat349_operation_key(
                         type_, taxes)
 
+    @fields.depends('taxes')
+    def on_change_taxes(self):
+        try:
+            super(InvoiceLine, self).on_change_taxes()
+        except AttributeError:
+            pass
+
+        if not self.taxes:
+            # in case not has taxes, operation_key is None
+            self.aeat349_operation_key = None
+
     @fields.depends('taxes', 'product')
     def on_change_with_aeat349_available_keys(self, name=None):
         keys = []
