@@ -5,6 +5,7 @@ from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from sql.operators import In
 from sql import Literal
+from sql.functions import Extract
 from trytond.i18n import gettext
 from trytond.exceptions import UserError
 from .aeat import OPERATION_KEY
@@ -98,8 +99,7 @@ class Record(ModelSQL, ModelView):
 
     company = fields.Many2One('company.company', 'Company', required=True,
         readonly=True)
-    fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
-        required=True, readonly=True)
+    year = fields.Integer("Year", required=True, readonly=True)
     month = fields.Integer('Month', readonly=True)
     party_vat = fields.Char('VAT', size=17, readonly=True)
     party_name = fields.Char('Party Name', size=40, readonly=True)
@@ -110,6 +110,27 @@ class Record(ModelSQL, ModelView):
     invoice = fields.Many2One('account.invoice', 'Invoice', readonly=True)
     operation = fields.Many2One('aeat.349.report.operation', 'Operation',
         readonly=True)
+
+    @classmethod
+    def __register__(cls, module_name):
+        pool = Pool()
+        FiscalYear = pool.get('account.fiscalyear')
+
+        cursor = Transaction().connection.cursor()
+        table = cls.__table_handler__(module_name)
+        sql_table = cls.__table__()
+        fiscalyear_table = FiscalYear.__table__()
+
+        super().__register__(module_name)
+
+        # migration fiscalyear to year
+        if table.column_exist('fiscalyear'):
+            query = sql_table.update(columns=[sql_table.year],
+                    values=[Extract('YEAR', fiscalyear_table.start_date)],
+                    from_=[fiscalyear_table],
+                    where=sql_table.fiscalyear == fiscalyear_table.id)
+            cursor.execute(*query)
+            table.drop_column('fiscalyear')
 
     @classmethod
     def delete_record(cls, invoices):
@@ -306,7 +327,7 @@ class Invoice(metaclass=PoolMeta):
                              else invoice.invoice_date.month)
                         to_create[key] = {
                             'company': invoice.company.id,
-                            'fiscalyear': invoice.move.period.fiscalyear,
+                            'year': (invoice.accounting_date or invoice.invoice_date).year,
                             'month': month,
                             'party_name': invoice.party.name[:40],
                             'party_vat': (invoice.party.tax_identifier.code

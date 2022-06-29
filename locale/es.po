@@ -70,10 +70,6 @@ msgctxt "field:aeat.349.record,create_uid:"
 msgid "Create User"
 msgstr "Usuario de creación"
 
-msgctxt "field:aeat.349.record,fiscalyear:"
-msgid "Fiscal Year"
-msgstr "Ejercicio fiscal"
-
 msgctxt "field:aeat.349.record,id:"
 msgid "ID"
 msgstr "ID"
@@ -109,6 +105,10 @@ msgstr "Nombre"
 msgctxt "field:aeat.349.record,write_date:"
 msgid "Write Date"
 msgstr "Fecha de modificación"
+
+msgctxt "field:aeat.349.record,year:"
+msgid "Year"
+msgstr "Año"
 
 msgctxt "field:aeat.349.record,write_uid:"
 msgid "Write User"
@@ -162,14 +162,6 @@ msgctxt "field:aeat.349.report,filename:"
 msgid "File Name"
 msgstr "Nombre archivo"
 
-msgctxt "field:aeat.349.report,fiscalyear:"
-msgid "Fiscal Year"
-msgstr "Ejercicio fiscal"
-
-msgctxt "field:aeat.349.report,fiscalyear_code:"
-msgid "Fiscal Year Code"
-msgstr "Año ejercicio fiscal"
-
 msgctxt "field:aeat.349.report,id:"
 msgid "ID"
 msgstr "ID"
@@ -213,6 +205,10 @@ msgstr "Fecha de modificación"
 msgctxt "field:aeat.349.report,write_uid:"
 msgid "Write User"
 msgstr "Usuario de modificación"
+
+msgctxt "field:aeat.349.report,year:"
+msgid "Year"
+msgstr "Año"
 
 msgctxt "field:aeat.349.report.ammendment,ammendment_fiscalyear_code:"
 msgid "Ammendment Fiscal Year Code"

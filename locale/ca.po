@@ -70,10 +70,6 @@ msgctxt "field:aeat.349.record,create_uid:"
 msgid "Create User"
 msgstr "Usuari de creació"
 
-msgctxt "field:aeat.349.record,fiscalyear:"
-msgid "Fiscal Year"
-msgstr "Exercici fiscal"
-
 msgctxt "field:aeat.349.record,id:"
 msgid "ID"
 msgstr "ID"
@@ -113,6 +109,10 @@ msgstr "Data de modificació"
 msgctxt "field:aeat.349.record,write_uid:"
 msgid "Write User"
 msgstr "Usuari de modificació"
+
+msgctxt "field:aeat.349.record,year:"
+msgid "Year"
+msgstr "Any"
 
 msgctxt "field:aeat.349.report,ammendment_amount:"
 msgid "Ammendment Amount"
@@ -162,14 +162,6 @@ msgctxt "field:aeat.349.report,filename:"
 msgid "File Name"
 msgstr "Nom del fitxer"
 
-msgctxt "field:aeat.349.report,fiscalyear:"
-msgid "Fiscal Year"
-msgstr "Exercici fiscal"
-
-msgctxt "field:aeat.349.report,fiscalyear_code:"
-msgid "Fiscal Year Code"
-msgstr "Any exercici fiscal"
-
 msgctxt "field:aeat.349.report,id:"
 msgid "ID"
 msgstr "ID"
@@ -213,6 +205,10 @@ msgstr "Data de modificació"
 msgctxt "field:aeat.349.report,write_uid:"
 msgid "Write User"
 msgstr "Usuari de modificació"
+
+msgctxt "field:aeat.349.report,year:"
+msgid "Year"
+msgstr "Any"
 
 msgctxt "field:aeat.349.report.ammendment,ammendment_fiscalyear_code:"
 msgid "Ammendment Fiscal Year Code"
