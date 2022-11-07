@@ -398,7 +398,7 @@ class Report(Workflow, ModelSQL, ModelView):
         records.append(record)
         for line in itertools.chain(self.operations, self.ammendments):
             record = line.get_record()
-            record.fiscalyear = str(self.year)
+            record.year = str(self.year)
             record.nif = self.company_vat
             records.append(record)
         try:
