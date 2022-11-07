@@ -535,6 +535,10 @@ msgctxt "model:ir.message,text:msg_invalid_currency"
 msgid "Currency in AEAT 349 report \"%(name)s\" must be Euro."
 msgstr "La moneda de l'informe AEAT 349 \"%(name)s\" ha de ser Euro."
 
+msgctxt "model:ir.message,text:msg_invalid_year"
+msgid "The year \"%(year)s\" is not valid."
+msgstr "L'any \"%(year)s\" no és vàlid."
+
 msgctxt "model:ir.model.button,string:aeat_349_report_calculate_button"
 msgid "Calculate"
 msgstr "Calcula"

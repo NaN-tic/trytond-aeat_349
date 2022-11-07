@@ -234,6 +234,17 @@ class Report(Workflow, ModelSQL, ModelView):
             if tax_identifier and tax_identifier.code.startswith('ES'):
                 return tax_identifier.code[2:]
 
+    def pre_validate(self):
+        super().pre_validate()
+        self.check_year_digits()
+
+    @fields.depends('year')
+    def check_year_digits(self):
+        if self.year and len(str(self.year)) != 4:
+            raise UserError(
+                gettext('aeat_303.msg_invalid_year',
+                    year=self.year))
+
     @classmethod
     def validate(cls, reports):
         for report in reports:
