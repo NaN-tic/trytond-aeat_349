@@ -373,7 +373,7 @@ class Report(Workflow, ModelSQL, ModelView):
     def create_file(self):
         records = []
         record = Record(aeat349.PRESENTER_HEADER_RECORD)
-        record.fiscalyear = str(self.year)
+        record.year = str(self.year)
         record.nif = self.company_vat
         record.presenter_name = self.company.party.name
         record.contact_phone = self.contact_phone
