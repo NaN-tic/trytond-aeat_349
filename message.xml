@@ -12,5 +12,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_forbiden_cancel">
             <field name="text">Not possible to cancel the invoice %(invoice)s becasue it's on AEAT349 report %(report)s.</field>
         </record>
+        <record model="ir.message" id="msg_invalid_year">
+            <field name="text">The year "%(year)s" is not valid.</field>
+        </record>
     </data>
 </tryton>

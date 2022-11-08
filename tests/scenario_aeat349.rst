@@ -268,7 +268,7 @@ Generate 349 Report::
 
     >>> Report = Model.get('aeat.349.report')
     >>> report = Report()
-    >>> report.fiscalyear_code = 2013
+    >>> report.year = today.year
     >>> report.period = "%02d" % (today.month)
     >>> report.company_vat = '123456789'
     >>> report.contact_name = 'Guido van Rosum'

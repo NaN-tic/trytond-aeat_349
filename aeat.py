@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
+from decimal import Decimal
 import datetime
 import itertools
-from decimal import Decimal
 import unicodedata
 import sys
 
@@ -14,6 +14,7 @@ from trytond.pyson import Eval
 from trytond.i18n import gettext
 from trytond.exceptions import UserError
 from trytond.transaction import Transaction
+from sql.functions import Extract
 
 __all__ = ['Report', 'Operation', 'Ammendment']
 
@@ -99,12 +100,7 @@ class Report(Workflow, ModelSQL, ModelView):
         help='Legal Representative VAT number.', states={
             'readonly': Eval('state') == 'done',
             }, depends=['state'])
-    fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
-        required=True, states={
-            'readonly': Eval('state') == 'done',
-            }, depends=['state'])
-    fiscalyear_code = fields.Integer('Fiscal Year Code', required=True,
-        depends=['fiscalyear'])
+    year = fields.Integer("Year", required=True)
     company_vat = fields.Char('VAT number', size=9, states={
             'required': True,
             'readonly': Eval('state') == 'done',
@@ -151,6 +147,10 @@ class Report(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Report, cls).__setup__()
+        cls._order = [
+            ('year', 'DESC'),
+            ('id', 'DESC'),
+            ]
         cls._buttons.update({
                 'draft': {
                     'invisible': ~Eval('state').in_(['calculated',
@@ -178,12 +178,31 @@ class Report(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        pool = Pool()
+        FiscalYear = pool.get('account.fiscalyear')
+
+        cursor = Transaction().connection.cursor()
         table = cls.__table_handler__(module_name)
+        sql_table = cls.__table__()
+        fiscalyear_table = FiscalYear.__table__()
 
         support_type = table.column_exist('support_type')
+
         super().__register__(module_name)
+
         if support_type:
             table.drop_column('support_type')
+
+        # migration fiscalyear to year
+        if table.column_exist('fiscalyear'):
+            query = sql_table.update(columns=[sql_table.year],
+                    values=[Extract('YEAR', fiscalyear_table.start_date)],
+                    from_=[fiscalyear_table],
+                    where=sql_table.fiscalyear == fiscalyear_table.id)
+            cursor.execute(*query)
+            table.drop_column('fiscalyear')
+        if table.column_exist('fiscalyear_code'):
+            table.drop_column('fiscalyear_code')
 
     @staticmethod
     def default_state():
@@ -197,29 +216,16 @@ class Report(Workflow, ModelSQL, ModelView):
     def default_company():
         return Transaction().context.get('company')
 
-    @staticmethod
-    def default_fiscalyear():
-        FiscalYear = Pool().get('account.fiscalyear')
-        return FiscalYear.find(
-            Transaction().context.get('company'), exception=False)
-
     def get_rec_name(self, name):
         return '%s - %s/%s' % (self.company.rec_name,
-            self.fiscalyear.name, self.period)
+            self.year, self.period)
 
     def get_currency(self, name):
         return self.company.currency.id
 
     def get_filename(self, name):
         return 'aeat349-%s-%s.txt' % (
-            self.fiscalyear_code, self.period)
-
-    @fields.depends('fiscalyear')
-    def on_change_with_fiscalyear_code(self):
-        code = None
-        if self.fiscalyear:
-            code = self.fiscalyear.start_date.year
-        return code
+            self.year, self.period)
 
     @fields.depends('company')
     def on_change_with_company_vat(self):
@@ -227,6 +233,17 @@ class Report(Workflow, ModelSQL, ModelView):
             tax_identifier = self.company.party.tax_identifier
             if tax_identifier and tax_identifier.code.startswith('ES'):
                 return tax_identifier.code[2:]
+
+    def pre_validate(self):
+        super().pre_validate()
+        self.check_year_digits()
+
+    @fields.depends('year')
+    def check_year_digits(self):
+        if self.year and len(str(self.year)) != 4:
+            raise UserError(
+                gettext('aeat_303.msg_invalid_year',
+                    year=self.year))
 
     @classmethod
     def validate(cls, reports):
@@ -283,7 +300,7 @@ class Report(Workflow, ModelSQL, ModelView):
                 ('report', 'in', [r.id for r in reports])]))
 
         for report in reports:
-            fiscalyear = report.fiscalyear
+            year = report.year
             multiplier = 1
             period = report.period
             if 'T' in period:
@@ -294,10 +311,9 @@ class Report(Workflow, ModelSQL, ModelView):
                 start_month = int(period) * multiplier
 
             end_month = start_month + multiplier
-
             to_create = {}
             for record in Data.search([
-                    ('fiscalyear', '=', fiscalyear.id),
+                    ('year', '=', year),
                     ('month', '>=', start_month),
                     ('month', '<', end_month)
                     ]):
@@ -349,7 +365,7 @@ class Report(Workflow, ModelSQL, ModelView):
                 ('state', '=', 'done'),
                 ],
             order=[
-                ('fiscalyear', 'DESC'),
+                ('year', 'DESC'),
                 ('period', 'DESC'),
             ], count=True)
         return count + 1
@@ -357,7 +373,7 @@ class Report(Workflow, ModelSQL, ModelView):
     def create_file(self):
         records = []
         record = Record(aeat349.PRESENTER_HEADER_RECORD)
-        record.fiscalyear = str(self.fiscalyear_code)
+        record.year = str(self.year)
         record.nif = self.company_vat
         record.presenter_name = self.company.party.name
         record.contact_phone = self.contact_phone
@@ -367,7 +383,7 @@ class Report(Workflow, ModelSQL, ModelView):
         except ValueError:
             period = '0%s' % self.period[:1]
         record.declaration_number = int('349{}{}{:0>4}'.format(
-            self.fiscalyear_code,
+            self.year,
             period,
             self.auto_sequence()))
         record.complementary = self.type if self.type == 'C' else ''
@@ -382,7 +398,7 @@ class Report(Workflow, ModelSQL, ModelView):
         records.append(record)
         for line in itertools.chain(self.operations, self.ammendments):
             record = line.get_record()
-            record.fiscalyear = str(self.fiscalyear_code)
+            record.year = str(self.year)
             record.nif = self.company_vat
             records.append(record)
         try:
