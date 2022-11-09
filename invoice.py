@@ -51,9 +51,9 @@ class TypeTax(ModelSQL):
     __name__ = 'aeat.349.type-account.tax'
 
     aeat_349_type = fields.Many2One('aeat.349.type', 'Operation Key',
-        ondelete='CASCADE', select=True, required=True)
+        ondelete='CASCADE', required=True)
     tax = fields.Many2One('account.tax', 'Tax', ondelete='CASCADE',
-        select=True, required=True)
+        required=True)
 
 
 class TypeTaxTemplate(ModelSQL):
@@ -63,9 +63,9 @@ class TypeTaxTemplate(ModelSQL):
     __name__ = 'aeat.349.type-account.tax.template'
 
     aeat_349_type = fields.Many2One('aeat.349.type', 'Operation Key',
-        ondelete='CASCADE', select=True, required=True)
+        ondelete='CASCADE', required=True)
     tax = fields.Many2One('account.tax.template', 'Tax Template',
-        ondelete='CASCADE', select=True, required=True)
+        ondelete='CASCADE', required=True)
 
     @classmethod
     def __register__(cls, module_name):
