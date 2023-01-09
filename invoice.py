@@ -303,12 +303,12 @@ class InvoiceLine(metaclass=PoolMeta):
         Ammendment = pool.get('aeat.349.report.ammendment')
 
         operations = Operation.search([
-                ('invoice_lines', 'in', lines)
-                ('repot.state', 'in', ('calculated', 'done'))
+                ('invoice_lines', 'in', lines),
+                ('report.state', 'in', ('calculated', 'done'),)
                 ])
         ammendments = Ammendment.search([
-                ('invoice_lines', 'in', lines)
-                ('repot.state', 'in', ('calculated', 'done'))
+                ('invoice_lines', 'in', lines),
+                ('report.state', 'in', ('calculated', 'done'),)
                 ])
 
         return [x.report for x in operations + ammendments]
@@ -325,6 +325,18 @@ class InvoiceLine(metaclass=PoolMeta):
                     reports=reports
                     ))
         super().delete(lines)
+
+    def _credit(self):
+        pool = Pool()
+        AEAT349Type = pool.get('aeat.349.type')
+
+        line = super(InvoiceLine, self)._credit()
+        if self.aeat349_operation:
+            aeat349_ammendment, = AEAT349Type.search([
+                ('operation_key', '=', 'A-%s' % (self.aeat349_operation.operation_key)),
+            ])
+            line.aeat349_operation_key = aeat349_ammendment.id
+        return line
 
 
 class Invoice(metaclass=PoolMeta):
@@ -353,28 +365,23 @@ class Invoice(metaclass=PoolMeta):
     @Workflow.transition('cancelled')
     def cancel(cls, invoices):
         pool = Pool()
-        Record = pool.get('aeat.349.record')
+        Line = pool.get('account.invoice.line')
+
         super(Invoice, cls).cancel(invoices)
 
-        for invoice in invoices:
-            for line in invoice.line:
-                records = Record.search([
-                        ('line', '=', line.id),
-                        ])
-                if not records:
-                    continue
-                if invoice.cancel_move:
-                    record = records[0]
-                    if record.operation:
-                        raise UserError(gettext('aeat_349.msg_forbiden_cancel',
-                                invoice=invoice.rec_name,
-                                report=record.operation.report.rec_name
-                                ))
-                    default = {
-                        'base': -record.base
-                        }
-                    Record.copy(records, default=default)
+        print('\n',Transaction().context,'\n')
+        if not Transaction().context.get('credit_wizard'):
+            lines = [l for i in invoices for l in i.lines]
+            reports = Line.check_aeat349(lines)
 
+            if reports:
+                invoices_name = ", ".join([l.invoice.rec_name for l in lines
+                        if l.invoice])
+                reports = ", ".join([r.rec_name for r in reports])
+                raise UserError(gettext('aeat_349.msg_delete_lines_in_349report',
+                    invoices=invoices_name,
+                    reports=reports
+                    ))
 
 class Reasign349RecordStart(ModelView):
     """
@@ -433,3 +440,11 @@ class Reasign349Record(Wizard):
                 values=[value.id], where=In(line.id, lines)))
 
         return 'done'
+
+
+class CreditInvoice(metaclass=PoolMeta):
+    __name__ = 'account.invoice.credit'
+
+    def do_credit(self, action):
+        with Transaction().set_context(credit_wizard=True):
+            return super(CreditInvoice, self).do_credit(action)

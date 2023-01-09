@@ -22,4 +22,5 @@ def register():
         module='aeat_349', type_='model')
     Pool.register(
         invoice.Reasign349Record,
+        invoice.CreditInvoice,
         module='aeat_349', type_='wizard')
