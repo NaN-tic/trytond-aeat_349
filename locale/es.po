@@ -215,8 +215,8 @@ msgid "Ammendment Fiscal Year Code"
 msgstr "Código ejercicio fiscal rectificaciones"
 
 msgctxt "field:aeat.349.report.ammendment,ammendment_period:"
-msgid "Period"
-msgstr "Período"
+msgid "Ammendment Period"
+msgstr "Período rectificaciones"
 
 msgctxt "field:aeat.349.report.ammendment,base:"
 msgid "Base Operation Amount"

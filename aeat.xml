@@ -186,20 +186,6 @@ contains the full copyright notices and license terms. -->
             <field name="rule_group" ref="rule_group_aeat349_ammendment"/>
         </record>
 
-
-        <record model="ir.rule.group" id="rule_group_aeat349_record">
-            <field name="name">User in company</field>
-            <field name="model" search="[('model', '=', 'aeat.349.record')]"/>
-            <field name="global_p" eval="True"/>
-        </record>
-        <record model="ir.rule" id="rule_aeat_349_record_1">
-            <field name="domain"
-                eval="[('company', 'in', Eval('companies', []))]"
-                pyson="1"/>
-            <field name="rule_group" ref="rule_group_aeat349_record"/>
-        </record>
-
-
         <!-- Menus -->
         <menuitem action="act_aeat_349_report" id="menu_aeat_349_report"
             parent="account.menu_reporting" sequence="349"
