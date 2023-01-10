@@ -245,7 +245,7 @@ class InvoiceLine(metaclass=PoolMeta):
 
     @fields.depends('taxes', 'invoice_type', 'aeat349_operation_key',
         'invoice', '_parent_invoice.type', 'quantity', 'amount',
-        'unit_price', 'gross_unit_price')
+        'unit_price')
     def on_change_with_aeat349_operation_key(self):
         if not self.taxes or not self._has_aeat349_operation_keys():
             return
@@ -447,3 +447,12 @@ class CreditInvoice(metaclass=PoolMeta):
     def do_credit(self, action):
         with Transaction().set_context(credit_wizard=True):
             return super(CreditInvoice, self).do_credit(action)
+
+
+class InvoiceLineDisccount(metaclass=PoolMeta):
+    __name__ = 'account.invoice.line'
+
+    @fields.depends('gross_unit_price')
+    def on_change_with_aeat349_operation_key(self):
+        super(InvoiceLineDisccount, self
+            ).on_change_with_aeat349_operation_key()

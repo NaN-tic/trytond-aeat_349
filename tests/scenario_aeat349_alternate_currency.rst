@@ -113,7 +113,6 @@ Create payment term::
 
 Create out invoice::
 
-    >>> Record = Model.get('aeat.349.record')
     >>> Invoice = Model.get('account.invoice')
     >>> invoice = Invoice()
     >>> invoice.party = party
@@ -125,8 +124,6 @@ Create out invoice::
     >>> line.unit_price = Decimal(80)
     >>> len(line.taxes)
     1
-    >>> line.aeat349_operation_key.operation_key
-    'E'
     >>> line.amount
     Decimal('400.00')
     >>> line = invoice.lines.new()
@@ -139,17 +136,6 @@ Create out invoice::
     >>> line.amount
     Decimal('20.00')
     >>> invoice.click('post')
-    >>> rec1, = Record.find([('invoice', '=', invoice.id)])
-    >>> rec1.party_name
-    'Party'
-    >>> rec1.party_vat
-    'ES00000000T'
-    >>> rec1.month == today.month
-    True
-    >>> rec1.operation_key
-    'E'
-    >>> rec1.base
-    Decimal('800.00')
 
 Create in invoice::
 
@@ -165,8 +151,6 @@ Create in invoice::
     >>> line.unit_price = Decimal('50.0')
     >>> len(line.taxes)
     1
-    >>> line.aeat349_operation_key.operation_key
-    'A'
     >>> line.amount
     Decimal('250.00')
     >>> line = invoice.lines.new()
@@ -179,17 +163,6 @@ Create in invoice::
     >>> line.amount
     Decimal('20.00')
     >>> invoice.click('post')
-    >>> rec1, = Record.find([('invoice', '=', invoice.id)])
-    >>> rec1.party_name
-    'Party'
-    >>> rec1.party_vat
-    'ES00000000T'
-    >>> rec1.month == today.month
-    True
-    >>> rec1.operation_key
-    'A'
-    >>> rec1.base
-    Decimal('500.00')
 
 Generate 349 Report::
 

@@ -24,3 +24,6 @@ def register():
         invoice.Reasign349Record,
         invoice.CreditInvoice,
         module='aeat_349', type_='wizard')
+    Pool.register(
+        invoice.InvoiceLineDisccount,
+        module='aeat_349', type_='model', depends=['account_invoice_discount'])
