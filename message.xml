@@ -15,5 +15,16 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_invalid_year">
             <field name="text">The year "%(year)s" is not valid.</field>
         </record>
+        <record model="ir.message" id="msg_delete_lines_in_349report">
+            <field name="text">There are some invoices lines from invoices
+%(invoices)s
+that will be erased in 349 repotrs.
+To do that the reports
+%(reports)s
+must be canceleld or drafted.</field>
+        </record>
+        <record model="ir.message" id="msg_missing_ammendment_information">
+            <field name="text">Is missing information in the ammendment of party "%(party)s".</field>
+        </record>
     </data>
 </tryton>
