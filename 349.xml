@@ -3,26 +3,67 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data grouped="1">
-        <record model="aeat.349.type" id="aeat_349_key_A">
-            <field name="operation_key">A</field>
-        </record>
         <record model="aeat.349.type" id="aeat_349_key_E">
             <field name="operation_key">E</field>
-        </record>
-        <record model="aeat.349.type" id="aeat_349_key_I">
-            <field name="operation_key">I</field>
-        </record>
-        <record model="aeat.349.type" id="aeat_349_key_H">
-            <field name="operation_key">H</field>
         </record>
         <record model="aeat.349.type" id="aeat_349_key_M">
             <field name="operation_key">M</field>
         </record>
-        <record model="aeat.349.type" id="aeat_349_key_S">
-            <field name="operation_key">S</field>
+        <record model="aeat.349.type" id="aeat_349_key_H">
+            <field name="operation_key">H</field>
+        </record>
+        <record model="aeat.349.type" id="aeat_349_key_A">
+            <field name="operation_key">A</field>
         </record>
         <record model="aeat.349.type" id="aeat_349_key_T">
             <field name="operation_key">T</field>
+        </record>
+        <record model="aeat.349.type" id="aeat_349_key_S">
+            <field name="operation_key">S</field>
+        </record>
+        <record model="aeat.349.type" id="aeat_349_key_I">
+            <field name="operation_key">I</field>
+        </record>
+        <record model="aeat.349.type" id="aeat_349_key_R">
+            <field name="operation_key">R</field>
+        </record>
+        <record model="aeat.349.type" id="aeat_349_key_D">
+            <field name="operation_key">D</field>
+        </record>
+        <record model="aeat.349.type" id="aeat_349_key_C">
+            <field name="operation_key">C</field>
+        </record>
+    </data>
+    <data grouped="1">
+        <record model="aeat.349.type" id="aeat_349_key_A-E">
+            <field name="operation_key">A-E</field>
+        </record>
+        <record model="aeat.349.type" id="aeat_349_key_A-M">
+            <field name="operation_key">A-M</field>
+        </record>
+        <record model="aeat.349.type" id="aeat_349_key_A-H">
+            <field name="operation_key">A-H</field>
+        </record>
+        <record model="aeat.349.type" id="aeat_349_key_A-A">
+            <field name="operation_key">A-A</field>
+        </record>
+        <record model="aeat.349.type" id="aeat_349_key_A-T">
+            <field name="operation_key">A-T</field>
+        </record>
+        <record model="aeat.349.type" id="aeat_349_key_A-S">
+            <field name="operation_key">A-S</field>
+        </record>
+        <record model="aeat.349.type" id="aeat_349_key_A-I">
+            <field name="operation_key">A-I</field>
+        </record>
+        <record model="aeat.349.type" id="aeat_349_key_A-R">
+            <field name="operation_key">A-R</field>
+        </record>
+        <record model="aeat.349.type" id="aeat_349_key_A-D">
+            <field name="operation_key">A-D</field>
+        </record>
+        <record model="aeat.349.type" id="aeat_349_key_A-C">
+            <field name="operation_key">A-C</field>
         </record>
     </data>
 </tryton>

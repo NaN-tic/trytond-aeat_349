@@ -1,3 +1,6 @@
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
+from decimal import Decimal
 from trytond.model import ModelSQL, ModelView, Workflow, fields, Unique
 from trytond.wizard import Wizard, StateView, StateTransition, Button
 from trytond.pool import Pool, PoolMeta
@@ -5,15 +8,12 @@ from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from sql.operators import In
 from sql import Literal
-from sql.functions import Extract
 from trytond.i18n import gettext
 from trytond.exceptions import UserError
-from .aeat import OPERATION_KEY
+from .aeat import OPERATION_KEY, AMMENDMENT_KEY
 
-__all__ = ['Type', 'TypeTax', 'TypeTaxTemplate', 'Record', 'TaxTemplate',
-    'Tax', 'Invoice', 'InvoiceLine', 'Recalculate349RecordStart',
-    'Recalculate349RecordEnd', 'Recalculate349Record', 'Reasign349RecordStart',
-    'Reasign349RecordEnd', 'Reasign349Record']
+OP_KEY = list(dict(OPERATION_KEY).keys())
+AM_KEY = list(dict(AMMENDMENT_KEY).keys())
 
 
 class Type(ModelSQL, ModelView):
@@ -24,8 +24,8 @@ class Type(ModelSQL, ModelView):
     """
     __name__ = 'aeat.349.type'
 
-    operation_key = fields.Selection(OPERATION_KEY, 'Operation key',
-        required=True)
+    operation_key = fields.Selection(OPERATION_KEY + AMMENDMENT_KEY,
+        'Operation key', required=True)
 
     @classmethod
     def __setup__(cls):
@@ -88,65 +88,6 @@ class TypeTaxTemplate(ModelSQL):
         super(TypeTaxTemplate, cls).__register__(module_name)
 
 
-class Record(ModelSQL, ModelView):
-    """
-    AEAT 349 Record
-
-    Calculated on invoice creation to generate temporal
-    data for reports. Aggregated on aeat349 calculation.
-    """
-    __name__ = 'aeat.349.record'
-
-    company = fields.Many2One('company.company', 'Company', required=True,
-        readonly=True)
-    year = fields.Integer("Year", required=True, readonly=True)
-    month = fields.Integer('Month', readonly=True)
-    party_vat = fields.Char('VAT', size=17, readonly=True)
-    party_name = fields.Char('Party Name', size=40, readonly=True)
-    operation_key = fields.Selection(OPERATION_KEY, 'Operation key',
-        required=True, readonly=True)
-    base = fields.Numeric('Base Operation Amount', digits=(16, 2),
-        readonly=True)
-    invoice = fields.Many2One('account.invoice', 'Invoice', readonly=True)
-    operation = fields.Many2One('aeat.349.report.operation', 'Operation',
-        readonly=True)
-
-    @classmethod
-    def __setup__(cls):
-        super(Record, cls).__setup__()
-        cls._order = [
-            ('year', 'DESC'),
-            ('id', 'DESC'),
-            ]
-
-    @classmethod
-    def __register__(cls, module_name):
-        pool = Pool()
-        FiscalYear = pool.get('account.fiscalyear')
-
-        cursor = Transaction().connection.cursor()
-        table = cls.__table_handler__(module_name)
-        sql_table = cls.__table__()
-        fiscalyear_table = FiscalYear.__table__()
-
-        super().__register__(module_name)
-
-        # migration fiscalyear to year
-        if table.column_exist('fiscalyear'):
-            query = sql_table.update(columns=[sql_table.year],
-                    values=[Extract('YEAR', fiscalyear_table.start_date)],
-                    from_=[fiscalyear_table],
-                    where=sql_table.fiscalyear == fiscalyear_table.id)
-            cursor.execute(*query)
-            table.drop_column('fiscalyear')
-
-    @classmethod
-    def delete_record(cls, invoices):
-        with Transaction().set_user(0, set_context=True):
-            cls.delete(cls.search([('invoice', 'in',
-                            [i.id for i in invoices])]))
-
-
 class TaxTemplate(ModelSQL, ModelView):
     'Account Tax Template'
     __name__ = 'account.tax.template'
@@ -155,12 +96,28 @@ class TaxTemplate(ModelSQL, ModelView):
         'Available Operation Keys')
     aeat349_default_out_operation_key = fields.Many2One('aeat.349.type',
         'Default Out Operation Key',
-        domain=[('id', 'in', Eval('aeat349_operation_keys', []))],
-        depends=['aeat349_operation_keys'])
+        domain=[
+            ('id', 'in', Eval('aeat349_operation_keys', [])),
+            ('operation_key', 'in', OP_KEY),
+            ], depends=['aeat349_operation_keys'])
     aeat349_default_in_operation_key = fields.Many2One('aeat.349.type',
         'Default In Operation Key',
-        domain=[('id', 'in', Eval('aeat349_operation_keys', []))],
-        depends=['aeat349_operation_keys'])
+        domain=[
+            ('id', 'in', Eval('aeat349_operation_keys', [])),
+            ('operation_key', 'in', OP_KEY),
+            ], depends=['aeat349_operation_keys'])
+    aeat349_default_out_ammendment_key = fields.Many2One('aeat.349.type',
+        'Default Out Ammendment Key',
+        domain=[
+            ('id', 'in', Eval('aeat349_operation_keys', [])),
+            ('operation_key', 'in', AM_KEY),
+            ], depends=['aeat349_operation_keys'])
+    aeat349_default_in_ammendment_key = fields.Many2One('aeat.349.type',
+        'Default In Ammendment Key',
+        domain=[
+            ('id', 'in', Eval('aeat349_operation_keys', [])),
+            ('operation_key', 'in', AM_KEY),
+            ], depends=['aeat349_operation_keys'])
 
     def _get_tax_value(self, tax=None):
         res = super(TaxTemplate, self)._get_tax_value(tax)
@@ -172,18 +129,23 @@ class TaxTemplate(ModelSQL, ModelView):
         if len(self.aeat349_operation_keys) > 0:
             new_ids = set([c.id for c in self.aeat349_operation_keys])
             for direction in ('in', 'out'):
-                field = "aeat349_default_%s_operation_key" % (direction)
-                if not tax or getattr(tax, field) != getattr(self, field):
-                    value = getattr(self, field)
-                    if value and value.id in new_ids:
-                        res[field] = value.id
-                    else:
-                        res[field] = None
+                for type_ in ('operation', 'ammendment'):
+                    field = "aeat349_default_%s_%s_key" % (direction, type_)
+                    if not tax or getattr(tax, field) != getattr(self, field):
+                        value = getattr(self, field)
+                        if value and value.id in new_ids:
+                            res[field] = value.id
+                        else:
+                            res[field] = None
         else:
             if tax and tax.aeat349_default_in_operation_key:
                 res['aeat349_default_in_operation_key'] = None
             if tax and tax.aeat349_default_out_operation_key:
                 res['aeat349_default_out_operation_key'] = None
+            if tax and tax.aeat349_default_in_ammendment_key:
+                res['aeat349_default_in_ammendment_key'] = None
+            if tax and tax.aeat349_default_out_ammendment_key:
+                res['aeat349_default_out_ammendment_key'] = None
         if old_ids or new_ids:
             key = 'aeat349_operation_keys'
             res[key] = []
@@ -205,18 +167,36 @@ class Tax(metaclass=PoolMeta):
         'tax', 'aeat_349_type', 'Available Operation Keys')
     aeat349_default_out_operation_key = fields.Many2One('aeat.349.type',
         'Default Out Operation Key',
-        domain=[('id', 'in', Eval('aeat349_operation_keys', []))],
-        depends=['aeat349_operation_keys'])
+        domain=[
+            ('id', 'in', Eval('aeat349_operation_keys', [])),
+            ('operation_key', 'in', OP_KEY),
+            ], depends=['aeat349_operation_keys'])
     aeat349_default_in_operation_key = fields.Many2One('aeat.349.type',
         'Default In Operation Key',
-        domain=[('id', 'in', Eval('aeat349_operation_keys', []))],
-        depends=['aeat349_operation_keys'])
+        domain=[
+            ('id', 'in', Eval('aeat349_operation_keys', [])),
+            ('operation_key', 'in', OP_KEY),
+            ], depends=['aeat349_operation_keys'])
+    aeat349_default_out_ammendment_key = fields.Many2One('aeat.349.type',
+        'Default Out Ammendment Key',
+        domain=[
+            ('id', 'in', Eval('aeat349_operation_keys', [])),
+            ('operation_key', 'in', AM_KEY),
+            ], depends=['aeat349_operation_keys'])
+    aeat349_default_in_ammendment_key = fields.Many2One('aeat.349.type',
+        'Default In Ammendment Key',
+        domain=[
+            ('id', 'in', Eval('aeat349_operation_keys', [])),
+            ('operation_key', 'in', AM_KEY),
+            ], depends=['aeat349_operation_keys'])
 
 
 STATES = {
     'invisible': Eval('type') != 'line',
     }
 DEPENDS = ['type']
+
+# TODO: Remove from databse the aeat_349_record table
 
 
 class InvoiceLine(metaclass=PoolMeta):
@@ -230,23 +210,16 @@ class InvoiceLine(metaclass=PoolMeta):
         states=STATES, depends=DEPENDS + ['aeat349_available_keys', 'taxes',
             'invoice_type', 'product'],
         domain=[('id', 'in', Eval('aeat349_available_keys', []))],)
+    aeat349_operation = fields.Many2One('aeat.349.report.operation',
+        '349 Operation', readonly=True)
+    aeat349_ammendment = fields.Many2One('aeat.349.report.ammendment',
+        '349 Ammendment', readonly=True)
 
-    @fields.depends('invoice', 'taxes')
-    def on_change_product(self):
-        Taxes = Pool().get('account.tax')
-
-        super(InvoiceLine, self).on_change_product()
-        type_ = None
-        if self.invoice and self.invoice.type:
-            type_ = self.invoice.type
-        elif self.invoice_type:
-            type_ = self.invoice_type
-        self.aeat349_operation_key = None
-        if type_ and self.taxes:
-            with Transaction().set_user(0):
-                taxes = Taxes.browse(self.taxes)
-            self.aeat349_operation_key = self.get_aeat349_operation_key(
-                        type_, taxes)
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._check_modify_exclude |= {'aeat349_operation',
+            'aeat349_ammendment'}
 
     def _has_aeat349_operation_keys(self):
         # in case not has taxes or not has aeat 349, operation_key is None
@@ -271,14 +244,15 @@ class InvoiceLine(metaclass=PoolMeta):
         return []
 
     @fields.depends('taxes', 'invoice_type', 'aeat349_operation_key',
-        '_parent_invoice.type', 'product', 'invoice')
+        'invoice', '_parent_invoice.type', 'quantity', 'amount',
+        'unit_price')
     def on_change_with_aeat349_operation_key(self):
         if not self.taxes or not self._has_aeat349_operation_keys():
             return
-
+        if not self.amount:
+            return
         if self.aeat349_operation_key:
             return self.aeat349_operation_key.id
-
         if self.invoice and self.invoice.type:
             type_ = self.invoice.type
         elif self.invoice_type:
@@ -286,13 +260,14 @@ class InvoiceLine(metaclass=PoolMeta):
         else:
             return
 
-        return self.get_aeat349_operation_key(type_, self.taxes)
+        return self.get_aeat349_operation_key(type_, self.amount, self.taxes)
 
     @classmethod
-    def get_aeat349_operation_key(cls, invoice_type, taxes):
-        type_ = 'in' if invoice_type == 'in' else 'out'
+    def get_aeat349_operation_key(cls, invoice_type, amount, taxes):
+        direction = 'in' if invoice_type == 'in' else 'out'
+        type_ = 'operation' if amount >= Decimal('0.0') else 'ammendment'
         for tax in taxes:
-            name = 'aeat349_default_%s_operation_key' % type_
+            name = 'aeat349_default_%s_%s_key' % (direction, type_)
             value = getattr(tax, name)
             if value:
                 return value.id
@@ -315,136 +290,97 @@ class InvoiceLine(metaclass=PoolMeta):
                         taxes_ids.extend(value)
                 with Transaction().set_user(0):
                     taxes = Taxes.browse(taxes_ids)
+                amount = (Decimal(str(vals.get('quantity', 0)))
+                    * Decimal(str(vals.get('unit_price', 0))))
                 vals['aeat349_operation_key'] = cls.get_aeat349_operation_key(
-                    invoice_type, taxes)
+                    invoice_type, amount, taxes)
         return super(InvoiceLine, cls).create(vlist)
+
+    @classmethod
+    def check_aeat349(cls, lines):
+        pool = Pool()
+        Operation = pool.get('aeat.349.report.operation')
+        Ammendment = pool.get('aeat.349.report.ammendment')
+
+        operations = Operation.search([
+                ('invoice_lines', 'in', lines),
+                ('report.state', 'in', ('calculated', 'done'),)
+                ])
+        ammendments = Ammendment.search([
+                ('invoice_lines', 'in', lines),
+                ('report.state', 'in', ('calculated', 'done'),)
+                ])
+
+        return [x.report for x in operations + ammendments]
+
+    @classmethod
+    def delete(cls, lines):
+        reports = cls.check_aeat349(lines)
+        if reports:
+            invoices = ", ".join([l.invoice.rec_name for l in lines
+                    if l.invoice])
+            reports = ", ".join([r.rec_name for r in reports])
+            raise UserError(gettext('aeat_349.msg_delete_lines_in_349report',
+                    invoices=invoices.rec_name,
+                    reports=reports
+                    ))
+        super().delete(lines)
+
+    def _credit(self):
+        pool = Pool()
+        AEAT349Type = pool.get('aeat.349.type')
+
+        line = super(InvoiceLine, self)._credit()
+        if self.aeat349_operation:
+            aeat349_ammendment, = AEAT349Type.search([
+                ('operation_key', '=', 'A-%s' % (self.aeat349_operation.operation_key)),
+            ])
+            line.aeat349_operation_key = aeat349_ammendment.id
+        return line
 
 
 class Invoice(metaclass=PoolMeta):
     __name__ = 'account.invoice'
 
     @classmethod
-    def create_aeat349_records(cls, invoices):
-        pool = Pool()
-        Record = pool.get('aeat.349.record')
-        Currency = pool.get('currency.currency')
-        to_create = {}
-        for invoice in invoices:
-            if not invoice.move:
-                continue
-            for line in invoice.lines:
-                if line.type != 'line':
-                    continue
-                if line.aeat349_operation_key:
-                    operation_key = line.aeat349_operation_key.operation_key
-                    key = "%d-%s" % (invoice.id, operation_key)
-                    amount = line.amount
-                    if invoice.currency != invoice.company.currency:
-                        with Transaction().set_context(
-                                date=invoice.currency_date):
-                            amount = Currency.compute(
-                                invoice.currency, amount,
-                                invoice.company.currency)
-                    if key in to_create:
-                        to_create[key]['base'] += amount
-                    else:
-                        month = (invoice.accounting_date.month
-                             if invoice.accounting_date
-                             else invoice.invoice_date.month)
-                        to_create[key] = {
-                            'company': invoice.company.id,
-                            'year': (invoice.accounting_date or invoice.invoice_date).year,
-                            'month': month,
-                            'party_name': invoice.party.name[:40],
-                            'party_vat': (invoice.party.tax_identifier.code
-                                if invoice.party.tax_identifier else ''),
-                            'base': amount,
-                            'operation_key': operation_key,
-                            'invoice': invoice.id,
-                            }
-
-        with Transaction().set_user(0, set_context=True):
-            Record.delete(Record.search([('invoice', 'in',
-                            [i.id for i in invoices])]))
-            Record.create(list(to_create.values()))
-
-    @classmethod
     def draft(cls, invoices):
         pool = Pool()
-        Record = pool.get('aeat.349.record')
-        super(Invoice, cls).draft(invoices)
-        Record.delete_record(invoices)
+        Line = pool.get('account.invoice.line')
 
-    @classmethod
-    def post(cls, invoices):
-        super(Invoice, cls).post(invoices)
-        cls.create_aeat349_records(invoices)
+        super(Invoice, cls).draft(invoices)
+
+        lines = [l for i in invoices for l in i.lines]
+        reports = Line.check_aeat349(lines)
+        if reports:
+            invoices_name = ", ".join([l.invoice.rec_name for l in lines
+                    if l.invoice])
+            reports = ", ".join([r.rec_name for r in reports])
+            raise UserError(gettext('aeat_349.msg_delete_lines_in_349report',
+                    invoices=invoices_name,
+                    reports=reports
+                    ))
 
     @classmethod
     @ModelView.button
     @Workflow.transition('cancelled')
     def cancel(cls, invoices):
         pool = Pool()
-        Record = pool.get('aeat.349.record')
+        Line = pool.get('account.invoice.line')
+
         super(Invoice, cls).cancel(invoices)
 
-        invoices_to_delete = []
-        for invoice in invoices:
-            records = Record.search([
-                    ('invoice', '=', invoice.id),
-                    ])
-            if not records or len(records) > 1:
-                continue
-            if invoice.cancel_move:
-                record = records[0]
-                if record.operation:
-                    raise UserError(gettext('aeat_349.msg_forbiden_cancel',
-                            invoice=invoice.rec_name,
-                            report=record.operation.report.rec_name
-                            ))
-                default = {
-                    'base': -record.base
-                    }
-                Record.copy(records, default=default)
-        Record.delete_record(invoices_to_delete)
+        if not Transaction().context.get('credit_wizard'):
+            lines = [l for i in invoices for l in i.lines]
+            reports = Line.check_aeat349(lines)
 
-
-class Recalculate349RecordStart(ModelView):
-    """
-    Recalculate AEAT 349 Records Start
-    """
-    __name__ = "aeat.349.recalculate.records.start"
-
-
-class Recalculate349RecordEnd(ModelView):
-    """
-    Recalculate AEAT 349 Records End
-    """
-    __name__ = "aeat.349.recalculate.records.end"
-
-
-class Recalculate349Record(Wizard):
-    """
-    Recalculate AEAT 349 Records
-    """
-    __name__ = "aeat.349.recalculate.records"
-    start = StateView('aeat.349.recalculate.records.start',
-        'aeat_349.aeat_349_recalculate_start_view', [
-            Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Calculate', 'calculate', 'tryton-ok', default=True),
-            ])
-    calculate = StateTransition()
-    done = StateView('aeat.349.recalculate.records.end',
-        'aeat_349.aeat_349_recalculate_end_view', [
-            Button('Ok', 'end', 'tryton-ok', default=True),
-            ])
-
-    def transition_calculate(self):
-        Invoice = Pool().get('account.invoice')
-        invoices = Invoice.browse(Transaction().context['active_ids'])
-        Invoice.create_aeat349_records(invoices)
-        return 'done'
-
+            if reports:
+                invoices_name = ", ".join([l.invoice.rec_name for l in lines
+                        if l.invoice])
+                reports = ", ".join([r.rec_name for r in reports])
+                raise UserError(gettext('aeat_349.msg_delete_lines_in_349report',
+                    invoices=invoices_name,
+                    reports=reports
+                    ))
 
 class Reasign349RecordStart(ModelView):
     """
@@ -502,7 +438,21 @@ class Reasign349Record(Wizard):
         cursor.execute(*line.update(columns=[line.aeat349_operation_key],
                 values=[value.id], where=In(line.id, lines)))
 
-        invoices = Invoice.browse(list(invoices))
-        Invoice.create_aeat349_records(invoices)
-
         return 'done'
+
+
+class CreditInvoice(metaclass=PoolMeta):
+    __name__ = 'account.invoice.credit'
+
+    def do_credit(self, action):
+        with Transaction().set_context(credit_wizard=True):
+            return super(CreditInvoice, self).do_credit(action)
+
+
+class InvoiceLineDisccount(metaclass=PoolMeta):
+    __name__ = 'account.invoice.line'
+
+    @fields.depends('gross_unit_price')
+    def on_change_with_aeat349_operation_key(self):
+        super(InvoiceLineDisccount, self
+            ).on_change_with_aeat349_operation_key()
