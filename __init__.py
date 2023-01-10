@@ -13,17 +13,17 @@ def register():
         invoice.Type,
         invoice.TypeTaxTemplate,
         invoice.TypeTax,
-        invoice.Record,
         invoice.TaxTemplate,
         invoice.Tax,
         invoice.Invoice,
         invoice.InvoiceLine,
-        invoice.Recalculate349RecordStart,
-        invoice.Recalculate349RecordEnd,
         invoice.Reasign349RecordStart,
         invoice.Reasign349RecordEnd,
         module='aeat_349', type_='model')
     Pool.register(
-        invoice.Recalculate349Record,
         invoice.Reasign349Record,
+        invoice.CreditInvoice,
         module='aeat_349', type_='wizard')
+    Pool.register(
+        invoice.InvoiceLineDisccount,
+        module='aeat_349', type_='model', depends=['account_invoice_discount'])

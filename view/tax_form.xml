@@ -9,6 +9,10 @@ contains the full copyright notices and license terms. -->
             <field name="aeat349_default_in_operation_key"/>
             <label name="aeat349_default_out_operation_key"/>
             <field name="aeat349_default_out_operation_key"/>
+            <label name="aeat349_default_in_ammendment_key"/>
+            <field name="aeat349_default_in_ammendment_key"/>
+            <label name="aeat349_default_out_ammendment_key"/>
+            <field name="aeat349_default_out_ammendment_key"/>
         </page>
    </xpath>
 </data>

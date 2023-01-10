@@ -10,12 +10,17 @@ contains the full copyright notices and license terms. -->
     <field name="party_vat"/>
     <label name="operation_key"/>
     <field name="operation_key" colspan="3"/>
+    <label name="substitution_nif"/>
+    <field name="substitution_nif"/>
+    <label name="substitution_name"/>
+    <field name="substitution_name"/>
     <label name="ammendment_fiscalyear_code"/>
     <field name="ammendment_fiscalyear_code"/>
     <label name="ammendment_period"/>
     <field name="ammendment_period"/>
-    <label name="base"/>
-    <field name="base"/>
     <label name="original_base"/>
     <field name="original_base"/>
+    <label name="base"/>
+    <field name="base"/>
+    <field name="invoice_lines" colspan="4"/>
 </form>
