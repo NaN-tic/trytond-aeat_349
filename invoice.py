@@ -369,7 +369,6 @@ class Invoice(metaclass=PoolMeta):
 
         super(Invoice, cls).cancel(invoices)
 
-        print('\n',Transaction().context,'\n')
         if not Transaction().context.get('credit_wizard'):
             lines = [l for i in invoices for l in i.lines]
             reports = Line.check_aeat349(lines)
