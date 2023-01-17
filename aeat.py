@@ -374,19 +374,21 @@ class Report(Workflow, ModelSQL, ModelView):
                 ('report', 'in', [r.id for r in reports])]))
 
         for report in reports:
-            year = report.year
+            year = end_year = report.year
             multiplier = 1
             period = report.period
             if 'T' in period:
                 period = int(period[0]) - 1
                 multiplier = 3
-                start_month = period * multiplier + 1
             else:
                 start_month = int(period) * multiplier
             end_month = start_month + multiplier
+            if end_month > 12:
+                end_month = 1
+                end_year = year + 1
 
             start_date = datetime.datetime(year, start_month, 1).date()
-            end_date = datetime.datetime(year, end_month, 1).date()
+            end_date = datetime.datetime(end_year, end_month, 1).date()
 
             lines = Line.search([
                     ('aeat349_operation_key', '!=', None),
