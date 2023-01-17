@@ -309,7 +309,7 @@ class Report(Workflow, ModelSQL, ModelView):
         Currency = pool.get('currency.currency')
         InvoiceLine = pool.get('account.invoice.line')
 
-        amount = abs(line.amount)
+        amount = abs(line.amount) if ammendment else line.amount
         if line.invoice.currency != line.invoice.company.currency:
             with Transaction().set_context(
                     date=line.invoice.currency_date):
@@ -392,14 +392,14 @@ class Report(Workflow, ModelSQL, ModelView):
 
             lines = Line.search([
                     ('aeat349_operation_key', '!=', None),
-                    ['OR',
-                        ('invoice.accounting_date', '>=', start_date),
-                        ('invoice.invoice_date', '>=', start_date)
-                        ],
-                    ['OR',
-                        ('invoice.accounting_date', '<', end_date),
-                        ('invoice.invoice_date', '<', end_date)
-                        ]])
+                    ('invoice.accounting_date', '>=', start_date),
+                    ('invoice.accounting_date', '<', end_date)])
+
+            lines.extend(Line.search([
+                        ('aeat349_operation_key', '!=', None),
+                        ('invoice.accounting_date', '=', None),
+                        ('invoice.invoice_date', '>=', start_date),
+                        ('invoice.invoice_date', '<', end_date)]))
 
             operation_to_create = {}
             ammendment_to_create = {}
