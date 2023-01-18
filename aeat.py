@@ -380,6 +380,7 @@ class Report(Workflow, ModelSQL, ModelView):
             if 'T' in period:
                 period = int(period[0]) - 1
                 multiplier = 3
+                start_month = period * multiplier + 1
             else:
                 start_month = int(period) * multiplier
             end_month = start_month + multiplier
