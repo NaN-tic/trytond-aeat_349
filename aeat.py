@@ -394,13 +394,15 @@ class Report(Workflow, ModelSQL, ModelView):
             lines = Line.search([
                     ('aeat349_operation_key', '!=', None),
                     ('invoice.accounting_date', '>=', start_date),
-                    ('invoice.accounting_date', '<', end_date)])
+                    ('invoice.accounting_date', '<', end_date),
+                    ('invoice.company', '=', report.company)])
 
             lines.extend(Line.search([
                         ('aeat349_operation_key', '!=', None),
                         ('invoice.accounting_date', '=', None),
                         ('invoice.invoice_date', '>=', start_date),
-                        ('invoice.invoice_date', '<', end_date)]))
+                        ('invoice.invoice_date', '<', end_date),
+                        ('invoice.company', '=', report.company)]))
 
             operation_to_create = {}
             ammendment_to_create = {}
