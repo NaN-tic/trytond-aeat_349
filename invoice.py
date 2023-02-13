@@ -290,8 +290,8 @@ class InvoiceLine(metaclass=PoolMeta):
                         taxes_ids.extend(value)
                 with Transaction().set_user(0):
                     taxes = Taxes.browse(taxes_ids)
-                amount = (Decimal(str(vals.get('quantity', 0)))
-                    * Decimal(str(vals.get('unit_price', 0))))
+                amount = (Decimal(str(vals.get('quantity') or 0))
+                    * Decimal(str(vals.get('unit_price') or 0)))
                 vals['aeat349_operation_key'] = cls.get_aeat349_operation_key(
                     invoice_type, amount, taxes)
         return super(InvoiceLine, cls).create(vlist)
