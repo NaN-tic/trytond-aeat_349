@@ -333,7 +333,8 @@ class InvoiceLine(metaclass=PoolMeta):
         line = super(InvoiceLine, self)._credit()
         if self.aeat349_operation:
             aeat349_ammendment, = AEAT349Type.search([
-                ('operation_key', '=', 'A-%s' % (self.aeat349_operation.operation_key)),
+                ('operation_key', '=', 'A-%s' % (
+                    self.aeat349_operation.operation_key)),
             ])
             line.aeat349_operation_key = aeat349_ammendment.id
         return line
@@ -377,10 +378,12 @@ class Invoice(metaclass=PoolMeta):
                 invoices_name = ", ".join([l.invoice.rec_name for l in lines
                         if l.invoice])
                 reports = ", ".join([r.rec_name for r in reports])
-                raise UserError(gettext('aeat_349.msg_delete_lines_in_349report',
-                    invoices=invoices_name,
-                    reports=reports
+                raise UserError(
+                    gettext('aeat_349.msg_delete_lines_in_349report',
+                        invoices=invoices_name,
+                        reports=reports
                     ))
+
 
 class Reasign349RecordStart(ModelView):
     """
@@ -454,5 +457,5 @@ class InvoiceLineDisccount(metaclass=PoolMeta):
 
     @fields.depends('gross_unit_price')
     def on_change_with_aeat349_operation_key(self):
-        super(InvoiceLineDisccount, self
+        return super(InvoiceLineDisccount, self
             ).on_change_with_aeat349_operation_key()
