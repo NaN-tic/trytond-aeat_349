@@ -276,6 +276,7 @@ class InvoiceLine(metaclass=PoolMeta):
     def create(cls, vlist):
         Invoice = Pool().get('account.invoice')
         Taxes = Pool().get('account.tax')
+        vlist = [x.copy() for x in vlist]
         for vals in vlist:
             if vals.get('type', 'line') != 'line':
                 continue
