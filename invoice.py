@@ -99,25 +99,25 @@ class TaxTemplate(ModelSQL, ModelView):
         domain=[
             ('id', 'in', Eval('aeat349_operation_keys', [])),
             ('operation_key', 'in', OP_KEY),
-            ], depends=['aeat349_operation_keys'])
+            ])
     aeat349_default_in_operation_key = fields.Many2One('aeat.349.type',
         'Default In Operation Key',
         domain=[
             ('id', 'in', Eval('aeat349_operation_keys', [])),
             ('operation_key', 'in', OP_KEY),
-            ], depends=['aeat349_operation_keys'])
+            ])
     aeat349_default_out_ammendment_key = fields.Many2One('aeat.349.type',
         'Default Out Ammendment Key',
         domain=[
             ('id', 'in', Eval('aeat349_operation_keys', [])),
             ('operation_key', 'in', AM_KEY),
-            ], depends=['aeat349_operation_keys'])
+            ])
     aeat349_default_in_ammendment_key = fields.Many2One('aeat.349.type',
         'Default In Ammendment Key',
         domain=[
             ('id', 'in', Eval('aeat349_operation_keys', [])),
             ('operation_key', 'in', AM_KEY),
-            ], depends=['aeat349_operation_keys'])
+            ])
 
     def _get_tax_value(self, tax=None):
         res = super(TaxTemplate, self)._get_tax_value(tax)
@@ -170,31 +170,30 @@ class Tax(metaclass=PoolMeta):
         domain=[
             ('id', 'in', Eval('aeat349_operation_keys', [])),
             ('operation_key', 'in', OP_KEY),
-            ], depends=['aeat349_operation_keys'])
+            ])
     aeat349_default_in_operation_key = fields.Many2One('aeat.349.type',
         'Default In Operation Key',
         domain=[
             ('id', 'in', Eval('aeat349_operation_keys', [])),
             ('operation_key', 'in', OP_KEY),
-            ], depends=['aeat349_operation_keys'])
+            ])
     aeat349_default_out_ammendment_key = fields.Many2One('aeat.349.type',
         'Default Out Ammendment Key',
         domain=[
             ('id', 'in', Eval('aeat349_operation_keys', [])),
             ('operation_key', 'in', AM_KEY),
-            ], depends=['aeat349_operation_keys'])
+            ])
     aeat349_default_in_ammendment_key = fields.Many2One('aeat.349.type',
         'Default In Ammendment Key',
         domain=[
             ('id', 'in', Eval('aeat349_operation_keys', [])),
             ('operation_key', 'in', AM_KEY),
-            ], depends=['aeat349_operation_keys'])
+            ])
 
 
 STATES = {
     'invisible': Eval('type') != 'line',
     }
-DEPENDS = ['type']
 
 # TODO: Remove from databse the aeat_349_record table
 
@@ -203,13 +202,12 @@ class InvoiceLine(metaclass=PoolMeta):
     __name__ = 'account.invoice.line'
     aeat349_available_keys = fields.Function(fields.Many2Many('aeat.349.type',
         None, None, 'AEAT 349 Available Keys',
-        states=STATES, depends=DEPENDS + ['taxes', 'product']),
+        states=STATES),
         'on_change_with_aeat349_available_keys')
     aeat349_operation_key = fields.Many2One('aeat.349.type',
         'AEAT 349 Operation Key',
-        states=STATES, depends=DEPENDS + ['aeat349_available_keys', 'taxes',
-            'invoice_type', 'product'],
-        domain=[('id', 'in', Eval('aeat349_available_keys', []))],)
+        states=STATES, domain=[
+            ('id', 'in', Eval('aeat349_available_keys', []))],)
     aeat349_operation = fields.Many2One('aeat.349.report.operation',
         '349 Operation', readonly=True)
     aeat349_ammendment = fields.Many2One('aeat.349.report.ammendment',

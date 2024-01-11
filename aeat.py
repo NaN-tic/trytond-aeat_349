@@ -102,7 +102,7 @@ class Report(Workflow, ModelSQL, ModelView):
     company = fields.Many2One('company.company', 'Company', required=True,
         states={
             'readonly': Eval('state') == 'done',
-            }, depends=['state'])
+            })
     currency = fields.Function(fields.Many2One('currency.currency',
         'Currency'), 'get_currency')
     previous_number = fields.Char('Previous Declaration Number', size=13,
@@ -110,23 +110,23 @@ class Report(Workflow, ModelSQL, ModelView):
             'readonly': Eval('state') == 'done',
             'invisible': Eval('type') == 'N',
             'required': Eval('type') != 'N',
-            }, depends=['state', 'type'])
+            })
     representative_vat = fields.Char('L.R. VAT number', size=9,
         help='Legal Representative VAT number.', states={
             'readonly': Eval('state') == 'done',
-            }, depends=['state'])
+            })
     year = fields.Integer("Year", required=True)
     company_vat = fields.Char('VAT number', size=9, states={
             'required': True,
             'readonly': Eval('state') == 'done',
-            }, depends=['state', 'company'])
+            })
     type = fields.Selection([
             ('N', 'Normal'),
             ('C', 'Complementary'),
             ('S', 'Substitutive')
             ], 'Statement Type', required=True, states={
                 'readonly': Eval('state') == 'done',
-            }, depends=['state'])
+            })
     calculation_date = fields.DateTime("Calculation Date", readonly=True)
     state = fields.Selection([
             ('draft', 'Draft'),
@@ -140,11 +140,11 @@ class Report(Workflow, ModelSQL, ModelView):
         'name, necessarily in this order.', states={
             'required': True,
             'readonly': Eval('state') == 'confirmed',
-            }, depends=['state'])
+            })
     contact_phone = fields.Char('Phone', size=9, states={
             'required': True,
             'readonly': Eval('state') == 'confirmed',
-            }, depends=['state'])
+            })
     operations = fields.One2Many('aeat.349.report.operation', 'report',
         'Operations')
     operation_amount = fields.Function(fields.Numeric(
