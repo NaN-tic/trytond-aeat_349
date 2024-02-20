@@ -473,7 +473,7 @@ class Report(Workflow, ModelSQL, ModelView):
         record.contact_name = self.contact_name
         try:
             period = int(self.period)
-            if len(period) < 2
+            if len(period) < 2:
                 period = '0%s' % str(period)
         except ValueError:
             period = '0%s' % self.period[:1]
