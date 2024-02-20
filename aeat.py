@@ -473,10 +473,9 @@ class Report(Workflow, ModelSQL, ModelView):
         record.contact_name = self.contact_name
         try:
             period = int(self.period)
-            if len(period) < 2:
-                period = '0%s' % str(period)
+            period = '%02d' % period
         except ValueError:
-            period = '0%s' % self.period[:1]
+            period = '0%s' % self.period[0]
         # It must be a number of 13 digits, and the first three must be '349'.
         # So need to ensure to have 13 digits, beacsue in retrofix if not
         # arrive 13 digits if ill with 0 from left and the number became
