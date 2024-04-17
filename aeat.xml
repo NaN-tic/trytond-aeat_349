@@ -29,14 +29,14 @@ contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_aeat_349_report"/>
         </record>
         <record model="ir.model.access" id="access_aeat_349_report">
-            <field name="model" search="[('model', '=', 'aeat.349.report')]"/>
+            <field name="model">aeat.349.report</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_aeat_349_report_admin">
-            <field name="model" search="[('model', '=', 'aeat.349.report')]"/>
+            <field name="model">aeat.349.report</field>
             <field name="group" ref="account.group_account"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -48,22 +48,22 @@ contains the full copyright notices and license terms. -->
         <record model="ir.model.button" id="aeat_349_report_draft_button">
             <field name="name">draft</field>
             <field name="string">Draft</field>
-            <field name="model" search="[('model', '=', 'aeat.349.report')]"/>
+            <field name="model">aeat.349.report</field>
         </record>
         <record model="ir.model.button" id="aeat_349_report_calculate_button">
             <field name="name">calculate</field>
             <field name="string">Calculate</field>
-            <field name="model" search="[('model', '=', 'aeat.349.report')]"/>
+            <field name="model">aeat.349.report</field>
         </record>
         <record model="ir.model.button" id="aeat_349_report_process_button">
             <field name="name">process</field>
             <field name="string">Process</field>
-            <field name="model" search="[('model', '=', 'aeat.349.report')]"/>
+            <field name="model">aeat.349.report</field>
         </record>
         <record model="ir.model.button" id="aeat_349_report_cancel_button">
             <field name="name">cancel</field>
             <field name="string">Cancel</field>
-            <field name="model" search="[('model', '=', 'aeat.349.report')]"/>
+            <field name="model">aeat.349.report</field>
         </record>
 
         <record model="ir.ui.view" id="aeat_349_report_operation_form_view">
@@ -92,14 +92,14 @@ contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_aeat_349_report_operation"/>
         </record>
         <record model="ir.model.access" id="access_aeat_349_report_operation">
-            <field name="model" search="[('model', '=', 'aeat.349.report.operation')]"/>
+            <field name="model">aeat.349.report.operation</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_aeat_349_report_operation_admin">
-            <field name="model" search="[('model', '=', 'aeat.349.report.operation')]"/>
+            <field name="model">aeat.349.report.operation</field>
             <field name="group" ref="account.group_account"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -133,14 +133,14 @@ contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_aeat_349_report_ammendment"/>
         </record>
         <record model="ir.model.access" id="access_aeat_349_report_ammendment">
-            <field name="model" search="[('model', '=', 'aeat.349.report.ammendment')]"/>
+            <field name="model">aeat.349.report.ammendment</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_aeat_349_report_ammendment_admin">
-            <field name="model" search="[('model', '=', 'aeat.349.report.ammendment')]"/>
+            <field name="model">aeat.349.report.ammendment</field>
             <field name="group" ref="account.group_account"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -150,7 +150,7 @@ contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_aeat349">
             <field name="name">User in company</field>
-            <field name="model" search="[('model', '=', 'aeat.349.report')]"/>
+            <field name="model">aeat.349.report</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_aeat_349_1">
@@ -162,8 +162,7 @@ contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_aeat349_operation">
             <field name="name">User in company</field>
-            <field name="model"
-                search="[('model', '=', 'aeat.349.report.operation')]"/>
+            <field name="model">aeat.349.report.operation</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_aeat_349_operation_1">
@@ -175,8 +174,7 @@ contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_aeat349_ammendment">
             <field name="name">User in company</field>
-            <field name="model"
-                search="[('model', '=', 'aeat.349.report.ammendment')]"/>
+            <field name="model">aeat.349.report.ammendment</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_aeat_349_ammendment_1">
