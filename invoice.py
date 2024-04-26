@@ -19,7 +19,6 @@ AM_KEY = list(dict(AMMENDMENT_KEY).keys())
 class Type(ModelSQL, ModelView):
     """
     AEAT 349 Type
-
     Keys types for AEAT 349 Report
     """
     __name__ = 'aeat.349.type'

@@ -352,10 +352,17 @@ class Report(Workflow, ModelSQL, ModelView):
                         and isinstance(line.origin, InvoiceLine)):
                     origin = line.origin.aeat349_operation or None
                     if origin:
-                        to_create[key]['ammendment_fiscalyear_code'] = (
-                            origin.report.year)
-                        to_create[key]['ammendment_period'] = (
-                            origin.report.period)
+                        year = line.report.year
+                        period = line.report.period
+                        ammendment_year = origin.report.year
+                        ammendment_period = origin.report.period
+                        if (ammendment_year != year or
+                                (ammendment_year == year
+                                    and ammendment_period != period)):
+                            to_create[key]['ammendment_fiscalyear_code'] = (
+                                ammendment_year)
+                            to_create[key]['ammendment_period'] = (
+                                ammendment_period)
                         to_create[key]['original_base'] = origin.base
 
     @classmethod
@@ -617,18 +624,14 @@ class Ammendment(ModelSQL, ModelView):
         return [('report.%s' % name,) + tuple(clause[1:])]
 
     def get_record(self):
-        if not self.ammendment_fiscalyear_code or not self.ammendment_period:
-            raise UserError(
-                gettext('aeat_349.msg_missing_ammendment_information',
-                    party=self.party_name,
-                    ))
         record = Record(aeat349.AMMENDMENT_RECORD)
         record.party_vat = self.party_vat
         record.party_name = self.party_name
         record.operation_key = self.operation_key
         record.base = self.base
-        record.ammendment_fiscalyear = str(self.ammendment_fiscalyear_code)
-        record.ammendment_period = self.ammendment_period
+        record.ammendment_fiscalyear = (str(self.ammendment_fiscalyear_code)
+            if self.ammendment_fiscalyear_code else '')
+        record.ammendment_period = self.ammendment_period or ''
         record.original_base = (self.original_base if self.original_base else
             Decimal(0))
         record.substitution_nif = self.substitution_nif
