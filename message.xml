@@ -23,8 +23,5 @@ To do that the reports
 %(reports)s
 must be canceleld or drafted.</field>
         </record>
-        <record model="ir.message" id="msg_missing_ammendment_information">
-            <field name="text">Is missing information in the ammendment of party "%(party)s".</field>
-        </record>
     </data>
 </tryton>
