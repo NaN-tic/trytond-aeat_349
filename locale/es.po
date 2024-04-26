@@ -362,10 +362,6 @@ msgctxt "model:ir.message,text:msg_invalid_year"
 msgid "The year \"%(year)s\" is not valid."
 msgstr "El año \"%(year)s\" no es correcto."
 
-msgctxt "model:ir.message,text:msg_missing_ammendment_information"
-msgid "Is missing information in the ammendment of party \"%(party)s\"."
-msgstr "Falta información en la rectificación del tercero \"%(party)s\"."
-
 msgctxt "model:ir.model.button,string:aeat_349_report_calculate_button"
 msgid "Calculate"
 msgstr "Calcular"
