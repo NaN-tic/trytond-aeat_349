@@ -319,9 +319,7 @@ class InvoiceLine(metaclass=PoolMeta):
                     if l.invoice])
             reports = ", ".join([r.rec_name for r in reports])
             raise UserError(gettext('aeat_349.msg_delete_lines_in_349report',
-                    invoices=invoices.rec_name,
-                    reports=reports
-                    ))
+                    invoices=invoices, reports=reports))
         super().delete(lines)
 
     def _credit(self):
