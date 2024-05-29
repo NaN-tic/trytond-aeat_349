@@ -224,8 +224,8 @@ Generate 349 Report::
     >>> report.click('calculate')
     >>> report.operation_amount
     Decimal('325.00')
-    >>> report.ammendment_amount
-    Decimal('0.0')
+    >>> report.ammendment_amount == Decimal('0.0')
+    True
     >>> len(report.operations)
     2
     >>> len(report.ammendments)
