@@ -262,7 +262,7 @@ class InvoiceLine(metaclass=PoolMeta):
     @classmethod
     def get_aeat349_operation_key(cls, invoice_type, amount, taxes):
         direction = 'in' if invoice_type == 'in' else 'out'
-        type_ = 'operation' if amount >= Decimal('0.0') else 'ammendment'
+        type_ = 'operation' if amount >= Decimal(0) else 'ammendment'
         for tax in taxes:
             name = 'aeat349_default_%s_%s_key' % (direction, type_)
             value = getattr(tax, name)

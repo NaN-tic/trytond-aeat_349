@@ -66,7 +66,7 @@ AMMENDMENT_KEY = [
         'consignee'),
     ]
 
-_ZERO = Decimal('0.0')
+_ZERO = Decimal(0)
 
 
 def remove_accents(unicode_string):
@@ -293,10 +293,10 @@ class Report(Workflow, ModelSQL, ModelView):
         for report in reports:
             res['operation_count'][report.id] = len(report.operations)
             res['operation_amount'][report.id] = (sum([
-                        x.base for x in report.operations]) or Decimal('0.0'))
+                        x.base for x in report.operations]) or Decimal(0))
             res['ammendment_count'][report.id] = len(report.ammendments)
             res['ammendment_amount'][report.id] = (sum([
-                        x.base for x in report.ammendments]) or Decimal('0.0'))
+                        x.base for x in report.ammendments]) or Decimal(0))
         for key in list(res.keys()):
             if key not in names:
                 del res[key]
