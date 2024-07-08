@@ -462,7 +462,7 @@ class CreditInvoice(metaclass=PoolMeta):
 class InvoiceLineDisccount(metaclass=PoolMeta):
     __name__ = 'account.invoice.line'
 
-    @fields.depends('gross_unit_price')
+    @fields.depends('base_price')
     def on_change_with_aeat349_operation_key(self):
         return super(InvoiceLineDisccount, self
             ).on_change_with_aeat349_operation_key()
