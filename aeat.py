@@ -401,12 +401,14 @@ class Report(Workflow, ModelSQL, ModelView):
             end_date = datetime.datetime(end_year, end_month, 1).date()
 
             lines = Line.search([
+                    ('invoice.company', '=', report.company),
                     ('invoice.state', 'in', {'posted', 'paid'}),
                     ('aeat349_operation_key', '!=', None),
                     ('invoice.accounting_date', '>=', start_date),
                     ('invoice.accounting_date', '<', end_date)])
 
             lines.extend(Line.search([
+                        ('invoice.company', '=', report.company),
                         ('invoice.state', 'in', {'posted', 'paid'}),
                         ('aeat349_operation_key', '!=', None),
                         ('invoice.accounting_date', '=', None),
