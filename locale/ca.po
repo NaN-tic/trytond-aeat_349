@@ -302,10 +302,6 @@ msgctxt "model:ir.action,name:act_aeat_349_report_operation"
 msgid "AEAT 349 Report Operation"
 msgstr "Operació informe AEAT 349"
 
-msgctxt "model:ir.action.act_window,name:"
-msgid "AEAT 349 Record "
-msgstr "Registre AEAT 349"
-
 msgctxt "model:ir.action.act_window,name:act_aeat_349_report"
 msgid "AEAT 349 Report"
 msgstr "Informe AEAT 349"
