@@ -282,10 +282,6 @@ msgctxt "model:aeat.349.type-account.tax.template,name:"
 msgid "AEAT 349 Type-Tax Template Relation"
 msgstr "Relació plantilla d'impost-Tipus AEAT 349"
 
-msgctxt "model:ir.action,name:"
-msgid "Recalculate AEAT 349 Records"
-msgstr "Recalcula registres AEAT 349"
-
 msgctxt "model:ir.action,name:act_aeat_349_reasign"
 msgid "Reasign AEAT 349 Records"
 msgstr "Reassigna registres AEAT 349"
