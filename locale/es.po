@@ -344,7 +344,7 @@ msgstr ""
 "Hay algunas líneas de factura de las facturas \n"
 "%(invoices)s\n"
 "que se eliminarán en el informe 349.\n"
-"Para hacer eso tienes que canelar o dejar en borrador el informe \n"
+"Para hacer eso tienes que cancelar o dejar en borrador el informe \n"
 "%(reports)s."
 
 msgctxt "model:ir.message,text:msg_forbiden_cancel"
