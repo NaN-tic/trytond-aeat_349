@@ -386,10 +386,6 @@ msgctxt "model:ir.rule.group,name:rule_group_aeat349_operation"
 msgid "User in company"
 msgstr "Usuario en la empresa"
 
-msgctxt "model:ir.ui.menu,name:"
-msgid "AEAT 349 Record"
-msgstr "Registros AEAT 349"
-
 msgctxt "model:ir.ui.menu,name:menu_aeat_349_report"
 msgid "AEAT 349 Report"
 msgstr "Informes AEAT 349"
