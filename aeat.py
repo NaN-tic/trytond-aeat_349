@@ -352,10 +352,10 @@ class Report(Workflow, ModelSQL, ModelView):
                         and isinstance(line.origin, InvoiceLine)):
                     origin = line.origin.aeat349_operation or None
                     if origin:
-                        year = line.aeat349_operation.report.year
-                        period = line.aeat349_operation.report.period
                         ammendment_year = origin.report.year
                         ammendment_period = origin.report.period
+                        year = report.year
+                        period = report.period
                         if (ammendment_year != year or
                                 (ammendment_year == year
                                     and ammendment_period != period)):
