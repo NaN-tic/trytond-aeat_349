@@ -349,21 +349,21 @@ class Report(Workflow, ModelSQL, ModelView):
                     'invoice_lines': [('add', [line.id])],
                 }
                 if (ammendment and line.origin
-                        and isinstance(line.origin, InvoiceLine)):
-                    origin = line.origin.aeat349_operation or None
-                    if origin:
-                        year = line.aeat349_operation.report.year
-                        period = line.aeat349_operation.report.period
-                        ammendment_year = origin.report.year
-                        ammendment_period = origin.report.period
-                        if (ammendment_year != year or
-                                (ammendment_year == year
-                                    and ammendment_period != period)):
-                            to_create[key]['ammendment_fiscalyear_code'] = (
-                                ammendment_year)
-                            to_create[key]['ammendment_period'] = (
-                                ammendment_period)
-                        to_create[key]['original_base'] = origin.base
+                        and isinstance(line.origin, InvoiceLine)
+                        and line.aeat349_operation
+                        and line.origin.aeat349_operation):
+                    year = line.aeat349_operation.report.year
+                    period = line.aeat349_operation.report.period
+                    ammendment_year = origin.report.year
+                    ammendment_period = origin.report.period
+                    if (ammendment_year != year or
+                            (ammendment_year == year
+                                and ammendment_period != period)):
+                        to_create[key]['ammendment_fiscalyear_code'] = (
+                            ammendment_year)
+                        to_create[key]['ammendment_period'] = (
+                            ammendment_period)
+                    to_create[key]['original_base'] = origin.base
 
     @classmethod
     @ModelView.button
