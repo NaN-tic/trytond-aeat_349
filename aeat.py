@@ -348,7 +348,8 @@ class Report(Workflow, ModelSQL, ModelView):
                     'base': amount,
                     'invoice_lines': [('add', [line.id])],
                 }
-                if (ammendment and line.origin
+                if (ammendment
+                        and line.origin
                         and isinstance(line.origin, InvoiceLine)
                         and line.aeat349_operation
                         and line.origin.aeat349_operation):
