@@ -317,7 +317,6 @@ class InvoiceLine(metaclass=PoolMeta):
 
     @classmethod
     def create(cls, vlist):
-        Invoice = Pool().get('account.invoice')
         Taxes = Pool().get('account.tax')
 
         invoice_lines = super().create(vlist)
