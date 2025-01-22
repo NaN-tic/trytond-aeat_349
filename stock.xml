@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--The COPYRIGHT file at the top level of this repository
+contains the full copyright notices and license terms. -->
+<tryton>
+    <data depends="account_stock_eu_es">
+        <record model="ir.ui.view" id="move_view_form">
+            <field name="model">stock.move</field>
+            <field name="inherit" ref="stock.move_view_form"/>
+            <field name="name">move_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="act_aeat_349_reasign_move">
+            <field name="name">Reasign AEAT 349 Move Records</field>
+            <field name="wiz_name">aeat.349.reasign.move.records</field>
+        </record>
+        <record model="ir.action.keyword" id="act_aeat_349_reasign_move_keyword1">
+            <field name="action" ref="act_aeat_349_reasign_move"/>
+            <field name="keyword">form_action</field>
+            <field name="model">stock.shipment.internal,-1</field>
+        </record>
+        <record model="ir.action-res.group"
+            id="act_reasign_move-group_aeat349">
+            <field name="action" ref="act_aeat_349_reasign_move"/>
+            <field name="group" ref="account.group_account"/>
+        </record>
+    </data>
+</tryton>

@@ -16,5 +16,5 @@ contains the full copyright notices and license terms. -->
     <field name="substitution_name"/>
     <label name="base"/>
     <field name="base"/>
-    <field name="invoice_lines" colspan="4"/>
+    <field name="origins" colspan="4"/>
 </form>

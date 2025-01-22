@@ -1,13 +1,13 @@
 # The COPYRIGHT file at the top level of this repository contains the full
 # copyright notices and license terms.
 from trytond.pool import Pool
-from . import aeat
-from . import invoice
+from . import aeat, invoice, stock, configuration, aeat_move, invoice_move
 
 
 def register():
     Pool.register(
         aeat.Report,
+        aeat.ReportOrigin,
         aeat.Operation,
         aeat.Ammendment,
         invoice.Type,
@@ -27,3 +27,14 @@ def register():
     Pool.register(
         invoice.InvoiceLineDisccount,
         module='aeat_349', type_='model', depends=['account_invoice_discount'])
+    Pool.register(
+        configuration.Configuration,
+        configuration.ConfigurationAEAT349,
+        stock.Move,
+        aeat_move.Report,
+        aeat_move.ReportOrigin,
+        invoice_move.InvoiceLine,
+        module='aeat_349', type_='model', depends=['account_stock_eu_es'])
+    Pool.register(
+        stock.Reasign349MoveRecord,
+        module='aeat_349', type_='wizard', depends=['account_stock_eu_es'])
