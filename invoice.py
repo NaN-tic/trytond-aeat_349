@@ -6,7 +6,7 @@ from trytond.wizard import Wizard, StateView, StateTransition, Button
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
-from sql.operators import In
+from sql.operators import In, Concat
 from sql import Literal
 from trytond.i18n import gettext
 from trytond.exceptions import UserError
@@ -205,18 +205,61 @@ class InvoiceLine(metaclass=PoolMeta):
         'on_change_with_aeat349_available_keys')
     aeat349_operation_key = fields.Many2One('aeat.349.type',
         'AEAT 349 Operation Key',
-        states=STATES, domain=[
-            ('id', 'in', Eval('aeat349_available_keys', []))],)
-    aeat349_operation = fields.Many2One('aeat.349.report.operation',
-        '349 Operation', readonly=True)
-    aeat349_ammendment = fields.Many2One('aeat.349.report.ammendment',
-        '349 Ammendment', readonly=True)
+        states=STATES, depends=DEPENDS + ['aeat349_available_keys', 'taxes',
+            'invoice_type', 'product'],
+        domain=[('id', 'in', Eval('aeat349_available_keys', []))],)
+    aeat349_operation = fields.Function(
+        fields.Many2One('aeat.349.report.operation', '349 Operation',
+            readonly=True), 'get_aeat349_resource')
+    aeat349_ammendment = fields.Function(
+        fields.Many2One('aeat.349.report.ammendment', '349 Ammendment',
+            readonly=True), 'get_aeat349_resource')
 
     @classmethod
     def __setup__(cls):
         super().__setup__()
         cls._check_modify_exclude |= {'aeat349_operation',
             'aeat349_ammendment'}
+
+    @classmethod
+    def __register__(cls, module_name):
+        pool = Pool()
+        Origin = pool.get('aeat.349.report.origin')
+        sql_table = cls.__table__()
+        origin = Origin.__table__()
+
+        super().__register__(module_name)
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
+        table = cls.__table_handler__(module_name)
+
+        if table.column_exist('aeat349_operation'):
+            cursor.execute(*origin.insert(
+                    columns=[
+                        origin.operation,
+                        origin.ammendment,
+                        origin.resource],
+                    values=sql_table.select(
+                        sql_table.aeat349_operation,
+                        sql_table.aeat349_ammendment,
+                        Concat(cls.__name__ + ',', sql_table.id),
+                        where=((sql_table.aeat349_operation != None)
+                            | (sql_table.aeat349_ammendment != None)))))
+            table.drop_column('aeat349_operation')
+            table.drop_column('aeat349_ammendment')
+
+    def get_aeat349_resource(self, name):
+        pool = Pool()
+        Origin = pool.get('aeat.349.report.origin')
+
+        value = None
+        origins = Origin.search([
+                ('resource', '=', self),
+                ], limit=1)
+        if origins:
+            value = (origins[0].operation if name == 'aeat349_operation'
+                else origins[0].ammendment)
+        return value
 
     def _has_aeat349_operation_keys(self):
         # in case not has taxes or not has aeat 349, operation_key is None
@@ -244,6 +287,9 @@ class InvoiceLine(metaclass=PoolMeta):
         'invoice', '_parent_invoice.type', 'quantity', 'amount',
         'unit_price')
     def on_change_with_aeat349_operation_key(self):
+        pool = Pool()
+        Line = pool.get('account.invoice.line')
+
         if not self.taxes or not self._has_aeat349_operation_keys():
             return
         if not self.amount:
@@ -257,10 +303,10 @@ class InvoiceLine(metaclass=PoolMeta):
         else:
             return
 
-        return self.get_aeat349_operation_key(type_, self.amount, self.taxes)
+        return Line.get_aeat349_operation_key(self, type_, self.amount, self.taxes)
 
     @classmethod
-    def get_aeat349_operation_key(cls, invoice_type, amount, taxes):
+    def get_aeat349_operation_key(cls, line, invoice_type, amount, taxes):
         direction = 'in' if invoice_type == 'in' else 'out'
         type_ = 'operation' if amount >= Decimal(0) else 'ammendment'
         for tax in taxes:
@@ -273,26 +319,28 @@ class InvoiceLine(metaclass=PoolMeta):
     def create(cls, vlist):
         Invoice = Pool().get('account.invoice')
         Taxes = Pool().get('account.tax')
-        vlist = [x.copy() for x in vlist]
-        for vals in vlist:
-            if vals.get('type', 'line') != 'line':
+
+        invoice_lines = super().create(vlist)
+
+        to_save = []
+        for line in invoice_lines:
+            if line.type != 'line':
                 continue
-            if not vals.get('aeat349_operation_key') and vals.get('taxes'):
-                invoice_type = vals.get('invoice_type')
-                if not invoice_type and vals.get('invoice'):
-                    invoice = Invoice(vals.get('invoice'))
-                    invoice_type = invoice.type
-                taxes_ids = []
-                for key, value in vals.get('taxes'):
-                    if key == 'add':
-                        taxes_ids.extend(value)
+            if not line.aeat349_operation_key and line.taxes:
+                invoice_type = line.invoice_type
+                if not invoice_type and line.invoice:
+                    invoice_type = line.invoice.type
+                taxes_ids = [x.id for x in line.taxes]
                 with Transaction().set_user(0):
                     taxes = Taxes.browse(taxes_ids)
-                amount = (Decimal(str(vals.get('quantity') or 0))
-                    * Decimal(str(vals.get('unit_price') or 0)))
-                vals['aeat349_operation_key'] = cls.get_aeat349_operation_key(
-                    invoice_type, amount, taxes)
-        return super(InvoiceLine, cls).create(vlist)
+                amount = (Decimal(str(line.quantity or 0))
+                    * Decimal(str(line.unit_price or 0)))
+                line.aeat349_operation_key = cls.get_aeat349_operation_key(
+                    line, invoice_type, amount, taxes)
+                to_save.append(line)
+        if to_save:
+            cls.save(to_save)
+        return invoice_lines
 
     @classmethod
     def check_aeat349(cls, lines):
@@ -301,11 +349,11 @@ class InvoiceLine(metaclass=PoolMeta):
         Ammendment = pool.get('aeat.349.report.ammendment')
 
         operations = Operation.search([
-                ('invoice_lines', 'in', lines),
+                ('origins.resource', 'in', lines),
                 ('report.state', 'in', ('calculated', 'done'),)
                 ])
         ammendments = Ammendment.search([
-                ('invoice_lines', 'in', lines),
+                ('origins.resource', 'in', lines),
                 ('report.state', 'in', ('calculated', 'done'),)
                 ])
 

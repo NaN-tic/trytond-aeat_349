@@ -308,6 +308,11 @@ class Report(Workflow, ModelSQL, ModelView):
         pool = Pool()
         Currency = pool.get('currency.currency')
         InvoiceLine = pool.get('account.invoice.line')
+        Origin = pool.get('aeat.349.report.origin')
+
+        aeat349_origin = Origin()
+        aeat349_origin.resource = line
+        aeat349_origin.save()
 
         amount = abs(line.amount) if ammendment else line.amount
         if line.invoice.currency != line.invoice.company.currency:
@@ -326,19 +331,23 @@ class Report(Workflow, ModelSQL, ModelView):
         # ammendment equals, so that we need the opeartions.
         next_line = False
         if ammendment and not line.origin and operations and key in operations:
-            for oline_id in operations[key]['invoice_lines'][0][1]:
-                oline = InvoiceLine(oline_id)
-                if oline.invoice == line.invoice:
+            for oline_id in operations[key]['origins'][0][1]:
+                oline = Origin(oline_id)
+                if (isinstance(oline.resource, InvoiceLine) 
+                        and oline.resource.invoice == line.invoice):
+                    origin_aux = Origin()
+                    origin_aux.resource = line
+                    origin_aux.save()
                     operations[key]['base'] -= amount
-                    operations[key]['invoice_lines'][0][1].append(line.id)
+                    operations[key]['origins'][0][1].append(origin_aux.id)
                     next_line = True
                     break
 
         if not next_line:
             if key in to_create:
                 to_create[key]['base'] += amount
-                to_create[key]['invoice_lines'][0][1].append(
-                    line.id)
+                to_create[key]['origins'][0][1].append(
+                    aeat349_origin.id)
             else:
                 to_create[key] = {
                     'report': report.id,
@@ -346,7 +355,7 @@ class Report(Workflow, ModelSQL, ModelView):
                     'party_name': party_name,
                     'operation_key': operation_key,
                     'base': amount,
-                    'invoice_lines': [('add', [line.id])],
+                    'origins': [('add', [aeat349_origin.id])],
                 }
                 if (ammendment and line.origin
                         and isinstance(line.origin, InvoiceLine)):
@@ -365,12 +374,50 @@ class Report(Workflow, ModelSQL, ModelView):
                                 ammendment_period)
                         to_create[key]['original_base'] = origin.base
 
+    def calculate_operations_ammendments(self, start_date, end_date,
+            operation_to_create, ammendment_to_create):
+        pool = Pool()
+        Line = pool.get('account.invoice.line')
+        Report = pool.get('aeat.349.report')
+
+        lines = Line.search([
+                ('invoice.company', '=', self.company),
+                ('invoice.state', 'in', {'posted', 'paid'}),
+                ('aeat349_operation_key', '!=', None),
+                ('invoice.accounting_date', '>=', start_date),
+                ('invoice.accounting_date', '<', end_date)])
+
+        lines.extend(Line.search([
+                    ('invoice.company', '=', self.company),
+                    ('invoice.state', 'in', {'posted', 'paid'}),
+                    ('aeat349_operation_key', '!=', None),
+                    ('invoice.accounting_date', '=', None),
+                    ('invoice.invoice_date', '>=', start_date),
+                    ('invoice.invoice_date', '<', end_date)]))
+
+        for line in lines:
+            party_vat = (line.invoice.party.tax_identifier.code
+                if line.invoice.party.tax_identifier else '')
+            operation_key = line.aeat349_operation_key.operation_key[-1:]
+            key = '%s-%s-%s' % (self.id, party_vat, operation_key)
+
+            if (line.aeat349_operation_key.operation_key in
+                    dict(OPERATION_KEY).keys()):
+                Report.add_349_register(self, operation_to_create, key,
+                    line, ammendment=False)
+            elif (line.aeat349_operation_key.operation_key in
+                    dict(AMMENDMENT_KEY).keys()):
+                # Control if in the same invoice have 2 keys operation and
+                # ammendment equals, so that we need the opeartions.
+                Report.add_349_register(self, ammendment_to_create, key,
+                    line, ammendment=True, operations=operation_to_create)
+
+
     @classmethod
     @ModelView.button
     @Workflow.transition('calculated')
     def calculate(cls, reports):
         pool = Pool()
-        Line = pool.get('account.invoice.line')
         Operation = pool.get('aeat.349.report.operation')
         Ammendment = pool.get('aeat.349.report.ammendment')
 
@@ -380,6 +427,8 @@ class Report(Workflow, ModelSQL, ModelView):
             Ammendment.delete(Ammendment.search([
                 ('report', 'in', [r.id for r in reports])]))
 
+        operation_to_create = {}
+        ammendment_to_create = {}
         for report in reports:
             year = end_year = report.year
             multiplier = 1
@@ -398,39 +447,8 @@ class Report(Workflow, ModelSQL, ModelView):
             start_date = datetime.datetime(year, start_month, 1).date()
             end_date = datetime.datetime(end_year, end_month, 1).date()
 
-            lines = Line.search([
-                    ('invoice.company', '=', report.company),
-                    ('invoice.state', 'in', {'posted', 'paid'}),
-                    ('aeat349_operation_key', '!=', None),
-                    ('invoice.accounting_date', '>=', start_date),
-                    ('invoice.accounting_date', '<', end_date)])
-
-            lines.extend(Line.search([
-                        ('invoice.company', '=', report.company),
-                        ('invoice.state', 'in', {'posted', 'paid'}),
-                        ('aeat349_operation_key', '!=', None),
-                        ('invoice.accounting_date', '=', None),
-                        ('invoice.invoice_date', '>=', start_date),
-                        ('invoice.invoice_date', '<', end_date)]))
-
-            operation_to_create = {}
-            ammendment_to_create = {}
-            for line in lines:
-                party_vat = (line.invoice.party.tax_identifier.code
-                    if line.invoice.party.tax_identifier else ''),
-                operation_key = line.aeat349_operation_key.operation_key[-1:]
-                key = '%s-%s-%s' % (report.id, party_vat, operation_key)
-
-                if (line.aeat349_operation_key.operation_key in
-                        dict(OPERATION_KEY).keys()):
-                    cls.add_349_register(report, operation_to_create, key,
-                        line, ammendment=False)
-                elif (line.aeat349_operation_key.operation_key in
-                        dict(AMMENDMENT_KEY).keys()):
-                    # Control if in the same invoice have 2 keys operation and
-                    # ammendment equals, so that we need the opeartions.
-                    cls.add_349_register(report, ammendment_to_create, key,
-                        line, ammendment=True, operations=operation_to_create)
+            report.calculate_operations_ammendments(start_date, end_date,
+                operation_to_create, ammendment_to_create)
 
         with Transaction().set_user(0, set_context=True):
             Operation.create(list(operation_to_create.values()))
@@ -524,6 +542,26 @@ class Report(Workflow, ModelSQL, ModelView):
         self.save()
 
 
+class ReportOrigin(ModelSQL, ModelView):
+    """
+    AEAT 349 Operation/Ammendment Origin
+    """
+    __name__ = 'aeat.349.report.origin'
+
+    operation = fields.Many2One('aeat.349.report.operation',
+        '349 Operation', readonly=True, ondelete='CASCADE')
+    ammendment = fields.Many2One('aeat.349.report.ammendment',
+        '349 Ammendment', readonly=True, ondelete='CASCADE')
+    resource = fields.Reference('Resource', selection='get_resource',
+        readonly=True)
+
+    @classmethod
+    def get_resource(cls):
+        'Return list of Model names for resource Reference'
+        a = [(None, ''), ('account.invoice.line', 'Invoice Line')]
+        return [(None, ''), ('account.invoice.line', 'Invoice Line')]
+
+
 class Operation(ModelSQL, ModelView):
     """
     AEAT 349 Operation
@@ -540,8 +578,8 @@ class Operation(ModelSQL, ModelView):
     operation_key = fields.Selection(OPERATION_KEY + AMMENDMENT_KEY,
         'Operation key', required=True)
     base = fields.Numeric('Base Operation Amount', digits=(16, 2))
-    invoice_lines = fields.One2Many('account.invoice.line',
-        'aeat349_operation', 'Invoice Lines', readonly=True)
+    origins = fields.One2Many('aeat.349.report.origin', 'operation',
+        'Origins', readonly=True)
     substitution_nif = fields.Char('Substitution VAT', size=17,
         states={
             'invisible': ~(Eval('operation_key') == 'C'),
@@ -587,8 +625,8 @@ class Ammendment(ModelSQL, ModelView):
     operation_key = fields.Selection(OPERATION_KEY + AMMENDMENT_KEY,
         'Operation key', required=True)
     base = fields.Numeric('Base Operation Amount', digits=(16, 2))
-    invoice_lines = fields.One2Many('account.invoice.line',
-        'aeat349_ammendment', 'Invoice Lines', readonly=True)
+    origins = fields.One2Many('aeat.349.report.origin', 'ammendment',
+        'Origins', readonly=True)
     ammendment_fiscalyear_code = fields.Integer('Ammendment Fiscal Year Code')
     ammendment_period = fields.Selection([(None, '')] + PERIOD,
         'Ammendment Period', sort=False,
