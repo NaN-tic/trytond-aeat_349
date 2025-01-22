@@ -333,7 +333,7 @@ class Report(Workflow, ModelSQL, ModelView):
         if ammendment and not line.origin and operations and key in operations:
             for oline_id in operations[key]['origins'][0][1]:
                 oline = Origin(oline_id)
-                if (isinstance(oline.resource, InvoiceLine) 
+                if (isinstance(oline.resource, InvoiceLine)
                         and oline.resource.invoice == line.invoice):
                     origin_aux = Origin()
                     origin_aux.resource = line
@@ -558,7 +558,6 @@ class ReportOrigin(ModelSQL, ModelView):
     @classmethod
     def get_resource(cls):
         'Return list of Model names for resource Reference'
-        a = [(None, ''), ('account.invoice.line', 'Invoice Line')]
         return [(None, ''), ('account.invoice.line', 'Invoice Line')]
 
 

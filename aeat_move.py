@@ -38,7 +38,7 @@ class Report(metaclass=PoolMeta):
         pool = Pool()
         Move = pool.get('stock.move')
         Report = pool.get('aeat.349.report')
-        
+
         super().calculate_operations_ammendments(start_date, end_date,
             operation_to_create, ammendment_to_create)
 
