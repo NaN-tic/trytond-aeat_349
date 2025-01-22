@@ -193,6 +193,7 @@ class Tax(metaclass=PoolMeta):
 STATES = {
     'invisible': Eval('type') != 'line',
     }
+DEPENDS = ['type']
 
 # TODO: Remove from databse the aeat_349_record table
 
