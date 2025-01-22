@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+  <xpath expr="/form" position="inside">
+    <group colspan="4" id="aeat349_default_operation_key" string="AEAT 349">
+      <label name="aeat349_default_in_operation_key"/>
+      <field name="aeat349_default_in_operation_key"/>
+      <label name="aeat349_default_out_operation_key"/>
+      <field name="aeat349_default_out_operation_key"/>
+    </group>
+  </xpath>
+</data>

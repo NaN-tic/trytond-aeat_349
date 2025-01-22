@@ -23,5 +23,13 @@ To do that the reports
 %(reports)s
 must be canceleld or drafted.</field>
         </record>
+        <record model="ir.message" id="msg_delete_moves_in_349report">
+            <field name="text">There are some moves from shipments
+%(shipments)s
+that will be erased in 349 repotrs.
+To do that the reports
+%(reports)s
+must be canceleld or drafted.</field>
+        </record>
     </data>
 </tryton>
