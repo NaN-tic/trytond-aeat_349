@@ -283,11 +283,11 @@ class Test(unittest.TestCase):
         move.to_location = shipment.to_location
         move.product = product
         move.quantity = 10
-        move.currency = eur
+        # move.currency = eur
         shipment.click('wait')
         shipment.click('assign_force')
         shipment.click('ship')
-        shipment.click('done')
+        shipment.click('do')
         self.assertEqual(shipment.state, 'done')
         move, = shipment.incoming_moves
         move.intrastat_type
