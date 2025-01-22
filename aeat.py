@@ -558,7 +558,6 @@ class ReportOrigin(ModelSQL, ModelView):
     @classmethod
     def get_resource(cls):
         'Return list of Model names for resource Reference'
-        a = [(None, ''), ('account.invoice.line', 'Invoice Line')]
         return [(None, ''), ('account.invoice.line', 'Invoice Line')]
 
 
