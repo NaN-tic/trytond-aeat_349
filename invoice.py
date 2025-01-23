@@ -390,8 +390,6 @@ class InvoiceLine(metaclass=PoolMeta):
         else:
             default = default.copy()
 
-        default.setdefault('aeat349_ammendment', None)
-        default.setdefault('aeat349_operation', None)
         return super().copy(lines, default=default)
 
 
