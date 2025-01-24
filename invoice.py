@@ -383,15 +383,6 @@ class InvoiceLine(metaclass=PoolMeta):
             line.aeat349_operation_key = aeat349_ammendment.id
         return line
 
-    @classmethod
-    def copy(cls, lines, default=None):
-        if default is None:
-            default = {}
-        else:
-            default = default.copy()
-
-        return super().copy(lines, default=default)
-
 
 class Invoice(metaclass=PoolMeta):
     __name__ = 'account.invoice'
