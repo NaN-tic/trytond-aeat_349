@@ -8,10 +8,14 @@ class InvoiceLine(metaclass=PoolMeta):
     __name__ = 'account.invoice.line'
 
     def check_invoice_line_from_consignment(self):
-        if hasattr(self, 'stock_moves') and self.stock_moves:
+        if (self.invoice is not None and hasattr(self, 'stock_moves')
+                and self.stock_moves):
             invoice_country = self.invoice.invoice_address.country
             shipments = {m.shipment for m in self.stock_moves if m.shipment}
             for shipment in shipments:
+                if (shipment.warehouse is None
+                        or shipment.warehouse.address is None):
+                    continue
                 shipment_country = shipment.warehouse.address.country
                 if shipment_country == invoice_country:
                     return False
