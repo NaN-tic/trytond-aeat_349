@@ -9,10 +9,13 @@ class InvoiceLine(metaclass=PoolMeta):
 
     @fields.depends('_parent_invoice.invoice_address', 'stock_moves')
     def check_invoice_line_from_consignment(self):
-        if getattr(self, 'stock_moves', None):
+        if self.invoice is not None and getattr(self, 'stock_moves', None):
             invoice_country = self.invoice.invoice_address.country
             shipments = {m.shipment for m in self.stock_moves if m.shipment}
             for shipment in shipments:
+                if (shipment.warehouse is None
+                        or shipment.warehouse.address is None):
+                    continue
                 shipment_country = shipment.warehouse.address.country
                 if shipment_country == invoice_country:
                     return False
