@@ -7,9 +7,9 @@ from trytond.pool import PoolMeta
 class InvoiceLine(metaclass=PoolMeta):
     __name__ = 'account.invoice.line'
 
+    @fields.depends('_parent_invoice.invoice_address', 'stock_moves')
     def check_invoice_line_from_consignment(self):
-        if (self.invoice is not None and hasattr(self, 'stock_moves')
-                and self.stock_moves):
+        if self.invoice is not None and getattr(self, 'stock_moves', None):
             invoice_country = self.invoice.invoice_address.country
             shipments = {m.shipment for m in self.stock_moves if m.shipment}
             for shipment in shipments:
@@ -23,7 +23,7 @@ class InvoiceLine(metaclass=PoolMeta):
 
     @fields.depends('taxes', 'invoice_type', 'aeat349_operation_key',
         'invoice', '_parent_invoice.type', 'quantity', 'amount',
-        'unit_price')
+        'unit_price', methods=['check_invoice_line_from_consignment'])
     def on_change_with_aeat349_operation_key(self):
         result = super().on_change_with_aeat349_operation_key()
         if self.check_invoice_line_from_consignment():
