@@ -26,9 +26,6 @@ contains the full copyright notices and license terms. -->
             <label name="representative_vat"/>
             <field name="representative_vat"/>
             <newline/>
-            <label name="type"/>
-            <field name="type"/>
-            <newline/>
             <separator string="Totals" id="totals" colspan="4"/>
             <label name="operation_amount"/>
             <field name="operation_amount"/>
