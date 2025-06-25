@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond.model import fields
-from trytond.pool import PoolMeta
+from trytond.pool import Pool, PoolMeta
 
 
 class InvoiceLine(metaclass=PoolMeta):
@@ -9,16 +9,23 @@ class InvoiceLine(metaclass=PoolMeta):
 
     @fields.depends('_parent_invoice.invoice_address', 'stock_moves')
     def check_invoice_line_from_consignment(self):
+        pool = Pool()
+        ShipmentInternal = pool.get('stock.shipment.internal')
+
         if self.invoice is not None and getattr(self, 'stock_moves', None):
             invoice_country = self.invoice.invoice_address.country
-            shipments = {m.shipment for m in self.stock_moves if m.shipment}
-            for shipment in shipments:
-                if (shipment.warehouse is None
-                        or shipment.warehouse.address is None):
-                    continue
-                shipment_country = shipment.warehouse.address.country
-                if shipment_country == invoice_country:
-                    return False
+            moves = self.stock_moves
+            aeat349_moves = any(m.aeat349_operation_key for m in moves)
+            if aeat349_moves:
+                shipments = {m.shipment for m in moves
+                    if m.shipment and isinstance(m.shipment, ShipmentInternal)}
+                for shipment in shipments:
+                    if (shipment.warehouse is None
+                            or shipment.warehouse.address is None):
+                        continue
+                    shipment_country = shipment.warehouse.address.country
+                    if shipment_country == invoice_country:
+                        return False
         return True
 
     @fields.depends('taxes', 'invoice_type', 'aeat349_operation_key',
