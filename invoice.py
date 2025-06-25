@@ -304,7 +304,8 @@ class InvoiceLine(metaclass=PoolMeta):
         else:
             return
 
-        return Line.get_aeat349_operation_key(self, type_, self.amount, self.taxes)
+        return Line.get_aeat349_operation_key(self, type_, self.amount,
+            self.taxes)
 
     @classmethod
     def get_aeat349_operation_key(cls, line, invoice_type, amount, taxes):
