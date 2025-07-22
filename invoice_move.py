@@ -12,7 +12,9 @@ class InvoiceLine(metaclass=PoolMeta):
         pool = Pool()
         ShipmentInternal = pool.get('stock.shipment.internal')
 
-        if self.invoice is not None and getattr(self, 'stock_moves', None):
+        if (self.invoice is not None
+                and self.invoice.invoice_address
+                and getattr(self, 'stock_moves', None)):
             invoice_country = self.invoice.invoice_address.country
             moves = self.stock_moves
             aeat349_moves = any(m.aeat349_operation_key for m in moves)
