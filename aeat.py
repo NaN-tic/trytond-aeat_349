@@ -325,7 +325,7 @@ class Report(Workflow, ModelSQL, ModelView):
         party_vat = (line.invoice.party.tax_identifier.code
             if line.invoice.party.tax_identifier else '')
 
-        operation_key = line.aeat349_operation_key.operation_key[-1:]
+        operation_key = line.aeat349_operation_key.operation_key
 
         # Control if in the same invoice have 2 keys operation and
         # ammendment equals, so that we need the opeartions.
@@ -398,7 +398,7 @@ class Report(Workflow, ModelSQL, ModelView):
         for line in lines:
             party_vat = (line.invoice.party.tax_identifier.code
                 if line.invoice.party.tax_identifier else '')
-            operation_key = line.aeat349_operation_key.operation_key[-1:]
+            operation_key = line.aeat349_operation_key.operation_key
             key = '%s-%s-%s' % (self.id, party_vat, operation_key)
 
             if (line.aeat349_operation_key.operation_key in
@@ -666,7 +666,7 @@ class Ammendment(ModelSQL, ModelView):
         record = Record(aeat349.AMMENDMENT_RECORD)
         record.party_vat = self.party_vat
         record.party_name = self.party_name
-        record.operation_key = self.operation_key
+        record.operation_key = self.operation_key[-1:]
         record.base = self.base
         record.ammendment_fiscalyear = (str(self.ammendment_fiscalyear_code)
             if self.ammendment_fiscalyear_code else '')
