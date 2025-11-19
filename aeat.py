@@ -246,8 +246,8 @@ class Report(Workflow, ModelSQL, ModelView):
     def on_change_with_company_vat(self):
         if self.company:
             tax_identifier = self.company.party.tax_identifier
-            if tax_identifier and tax_identifier.code.startswith('ES'):
-                return tax_identifier.code[2:]
+            if tax_identifier and tax_identifier.es_country() == 'ES':
+                return tax_identifier.es_code()
 
     def pre_validate(self):
         super().pre_validate()
