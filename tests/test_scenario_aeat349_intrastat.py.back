@@ -31,7 +31,8 @@ class Test(unittest.TestCase):
         today = datetime.date.today()
 
         # Install aeat_349 module
-        config = activate_modules(['aeat_349', 'account_es', 'account_stock_eu_es'])
+        config = activate_modules(['aeat_349', 'account_es',
+            'account_stock_eu_es', 'account_code_digits'])
 
         # Create countries
         Country = Model.get('country.country')
