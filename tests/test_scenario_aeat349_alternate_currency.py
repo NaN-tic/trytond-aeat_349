@@ -31,7 +31,7 @@ class Test(unittest.TestCase):
         today = datetime.date.today()
 
         # Install aeat_349 module
-        activate_modules('aeat_349')
+        activate_modules(['aeat_349', 'account_es'])
 
         # Create company
         usd = get_currency('USD')
