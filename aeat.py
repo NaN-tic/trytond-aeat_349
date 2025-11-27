@@ -13,10 +13,9 @@ from trytond.pool import Pool
 from trytond.pyson import Eval, Bool
 from trytond.i18n import gettext
 from trytond.exceptions import UserError
+from trytond.model.exceptions import ValidationError
 from trytond.transaction import Transaction
 from sql.functions import Extract
-
-__all__ = ['Report', 'Operation', 'Ammendment']
 
 PERIOD = [
     ('1T', 'First quarter'),
@@ -256,7 +255,7 @@ class Report(Workflow, ModelSQL, ModelView):
     @fields.depends('year')
     def check_year_digits(self):
         if self.year and len(str(self.year)) != 4:
-            raise UserError(
+            raise ValidationError(
                 gettext('aeat_303.msg_invalid_year',
                     year=self.year))
 
@@ -268,7 +267,7 @@ class Report(Workflow, ModelSQL, ModelView):
 
     def check_euro(self):
         if self.currency.code != 'EUR':
-            raise UserError(gettext('aeat_349.msg_invalid_currency',
+            raise ValidationError(gettext('aeat_349.msg_invalid_currency',
                 name=self.rec_name,
                 ))
 
@@ -279,7 +278,7 @@ class Report(Workflow, ModelSQL, ModelView):
         if self.state != 'done':
             return
         if not self.contact_name or len(self.contact_name.split()) < 2:
-            raise UserError(gettext('aeat_349.msg_contact_name',
+            raise ValidationError(gettext('aeat_349.msg_contact_name',
                 name=self.rec_name,
                 ))
 
