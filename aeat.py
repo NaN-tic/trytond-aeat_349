@@ -256,7 +256,7 @@ class Report(Workflow, ModelSQL, ModelView):
     def check_year_digits(self):
         if self.year and len(str(self.year)) != 4:
             raise ValidationError(
-                gettext('aeat_303.msg_invalid_year',
+                gettext('aeat_349.msg_invalid_year',
                     year=self.year))
 
     @classmethod
