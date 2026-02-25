@@ -110,7 +110,7 @@ class Test(unittest.TestCase):
 
         # Create out invoice
         Invoice = Model.get('account.invoice')
-        invoice = Invoice()
+        invoice = Invoice(type='out')
         invoice.party = party
         invoice.payment_term = payment_term
         invoice.currency = usd

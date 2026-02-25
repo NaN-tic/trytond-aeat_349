@@ -108,7 +108,7 @@ class Test(unittest.TestCase):
 
         # Create out invoice
         Invoice = Model.get('account.invoice')
-        invoice = Invoice()
+        invoice = Invoice(type='out')
         invoice.party = party
         invoice.payment_term = payment_term
         line = invoice.lines.new()
@@ -127,7 +127,7 @@ class Test(unittest.TestCase):
         invoice.click('post')
 
         # Create out credit note
-        invoice = Invoice()
+        invoice = Invoice(type='out')
         invoice.party = party
         invoice.payment_term = payment_term
         line = invoice.lines.new()
