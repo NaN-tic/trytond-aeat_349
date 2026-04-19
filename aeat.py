@@ -326,21 +326,25 @@ class Report(Workflow, ModelSQL, ModelView):
 
         operation_key = line.aeat349_operation_key.operation_key
 
-        # Control if in the same invoice have 2 keys operation and
-        # ammendment equals, so that we need the opeartions.
+        # Control if in the same invoice have 2 keys: operation and ammendment,
+        # or have credit note invoices where the date is in the same period as
+        # the original invoice, so they have to be all operations, not
+        # ammendment.
         next_line = False
-        if ammendment and not line.origin and operations and key in operations:
-            for oline_id in operations[key]['origins'][0][1]:
-                oline = Origin(oline_id)
-                if (isinstance(oline.resource, InvoiceLine)
-                        and oline.resource.invoice == line.invoice):
-                    origin_aux = Origin()
-                    origin_aux.resource = line
-                    origin_aux.save()
-                    operations[key]['base'] -= amount
-                    operations[key]['origins'][0][1].append(origin_aux.id)
-                    next_line = True
-                    break
+        if ammendment and operations and key[:-2] in operations:
+            key = key[:-2]
+            start_date, end_date = cls.get_period_dates(report)
+            if (not line.origin
+                    or (isinstance(line.origin, InvoiceLine)
+                        and line.origin.invoice
+                        and start_date <= line.origin.invoice.invoice_date\
+                        <= end_date)):
+                origin_aux = Origin()
+                origin_aux.resource = line
+                origin_aux.save()
+                operations[key]['base'] -= amount
+                operations[key]['origins'][0][1].append(origin_aux.id)
+                next_line = True
 
         if not next_line:
             if key in to_create:
@@ -379,6 +383,8 @@ class Report(Workflow, ModelSQL, ModelView):
         Line = pool.get('account.invoice.line')
         Report = pool.get('aeat.349.report')
 
+        # Dividing the search is more efficiency than use a single search
+        # with an 'or' in the domain.
         lines = Line.search([
                 ('invoice.company', '=', self.company),
                 ('invoice.state', 'in', {'posted', 'paid'}),
@@ -394,7 +400,7 @@ class Report(Workflow, ModelSQL, ModelView):
                     ('invoice.invoice_date', '>=', start_date),
                     ('invoice.invoice_date', '<', end_date)]))
 
-        for line in lines:
+        for line in sorted(lines, key=lambda line: line.amount, reverse=True):
             party_vat = (line.invoice.party.tax_identifier.code
                 if line.invoice.party.tax_identifier else '')
             operation_key = line.aeat349_operation_key.operation_key
@@ -410,7 +416,26 @@ class Report(Workflow, ModelSQL, ModelView):
                 # ammendment equals, so that we need the opeartions.
                 Report.add_349_register(self, ammendment_to_create, key,
                     line, ammendment=True, operations=operation_to_create)
+    @classmethod
+    def get_period_dates(cls, report):
+        year = end_year = report.year
+        multiplier = 1
+        period = report.period
+        if 'T' in period:
+            period = int(period[0]) - 1
+            multiplier = 3
+            start_month = period * multiplier + 1
+        else:
+            start_month = int(period) * multiplier
+        end_month = start_month + multiplier
+        if end_month > 12:
+            end_month = 1
+            end_year = year + 1
 
+        start_date = datetime.datetime(year, start_month, 1).date()
+        end_date = datetime.datetime(end_year, end_month, 1).date()
+
+        return start_date, end_date
 
     @classmethod
     @ModelView.button
@@ -429,22 +454,7 @@ class Report(Workflow, ModelSQL, ModelView):
         operation_to_create = {}
         ammendment_to_create = {}
         for report in reports:
-            year = end_year = report.year
-            multiplier = 1
-            period = report.period
-            if 'T' in period:
-                period = int(period[0]) - 1
-                multiplier = 3
-                start_month = period * multiplier + 1
-            else:
-                start_month = int(period) * multiplier
-            end_month = start_month + multiplier
-            if end_month > 12:
-                end_month = 1
-                end_year = year + 1
-
-            start_date = datetime.datetime(year, start_month, 1).date()
-            end_date = datetime.datetime(end_year, end_month, 1).date()
+            start_date, end_date = cls.get_period_dates(report)
 
             report.calculate_operations_ammendments(start_date, end_date,
                 operation_to_create, ammendment_to_create)
