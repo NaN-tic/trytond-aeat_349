@@ -130,8 +130,7 @@ class Test(unittest.TestCase):
         invoice.click('post')
 
         # Create in invoice
-        invoice = Invoice()
-        invoice.type = 'in'
+        invoice = Invoice(type='in')
         invoice.party = party
         invoice.payment_term = payment_term
         invoice.currency = usd

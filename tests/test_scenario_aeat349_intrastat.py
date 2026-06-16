@@ -162,7 +162,7 @@ class Test(unittest.TestCase):
 
         # Create out invoice
         Invoice = Model.get('account.invoice')
-        invoice = Invoice()
+        invoice = Invoice(type='out')
         invoice.party = customer_fr
         invoice.payment_term = payment_term
         line = invoice.lines.new()
@@ -181,7 +181,7 @@ class Test(unittest.TestCase):
         invoice.click('post')
 
         # Create out credit note
-        invoice = Invoice()
+        invoice = Invoice(type='out')
         invoice.party = customer_fr
         invoice.payment_term = payment_term
         line = invoice.lines.new()
@@ -200,8 +200,7 @@ class Test(unittest.TestCase):
         invoice.click('post')
 
         # Create in invoice
-        invoice = Invoice()
-        invoice.type = 'in'
+        invoice = Invoice(type='in')
         invoice.party = supplier_fr
         invoice.payment_term = payment_term
         invoice.invoice_date = today
@@ -221,8 +220,7 @@ class Test(unittest.TestCase):
         invoice.click('post')
 
         # Create in credit note
-        invoice = Invoice()
-        invoice.type = 'in'
+        invoice = Invoice(type='in')
         invoice.party = supplier_fr
         invoice.payment_term = payment_term
         invoice.invoice_date = today
@@ -241,9 +239,9 @@ class Test(unittest.TestCase):
         self.assertEqual(line.amount, Decimal('-20.00'))
         invoice.click('post')
 
-        # Set default aet 349 Shipment vlues
+        # Set default AEAT 349 shipment values
         Configuration = Model.get('stock.configuration')
-        configuration = Configuration(0)
+        configuration = Configuration(1)
         configuration.aeat349_default_out_operation_key = operation_key_e
         configuration.aeat349_default_in_operation_key = operation_key_a
         configuration.save()
@@ -288,6 +286,7 @@ class Test(unittest.TestCase):
         # move.currency = eur
         shipment.click('wait')
         shipment.click('assign_force')
+        shipment.click('pack')
         shipment.click('ship')
         shipment.click('do')
         self.assertEqual(shipment.state, 'done')
@@ -295,7 +294,7 @@ class Test(unittest.TestCase):
         move.intrastat_type
         move, = shipment.outgoing_moves
         self.assertEqual(move.intrastat_type, 'dispatch')
-        self.assertEqual(move.aeat349_operation_key, operation_key_e)
+        self.assertEqual(move.intrastat_value, Decimal('1000.00'))
 
         # Generate 349 Report
         Report = Model.get('aeat.349.report')
