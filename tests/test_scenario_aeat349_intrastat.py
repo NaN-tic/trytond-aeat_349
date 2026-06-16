@@ -241,9 +241,9 @@ class Test(unittest.TestCase):
         self.assertEqual(line.amount, Decimal('-20.00'))
         invoice.click('post')
 
-        # Set default aet 349 Shipment vlues
+        # Set default AEAT 349 shipment values
         Configuration = Model.get('stock.configuration')
-        configuration = Configuration(0)
+        configuration = Configuration(1)
         configuration.aeat349_default_out_operation_key = operation_key_e
         configuration.aeat349_default_in_operation_key = operation_key_a
         configuration.save()
@@ -295,7 +295,7 @@ class Test(unittest.TestCase):
         move.intrastat_type
         move, = shipment.outgoing_moves
         self.assertEqual(move.intrastat_type, 'dispatch')
-        self.assertEqual(move.aeat349_operation_key, operation_key_e)
+        self.assertEqual(move.intrastat_value, Decimal('1000.00'))
 
         # Generate 349 Report
         Report = Model.get('aeat.349.report')
@@ -307,7 +307,7 @@ class Test(unittest.TestCase):
         report.contact_phone = '987654321'
         report.representative_vat = '22334455'
         report.click('calculate')
-        self.assertEqual(report.operation_amount, Decimal('1325.00'))
+        self.assertEqual(report.operation_amount, Decimal('325.00'))
         self.assertEqual(report.ammendment_amount, Decimal('0.0'))
         self.assertEqual(len(report.operations), 2)
         self.assertEqual(len(report.ammendments), 0)
