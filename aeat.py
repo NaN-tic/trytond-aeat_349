@@ -301,12 +301,116 @@ class Report(Workflow, ModelSQL, ModelView):
                 del res[key]
         return res
 
+    @staticmethod
+    def _get_pool_model(name):
+        try:
+            return Pool().get(name)
+        except KeyError:
+            return None
+
+    @staticmethod
+    def _line_lot_key(line):
+        moves = getattr(line, 'stock_moves', ()) or ()
+        lots = sorted({move.lot.id for move in moves
+                if getattr(move, 'lot', None)})
+        return tuple(lots)
+
+    @classmethod
+    def _quantities_match(cls, line, origin_line):
+        Uom = cls._get_pool_model('product.uom')
+        quantity = abs(line.quantity or 0)
+        origin_quantity = abs(origin_line.quantity or 0)
+        if (Uom and getattr(line, 'unit', None)
+                and getattr(origin_line, 'unit', None)
+                and line.unit != origin_line.unit):
+            origin_quantity = Uom.compute_qty(
+                origin_line.unit, origin_quantity, line.unit, round=False)
+        return abs(origin_quantity - quantity) < 1e-10
+
+    @classmethod
+    def _match_origin_invoice_line(cls, report, line, candidates,
+            used_origin_lines):
+        report_key = report.id
+        used_for_report = used_origin_lines.setdefault(report_key, set())
+
+        lot_key = cls._line_lot_key(line)
+        exact_matches = []
+        for candidate in candidates:
+            if candidate.id in used_for_report:
+                continue
+            if candidate.product != line.product:
+                continue
+            if not cls._quantities_match(line, candidate):
+                continue
+            candidate_lot_key = cls._line_lot_key(candidate)
+            if (lot_key or candidate_lot_key) and candidate_lot_key != lot_key:
+                continue
+            exact_matches.append(candidate)
+
+        if not exact_matches:
+            return None
+
+        unit_price_matches = [c for c in exact_matches
+            if c.unit_price == line.unit_price]
+        matched = (unit_price_matches or exact_matches)[0]
+        used_for_report.add(matched.id)
+        return matched
+
+    @classmethod
+    def _get_indirect_origin_invoice_line(cls, report, line,
+            used_origin_lines):
+        Sale = cls._get_pool_model('sale.sale')
+        SaleLine = cls._get_pool_model('sale.line')
+        Purchase = cls._get_pool_model('purchase.purchase')
+        PurchaseLine = cls._get_pool_model('purchase.line')
+
+        origin = line.origin
+        is_sale_origin = bool(SaleLine and Sale and isinstance(origin, SaleLine))
+        is_purchase_origin = bool(PurchaseLine and Purchase
+            and isinstance(origin, PurchaseLine))
+        if is_sale_origin:
+            order = origin.sale
+        elif is_purchase_origin:
+            order = origin.purchase
+        else:
+            return None
+
+        original_order = getattr(order, 'origin', None)
+        if not original_order:
+            return None
+        if is_sale_origin and (not Sale or not isinstance(original_order, Sale)):
+            return None
+        if (is_purchase_origin
+                and (not Purchase or not isinstance(original_order, Purchase))):
+            return None
+
+        candidates = []
+        for order_line in original_order.lines:
+            if order_line.type != 'line':
+                continue
+            if order_line.product != line.product:
+                continue
+            for invoice_line in order_line.invoice_lines:
+                if (invoice_line.type != 'line'
+                        or not getattr(invoice_line, 'invoice', None)):
+                    continue
+                candidates.append(invoice_line)
+        return cls._match_origin_invoice_line(
+            report, line, candidates, used_origin_lines)
+
+    @classmethod
+    def get_origin_invoice_line(cls, report, line, used_origin_lines):
+        InvoiceLine = Pool().get('account.invoice.line')
+        if isinstance(line.origin, InvoiceLine):
+            return line.origin
+        return cls._get_indirect_origin_invoice_line(
+            report, line, used_origin_lines)
+
     @classmethod
     def add_349_register(cls, report, to_create, key, line, ammendment=False,
-            operations=None):
+            operations=None, used_origin_lines=None):
         pool = Pool()
         Currency = pool.get('currency.currency')
-        InvoiceLine = pool.get('account.invoice.line')
         Origin = pool.get('aeat.349.report.origin')
 
         aeat349_origin = Origin()
@@ -325,19 +429,25 @@ class Report(Workflow, ModelSQL, ModelView):
             if line.invoice.party.tax_identifier else '')
 
         operation_key = line.aeat349_operation_key.operation_key
+        origin_invoice_line = cls.get_origin_invoice_line(
+            report, line, used_origin_lines or {})
+        origin_operation = None
+        if ammendment and origin_invoice_line:
+            origin_operation = origin_invoice_line.aeat349_operation or None
 
         # Control if in the same invoice have 2 keys: operation and ammendment,
         # or have credit note invoices where the date is in the same period as
         # the original invoice, so they have to be all operations, not
         # ammendment.
         next_line = False
-        if ammendment and operations and key[:-2] in operations:
-            key = key[:-2]
+        operation_key_match = '%s-%s-%s' % (
+            report.id, party_vat, operation_key[2:])
+        if ammendment and operations and operation_key_match in operations:
+            key = operation_key_match
             start_date, end_date = cls.get_period_dates(report)
-            if (not line.origin
-                    or (isinstance(line.origin, InvoiceLine)
-                        and line.origin.invoice
-                        and start_date <= line.origin.invoice.invoice_date\
+            if (not origin_invoice_line
+                    or (origin_invoice_line.invoice
+                        and start_date <= origin_invoice_line.invoice.invoice_date\
                         <= end_date)):
                 origin_aux = Origin()
                 origin_aux.resource = line
@@ -351,6 +461,8 @@ class Report(Workflow, ModelSQL, ModelView):
                 to_create[key]['base'] += amount
                 to_create[key]['origins'][0][1].append(
                     aeat349_origin.id)
+                if origin_operation:
+                    to_create[key]['original_base'] += origin_operation.base
             else:
                 to_create[key] = {
                     'report': report.id,
@@ -360,25 +472,22 @@ class Report(Workflow, ModelSQL, ModelView):
                     'base': amount,
                     'origins': [('add', [aeat349_origin.id])],
                 }
-                if (ammendment and line.origin
-                        and isinstance(line.origin, InvoiceLine)):
-                    origin = line.origin.aeat349_operation or None
-                    if origin:
-                        ammendment_year = origin.report.year
-                        ammendment_period = origin.report.period
-                        year = report.year
-                        period = report.period
-                        if (ammendment_year != year or
-                                (ammendment_year == year
-                                    and ammendment_period != period)):
-                            to_create[key]['ammendment_fiscalyear_code'] = (
-                                ammendment_year)
-                            to_create[key]['ammendment_period'] = (
-                                ammendment_period)
-                        to_create[key]['original_base'] = origin.base
+                if origin_operation:
+                    ammendment_year = origin_operation.report.year
+                    ammendment_period = origin_operation.report.period
+                    year = report.year
+                    period = report.period
+                    if (ammendment_year != year or
+                            (ammendment_year == year
+                                and ammendment_period != period)):
+                        to_create[key]['ammendment_fiscalyear_code'] = (
+                            ammendment_year)
+                        to_create[key]['ammendment_period'] = (
+                            ammendment_period)
+                    to_create[key]['original_base'] = origin_operation.base
 
     def calculate_operations_ammendments(self, start_date, end_date,
-            operation_to_create, ammendment_to_create):
+            operation_to_create, ammendment_to_create, used_origin_lines):
         pool = Pool()
         Line = pool.get('account.invoice.line')
         Report = pool.get('aeat.349.report')
@@ -409,13 +518,15 @@ class Report(Workflow, ModelSQL, ModelView):
             if (line.aeat349_operation_key.operation_key in
                     dict(OPERATION_KEY).keys()):
                 Report.add_349_register(self, operation_to_create, key,
-                    line, ammendment=False)
+                    line, ammendment=False,
+                    used_origin_lines=used_origin_lines)
             elif (line.aeat349_operation_key.operation_key in
                     dict(AMMENDMENT_KEY).keys()):
                 # Control if in the same invoice have 2 keys operation and
                 # ammendment equals, so that we need the opeartions.
                 Report.add_349_register(self, ammendment_to_create, key,
-                    line, ammendment=True, operations=operation_to_create)
+                    line, ammendment=True, operations=operation_to_create,
+                    used_origin_lines=used_origin_lines)
     @classmethod
     def get_period_dates(cls, report):
         year = end_year = report.year
@@ -453,11 +564,20 @@ class Report(Workflow, ModelSQL, ModelView):
 
         operation_to_create = {}
         ammendment_to_create = {}
+        used_origin_lines = {}
         for report in reports:
             start_date, end_date = cls.get_period_dates(report)
 
             report.calculate_operations_ammendments(start_date, end_date,
-                operation_to_create, ammendment_to_create)
+                operation_to_create, ammendment_to_create,
+                used_origin_lines)
+
+        operation_to_create = {
+            key: values for key, values in operation_to_create.items()
+            if values['base'] != _ZERO}
+        ammendment_to_create = {
+            key: values for key, values in ammendment_to_create.items()
+            if values['base'] != _ZERO}
 
         with Transaction().set_user(0, set_context=True):
             Operation.create(list(operation_to_create.values()))
