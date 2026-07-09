@@ -34,13 +34,13 @@ class Report(metaclass=PoolMeta):
                 }
 
     def calculate_operations_ammendments(self, start_date, end_date,
-            operation_to_create, ammendment_to_create):
+            operation_to_create, ammendment_to_create, used_origin_lines):
         pool = Pool()
         Move = pool.get('stock.move')
         Report = pool.get('aeat.349.report')
 
         super().calculate_operations_ammendments(start_date, end_date,
-            operation_to_create, ammendment_to_create)
+            operation_to_create, ammendment_to_create, used_origin_lines)
 
         moves = Move.search([
                 ('state', '=', 'done'),
