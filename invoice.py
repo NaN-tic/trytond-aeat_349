@@ -223,6 +223,12 @@ class InvoiceLine(metaclass=PoolMeta):
             'aeat349_ammendment'}
 
     @classmethod
+    def _get_origin(cls):
+        models = super()._get_origin()
+        models.append('account.invoice')
+        return models
+
+    @classmethod
     def __register__(cls, module_name):
         pool = Pool()
         Origin = pool.get('aeat.349.report.origin')
