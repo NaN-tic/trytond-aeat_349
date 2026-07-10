@@ -399,10 +399,25 @@ class Report(Workflow, ModelSQL, ModelView):
             report, line, candidates, used_origin_lines)
 
     @classmethod
+    def _get_invoice_origin_invoice_line(cls, report, line,
+            used_origin_lines):
+        origin = line.origin
+        for invoice_line in origin.lines:
+            if invoice_line.type != 'line':
+                continue
+            if invoice_line.aeat349_operation:
+                return invoice_line
+        return None
+
+    @classmethod
     def get_origin_invoice_line(cls, report, line, used_origin_lines):
+        Invoice = Pool().get('account.invoice')
         InvoiceLine = Pool().get('account.invoice.line')
         if isinstance(line.origin, InvoiceLine):
             return line.origin
+        if isinstance(line.origin, Invoice):
+            return cls._get_invoice_origin_invoice_line(
+                report, line, used_origin_lines)
         return cls._get_indirect_origin_invoice_line(
             report, line, used_origin_lines)
 
