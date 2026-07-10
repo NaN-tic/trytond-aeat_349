@@ -88,7 +88,7 @@ class Test(unittest.TestCase):
         payment_term.save()
 
         Invoice = Model.get('account.invoice')
-        original_invoice = Invoice()
+        original_invoice = Invoice(type='out')
         original_invoice.party = party
         original_invoice.payment_term = payment_term
         original_invoice.invoice_date = previous_date
