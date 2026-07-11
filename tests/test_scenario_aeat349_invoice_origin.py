@@ -89,7 +89,7 @@ class Test(unittest.TestCase):
         payment_term.save()
 
         Invoice = Model.get('account.invoice')
-        original_previous_period = Invoice()
+        original_previous_period = Invoice(type='out')
         original_previous_period.party = previous_period_party
         original_previous_period.payment_term = payment_term
         original_previous_period.invoice_date = previous_date
@@ -100,7 +100,7 @@ class Test(unittest.TestCase):
             line.unit_price = Decimal('40')
         original_previous_period.click('post')
 
-        original_same_period = Invoice()
+        original_same_period = Invoice(type='out')
         original_same_period.party = same_period_party
         original_same_period.payment_term = payment_term
         original_same_period.invoice_date = current_date
@@ -114,7 +114,7 @@ class Test(unittest.TestCase):
         line.unit_price = Decimal('45')
         original_same_period.click('post')
 
-        same_period_credit = Invoice()
+        same_period_credit = Invoice(type='out')
         same_period_credit.party = same_period_party
         same_period_credit.payment_term = payment_term
         same_period_credit.invoice_date = current_date
@@ -135,7 +135,7 @@ class Test(unittest.TestCase):
         previous_report.representative_vat = '22334455'
         previous_report.click('calculate')
 
-        previous_period_credit = Invoice()
+        previous_period_credit = Invoice(type='out')
         previous_period_credit.party = previous_period_party
         previous_period_credit.payment_term = payment_term
         previous_period_credit.invoice_date = current_date
