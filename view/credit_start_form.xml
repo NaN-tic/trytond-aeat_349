@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<!--The COPYRIGHT file at the top level of this repository
+contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form/group[@id='credit_refund']/field[@name='invoice_date']"
+            position="after">
+        <label name="group_lines"/>
+        <field name="group_lines"/>
+    </xpath>
+</data>
