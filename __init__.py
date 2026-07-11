@@ -16,6 +16,7 @@ def register():
         invoice.TaxTemplate,
         invoice.Tax,
         invoice.Invoice,
+        invoice.CreditInvoiceStart,
         invoice.InvoiceLine,
         invoice.Reasign349RecordStart,
         invoice.Reasign349RecordEnd,

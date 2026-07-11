@@ -18,6 +18,14 @@ msgctxt "field:account.invoice.line,aeat349_operation_key:"
 msgid "AEAT 349 Operation Key"
 msgstr "Clave operación AEAT 349"
 
+msgctxt "field:account.invoice.credit.start,group_lines:"
+msgid "Group by Tax"
+msgstr "Agrupar por impuesto"
+
+msgctxt "help:account.invoice.credit.start,group_lines:"
+msgid "If enabled, create credit lines grouped by fiscal behavior and set the credited invoice as line origin."
+msgstr "Si se activa, crea las líneas del abono agrupadas por comportamiento fiscal y establece la factura abonada como origen de la línea."
+
 msgctxt "field:account.tax,aeat349_default_in_ammendment_key:"
 msgid "Default In Ammendment Key"
 msgstr "Clave de rectificación por defecto (facturas de proveedor)"

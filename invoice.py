@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
+from collections import OrderedDict
 from trytond.model import ModelSQL, ModelView, Workflow, fields, Unique
 from trytond.wizard import Wizard, StateView, StateTransition, Button
 from trytond.pool import Pool, PoolMeta
@@ -394,6 +395,68 @@ class InvoiceLine(metaclass=PoolMeta):
 class Invoice(metaclass=PoolMeta):
     __name__ = 'account.invoice'
 
+    def _credit(self, **values):
+        if not Transaction().context.get('aeat349_group_lines'):
+            return super()._credit(**values)
+        credit = super()._credit(**values)
+        credit.lines = self._get_grouped_credit_lines()
+        return credit
+
+    def _get_grouped_credit_lines(self):
+        pool = Pool()
+        AEAT349Type = pool.get('aeat.349.type')
+        InvoiceLine = pool.get('account.invoice.line')
+        grouped = OrderedDict()
+
+        for line in self.lines:
+            if line.type != 'line':
+                continue
+            key = (
+                line.account.id if line.account else None,
+                tuple(sorted(tax.id for tax in line.taxes)),
+                line.taxes_deductible_rate,
+                line.aeat349_operation_key.id if line.aeat349_operation_key else None,
+                )
+            data = grouped.setdefault(key, {
+                    'line': line,
+                    'base': Decimal(0),
+                    })
+            data['base'] += (
+                Decimal(str(line.quantity or 0))
+                * (line.unit_price or Decimal(0)))
+
+        lines = []
+        for data in grouped.values():
+            base = data['base']
+            if self.currency:
+                base = self.currency.round(base)
+            if self.currency and self.currency.is_zero(base):
+                continue
+            original = data['line']
+            line = InvoiceLine()
+            line.type = 'line'
+            line.origin = self
+            line.invoice_type = original.invoice_type
+            line.party = original.party
+            line.currency = original.currency
+            line.company = original.company
+            line.account = original.account
+            line.quantity = 1
+            line.unit_price = -base
+            line.description = original.description or self.rec_name
+            line.note = original.note
+            line.taxes = list(original.taxes)
+            line.taxes_deductible_rate = original.taxes_deductible_rate
+            line.taxes_date = original.tax_date
+            if original.aeat349_operation:
+                aeat349_ammendment, = AEAT349Type.search([
+                        ('operation_key', '=', 'A-%s' % (
+                            original.aeat349_operation.operation_key)),
+                        ])
+                line.aeat349_operation_key = aeat349_ammendment.id
+            lines.append(line)
+        return lines
+
     @classmethod
     def draft(cls, invoices):
         pool = Pool()
@@ -498,9 +561,24 @@ class Reasign349Record(Wizard):
 class CreditInvoice(metaclass=PoolMeta):
     __name__ = 'account.invoice.credit'
 
+    def default_start(self, fields):
+        defaults = super(CreditInvoice, self).default_start(fields)
+        defaults.setdefault('group_lines', False)
+        return defaults
+
     def do_credit(self, action):
-        with Transaction().set_context(credit_wizard=True):
+        with Transaction().set_context(
+                credit_wizard=True,
+                aeat349_group_lines=self.start.group_lines):
             return super(CreditInvoice, self).do_credit(action)
+
+
+class CreditInvoiceStart(metaclass=PoolMeta):
+    __name__ = 'account.invoice.credit.start'
+
+    group_lines = fields.Boolean(
+        'Group by Tax',
+        help='If enabled, create credit lines grouped by fiscal behavior and set the credited invoice as line origin.')
 
 
 class InvoiceLineDisccount(metaclass=PoolMeta):
