@@ -108,7 +108,7 @@ class Test(unittest.TestCase):
         payment_term.save()
 
         Invoice = Model.get('account.invoice')
-        out_invoice = Invoice()
+        out_invoice = Invoice(type='out')
         out_invoice.party = customer
         out_invoice.payment_term = payment_term
         out_invoice.invoice_date = current_date
@@ -155,8 +155,7 @@ class Test(unittest.TestCase):
         self.assertEqual(len(same_period_report.operations), 0)
         self.assertEqual(len(same_period_report.ammendments), 0)
 
-        in_invoice = Invoice()
-        in_invoice.type = 'in'
+        in_invoice = Invoice(type='in')
         in_invoice.party = supplier
         in_invoice.payment_term = payment_term
         in_invoice.invoice_date = previous_date
