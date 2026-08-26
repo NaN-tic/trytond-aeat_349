@@ -60,10 +60,10 @@ class Test(unittest.TestCase):
 
         Party = Model.get('party.party')
         same_period_party = Party(name='Same Period Party')
-        same_period_party.identifiers.new(type='eu_vat', code='ES00000000T')
+        same_period_party.identifiers.new(type='eu_vat', code='ESB65247983')
         same_period_party.save()
         previous_period_party = Party(name='Previous Period Party')
-        previous_period_party.identifiers.new(type='eu_vat', code='ES00000001R')
+        previous_period_party.identifiers.new(type='eu_vat', code='ESB65247983')
         previous_period_party.save()
 
         ProductCategory = Model.get('product.category')
@@ -157,13 +157,13 @@ class Test(unittest.TestCase):
 
         self.assertEqual(len(report.operations), 1)
         operation, = report.operations
-        self.assertEqual(operation.party_vat, 'ES00000000T')
+        self.assertEqual(operation.party_vat, 'ESB65247983')
         self.assertEqual(operation.base, Decimal('45.00'))
         self.assertEqual(len(operation.origins), 3)
 
         self.assertEqual(len(report.ammendments), 1)
         ammendment, = report.ammendments
-        self.assertEqual(ammendment.party_vat, 'ES00000001R')
+        self.assertEqual(ammendment.party_vat, 'ESB65247983')
         self.assertEqual(ammendment.base, Decimal('40.00'))
         self.assertEqual(ammendment.original_base, Decimal('200.00'))
         self.assertEqual(ammendment.ammendment_fiscalyear_code,

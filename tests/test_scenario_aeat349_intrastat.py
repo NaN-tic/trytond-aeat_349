@@ -113,11 +113,11 @@ class Test(unittest.TestCase):
         address, = supplier_fr.addresses
         address.country = france
         identifier = supplier_fr.identifiers.new(type='eu_vat')
-        identifier.code = "FR40303265045"
+        identifier.code = "BE0897290877"
         supplier_fr.save()
         customer_fr = Party(name="Customer FR")
         identifier = customer_fr.identifiers.new(type='eu_vat')
-        identifier.code = "FR40303265045"
+        identifier.code = "BE0897290877"
         address_fr, = customer_fr.addresses
         address_fr.country = france
         customer_fr.save()

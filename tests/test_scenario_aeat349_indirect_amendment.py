@@ -76,10 +76,10 @@ class Test(unittest.TestCase):
 
         Party = Model.get('party.party')
         customer = Party(name='Customer')
-        customer.identifiers.new(type='eu_vat', code='ES00000000T')
+        customer.identifiers.new(type='eu_vat', code='ESB65247983')
         customer.save()
         supplier = Party(name='Supplier')
-        supplier.identifiers.new(type='eu_vat', code='ES00000001R')
+        supplier.identifiers.new(type='eu_vat', code='ESB65247983')
         supplier.save()
 
         ProductCategory = Model.get('product.category')
