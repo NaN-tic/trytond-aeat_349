@@ -230,6 +230,24 @@ class Report(Workflow, ModelSQL, ModelView):
     def default_company():
         return Transaction().context.get('company')
 
+    @classmethod
+    def default_contact_name(cls):
+        if company := cls.default_company():
+            reports = cls.search([
+                    ('company', '=', company),
+                    ], order=[('id', 'DESC')], limit=1)
+            if reports:
+                return reports[0].contact_name
+
+    @classmethod
+    def default_contact_phone(cls):
+        if company := cls.default_company():
+            reports = cls.search([
+                    ('company', '=', company),
+                    ], order=[('id', 'DESC')], limit=1)
+            if reports:
+                return reports[0].contact_phone
+
     def get_rec_name(self, name):
         return '%s - %s/%s' % (self.company.rec_name,
             self.year, self.period)
