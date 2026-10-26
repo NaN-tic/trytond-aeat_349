@@ -5,6 +5,7 @@ from unittest.mock import patch
 
 from stdnum import get_cc_module
 from proteus import Model
+from proteus.config import get_config
 from trytond.modules.account_es.tests.tools import (create_chart, create_tax,
     get_accounts)
 from trytond.modules.account.tests.tools import (create_fiscalyear,
@@ -199,6 +200,8 @@ class Test(unittest.TestCase):
         # Generate 349 Report
         Report = Model.get('aeat.349.report')
         report = Report()
+        self.assertIsNone(report.contact_name)
+        self.assertIsNone(report.contact_phone)
         report.year = today.year
         report.period = "%02d" % (today.month)
         report.company_vat = '123456789'
@@ -215,3 +218,28 @@ class Test(unittest.TestCase):
         report.file_
         report.click('process')
         self.assertEqual(bool(report.file_), True)
+
+        # Reuse the contact from the last report created for this company.
+        next_report = Report()
+        self.assertEqual(next_report.contact_name, report.contact_name)
+        self.assertEqual(next_report.contact_phone, report.contact_phone)
+        next_report.year = today.year - 1
+        next_report.period = '01'
+        next_report.company_vat = report.company_vat
+        next_report.contact_name = 'Garcia Lopez Maria'
+        next_report.contact_phone = '912345678'
+        next_report.save()
+
+        latest_report = Report()
+        self.assertEqual(latest_report.contact_name, next_report.contact_name)
+        self.assertEqual(latest_report.contact_phone, next_report.contact_phone)
+
+        # A company without previous reports must not inherit another contact.
+        create_company(currency=eur)
+        Company = Model.get('company.company')
+        other_company, = Company.find([('id', '!=', company.id)])
+        with get_config().set_context(company=other_company.id):
+            other_report = Report()
+        self.assertNotEqual(other_report.company, company)
+        self.assertIsNone(other_report.contact_name)
+        self.assertIsNone(other_report.contact_phone)
