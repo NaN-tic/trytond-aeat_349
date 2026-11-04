@@ -1,0 +1,1091 @@
+#
+msgid ""
+msgstr ""
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgctxt "field:account.invoice.line,aeat349_ammendment:"
+msgid "349 Ammendment"
+msgstr "349 表更正"
+
+msgctxt "field:account.invoice.line,aeat349_available_keys:"
+msgid "AEAT 349 Available Keys"
+msgstr "AEAT 349 可用代码"
+
+msgctxt "field:account.invoice.line,aeat349_operation:"
+msgid "349 Operation"
+msgstr "349 表交易"
+
+msgctxt "field:account.invoice.line,aeat349_operation_key:"
+msgid "AEAT 349 Operation Key"
+msgstr "AEAT 349 交易代码"
+
+msgctxt "field:account.invoice.credit.start,group_lines:"
+msgid "Group by Tax"
+msgstr "按税项分组"
+
+msgctxt "help:account.invoice.credit.start,group_lines:"
+msgid ""
+"If enabled, create credit lines grouped by fiscal behavior and set the "
+"credited invoice as line origin."
+msgstr "启用后，按税务处理方式分组创建贷项明细，并将被冲销发票设为明细来源。"
+
+msgctxt "field:account.tax,aeat349_default_in_ammendment_key:"
+msgid "Default In Ammendment Key"
+msgstr "默认进项更正代码"
+
+msgctxt "field:account.tax,aeat349_default_in_operation_key:"
+msgid "Default In Operation Key"
+msgstr "默认进项交易代码"
+
+msgctxt "field:account.tax,aeat349_default_out_ammendment_key:"
+msgid "Default Out Ammendment Key"
+msgstr "默认销项更正代码"
+
+msgctxt "field:account.tax,aeat349_default_out_operation_key:"
+msgid "Default Out Operation Key"
+msgstr "默认销项交易代码"
+
+msgctxt "field:account.tax,aeat349_operation_keys:"
+msgid "Available Operation Keys"
+msgstr "可用交易代码"
+
+msgctxt "field:account.tax.template,aeat349_default_in_ammendment_key:"
+msgid "Default In Ammendment Key"
+msgstr "默认进项更正代码"
+
+msgctxt "field:account.tax.template,aeat349_default_in_operation_key:"
+msgid "Default In Operation Key"
+msgstr "默认进项交易代码"
+
+msgctxt "field:account.tax.template,aeat349_default_out_ammendment_key:"
+msgid "Default Out Ammendment Key"
+msgstr "默认销项更正代码"
+
+msgctxt "field:account.tax.template,aeat349_default_out_operation_key:"
+msgid "Default Out Operation Key"
+msgstr "默认销项交易代码"
+
+msgctxt "field:account.tax.template,aeat349_operation_keys:"
+msgid "Available Operation Keys"
+msgstr "可用交易代码"
+
+msgctxt "field:aeat.349.reasign.records.start,aeat_349_type:"
+msgid "Operation Key"
+msgstr "交易代码"
+
+msgctxt "field:aeat.349.report,ammendment_amount:"
+msgid "Ammendment Amount"
+msgstr "更正金额"
+
+msgctxt "field:aeat.349.report,ammendments:"
+msgid "Ammendments"
+msgstr "更正"
+
+msgctxt "field:aeat.349.report,calculation_date:"
+msgid "Calculation Date"
+msgstr "计算日期"
+
+msgctxt "field:aeat.349.report,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:aeat.349.report,company_vat:"
+msgid "VAT number"
+msgstr "增值税号"
+
+msgctxt "field:aeat.349.report,contact_name:"
+msgid "Full Name"
+msgstr "全名"
+
+msgctxt "field:aeat.349.report,contact_phone:"
+msgid "Phone"
+msgstr "电话"
+
+msgctxt "field:aeat.349.report,currency:"
+msgid "Currency"
+msgstr "货币"
+
+msgctxt "field:aeat.349.report,file_:"
+msgid "File"
+msgstr "文件"
+
+msgctxt "field:aeat.349.report,filename:"
+msgid "File Name"
+msgstr "文件名"
+
+msgctxt "field:aeat.349.report,operation_amount:"
+msgid "Operation Amount"
+msgstr "交易金额"
+
+msgctxt "field:aeat.349.report,operations:"
+msgid "Operations"
+msgstr "交易"
+
+msgctxt "field:aeat.349.report,period:"
+msgid "Period"
+msgstr "分期"
+
+msgctxt "field:aeat.349.report,previous_number:"
+msgid "Previous Declaration Number"
+msgstr "上次申报编号"
+
+msgctxt "field:aeat.349.report,representative_vat:"
+msgid "L.R. VAT number"
+msgstr "法定代表人增值税号"
+
+msgctxt "field:aeat.349.report,state:"
+msgid "State"
+msgstr "状态"
+
+msgctxt "field:aeat.349.report,type:"
+msgid "Statement Type"
+msgstr "申报类型"
+
+msgctxt "field:aeat.349.report,year:"
+msgid "Year"
+msgstr "年"
+
+msgctxt "field:aeat.349.report.ammendment,ammendment_fiscalyear_code:"
+msgid "Ammendment Fiscal Year Code"
+msgstr "更正会计年度代码"
+
+msgctxt "field:aeat.349.report.ammendment,ammendment_period:"
+msgid "Ammendment Period"
+msgstr "更正期间"
+
+msgctxt "field:aeat.349.report.ammendment,base:"
+msgid "Base Operation Amount"
+msgstr "原交易金额"
+
+msgctxt "field:aeat.349.report.ammendment,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:aeat.349.report.ammendment,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "原始凭证明细"
+
+msgctxt "field:aeat.349.report.ammendment,operation_key:"
+msgid "Operation key"
+msgstr "交易代码"
+
+msgctxt "field:aeat.349.report.ammendment,original_base:"
+msgid "Original Base"
+msgstr "原计税基础"
+
+msgctxt "field:aeat.349.report.ammendment,party_name:"
+msgid "Party Name"
+msgstr "参与者名称"
+
+msgctxt "field:aeat.349.report.ammendment,party_vat:"
+msgid "VAT"
+msgstr "增值税"
+
+msgctxt "field:aeat.349.report.ammendment,report:"
+msgid "AEAT 349 Report"
+msgstr "AEAT 349 申报表"
+
+msgctxt "field:aeat.349.report.ammendment,substitution_name:"
+msgid "Substitution Name"
+msgstr "替代名称"
+
+msgctxt "field:aeat.349.report.ammendment,substitution_nif:"
+msgid "Substitution VAT"
+msgstr "替代增值税号"
+
+msgctxt "field:aeat.349.report.operation,base:"
+msgid "Base Operation Amount"
+msgstr "原交易金额"
+
+msgctxt "field:aeat.349.report.operation,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:aeat.349.report.operation,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "原始凭证明细"
+
+msgctxt "field:aeat.349.report.operation,operation_key:"
+msgid "Operation key"
+msgstr "交易代码"
+
+msgctxt "field:aeat.349.report.operation,party_name:"
+msgid "Party Name"
+msgstr "参与者名称"
+
+msgctxt "field:aeat.349.report.operation,party_vat:"
+msgid "VAT"
+msgstr "增值税"
+
+msgctxt "field:aeat.349.report.operation,report:"
+msgid "AEAT 349 Report"
+msgstr "AEAT 349 申报表"
+
+msgctxt "field:aeat.349.report.operation,substitution_name:"
+msgid "Substitution Name"
+msgstr "替代名称"
+
+msgctxt "field:aeat.349.report.operation,substitution_nif:"
+msgid "Substitution VAT"
+msgstr "替代增值税号"
+
+msgctxt "field:aeat.349.type,operation_key:"
+msgid "Operation key"
+msgstr "交易代码"
+
+msgctxt "field:aeat.349.type-account.tax,aeat_349_type:"
+msgid "Operation Key"
+msgstr "交易代码"
+
+msgctxt "field:aeat.349.type-account.tax,tax:"
+msgid "Tax"
+msgstr "税"
+
+msgctxt "field:aeat.349.type-account.tax.template,aeat_349_type:"
+msgid "Operation Key"
+msgstr "交易代码"
+
+msgctxt "field:aeat.349.type-account.tax.template,tax:"
+msgid "Tax Template"
+msgstr "税模板"
+
+msgctxt "help:aeat.349.report,contact_name:"
+msgid ""
+"The first surname, a space, the second surname, a space and the name, "
+"necessarily in this order."
+msgstr "必须按此顺序填写：第一姓氏、空格、第二姓氏、空格、名字。"
+
+msgctxt "help:aeat.349.report,representative_vat:"
+msgid "Legal Representative VAT number."
+msgstr "法定代表人增值税号。"
+
+msgctxt "model:aeat.349.reasign.records.end,name:"
+msgid "Reasign AEAT 349 Records End"
+msgstr "重新分配 AEAT 349 记录：结束"
+
+msgctxt "model:aeat.349.reasign.records.start,name:"
+msgid "Reasign AEAT 349 Records Start"
+msgstr "重新分配 AEAT 349 记录：开始"
+
+msgctxt "model:aeat.349.report,name:"
+msgid "AEAT 349 Report"
+msgstr "AEAT 349 申报表"
+
+msgctxt "model:aeat.349.report.ammendment,name:"
+msgid "AEAT 349 Ammendment"
+msgstr "AEAT 349 更正"
+
+msgctxt "model:aeat.349.report.operation,name:"
+msgid "AEAT 349 Operation"
+msgstr "AEAT 349 交易"
+
+msgctxt "model:aeat.349.type,name:"
+msgid "AEAT 349 Type"
+msgstr "AEAT 349 类型"
+
+msgctxt "model:aeat.349.type-account.tax,name:"
+msgid "AEAT 349 Type-Tax Relation"
+msgstr "AEAT 349 类型 - 税项关系"
+
+msgctxt "model:aeat.349.type-account.tax.template,name:"
+msgid "AEAT 349 Type-Tax Template Relation"
+msgstr "AEAT 349 类型 - 税项模板关系"
+
+msgctxt "model:ir.action,name:act_aeat_349_reasign"
+msgid "Reasign AEAT 349 Records"
+msgstr "重新分配 AEAT 349 记录"
+
+msgctxt "model:ir.action,name:act_aeat_349_report"
+msgid "AEAT 349 Report"
+msgstr "AEAT 349 申报表"
+
+msgctxt "model:ir.action,name:act_aeat_349_report_ammendment"
+msgid "AEAT 349 Report Ammendment"
+msgstr "AEAT 349 申报更正"
+
+msgctxt "model:ir.action,name:act_aeat_349_report_operation"
+msgid "AEAT 349 Report Operation"
+msgstr "AEAT 349 申报交易"
+
+msgctxt "model:ir.action.act_window,name:act_aeat_349_report"
+msgid "AEAT 349 Report"
+msgstr "AEAT 349 申报表"
+
+msgctxt "model:ir.action.act_window,name:act_aeat_349_report_ammendment"
+msgid "AEAT 349 Report Ammendment"
+msgstr "AEAT 349 申报更正"
+
+msgctxt "model:ir.action.act_window,name:act_aeat_349_report_operation"
+msgid "AEAT 349 Report Operation"
+msgstr "AEAT 349 申报交易"
+
+msgctxt "model:ir.action.wizard,name:"
+msgid "Recalculate AEAT 349 Records"
+msgstr "重新计算 AEAT 349 记录"
+
+msgctxt "model:ir.action.wizard,name:act_aeat_349_reasign"
+msgid "Reasign AEAT 349 Records"
+msgstr "重新分配 AEAT 349 记录"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_contact_name"
+msgid "Contact name in report \"%(name)s\" must contain name and surname"
+msgstr "申报表“%(name)s”中的联系人姓名必须包含名字和姓氏"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_delete_lines_in_349report"
+msgid ""
+"There are some invoices lines from invoices\n"
+"%(invoices)s\n"
+"that will be erased in 349 repotrs.\n"
+"To do that the reports\n"
+"%(reports)s\n"
+"must be canceleld or drafted."
+msgstr ""
+"以下发票的部分明细\n"
+"%(invoices)s\n"
+"将从 349 申报表中删除。\n"
+"为此，必须将申报表\n"
+"%(reports)s\n"
+"取消或重置为草稿。"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_delete_moves_in_349report"
+msgid ""
+"There are some moves from shipments\n"
+"%(shipments)s\n"
+"that will be erased in 349 repotrs.\n"
+"To do that the reports\n"
+"%(reports)s\n"
+"must be canceleld or drafted."
+msgstr ""
+"以下发货单的部分库存移动\n"
+"%(shipments)s\n"
+"将从 349 申报表中删除。\n"
+"为此，必须将申报表\n"
+"%(reports)s\n"
+"取消或重置为草稿。"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_forbiden_cancel"
+msgid ""
+"Not possible to cancel the invoice %(invoice)s becasue it's on AEAT349 "
+"report %(report)s."
+msgstr "无法取消发票 %(invoice)s，因为它已包含在 AEAT349 申报表 %(report)s 中。"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invalid_currency"
+msgid "Currency in AEAT 349 report \"%(name)s\" must be Euro."
+msgstr "AEAT 349 申报表“%(name)s”的货币必须为欧元。"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invalid_year"
+msgid "The year \"%(year)s\" is not valid."
+msgstr "年份“%(year)s”无效。"
+
+msgctxt "model:ir.model.button,string:aeat_349_report_calculate_button"
+msgid "Calculate"
+msgstr "计算"
+
+msgctxt "model:ir.model.button,string:aeat_349_report_cancel_button"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "model:ir.model.button,string:aeat_349_report_draft_button"
+msgid "Draft"
+msgstr "草案"
+
+msgctxt "model:ir.model.button,string:aeat_349_report_process_button"
+msgid "Process"
+msgstr "处理"
+
+msgctxt "model:ir.rule.group,name:"
+msgid "User in company"
+msgstr "公司内用户"
+
+msgctxt "model:ir.rule.group,name:rule_group_aeat349"
+msgid "User in company"
+msgstr "公司内用户"
+
+msgctxt "model:ir.rule.group,name:rule_group_aeat349_ammendment"
+msgid "User in company"
+msgstr "公司内用户"
+
+msgctxt "model:ir.rule.group,name:rule_group_aeat349_operation"
+msgid "User in company"
+msgstr "公司内用户"
+
+msgctxt "model:ir.ui.menu,name:menu_aeat_349_report"
+msgid "AEAT 349 Report"
+msgstr "AEAT 349 申报表"
+
+msgctxt "model:ir.ui.menu,name:menu_aeat_349_report_ammendment"
+msgid "AEAT 349 Report Ammendment"
+msgstr "AEAT 349 申报更正"
+
+msgctxt "model:ir.ui.menu,name:menu_aeat_349_report_operation"
+msgid "AEAT 349 Report Operation"
+msgstr "AEAT 349 申报交易"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "April"
+msgstr "四月"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "August"
+msgstr "八月"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "December"
+msgstr "十二月"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "February"
+msgstr "二月"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "First quarter"
+msgstr "第一季度"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "Fourth quarter"
+msgstr "第四季度"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "January"
+msgstr "一月"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "July"
+msgstr "七月"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "June"
+msgstr "六月"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "March"
+msgstr "三月"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "May"
+msgstr "五月"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "November"
+msgstr "十一月"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "October"
+msgstr "十月"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "Second quarter"
+msgstr "第二季度"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "September"
+msgstr "九月"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "Third quarter"
+msgstr "第三季度"
+
+msgctxt "selection:aeat.349.report,state:"
+msgid "Calculated"
+msgstr "已计算"
+
+msgctxt "selection:aeat.349.report,state:"
+msgid "Cancelled"
+msgstr "已取消"
+
+msgctxt "selection:aeat.349.report,state:"
+msgid "Done"
+msgstr "完成"
+
+msgctxt "selection:aeat.349.report,state:"
+msgid "Draft"
+msgstr "草案"
+
+msgctxt "selection:aeat.349.report,type:"
+msgid "Complementary"
+msgstr "补充"
+
+msgctxt "selection:aeat.349.report,type:"
+msgid "Normal"
+msgstr "普通"
+
+msgctxt "selection:aeat.349.report,type:"
+msgid "Substitutive"
+msgstr "替代"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "April"
+msgstr "四月"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "August"
+msgstr "八月"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "December"
+msgstr "十二月"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "February"
+msgstr "二月"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "First quarter"
+msgstr "第一季度"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "Fourth quarter"
+msgstr "第四季度"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "January"
+msgstr "一月"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "July"
+msgstr "七月"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "June"
+msgstr "六月"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "March"
+msgstr "三月"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "May"
+msgstr "五月"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "November"
+msgstr "十一月"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "October"
+msgstr "十月"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "Second quarter"
+msgstr "第二季度"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "September"
+msgstr "九月"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "Third quarter"
+msgstr "第三季度"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "A - Ammendments Intra-Community acquisition"
+msgstr "A - 欧盟内部购入更正"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "A - Intra-Community acquisition"
+msgstr "A - 欧盟内部购入"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid ""
+"C - Ammendments Substitutions of the employer or professional consignee"
+msgstr "C - 企业或专业收货方替换更正"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "C - Substitutions of the employer or professional consignee"
+msgstr "C - 企业或专业收货方替换"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "D - Ammendments Return of goods sended previously from TAI"
+msgstr "D - 先前从 TAI 发出货物的退货更正"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "D - Return of goods sended previously from TAI"
+msgstr "D - 先前从 TAI 发出货物的退货"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "E - Ammendments Intra-Community supplies"
+msgstr "E - 欧盟内部供应更正"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "E - Intra-Community supplies"
+msgstr "E - 欧盟内部供应"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid ""
+"H - Ammendments Intra-Community supplies without taxes delivered by legal "
+"representative"
+msgstr "H - 由法定代表人交付的欧盟内部免税供应更正"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid ""
+"H - Intra-Community supplies without taxes delivered by legal representative"
+msgstr "H - 由法定代表人交付的欧盟内部免税供应"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid ""
+"I - Ammendments Intra-Community services acquisitions by legal "
+"representative"
+msgstr "I - 由法定代表人进行的欧盟内部服务购入更正"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "I - Intra-Community services acquisitions by legal representative"
+msgstr "I - 由法定代表人进行的欧盟内部服务购入"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "M - Ammendments Intra-Community supplies without taxes"
+msgstr "M - 欧盟内部免税供应更正"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "M - Intra-Community supplies without taxes"
+msgstr "M - 欧盟内部免税供应"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "R - Ammendments Consignment sales agreements transfer"
+msgstr "R - 寄售协议下的转移更正"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "R - Consignment sales agreements transfer"
+msgstr "R - 寄售协议下的转移"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "S - Ammendments Intra-Community services"
+msgstr "S - 欧盟内部服务更正"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "S - Intra-Community services"
+msgstr "S - 欧盟内部服务"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "T - Ammendments Triangular operations"
+msgstr "T - 三角交易更正"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "T - Triangular operations"
+msgstr "T - 三角交易"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "A - Ammendments Intra-Community acquisition"
+msgstr "A - 欧盟内部购入更正"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "A - Intra-Community acquisition"
+msgstr "A - 欧盟内部购入"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid ""
+"C - Ammendments Substitutions of the employer or professional consignee"
+msgstr "C - 企业或专业收货方替换更正"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "C - Substitutions of the employer or professional consignee"
+msgstr "C - 企业或专业收货方替换"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "D - Ammendments Return of goods sended previously from TAI"
+msgstr "D - 先前从 TAI 发出货物的退货更正"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "D - Return of goods sended previously from TAI"
+msgstr "D - 先前从 TAI 发出货物的退货"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "E - Ammendments Intra-Community supplies"
+msgstr "E - 欧盟内部供应更正"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "E - Intra-Community supplies"
+msgstr "E - 欧盟内部供应"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid ""
+"H - Ammendments Intra-Community supplies without taxes delivered by legal "
+"representative"
+msgstr "H - 由法定代表人交付的欧盟内部免税供应更正"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid ""
+"H - Intra-Community supplies without taxes delivered by legal representative"
+msgstr "H - 由法定代表人交付的欧盟内部免税供应"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid ""
+"I - Ammendments Intra-Community services acquisitions by legal "
+"representative"
+msgstr "I - 由法定代表人进行的欧盟内部服务购入更正"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "I - Intra-Community services acquisitions by legal representative"
+msgstr "I - 由法定代表人进行的欧盟内部服务购入"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "M - Ammendments Intra-Community supplies without taxes"
+msgstr "M - 欧盟内部免税供应更正"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "M - Intra-Community supplies without taxes"
+msgstr "M - 欧盟内部免税供应"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "R - Ammendments Consignment sales agreements transfer"
+msgstr "R - 寄售协议下的转移更正"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "R - Consignment sales agreements transfer"
+msgstr "R - 寄售协议下的转移"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "S - Ammendments Intra-Community services"
+msgstr "S - 欧盟内部服务更正"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "S - Intra-Community services"
+msgstr "S - 欧盟内部服务"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "T - Ammendments Triangular operations"
+msgstr "T - 三角交易更正"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "T - Triangular operations"
+msgstr "T - 三角交易"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "A - Ammendments Intra-Community acquisition"
+msgstr "A - 欧盟内部购入更正"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "A - Intra-Community acquisition"
+msgstr "A - 欧盟内部购入"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid ""
+"C - Ammendments Substitutions of the employer or professional consignee"
+msgstr "C - 企业或专业收货方替换更正"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "C - Substitutions of the employer or professional consignee"
+msgstr "C - 企业或专业收货方替换"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "D - Ammendments Return of goods sended previously from TAI"
+msgstr "D - 先前从 TAI 发出货物的退货更正"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "D - Return of goods sended previously from TAI"
+msgstr "D - 先前从 TAI 发出货物的退货"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "E - Ammendments Intra-Community supplies"
+msgstr "E - 欧盟内部供应更正"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "E - Intra-Community supplies"
+msgstr "E - 欧盟内部供应"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid ""
+"H - Ammendments Intra-Community supplies without taxes delivered by legal "
+"representative"
+msgstr "H - 由法定代表人交付的欧盟内部免税供应更正"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid ""
+"H - Intra-Community supplies without taxes delivered by legal representative"
+msgstr "H - 由法定代表人交付的欧盟内部免税供应"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid ""
+"I - Ammendments Intra-Community services acquisitions by legal "
+"representative"
+msgstr "I - 由法定代表人进行的欧盟内部服务购入更正"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "I - Intra-Community services acquisitions by legal representative"
+msgstr "I - 由法定代表人进行的欧盟内部服务购入"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "M - Ammendments Intra-Community supplies without taxes"
+msgstr "M - 欧盟内部免税供应更正"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "M - Intra-Community supplies without taxes"
+msgstr "M - 欧盟内部免税供应"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "R - Ammendments Consignment sales agreements transfer"
+msgstr "R - 寄售协议下的转移更正"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "R - Consignment sales agreements transfer"
+msgstr "R - 寄售协议下的转移"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "S - Ammendments Intra-Community services"
+msgstr "S - 欧盟内部服务更正"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "S - Intra-Community services"
+msgstr "S - 欧盟内部服务"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "T - Ammendments Triangular operations"
+msgstr "T - 三角交易更正"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "T - Triangular operations"
+msgstr "T - 三角交易"
+
+msgctxt "view:account.tax.template:"
+msgid "AEAT 349"
+msgstr "AEAT 349"
+
+msgctxt "view:account.tax:"
+msgid "AEAT 349"
+msgstr "AEAT 349"
+
+msgctxt "view:aeat.349.reasign.records.end:"
+msgid "The AEAT 349 records have been reasigned."
+msgstr "AEAT 349 记录已重新分配。"
+
+msgctxt "view:aeat.349.reasign.records.start:"
+msgid "Select Operation Key to reasign invoices:"
+msgstr "请选择用于重新分配发票的交易代码："
+
+msgctxt "view:aeat.349.report.ammendment:"
+msgid "AEAT 349 Ammendment"
+msgstr "AEAT 349 更正"
+
+msgctxt "view:aeat.349.report.operation:"
+msgid "AEAT 349 Operation"
+msgstr "AEAT 349 交易"
+
+msgctxt "view:aeat.349.report:"
+msgid "Ammendments"
+msgstr "更正"
+
+msgctxt "view:aeat.349.report:"
+msgid "Declaration Number"
+msgstr "申报编号"
+
+msgctxt "view:aeat.349.report:"
+msgid "General"
+msgstr "普通"
+
+msgctxt "view:aeat.349.report:"
+msgid "Operations"
+msgstr "交易"
+
+msgctxt "view:aeat.349.report:"
+msgid "Totals"
+msgstr "合计"
+
+msgctxt "view:aeat.349.type:"
+msgid "AEAT 349 Type"
+msgstr "AEAT 349 类型"
+
+msgctxt "wizard_button:aeat.349.reasign.records,done,end:"
+msgid "Ok"
+msgstr "确定"
+
+msgctxt "wizard_button:aeat.349.reasign.records,start,end:"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "wizard_button:aeat.349.reasign.records,start,reasign:"
+msgid "Reasign"
+msgstr "重新分配"
+
+msgctxt "field:aeat.349.record,base:"
+msgid "Base Operation Amount"
+msgstr "原交易金额"
+
+msgctxt "field:aeat.349.record,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:aeat.349.record,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "会计年度"
+
+msgctxt "field:aeat.349.record,invoice:"
+msgid "Invoice"
+msgstr "原始凭证"
+
+msgctxt "field:aeat.349.record,operation:"
+msgid "Operation"
+msgstr "操作"
+
+msgctxt "field:aeat.349.record,operation_key:"
+msgid "Operation key"
+msgstr "交易代码"
+
+msgctxt "field:aeat.349.record,party_name:"
+msgid "Party Name"
+msgstr "参与者名称"
+
+msgctxt "field:aeat.349.record,party_vat:"
+msgid "VAT"
+msgstr "增值税"
+
+msgctxt "field:aeat.349.record,year:"
+msgid "Year"
+msgstr "年"
+
+msgctxt "field:aeat.349.report.ammendment,origins:"
+msgid "Origins"
+msgstr "依据"
+
+msgctxt "field:aeat.349.report.ammendment,records:"
+msgid "AEAT 349 Records"
+msgstr "AEAT 349 记录"
+
+msgctxt "field:aeat.349.report,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "会计年度"
+
+msgctxt "field:aeat.349.report,fiscalyear_code:"
+msgid "Fiscal Year Code"
+msgstr "会计年度代码"
+
+msgctxt "field:aeat.349.report.operation,origins:"
+msgid "Origins"
+msgstr "依据"
+
+msgctxt "field:aeat.349.report.operation,records:"
+msgid "AEAT 349 Records"
+msgstr "AEAT 349 记录"
+
+msgctxt "field:aeat.349.report.origin,ammendment:"
+msgid "349 Ammendment"
+msgstr "349 表更正"
+
+msgctxt "field:aeat.349.report.origin,operation:"
+msgid "349 Operation"
+msgstr "349 表交易"
+
+msgctxt "field:aeat.349.report.origin,resource:"
+msgid "Resource"
+msgstr "资源"
+
+msgctxt "field:stock.configuration.aeat349,aeat349_default_in_operation_key:"
+msgid "Default In Operation Key"
+msgstr "默认进项交易代码"
+
+msgctxt "field:stock.configuration.aeat349,aeat349_default_out_operation_key:"
+msgid "Default Out Operation Key"
+msgstr "默认销项交易代码"
+
+msgctxt "field:stock.configuration.aeat349,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:stock.configuration,aeat349_default_in_operation_key:"
+msgid "Default In Operation Key"
+msgstr "默认进项交易代码"
+
+msgctxt "field:stock.configuration,aeat349_default_out_operation_key:"
+msgid "Default Out Operation Key"
+msgstr "默认销项交易代码"
+
+msgctxt "field:stock.move,aeat349_ammendment:"
+msgid "349 Ammendment"
+msgstr "349 表更正"
+
+msgctxt "field:stock.move,aeat349_operation:"
+msgid "349 Operation"
+msgstr "349 表交易"
+
+msgctxt "field:stock.move,aeat349_operation_key:"
+msgid "AEAT 349 Operation Key"
+msgstr "AEAT 349 交易代码"
+
+msgctxt "model:aeat.349.record,name:"
+msgid "AEAT 349 Record"
+msgstr "AEAT 349 记录"
+
+msgctxt "model:aeat.349.report.origin,name:"
+msgid "AEAT 349 Operation/Ammendment Origin"
+msgstr "AEAT 349 交易/更正来源"
+
+msgctxt "model:ir.action,name:act_aeat_349_reasign_move"
+msgid "Reasign AEAT 349 Move Records"
+msgstr "重新分配 AEAT 349 库存移动记录"
+
+msgctxt "model:stock.configuration.aeat349,name:"
+msgid "Stock Configuration AEAT 349"
+msgstr "AEAT 349 库存配置"
+
+msgctxt "selection:aeat.349.record,operation_key:"
+msgid ""
+"H - Intra-Community supplies without taxes delivered by legal representative"
+msgstr "H - 由法定代表人交付的欧盟内部免税供应"
+
+msgctxt "selection:aeat.349.record,operation_key:"
+msgid "E - Intra-Community supplies"
+msgstr "E - 欧盟内部供应"
+
+msgctxt "selection:aeat.349.record,operation_key:"
+msgid "C - Substitutions of the employer or professional consignee"
+msgstr "C - 企业或专业收货方替换"
+
+msgctxt "selection:aeat.349.record,operation_key:"
+msgid "D - Return of goods sended previously from TAI"
+msgstr "D - 先前从 TAI 发出货物的退货"
+
+msgctxt "selection:aeat.349.record,operation_key:"
+msgid "R - Consignment sales agreements transfer"
+msgstr "R - 寄售协议下的转移"
+
+msgctxt "selection:aeat.349.record,operation_key:"
+msgid "I - Intra-Community services acquisitions by legal representative"
+msgstr "I - 由法定代表人进行的欧盟内部服务购入"
+
+msgctxt "selection:aeat.349.record,operation_key:"
+msgid "S - Intra-Community services"
+msgstr "S - 欧盟内部服务"
+
+msgctxt "selection:aeat.349.record,operation_key:"
+msgid "T - Triangular operations"
+msgstr "T - 三角交易"
+
+msgctxt "selection:aeat.349.record,operation_key:"
+msgid "A - Intra-Community acquisition"
+msgstr "A - 欧盟内部购入"
+
+msgctxt "selection:aeat.349.record,operation_key:"
+msgid "M - Intra-Community supplies without taxes"
+msgstr "M - 欧盟内部免税供应"
+
+msgctxt "wizard_button:aeat.349.reasign.move.records,done,end:"
+msgid "Ok"
+msgstr "确定"
+
+msgctxt "wizard_button:aeat.349.reasign.move.records,start,end:"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "wizard_button:aeat.349.reasign.move.records,start,reasign:"
+msgid "Reasign"
+msgstr "重新分配"
+
+msgctxt "wizard_button:aeat.349.recalculate.records,done,end:"
+msgid "Ok"
+msgstr "确定"
+
+msgctxt "wizard_button:aeat.349.recalculate.records,start,calculate:"
+msgid "Calculate"
+msgstr "计算"
+
+msgctxt "wizard_button:aeat.349.recalculate.records,start,end:"
+msgid "Cancel"
+msgstr "取消"
