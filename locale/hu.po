@@ -1,0 +1,1121 @@
+#
+msgid ""
+msgstr ""
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgctxt "field:account.invoice.line,aeat349_ammendment:"
+msgid "349 Ammendment"
+msgstr "349-es helyesbítés"
+
+msgctxt "field:account.invoice.line,aeat349_available_keys:"
+msgid "AEAT 349 Available Keys"
+msgstr "AEAT 349 elérhető kódok"
+
+msgctxt "field:account.invoice.line,aeat349_operation:"
+msgid "349 Operation"
+msgstr "349-es ügylet"
+
+msgctxt "field:account.invoice.line,aeat349_operation_key:"
+msgid "AEAT 349 Operation Key"
+msgstr "AEAT 349 ügyletkód"
+
+msgctxt "field:account.invoice.credit.start,group_lines:"
+msgid "Group by Tax"
+msgstr "Csoportosítás adó szerint"
+
+msgctxt "help:account.invoice.credit.start,group_lines:"
+msgid ""
+"If enabled, create credit lines grouped by fiscal behavior and set the "
+"credited invoice as line origin."
+msgstr ""
+"Bekapcsolva adózási kezelés szerint csoportosított jóváírási sorokat hoz "
+"létre, és a jóváírt számlát állítja be a sor forrásaként."
+
+msgctxt "field:account.tax,aeat349_default_in_ammendment_key:"
+msgid "Default In Ammendment Key"
+msgstr "Alapértelmezett bejövő helyesbítési kód"
+
+msgctxt "field:account.tax,aeat349_default_in_operation_key:"
+msgid "Default In Operation Key"
+msgstr "Alapértelmezett bejövő ügyletkód"
+
+msgctxt "field:account.tax,aeat349_default_out_ammendment_key:"
+msgid "Default Out Ammendment Key"
+msgstr "Alapértelmezett kimenő helyesbítési kód"
+
+msgctxt "field:account.tax,aeat349_default_out_operation_key:"
+msgid "Default Out Operation Key"
+msgstr "Alapértelmezett kimenő ügyletkód"
+
+msgctxt "field:account.tax,aeat349_operation_keys:"
+msgid "Available Operation Keys"
+msgstr "Elérhető ügyletkódok"
+
+msgctxt "field:account.tax.template,aeat349_default_in_ammendment_key:"
+msgid "Default In Ammendment Key"
+msgstr "Alapértelmezett bejövő helyesbítési kód"
+
+msgctxt "field:account.tax.template,aeat349_default_in_operation_key:"
+msgid "Default In Operation Key"
+msgstr "Alapértelmezett bejövő ügyletkód"
+
+msgctxt "field:account.tax.template,aeat349_default_out_ammendment_key:"
+msgid "Default Out Ammendment Key"
+msgstr "Alapértelmezett kimenő helyesbítési kód"
+
+msgctxt "field:account.tax.template,aeat349_default_out_operation_key:"
+msgid "Default Out Operation Key"
+msgstr "Alapértelmezett kimenő ügyletkód"
+
+msgctxt "field:account.tax.template,aeat349_operation_keys:"
+msgid "Available Operation Keys"
+msgstr "Elérhető ügyletkódok"
+
+msgctxt "field:aeat.349.reasign.records.start,aeat_349_type:"
+msgid "Operation Key"
+msgstr "Ügyletkód"
+
+msgctxt "field:aeat.349.report,ammendment_amount:"
+msgid "Ammendment Amount"
+msgstr "Helyesbítés összege"
+
+msgctxt "field:aeat.349.report,ammendments:"
+msgid "Ammendments"
+msgstr "Helyesbítések"
+
+msgctxt "field:aeat.349.report,calculation_date:"
+msgid "Calculation Date"
+msgstr "Számítás dátuma"
+
+msgctxt "field:aeat.349.report,company:"
+msgid "Company"
+msgstr "Cég"
+
+msgctxt "field:aeat.349.report,company_vat:"
+msgid "VAT number"
+msgstr "Adószám"
+
+msgctxt "field:aeat.349.report,contact_name:"
+msgid "Full Name"
+msgstr "Teljes név"
+
+msgctxt "field:aeat.349.report,contact_phone:"
+msgid "Phone"
+msgstr "Telefon"
+
+msgctxt "field:aeat.349.report,currency:"
+msgid "Currency"
+msgstr "Pénznem"
+
+msgctxt "field:aeat.349.report,file_:"
+msgid "File"
+msgstr "Fájl"
+
+msgctxt "field:aeat.349.report,filename:"
+msgid "File Name"
+msgstr "Fájlnév"
+
+msgctxt "field:aeat.349.report,operation_amount:"
+msgid "Operation Amount"
+msgstr "Ügylet összege"
+
+msgctxt "field:aeat.349.report,operations:"
+msgid "Operations"
+msgstr "Ügyletek"
+
+msgctxt "field:aeat.349.report,period:"
+msgid "Period"
+msgstr "Periódus"
+
+msgctxt "field:aeat.349.report,previous_number:"
+msgid "Previous Declaration Number"
+msgstr "Előző bevallás száma"
+
+msgctxt "field:aeat.349.report,representative_vat:"
+msgid "L.R. VAT number"
+msgstr "Törvényes képviselő adószáma"
+
+msgctxt "field:aeat.349.report,state:"
+msgid "State"
+msgstr "Állapot"
+
+msgctxt "field:aeat.349.report,type:"
+msgid "Statement Type"
+msgstr "Bevallás típusa"
+
+msgctxt "field:aeat.349.report,year:"
+msgid "Year"
+msgstr "Év"
+
+msgctxt "field:aeat.349.report.ammendment,ammendment_fiscalyear_code:"
+msgid "Ammendment Fiscal Year Code"
+msgstr "Helyesbítés üzleti évének kódja"
+
+msgctxt "field:aeat.349.report.ammendment,ammendment_period:"
+msgid "Ammendment Period"
+msgstr "Helyesbítés időszaka"
+
+msgctxt "field:aeat.349.report.ammendment,base:"
+msgid "Base Operation Amount"
+msgstr "Eredeti ügylet összege"
+
+msgctxt "field:aeat.349.report.ammendment,company:"
+msgid "Company"
+msgstr "Cég"
+
+msgctxt "field:aeat.349.report.ammendment,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "Számlasorok"
+
+msgctxt "field:aeat.349.report.ammendment,operation_key:"
+msgid "Operation key"
+msgstr "Ügyletkód"
+
+msgctxt "field:aeat.349.report.ammendment,original_base:"
+msgid "Original Base"
+msgstr "Eredeti adóalap"
+
+msgctxt "field:aeat.349.report.ammendment,party_name:"
+msgid "Party Name"
+msgstr "Ügyfél neve"
+
+msgctxt "field:aeat.349.report.ammendment,party_vat:"
+msgid "VAT"
+msgstr "Áfa"
+
+msgctxt "field:aeat.349.report.ammendment,report:"
+msgid "AEAT 349 Report"
+msgstr "AEAT 349 bevallás"
+
+msgctxt "field:aeat.349.report.ammendment,substitution_name:"
+msgid "Substitution Name"
+msgstr "Helyettesítő neve"
+
+msgctxt "field:aeat.349.report.ammendment,substitution_nif:"
+msgid "Substitution VAT"
+msgstr "Helyettesítő adószáma"
+
+msgctxt "field:aeat.349.report.operation,base:"
+msgid "Base Operation Amount"
+msgstr "Eredeti ügylet összege"
+
+msgctxt "field:aeat.349.report.operation,company:"
+msgid "Company"
+msgstr "Cég"
+
+msgctxt "field:aeat.349.report.operation,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "Számlasorok"
+
+msgctxt "field:aeat.349.report.operation,operation_key:"
+msgid "Operation key"
+msgstr "Ügyletkód"
+
+msgctxt "field:aeat.349.report.operation,party_name:"
+msgid "Party Name"
+msgstr "Ügyfél neve"
+
+msgctxt "field:aeat.349.report.operation,party_vat:"
+msgid "VAT"
+msgstr "Áfa"
+
+msgctxt "field:aeat.349.report.operation,report:"
+msgid "AEAT 349 Report"
+msgstr "AEAT 349 bevallás"
+
+msgctxt "field:aeat.349.report.operation,substitution_name:"
+msgid "Substitution Name"
+msgstr "Helyettesítő neve"
+
+msgctxt "field:aeat.349.report.operation,substitution_nif:"
+msgid "Substitution VAT"
+msgstr "Helyettesítő adószáma"
+
+msgctxt "field:aeat.349.type,operation_key:"
+msgid "Operation key"
+msgstr "Ügyletkód"
+
+msgctxt "field:aeat.349.type-account.tax,aeat_349_type:"
+msgid "Operation Key"
+msgstr "Ügyletkód"
+
+msgctxt "field:aeat.349.type-account.tax,tax:"
+msgid "Tax"
+msgstr "Adó"
+
+msgctxt "field:aeat.349.type-account.tax.template,aeat_349_type:"
+msgid "Operation Key"
+msgstr "Ügyletkód"
+
+msgctxt "field:aeat.349.type-account.tax.template,tax:"
+msgid "Tax Template"
+msgstr "Adósablon"
+
+msgctxt "help:aeat.349.report,contact_name:"
+msgid ""
+"The first surname, a space, the second surname, a space and the name, "
+"necessarily in this order."
+msgstr ""
+"Első vezetéknév, szóköz, második vezetéknév, szóköz és utónév, kötelezően "
+"ebben a sorrendben."
+
+msgctxt "help:aeat.349.report,representative_vat:"
+msgid "Legal Representative VAT number."
+msgstr "A törvényes képviselő adószáma."
+
+msgctxt "model:aeat.349.reasign.records.end,name:"
+msgid "Reasign AEAT 349 Records End"
+msgstr "AEAT 349 rekordok újra-hozzárendelése – befejezés"
+
+msgctxt "model:aeat.349.reasign.records.start,name:"
+msgid "Reasign AEAT 349 Records Start"
+msgstr "AEAT 349 rekordok újra-hozzárendelése – kezdés"
+
+msgctxt "model:aeat.349.report,name:"
+msgid "AEAT 349 Report"
+msgstr "AEAT 349 bevallás"
+
+msgctxt "model:aeat.349.report.ammendment,name:"
+msgid "AEAT 349 Ammendment"
+msgstr "AEAT 349 helyesbítés"
+
+msgctxt "model:aeat.349.report.operation,name:"
+msgid "AEAT 349 Operation"
+msgstr "AEAT 349 ügylet"
+
+msgctxt "model:aeat.349.type,name:"
+msgid "AEAT 349 Type"
+msgstr "AEAT 349 típus"
+
+msgctxt "model:aeat.349.type-account.tax,name:"
+msgid "AEAT 349 Type-Tax Relation"
+msgstr "AEAT 349 típus–adó kapcsolat"
+
+msgctxt "model:aeat.349.type-account.tax.template,name:"
+msgid "AEAT 349 Type-Tax Template Relation"
+msgstr "AEAT 349 típus–adósablon kapcsolat"
+
+msgctxt "model:ir.action,name:act_aeat_349_reasign"
+msgid "Reasign AEAT 349 Records"
+msgstr "AEAT 349 rekordok újra-hozzárendelése"
+
+msgctxt "model:ir.action,name:act_aeat_349_report"
+msgid "AEAT 349 Report"
+msgstr "AEAT 349 bevallás"
+
+msgctxt "model:ir.action,name:act_aeat_349_report_ammendment"
+msgid "AEAT 349 Report Ammendment"
+msgstr "AEAT 349 bevallás helyesbítése"
+
+msgctxt "model:ir.action,name:act_aeat_349_report_operation"
+msgid "AEAT 349 Report Operation"
+msgstr "AEAT 349 bevallás ügylete"
+
+msgctxt "model:ir.action.act_window,name:act_aeat_349_report"
+msgid "AEAT 349 Report"
+msgstr "AEAT 349 bevallás"
+
+msgctxt "model:ir.action.act_window,name:act_aeat_349_report_ammendment"
+msgid "AEAT 349 Report Ammendment"
+msgstr "AEAT 349 bevallás helyesbítése"
+
+msgctxt "model:ir.action.act_window,name:act_aeat_349_report_operation"
+msgid "AEAT 349 Report Operation"
+msgstr "AEAT 349 bevallás ügylete"
+
+msgctxt "model:ir.action.wizard,name:"
+msgid "Recalculate AEAT 349 Records"
+msgstr "AEAT 349 rekordok újraszámítása"
+
+msgctxt "model:ir.action.wizard,name:act_aeat_349_reasign"
+msgid "Reasign AEAT 349 Records"
+msgstr "AEAT 349 rekordok újra-hozzárendelése"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_contact_name"
+msgid "Contact name in report \"%(name)s\" must contain name and surname"
+msgstr ""
+"A(z) „%(name)s” bevallásban a kapcsolattartó nevének utónevet és "
+"vezetéknevet is kell tartalmaznia"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_delete_lines_in_349report"
+msgid ""
+"There are some invoices lines from invoices\n"
+"%(invoices)s\n"
+"that will be erased in 349 repotrs.\n"
+"To do that the reports\n"
+"%(reports)s\n"
+"must be canceleld or drafted."
+msgstr ""
+"A következő számlák egyes sorai\n"
+"%(invoices)s\n"
+"törlődnek a 349-es bevallásokból.\n"
+"Ehhez a következő bevallásokat\n"
+"%(reports)s\n"
+"vissza kell vonni vagy tervezett állapotba kell állítani."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_delete_moves_in_349report"
+msgid ""
+"There are some moves from shipments\n"
+"%(shipments)s\n"
+"that will be erased in 349 repotrs.\n"
+"To do that the reports\n"
+"%(reports)s\n"
+"must be canceleld or drafted."
+msgstr ""
+"A következő szállítmányok egyes készletmozgásai\n"
+"%(shipments)s\n"
+"törlődnek a 349-es bevallásokból.\n"
+"Ehhez a következő bevallásokat\n"
+"%(reports)s\n"
+"vissza kell vonni vagy tervezett állapotba kell állítani."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_forbiden_cancel"
+msgid ""
+"Not possible to cancel the invoice %(invoice)s becasue it's on AEAT349 "
+"report %(report)s."
+msgstr ""
+"A(z) %(invoice)s számla nem vonható vissza, mert szerepel a(z) %(report)s "
+"AEAT349 bevallásban."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invalid_currency"
+msgid "Currency in AEAT 349 report \"%(name)s\" must be Euro."
+msgstr "A(z) „%(name)s” AEAT 349 bevallás pénznemének eurónak kell lennie."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invalid_year"
+msgid "The year \"%(year)s\" is not valid."
+msgstr "A(z) „%(year)s” év érvénytelen."
+
+msgctxt "model:ir.model.button,string:aeat_349_report_calculate_button"
+msgid "Calculate"
+msgstr "Számítás"
+
+msgctxt "model:ir.model.button,string:aeat_349_report_cancel_button"
+msgid "Cancel"
+msgstr "Mégse"
+
+msgctxt "model:ir.model.button,string:aeat_349_report_draft_button"
+msgid "Draft"
+msgstr "vázlat"
+
+msgctxt "model:ir.model.button,string:aeat_349_report_process_button"
+msgid "Process"
+msgstr "Feldolgozás"
+
+msgctxt "model:ir.rule.group,name:"
+msgid "User in company"
+msgstr "Felhasználó a vállalatban"
+
+msgctxt "model:ir.rule.group,name:rule_group_aeat349"
+msgid "User in company"
+msgstr "Felhasználó a vállalatban"
+
+msgctxt "model:ir.rule.group,name:rule_group_aeat349_ammendment"
+msgid "User in company"
+msgstr "Felhasználó a vállalatban"
+
+msgctxt "model:ir.rule.group,name:rule_group_aeat349_operation"
+msgid "User in company"
+msgstr "Felhasználó a vállalatban"
+
+msgctxt "model:ir.ui.menu,name:menu_aeat_349_report"
+msgid "AEAT 349 Report"
+msgstr "AEAT 349 bevallás"
+
+msgctxt "model:ir.ui.menu,name:menu_aeat_349_report_ammendment"
+msgid "AEAT 349 Report Ammendment"
+msgstr "AEAT 349 bevallás helyesbítése"
+
+msgctxt "model:ir.ui.menu,name:menu_aeat_349_report_operation"
+msgid "AEAT 349 Report Operation"
+msgstr "AEAT 349 bevallás ügylete"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "April"
+msgstr "április"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "August"
+msgstr "augusztus"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "December"
+msgstr "december"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "February"
+msgstr "február"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "First quarter"
+msgstr "Első negyedév"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "Fourth quarter"
+msgstr "Negyedik negyedév"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "January"
+msgstr "január"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "July"
+msgstr "július"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "June"
+msgstr "június"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "March"
+msgstr "március"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "May"
+msgstr "máj"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "November"
+msgstr "november"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "October"
+msgstr "október"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "Second quarter"
+msgstr "Második negyedév"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "September"
+msgstr "szeptember"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "Third quarter"
+msgstr "Harmadik negyedév"
+
+msgctxt "selection:aeat.349.report,state:"
+msgid "Calculated"
+msgstr "Kiszámítva"
+
+msgctxt "selection:aeat.349.report,state:"
+msgid "Cancelled"
+msgstr "érvénytelen"
+
+msgctxt "selection:aeat.349.report,state:"
+msgid "Done"
+msgstr "Kész"
+
+msgctxt "selection:aeat.349.report,state:"
+msgid "Draft"
+msgstr "vázlat"
+
+msgctxt "selection:aeat.349.report,type:"
+msgid "Complementary"
+msgstr "Kiegészítő"
+
+msgctxt "selection:aeat.349.report,type:"
+msgid "Normal"
+msgstr "Normál"
+
+msgctxt "selection:aeat.349.report,type:"
+msgid "Substitutive"
+msgstr "Helyettesítő"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "April"
+msgstr "április"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "August"
+msgstr "augusztus"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "December"
+msgstr "december"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "February"
+msgstr "február"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "First quarter"
+msgstr "Első negyedév"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "Fourth quarter"
+msgstr "Negyedik negyedév"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "January"
+msgstr "január"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "July"
+msgstr "július"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "June"
+msgstr "június"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "March"
+msgstr "március"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "May"
+msgstr "máj"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "November"
+msgstr "november"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "October"
+msgstr "október"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "Second quarter"
+msgstr "Második negyedév"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "September"
+msgstr "szeptember"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "Third quarter"
+msgstr "Harmadik negyedév"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "A - Ammendments Intra-Community acquisition"
+msgstr "A – Közösségen belüli beszerzések helyesbítése"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "A - Intra-Community acquisition"
+msgstr "A – Közösségen belüli beszerzés"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid ""
+"C - Ammendments Substitutions of the employer or professional consignee"
+msgstr "C – Vállalkozói vagy szakmai címzett helyettesítésének helyesbítése"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "C - Substitutions of the employer or professional consignee"
+msgstr "C – Vállalkozói vagy szakmai címzett helyettesítése"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "D - Ammendments Return of goods sended previously from TAI"
+msgstr ""
+"D – Korábban a TAI területéről küldött áruk visszaküldésének helyesbítése"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "D - Return of goods sended previously from TAI"
+msgstr "D – Korábban a TAI területéről küldött áruk visszaküldése"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "E - Ammendments Intra-Community supplies"
+msgstr "E – Közösségen belüli értékesítések helyesbítése"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "E - Intra-Community supplies"
+msgstr "E – Közösségen belüli értékesítés"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid ""
+"H - Ammendments Intra-Community supplies without taxes delivered by legal "
+"representative"
+msgstr ""
+"H – Törvényes képviselő által teljesített adómentes közösségi értékesítések "
+"helyesbítése"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid ""
+"H - Intra-Community supplies without taxes delivered by legal representative"
+msgstr ""
+"H – Törvényes képviselő által teljesített adómentes közösségi értékesítés"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid ""
+"I - Ammendments Intra-Community services acquisitions by legal "
+"representative"
+msgstr ""
+"I – Törvényes képviselő által végzett közösségi szolgáltatásbeszerzések "
+"helyesbítése"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "I - Intra-Community services acquisitions by legal representative"
+msgstr "I – Törvényes képviselő által végzett közösségi szolgáltatásbeszerzés"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "M - Ammendments Intra-Community supplies without taxes"
+msgstr "M – Adómentes közösségen belüli értékesítések helyesbítése"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "M - Intra-Community supplies without taxes"
+msgstr "M – Adómentes közösségen belüli értékesítés"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "R - Ammendments Consignment sales agreements transfer"
+msgstr ""
+"R – Vevői készletre vonatkozó megállapodás szerinti átszállítás helyesbítése"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "R - Consignment sales agreements transfer"
+msgstr "R – Vevői készletre vonatkozó megállapodás szerinti átszállítás"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "S - Ammendments Intra-Community services"
+msgstr "S – Közösségen belüli szolgáltatások helyesbítése"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "S - Intra-Community services"
+msgstr "S – Közösségen belüli szolgáltatás"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "T - Ammendments Triangular operations"
+msgstr "T – Háromszögügyletek helyesbítése"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "T - Triangular operations"
+msgstr "T – Háromszögügylet"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "A - Ammendments Intra-Community acquisition"
+msgstr "A – Közösségen belüli beszerzések helyesbítése"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "A - Intra-Community acquisition"
+msgstr "A – Közösségen belüli beszerzés"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid ""
+"C - Ammendments Substitutions of the employer or professional consignee"
+msgstr "C – Vállalkozói vagy szakmai címzett helyettesítésének helyesbítése"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "C - Substitutions of the employer or professional consignee"
+msgstr "C – Vállalkozói vagy szakmai címzett helyettesítése"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "D - Ammendments Return of goods sended previously from TAI"
+msgstr ""
+"D – Korábban a TAI területéről küldött áruk visszaküldésének helyesbítése"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "D - Return of goods sended previously from TAI"
+msgstr "D – Korábban a TAI területéről küldött áruk visszaküldése"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "E - Ammendments Intra-Community supplies"
+msgstr "E – Közösségen belüli értékesítések helyesbítése"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "E - Intra-Community supplies"
+msgstr "E – Közösségen belüli értékesítés"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid ""
+"H - Ammendments Intra-Community supplies without taxes delivered by legal "
+"representative"
+msgstr ""
+"H – Törvényes képviselő által teljesített adómentes közösségi értékesítések "
+"helyesbítése"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid ""
+"H - Intra-Community supplies without taxes delivered by legal representative"
+msgstr ""
+"H – Törvényes képviselő által teljesített adómentes közösségi értékesítés"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid ""
+"I - Ammendments Intra-Community services acquisitions by legal "
+"representative"
+msgstr ""
+"I – Törvényes képviselő által végzett közösségi szolgáltatásbeszerzések "
+"helyesbítése"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "I - Intra-Community services acquisitions by legal representative"
+msgstr "I – Törvényes képviselő által végzett közösségi szolgáltatásbeszerzés"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "M - Ammendments Intra-Community supplies without taxes"
+msgstr "M – Adómentes közösségen belüli értékesítések helyesbítése"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "M - Intra-Community supplies without taxes"
+msgstr "M – Adómentes közösségen belüli értékesítés"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "R - Ammendments Consignment sales agreements transfer"
+msgstr ""
+"R – Vevői készletre vonatkozó megállapodás szerinti átszállítás helyesbítése"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "R - Consignment sales agreements transfer"
+msgstr "R – Vevői készletre vonatkozó megállapodás szerinti átszállítás"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "S - Ammendments Intra-Community services"
+msgstr "S – Közösségen belüli szolgáltatások helyesbítése"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "S - Intra-Community services"
+msgstr "S – Közösségen belüli szolgáltatás"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "T - Ammendments Triangular operations"
+msgstr "T – Háromszögügyletek helyesbítése"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "T - Triangular operations"
+msgstr "T – Háromszögügylet"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "A - Ammendments Intra-Community acquisition"
+msgstr "A – Közösségen belüli beszerzések helyesbítése"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "A - Intra-Community acquisition"
+msgstr "A – Közösségen belüli beszerzés"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid ""
+"C - Ammendments Substitutions of the employer or professional consignee"
+msgstr "C – Vállalkozói vagy szakmai címzett helyettesítésének helyesbítése"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "C - Substitutions of the employer or professional consignee"
+msgstr "C – Vállalkozói vagy szakmai címzett helyettesítése"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "D - Ammendments Return of goods sended previously from TAI"
+msgstr ""
+"D – Korábban a TAI területéről küldött áruk visszaküldésének helyesbítése"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "D - Return of goods sended previously from TAI"
+msgstr "D – Korábban a TAI területéről küldött áruk visszaküldése"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "E - Ammendments Intra-Community supplies"
+msgstr "E – Közösségen belüli értékesítések helyesbítése"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "E - Intra-Community supplies"
+msgstr "E – Közösségen belüli értékesítés"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid ""
+"H - Ammendments Intra-Community supplies without taxes delivered by legal "
+"representative"
+msgstr ""
+"H – Törvényes képviselő által teljesített adómentes közösségi értékesítések "
+"helyesbítése"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid ""
+"H - Intra-Community supplies without taxes delivered by legal representative"
+msgstr ""
+"H – Törvényes képviselő által teljesített adómentes közösségi értékesítés"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid ""
+"I - Ammendments Intra-Community services acquisitions by legal "
+"representative"
+msgstr ""
+"I – Törvényes képviselő által végzett közösségi szolgáltatásbeszerzések "
+"helyesbítése"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "I - Intra-Community services acquisitions by legal representative"
+msgstr "I – Törvényes képviselő által végzett közösségi szolgáltatásbeszerzés"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "M - Ammendments Intra-Community supplies without taxes"
+msgstr "M – Adómentes közösségen belüli értékesítések helyesbítése"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "M - Intra-Community supplies without taxes"
+msgstr "M – Adómentes közösségen belüli értékesítés"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "R - Ammendments Consignment sales agreements transfer"
+msgstr ""
+"R – Vevői készletre vonatkozó megállapodás szerinti átszállítás helyesbítése"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "R - Consignment sales agreements transfer"
+msgstr "R – Vevői készletre vonatkozó megállapodás szerinti átszállítás"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "S - Ammendments Intra-Community services"
+msgstr "S – Közösségen belüli szolgáltatások helyesbítése"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "S - Intra-Community services"
+msgstr "S – Közösségen belüli szolgáltatás"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "T - Ammendments Triangular operations"
+msgstr "T – Háromszögügyletek helyesbítése"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "T - Triangular operations"
+msgstr "T – Háromszögügylet"
+
+msgctxt "view:account.tax.template:"
+msgid "AEAT 349"
+msgstr "AEAT 349"
+
+msgctxt "view:account.tax:"
+msgid "AEAT 349"
+msgstr "AEAT 349"
+
+msgctxt "view:aeat.349.reasign.records.end:"
+msgid "The AEAT 349 records have been reasigned."
+msgstr "Az AEAT 349 rekordok újra-hozzárendelése megtörtént."
+
+msgctxt "view:aeat.349.reasign.records.start:"
+msgid "Select Operation Key to reasign invoices:"
+msgstr "Válassza ki a számlák újra-hozzárendeléséhez használandó ügyletkódot:"
+
+msgctxt "view:aeat.349.report.ammendment:"
+msgid "AEAT 349 Ammendment"
+msgstr "AEAT 349 helyesbítés"
+
+msgctxt "view:aeat.349.report.operation:"
+msgid "AEAT 349 Operation"
+msgstr "AEAT 349 ügylet"
+
+msgctxt "view:aeat.349.report:"
+msgid "Ammendments"
+msgstr "Helyesbítések"
+
+msgctxt "view:aeat.349.report:"
+msgid "Declaration Number"
+msgstr "Bevallás száma"
+
+msgctxt "view:aeat.349.report:"
+msgid "General"
+msgstr "Általános"
+
+msgctxt "view:aeat.349.report:"
+msgid "Operations"
+msgstr "Ügyletek"
+
+msgctxt "view:aeat.349.report:"
+msgid "Totals"
+msgstr "Összesítések"
+
+msgctxt "view:aeat.349.type:"
+msgid "AEAT 349 Type"
+msgstr "AEAT 349 típus"
+
+msgctxt "wizard_button:aeat.349.reasign.records,done,end:"
+msgid "Ok"
+msgstr "Rendben"
+
+msgctxt "wizard_button:aeat.349.reasign.records,start,end:"
+msgid "Cancel"
+msgstr "Mégse"
+
+msgctxt "wizard_button:aeat.349.reasign.records,start,reasign:"
+msgid "Reasign"
+msgstr "Újra-hozzárendelés"
+
+msgctxt "field:aeat.349.record,base:"
+msgid "Base Operation Amount"
+msgstr "Eredeti ügylet összege"
+
+msgctxt "field:aeat.349.record,company:"
+msgid "Company"
+msgstr "Cég"
+
+msgctxt "field:aeat.349.record,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Üzleti év"
+
+msgctxt "field:aeat.349.record,invoice:"
+msgid "Invoice"
+msgstr "Számla"
+
+msgctxt "field:aeat.349.record,operation:"
+msgid "Operation"
+msgstr "Számla oldala"
+
+msgctxt "field:aeat.349.record,operation_key:"
+msgid "Operation key"
+msgstr "Ügyletkód"
+
+msgctxt "field:aeat.349.record,party_name:"
+msgid "Party Name"
+msgstr "Ügyfél neve"
+
+msgctxt "field:aeat.349.record,party_vat:"
+msgid "VAT"
+msgstr "Áfa"
+
+msgctxt "field:aeat.349.record,year:"
+msgid "Year"
+msgstr "Év"
+
+msgctxt "field:aeat.349.report.ammendment,origins:"
+msgid "Origins"
+msgstr "Forrásadatok"
+
+msgctxt "field:aeat.349.report.ammendment,records:"
+msgid "AEAT 349 Records"
+msgstr "AEAT 349 rekordok"
+
+msgctxt "field:aeat.349.report,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Üzleti év"
+
+msgctxt "field:aeat.349.report,fiscalyear_code:"
+msgid "Fiscal Year Code"
+msgstr "Üzleti év kódja"
+
+msgctxt "field:aeat.349.report.operation,origins:"
+msgid "Origins"
+msgstr "Forrásadatok"
+
+msgctxt "field:aeat.349.report.operation,records:"
+msgid "AEAT 349 Records"
+msgstr "AEAT 349 rekordok"
+
+msgctxt "field:aeat.349.report.origin,ammendment:"
+msgid "349 Ammendment"
+msgstr "349-es helyesbítés"
+
+msgctxt "field:aeat.349.report.origin,operation:"
+msgid "349 Operation"
+msgstr "349-es ügylet"
+
+msgctxt "field:aeat.349.report.origin,resource:"
+msgid "Resource"
+msgstr "Elem"
+
+msgctxt "field:stock.configuration.aeat349,aeat349_default_in_operation_key:"
+msgid "Default In Operation Key"
+msgstr "Alapértelmezett bejövő ügyletkód"
+
+msgctxt "field:stock.configuration.aeat349,aeat349_default_out_operation_key:"
+msgid "Default Out Operation Key"
+msgstr "Alapértelmezett kimenő ügyletkód"
+
+msgctxt "field:stock.configuration.aeat349,company:"
+msgid "Company"
+msgstr "Cég"
+
+msgctxt "field:stock.configuration,aeat349_default_in_operation_key:"
+msgid "Default In Operation Key"
+msgstr "Alapértelmezett bejövő ügyletkód"
+
+msgctxt "field:stock.configuration,aeat349_default_out_operation_key:"
+msgid "Default Out Operation Key"
+msgstr "Alapértelmezett kimenő ügyletkód"
+
+msgctxt "field:stock.move,aeat349_ammendment:"
+msgid "349 Ammendment"
+msgstr "349-es helyesbítés"
+
+msgctxt "field:stock.move,aeat349_operation:"
+msgid "349 Operation"
+msgstr "349-es ügylet"
+
+msgctxt "field:stock.move,aeat349_operation_key:"
+msgid "AEAT 349 Operation Key"
+msgstr "AEAT 349 ügyletkód"
+
+msgctxt "model:aeat.349.record,name:"
+msgid "AEAT 349 Record"
+msgstr "AEAT 349 rekord"
+
+msgctxt "model:aeat.349.report.origin,name:"
+msgid "AEAT 349 Operation/Ammendment Origin"
+msgstr "AEAT 349 ügylet/helyesbítés forrása"
+
+msgctxt "model:ir.action,name:act_aeat_349_reasign_move"
+msgid "Reasign AEAT 349 Move Records"
+msgstr "AEAT 349 készletmozgásrekordok újra-hozzárendelése"
+
+msgctxt "model:stock.configuration.aeat349,name:"
+msgid "Stock Configuration AEAT 349"
+msgstr "AEAT 349 készletbeállításai"
+
+msgctxt "selection:aeat.349.record,operation_key:"
+msgid ""
+"H - Intra-Community supplies without taxes delivered by legal representative"
+msgstr ""
+"H – Törvényes képviselő által teljesített adómentes közösségi értékesítés"
+
+msgctxt "selection:aeat.349.record,operation_key:"
+msgid "E - Intra-Community supplies"
+msgstr "E – Közösségen belüli értékesítés"
+
+msgctxt "selection:aeat.349.record,operation_key:"
+msgid "C - Substitutions of the employer or professional consignee"
+msgstr "C – Vállalkozói vagy szakmai címzett helyettesítése"
+
+msgctxt "selection:aeat.349.record,operation_key:"
+msgid "D - Return of goods sended previously from TAI"
+msgstr "D – Korábban a TAI területéről küldött áruk visszaküldése"
+
+msgctxt "selection:aeat.349.record,operation_key:"
+msgid "R - Consignment sales agreements transfer"
+msgstr "R – Vevői készletre vonatkozó megállapodás szerinti átszállítás"
+
+msgctxt "selection:aeat.349.record,operation_key:"
+msgid "I - Intra-Community services acquisitions by legal representative"
+msgstr "I – Törvényes képviselő által végzett közösségi szolgáltatásbeszerzés"
+
+msgctxt "selection:aeat.349.record,operation_key:"
+msgid "S - Intra-Community services"
+msgstr "S – Közösségen belüli szolgáltatás"
+
+msgctxt "selection:aeat.349.record,operation_key:"
+msgid "T - Triangular operations"
+msgstr "T – Háromszögügylet"
+
+msgctxt "selection:aeat.349.record,operation_key:"
+msgid "A - Intra-Community acquisition"
+msgstr "A – Közösségen belüli beszerzés"
+
+msgctxt "selection:aeat.349.record,operation_key:"
+msgid "M - Intra-Community supplies without taxes"
+msgstr "M – Adómentes közösségen belüli értékesítés"
+
+msgctxt "wizard_button:aeat.349.reasign.move.records,done,end:"
+msgid "Ok"
+msgstr "Rendben"
+
+msgctxt "wizard_button:aeat.349.reasign.move.records,start,end:"
+msgid "Cancel"
+msgstr "Mégse"
+
+msgctxt "wizard_button:aeat.349.reasign.move.records,start,reasign:"
+msgid "Reasign"
+msgstr "Újra-hozzárendelés"
+
+msgctxt "wizard_button:aeat.349.recalculate.records,done,end:"
+msgid "Ok"
+msgstr "Rendben"
+
+msgctxt "wizard_button:aeat.349.recalculate.records,start,calculate:"
+msgid "Calculate"
+msgstr "Számítás"
+
+msgctxt "wizard_button:aeat.349.recalculate.records,start,end:"
+msgid "Cancel"
+msgstr "Mégse"
