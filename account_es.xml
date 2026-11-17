@@ -20,21 +20,25 @@ this repository contains the full copyright notices and license terms. -->
             <field name="tax" ref="account_es.iva_IO"/>
             <field name="aeat_349_type" ref="aeat_349_key_T"/>
         </record>
-        <record model="aeat.349.type-account.tax.template" id="aeat_349_template_type_iva_IO_serv_E">
-            <field name="tax" ref="account_es.iva_IO_serv"/>
+        <record model="aeat.349.type-account.tax.template" id="aeat_349_template_type_iva_IO_bi_E">
+            <field name="tax" ref="account_es.iva_IO_bi"/>
             <field name="aeat_349_type" ref="aeat_349_key_E"/>
         </record>
-        <record model="aeat.349.type-account.tax.template" id="aeat_349_template_type_iva_IO_serv_H">
-            <field name="tax" ref="account_es.iva_IO_serv"/>
+        <record model="aeat.349.type-account.tax.template" id="aeat_349_template_type_iva_IO_bi_H">
+            <field name="tax" ref="account_es.iva_IO_bi"/>
             <field name="aeat_349_type" ref="aeat_349_key_H"/>
         </record>
-        <record model="aeat.349.type-account.tax.template" id="aeat_349_template_type_iva_IO_serv_M">
-            <field name="tax" ref="account_es.iva_IO_serv"/>
+        <record model="aeat.349.type-account.tax.template" id="aeat_349_template_type_iva_IO_bi_M">
+            <field name="tax" ref="account_es.iva_IO_bi"/>
             <field name="aeat_349_type" ref="aeat_349_key_M"/>
         </record>
-        <record model="aeat.349.type-account.tax.template" id="aeat_349_template_type_iva_IO_serv_T">
-            <field name="tax" ref="account_es.iva_IO_serv"/>
+        <record model="aeat.349.type-account.tax.template" id="aeat_349_template_type_iva_IO_bi_T">
+            <field name="tax" ref="account_es.iva_IO_bi"/>
             <field name="aeat_349_type" ref="aeat_349_key_T"/>
+        </record>
+        <record model="aeat.349.type-account.tax.template" id="aeat_349_template_type_iva_IO_serv_S">
+            <field name="tax" ref="account_es.iva_IO_serv"/>
+            <field name="aeat_349_type" ref="aeat_349_key_S"/>
         </record>
         <record model="aeat.349.type-account.tax.template" id="aeat_349_template_type_iva_IC_compras_2_bc_A">
             <field name="tax" ref="account_es.iva_IC_compras_2_bc"/>
@@ -776,21 +780,25 @@ this repository contains the full copyright notices and license terms. -->
             <field name="tax" ref="account_es.iva_IO"/>
             <field name="aeat_349_type" ref="aeat_349_key_A-T"/>
         </record>
-        <record model="aeat.349.type-account.tax.template" id="aeat_349_template_type_iva_IO_serv_A-E">
-            <field name="tax" ref="account_es.iva_IO_serv"/>
+        <record model="aeat.349.type-account.tax.template" id="aeat_349_template_type_iva_IO_bi_A-E">
+            <field name="tax" ref="account_es.iva_IO_bi"/>
             <field name="aeat_349_type" ref="aeat_349_key_A-E"/>
         </record>
-        <record model="aeat.349.type-account.tax.template" id="aeat_349_template_type_iva_IO_serv_A-H">
-            <field name="tax" ref="account_es.iva_IO_serv"/>
+        <record model="aeat.349.type-account.tax.template" id="aeat_349_template_type_iva_IO_bi_A-H">
+            <field name="tax" ref="account_es.iva_IO_bi"/>
             <field name="aeat_349_type" ref="aeat_349_key_A-H"/>
         </record>
-        <record model="aeat.349.type-account.tax.template" id="aeat_349_template_type_iva_IO_serv_A-M">
-            <field name="tax" ref="account_es.iva_IO_serv"/>
+        <record model="aeat.349.type-account.tax.template" id="aeat_349_template_type_iva_IO_bi_A-M">
+            <field name="tax" ref="account_es.iva_IO_bi"/>
             <field name="aeat_349_type" ref="aeat_349_key_A-M"/>
         </record>
-        <record model="aeat.349.type-account.tax.template" id="aeat_349_template_type_iva_IO_serv_A-T">
-            <field name="tax" ref="account_es.iva_IO_serv"/>
+        <record model="aeat.349.type-account.tax.template" id="aeat_349_template_type_iva_IO_bi_A-T">
+            <field name="tax" ref="account_es.iva_IO_bi"/>
             <field name="aeat_349_type" ref="aeat_349_key_A-T"/>
+        </record>
+        <record model="aeat.349.type-account.tax.template" id="aeat_349_template_type_iva_IO_serv_A-S">
+            <field name="tax" ref="account_es.iva_IO_serv"/>
+            <field name="aeat_349_type" ref="aeat_349_key_A-S"/>
         </record>
         <record model="aeat.349.type-account.tax.template" id="aeat_349_template_type_iva_IC_compras_2_bc_A-A">
             <field name="tax" ref="account_es.iva_IC_compras_2_bc"/>
@@ -1556,9 +1564,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="aeat349_default_out_operation_key" ref="aeat_349_key_E"/>
             <field name="aeat349_default_out_ammendment_key" ref="aeat_349_key_A-E"/>
         </record>
-        <record model="account.tax.template" id="account_es.iva_IO_serv">
+        <record model="account.tax.template" id="account_es.iva_IO_bi">
             <field name="aeat349_default_out_operation_key" ref="aeat_349_key_E"/>
             <field name="aeat349_default_out_ammendment_key" ref="aeat_349_key_A-E"/>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_IO_serv">
+            <field name="aeat349_default_out_operation_key" ref="aeat_349_key_S"/>
+            <field name="aeat349_default_out_ammendment_key" ref="aeat_349_key_A-S"/>
         </record>
         <record model="account.tax.template" id="account_es.iva_IC_compras_4_bc">
             <field name="aeat349_default_in_operation_key" ref="aeat_349_key_A"/>
