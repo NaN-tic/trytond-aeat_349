@@ -1,0 +1,1098 @@
+#
+msgid ""
+msgstr ""
+"Language: km\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgctxt "field:account.invoice.line,aeat349_ammendment:"
+msgid "349 Ammendment"
+msgstr "ការកែតម្រូវ 349"
+
+msgctxt "field:account.invoice.line,aeat349_available_keys:"
+msgid "AEAT 349 Available Keys"
+msgstr "កូដ AEAT 349 ដែលអាចប្រើបាន"
+
+msgctxt "field:account.invoice.line,aeat349_operation:"
+msgid "349 Operation"
+msgstr "ប្រតិបត្តិការ 349"
+
+msgctxt "field:account.invoice.line,aeat349_operation_key:"
+msgid "AEAT 349 Operation Key"
+msgstr "កូដប្រតិបត្តិការ AEAT 349"
+
+msgctxt "field:account.invoice.credit.start,group_lines:"
+msgid "Group by Tax"
+msgstr "ដាក់ជាក្រុមតាមពន្ធ"
+
+msgctxt "help:account.invoice.credit.start,group_lines:"
+msgid ""
+"If enabled, create credit lines grouped by fiscal behavior and set the "
+"credited invoice as line origin."
+msgstr ""
+"បើបើក បង្កើតបន្ទាត់ឥណទានដាក់ជាក្រុមតាមវិធីអនុវត្តពន្ធ "
+"និងកំណត់វិក្កយបត្រដែលបានផ្ដល់ឥណទានជាប្រភពរបស់បន្ទាត់។"
+
+msgctxt "field:account.tax,aeat349_default_in_ammendment_key:"
+msgid "Default In Ammendment Key"
+msgstr "កូដកែតម្រូវចូលលំនាំដើម"
+
+msgctxt "field:account.tax,aeat349_default_in_operation_key:"
+msgid "Default In Operation Key"
+msgstr "កូដប្រតិបត្តិការចូលលំនាំដើម"
+
+msgctxt "field:account.tax,aeat349_default_out_ammendment_key:"
+msgid "Default Out Ammendment Key"
+msgstr "កូដកែតម្រូវចេញលំនាំដើម"
+
+msgctxt "field:account.tax,aeat349_default_out_operation_key:"
+msgid "Default Out Operation Key"
+msgstr "កូដប្រតិបត្តិការចេញលំនាំដើម"
+
+msgctxt "field:account.tax,aeat349_operation_keys:"
+msgid "Available Operation Keys"
+msgstr "កូដប្រតិបត្តិការដែលអាចប្រើបាន"
+
+msgctxt "field:account.tax.template,aeat349_default_in_ammendment_key:"
+msgid "Default In Ammendment Key"
+msgstr "កូដកែតម្រូវចូលលំនាំដើម"
+
+msgctxt "field:account.tax.template,aeat349_default_in_operation_key:"
+msgid "Default In Operation Key"
+msgstr "កូដប្រតិបត្តិការចូលលំនាំដើម"
+
+msgctxt "field:account.tax.template,aeat349_default_out_ammendment_key:"
+msgid "Default Out Ammendment Key"
+msgstr "កូដកែតម្រូវចេញលំនាំដើម"
+
+msgctxt "field:account.tax.template,aeat349_default_out_operation_key:"
+msgid "Default Out Operation Key"
+msgstr "កូដប្រតិបត្តិការចេញលំនាំដើម"
+
+msgctxt "field:account.tax.template,aeat349_operation_keys:"
+msgid "Available Operation Keys"
+msgstr "កូដប្រតិបត្តិការដែលអាចប្រើបាន"
+
+msgctxt "field:aeat.349.reasign.records.start,aeat_349_type:"
+msgid "Operation Key"
+msgstr "កូដប្រតិបត្តិការ"
+
+msgctxt "field:aeat.349.report,ammendment_amount:"
+msgid "Ammendment Amount"
+msgstr "ចំនួនទឹកប្រាក់កែតម្រូវ"
+
+msgctxt "field:aeat.349.report,ammendments:"
+msgid "Ammendments"
+msgstr "ការកែតម្រូវ"
+
+msgctxt "field:aeat.349.report,calculation_date:"
+msgid "Calculation Date"
+msgstr "កាលបរិច្ឆេទគណនា"
+
+msgctxt "field:aeat.349.report,company:"
+msgid "Company"
+msgstr "ក្រុមហ៊ុន"
+
+msgctxt "field:aeat.349.report,company_vat:"
+msgid "VAT number"
+msgstr "លេខអាករលើតម្លៃបន្ថែម"
+
+msgctxt "field:aeat.349.report,contact_name:"
+msgid "Full Name"
+msgstr "ឈ្មោះពេញ"
+
+msgctxt "field:aeat.349.report,contact_phone:"
+msgid "Phone"
+msgstr "ទូរសព្ទ"
+
+msgctxt "field:aeat.349.report,currency:"
+msgid "Currency"
+msgstr "រូបិយប័ណ្ណ"
+
+msgctxt "field:aeat.349.report,file_:"
+msgid "File"
+msgstr "ឯកសារ"
+
+msgctxt "field:aeat.349.report,filename:"
+msgid "File Name"
+msgstr "ឈ្មោះឯកសារ"
+
+msgctxt "field:aeat.349.report,operation_amount:"
+msgid "Operation Amount"
+msgstr "ចំនួនទឹកប្រាក់ប្រតិបត្តិការ"
+
+msgctxt "field:aeat.349.report,operations:"
+msgid "Operations"
+msgstr "ប្រតិបត្តិការ"
+
+msgctxt "field:aeat.349.report,period:"
+msgid "Period"
+msgstr "គ្រា"
+
+msgctxt "field:aeat.349.report,previous_number:"
+msgid "Previous Declaration Number"
+msgstr "លេខសេចក្តីប្រកាសមុន"
+
+msgctxt "field:aeat.349.report,representative_vat:"
+msgid "L.R. VAT number"
+msgstr "លេខអាករលើតម្លៃបន្ថែមរបស់តំណាងស្របច្បាប់"
+
+msgctxt "field:aeat.349.report,state:"
+msgid "State"
+msgstr "ស្ថានភាព"
+
+msgctxt "field:aeat.349.report,type:"
+msgid "Statement Type"
+msgstr "ប្រភេទសេចក្តីប្រកាស"
+
+msgctxt "field:aeat.349.report,year:"
+msgid "Year"
+msgstr "ឆ្នាំ"
+
+msgctxt "field:aeat.349.report.ammendment,ammendment_fiscalyear_code:"
+msgid "Ammendment Fiscal Year Code"
+msgstr "កូដឆ្នាំសារពើពន្ធនៃការកែតម្រូវ"
+
+msgctxt "field:aeat.349.report.ammendment,ammendment_period:"
+msgid "Ammendment Period"
+msgstr "គ្រានៃការកែតម្រូវ"
+
+msgctxt "field:aeat.349.report.ammendment,base:"
+msgid "Base Operation Amount"
+msgstr "ចំនួនទឹកប្រាក់មូលដ្ឋាននៃប្រតិបត្តិការ"
+
+msgctxt "field:aeat.349.report.ammendment,company:"
+msgid "Company"
+msgstr "ក្រុមហ៊ុន"
+
+msgctxt "field:aeat.349.report.ammendment,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "បន្ទាត់វិក្កយបត្រ"
+
+msgctxt "field:aeat.349.report.ammendment,operation_key:"
+msgid "Operation key"
+msgstr "កូដប្រតិបត្តិការ"
+
+msgctxt "field:aeat.349.report.ammendment,original_base:"
+msgid "Original Base"
+msgstr "មូលដ្ឋានដើម"
+
+msgctxt "field:aeat.349.report.ammendment,party_name:"
+msgid "Party Name"
+msgstr "ឈ្មោះភាគី"
+
+msgctxt "field:aeat.349.report.ammendment,party_vat:"
+msgid "VAT"
+msgstr "អាករលើតម្លៃបន្ថែម (VAT)"
+
+msgctxt "field:aeat.349.report.ammendment,report:"
+msgid "AEAT 349 Report"
+msgstr "របាយការណ៍ AEAT 349"
+
+msgctxt "field:aeat.349.report.ammendment,substitution_name:"
+msgid "Substitution Name"
+msgstr "ឈ្មោះអ្នកជំនួស"
+
+msgctxt "field:aeat.349.report.ammendment,substitution_nif:"
+msgid "Substitution VAT"
+msgstr "លេខអាករលើតម្លៃបន្ថែមរបស់អ្នកជំនួស"
+
+msgctxt "field:aeat.349.report.operation,base:"
+msgid "Base Operation Amount"
+msgstr "ចំនួនទឹកប្រាក់មូលដ្ឋាននៃប្រតិបត្តិការ"
+
+msgctxt "field:aeat.349.report.operation,company:"
+msgid "Company"
+msgstr "ក្រុមហ៊ុន"
+
+msgctxt "field:aeat.349.report.operation,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "បន្ទាត់វិក្កយបត្រ"
+
+msgctxt "field:aeat.349.report.operation,operation_key:"
+msgid "Operation key"
+msgstr "កូដប្រតិបត្តិការ"
+
+msgctxt "field:aeat.349.report.operation,party_name:"
+msgid "Party Name"
+msgstr "ឈ្មោះភាគី"
+
+msgctxt "field:aeat.349.report.operation,party_vat:"
+msgid "VAT"
+msgstr "អាករលើតម្លៃបន្ថែម (VAT)"
+
+msgctxt "field:aeat.349.report.operation,report:"
+msgid "AEAT 349 Report"
+msgstr "របាយការណ៍ AEAT 349"
+
+msgctxt "field:aeat.349.report.operation,substitution_name:"
+msgid "Substitution Name"
+msgstr "ឈ្មោះអ្នកជំនួស"
+
+msgctxt "field:aeat.349.report.operation,substitution_nif:"
+msgid "Substitution VAT"
+msgstr "លេខអាករលើតម្លៃបន្ថែមរបស់អ្នកជំនួស"
+
+msgctxt "field:aeat.349.type,operation_key:"
+msgid "Operation key"
+msgstr "កូដប្រតិបត្តិការ"
+
+msgctxt "field:aeat.349.type-account.tax,aeat_349_type:"
+msgid "Operation Key"
+msgstr "កូដប្រតិបត្តិការ"
+
+msgctxt "field:aeat.349.type-account.tax,tax:"
+msgid "Tax"
+msgstr "ពន្ធ"
+
+msgctxt "field:aeat.349.type-account.tax.template,aeat_349_type:"
+msgid "Operation Key"
+msgstr "កូដប្រតិបត្តិការ"
+
+msgctxt "field:aeat.349.type-account.tax.template,tax:"
+msgid "Tax Template"
+msgstr "គំរូពន្ធ"
+
+msgctxt "help:aeat.349.report,contact_name:"
+msgid ""
+"The first surname, a space, the second surname, a space and the name, "
+"necessarily in this order."
+msgstr ""
+"ត្រូវបញ្ចូលនាមត្រកូលទីមួយ ដកឃ្លា នាមត្រកូលទីពីរ ដកឃ្លា និងនាមខ្លួន "
+"តាមលំដាប់នេះ។"
+
+msgctxt "help:aeat.349.report,representative_vat:"
+msgid "Legal Representative VAT number."
+msgstr "លេខអាករលើតម្លៃបន្ថែមរបស់តំណាងស្របច្បាប់។"
+
+msgctxt "model:aeat.349.reasign.records.end,name:"
+msgid "Reasign AEAT 349 Records End"
+msgstr "បញ្ចប់ការកំណត់កំណត់ត្រា AEAT 349 ឡើងវិញ"
+
+msgctxt "model:aeat.349.reasign.records.start,name:"
+msgid "Reasign AEAT 349 Records Start"
+msgstr "ចាប់ផ្ដើមកំណត់កំណត់ត្រា AEAT 349 ឡើងវិញ"
+
+msgctxt "model:aeat.349.report,name:"
+msgid "AEAT 349 Report"
+msgstr "របាយការណ៍ AEAT 349"
+
+msgctxt "model:aeat.349.report.ammendment,name:"
+msgid "AEAT 349 Ammendment"
+msgstr "ការកែតម្រូវ AEAT 349"
+
+msgctxt "model:aeat.349.report.operation,name:"
+msgid "AEAT 349 Operation"
+msgstr "ប្រតិបត្តិការ AEAT 349"
+
+msgctxt "model:aeat.349.type,name:"
+msgid "AEAT 349 Type"
+msgstr "ប្រភេទ AEAT 349"
+
+msgctxt "model:aeat.349.type-account.tax,name:"
+msgid "AEAT 349 Type-Tax Relation"
+msgstr "ទំនាក់ទំនងប្រភេទ AEAT 349 និងពន្ធ"
+
+msgctxt "model:aeat.349.type-account.tax.template,name:"
+msgid "AEAT 349 Type-Tax Template Relation"
+msgstr "ទំនាក់ទំនងប្រភេទ AEAT 349 និងគំរូពន្ធ"
+
+msgctxt "model:ir.action,name:act_aeat_349_reasign"
+msgid "Reasign AEAT 349 Records"
+msgstr "កំណត់កំណត់ត្រា AEAT 349 ឡើងវិញ"
+
+msgctxt "model:ir.action,name:act_aeat_349_report"
+msgid "AEAT 349 Report"
+msgstr "របាយការណ៍ AEAT 349"
+
+msgctxt "model:ir.action,name:act_aeat_349_report_ammendment"
+msgid "AEAT 349 Report Ammendment"
+msgstr "ការកែតម្រូវរបាយការណ៍ AEAT 349"
+
+msgctxt "model:ir.action,name:act_aeat_349_report_operation"
+msgid "AEAT 349 Report Operation"
+msgstr "ប្រតិបត្តិការក្នុងរបាយការណ៍ AEAT 349"
+
+msgctxt "model:ir.action.act_window,name:act_aeat_349_report"
+msgid "AEAT 349 Report"
+msgstr "របាយការណ៍ AEAT 349"
+
+msgctxt "model:ir.action.act_window,name:act_aeat_349_report_ammendment"
+msgid "AEAT 349 Report Ammendment"
+msgstr "ការកែតម្រូវរបាយការណ៍ AEAT 349"
+
+msgctxt "model:ir.action.act_window,name:act_aeat_349_report_operation"
+msgid "AEAT 349 Report Operation"
+msgstr "ប្រតិបត្តិការក្នុងរបាយការណ៍ AEAT 349"
+
+msgctxt "model:ir.action.wizard,name:"
+msgid "Recalculate AEAT 349 Records"
+msgstr "គណនាកំណត់ត្រា AEAT 349 ឡើងវិញ"
+
+msgctxt "model:ir.action.wizard,name:act_aeat_349_reasign"
+msgid "Reasign AEAT 349 Records"
+msgstr "កំណត់កំណត់ត្រា AEAT 349 ឡើងវិញ"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_contact_name"
+msgid "Contact name in report \"%(name)s\" must contain name and surname"
+msgstr ""
+"ឈ្មោះអ្នកទំនាក់ទំនងក្នុងរបាយការណ៍ «%(name)s» ត្រូវមាននាមខ្លួន និងនាមត្រកូល"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_delete_lines_in_349report"
+msgid ""
+"There are some invoices lines from invoices\n"
+"%(invoices)s\n"
+"that will be erased in 349 repotrs.\n"
+"To do that the reports\n"
+"%(reports)s\n"
+"must be canceleld or drafted."
+msgstr ""
+"បន្ទាត់នៃវិក្កយបត្រ\n"
+"%(invoices)s\n"
+"នឹងត្រូវបានលុបពីរបាយការណ៍ 349។\n"
+"ដើម្បីធ្វើដូច្នេះ របាយការណ៍\n"
+"%(reports)s\n"
+"ត្រូវបានបោះបង់ ឬកំណត់ជាសេចក្តីព្រាងជាមុន។"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_delete_moves_in_349report"
+msgid ""
+"There are some moves from shipments\n"
+"%(shipments)s\n"
+"that will be erased in 349 repotrs.\n"
+"To do that the reports\n"
+"%(reports)s\n"
+"must be canceleld or drafted."
+msgstr ""
+"ចលនាស្តុកនៃការដឹកជញ្ជូន\n"
+"%(shipments)s\n"
+"នឹងត្រូវបានលុបពីរបាយការណ៍ 349។\n"
+"ដើម្បីធ្វើដូច្នេះ របាយការណ៍\n"
+"%(reports)s\n"
+"ត្រូវបានបោះបង់ ឬកំណត់ជាសេចក្តីព្រាងជាមុន។"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_forbiden_cancel"
+msgid ""
+"Not possible to cancel the invoice %(invoice)s becasue it's on AEAT349 report"
+" %(report)s."
+msgstr ""
+"មិនអាចបោះបង់វិក្កយបត្រ %(invoice)s បានទេ ព្រោះវាមានក្នុងរបាយការណ៍ AEAT349 "
+"%(report)s។"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invalid_currency"
+msgid "Currency in AEAT 349 report \"%(name)s\" must be Euro."
+msgstr "រូបិយប័ណ្ណនៃរបាយការណ៍ AEAT 349 «%(name)s» ត្រូវតែជាអឺរ៉ូ។"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invalid_year"
+msgid "The year \"%(year)s\" is not valid."
+msgstr "ឆ្នាំ «%(year)s» មិនត្រឹមត្រូវ។"
+
+msgctxt "model:ir.model.button,string:aeat_349_report_calculate_button"
+msgid "Calculate"
+msgstr "គណនា"
+
+msgctxt "model:ir.model.button,string:aeat_349_report_cancel_button"
+msgid "Cancel"
+msgstr "បោះបង់"
+
+msgctxt "model:ir.model.button,string:aeat_349_report_draft_button"
+msgid "Draft"
+msgstr "សេចក្តីព្រាង"
+
+msgctxt "model:ir.model.button,string:aeat_349_report_process_button"
+msgid "Process"
+msgstr "ដំណើរការ"
+
+msgctxt "model:ir.rule.group,name:"
+msgid "User in company"
+msgstr "អ្នកប្រើប្រាស់ក្នុងក្រុមហ៊ុន"
+
+msgctxt "model:ir.rule.group,name:rule_group_aeat349"
+msgid "User in company"
+msgstr "អ្នកប្រើប្រាស់ក្នុងក្រុមហ៊ុន"
+
+msgctxt "model:ir.rule.group,name:rule_group_aeat349_ammendment"
+msgid "User in company"
+msgstr "អ្នកប្រើប្រាស់ក្នុងក្រុមហ៊ុន"
+
+msgctxt "model:ir.rule.group,name:rule_group_aeat349_operation"
+msgid "User in company"
+msgstr "អ្នកប្រើប្រាស់ក្នុងក្រុមហ៊ុន"
+
+msgctxt "model:ir.ui.menu,name:menu_aeat_349_report"
+msgid "AEAT 349 Report"
+msgstr "របាយការណ៍ AEAT 349"
+
+msgctxt "model:ir.ui.menu,name:menu_aeat_349_report_ammendment"
+msgid "AEAT 349 Report Ammendment"
+msgstr "ការកែតម្រូវរបាយការណ៍ AEAT 349"
+
+msgctxt "model:ir.ui.menu,name:menu_aeat_349_report_operation"
+msgid "AEAT 349 Report Operation"
+msgstr "ប្រតិបត្តិការក្នុងរបាយការណ៍ AEAT 349"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "April"
+msgstr "មេសា"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "August"
+msgstr "សីហា"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "December"
+msgstr "ធ្នូ"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "February"
+msgstr "កុម្ភៈ"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "First quarter"
+msgstr "ត្រីមាសទី ១"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "Fourth quarter"
+msgstr "ត្រីមាសទី ៤"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "January"
+msgstr "មករា"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "July"
+msgstr "កក្កដា"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "June"
+msgstr "មិថុនា"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "March"
+msgstr "មីនា"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "May"
+msgstr "ឧសភា"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "November"
+msgstr "វិច្ឆិកា"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "October"
+msgstr "តុលា"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "Second quarter"
+msgstr "ត្រីមាសទី ២"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "September"
+msgstr "កញ្ញា"
+
+msgctxt "selection:aeat.349.report,period:"
+msgid "Third quarter"
+msgstr "ត្រីមាសទី ៣"
+
+msgctxt "selection:aeat.349.report,state:"
+msgid "Calculated"
+msgstr "បានគណនា"
+
+msgctxt "selection:aeat.349.report,state:"
+msgid "Cancelled"
+msgstr "បានបោះបង់"
+
+msgctxt "selection:aeat.349.report,state:"
+msgid "Done"
+msgstr "បានបញ្ចប់"
+
+msgctxt "selection:aeat.349.report,state:"
+msgid "Draft"
+msgstr "សេចក្តីព្រាង"
+
+msgctxt "selection:aeat.349.report,type:"
+msgid "Complementary"
+msgstr "បន្ថែម"
+
+msgctxt "selection:aeat.349.report,type:"
+msgid "Normal"
+msgstr "ធម្មតា"
+
+msgctxt "selection:aeat.349.report,type:"
+msgid "Substitutive"
+msgstr "ជំនួស"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "April"
+msgstr "មេសា"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "August"
+msgstr "សីហា"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "December"
+msgstr "ធ្នូ"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "February"
+msgstr "កុម្ភៈ"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "First quarter"
+msgstr "ត្រីមាសទី ១"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "Fourth quarter"
+msgstr "ត្រីមាសទី ៤"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "January"
+msgstr "មករា"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "July"
+msgstr "កក្កដា"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "June"
+msgstr "មិថុនា"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "March"
+msgstr "មីនា"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "May"
+msgstr "ឧសភា"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "November"
+msgstr "វិច្ឆិកា"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "October"
+msgstr "តុលា"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "Second quarter"
+msgstr "ត្រីមាសទី ២"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "September"
+msgstr "កញ្ញា"
+
+msgctxt "selection:aeat.349.report.ammendment,ammendment_period:"
+msgid "Third quarter"
+msgstr "ត្រីមាសទី ៣"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "A - Ammendments Intra-Community acquisition"
+msgstr "A - ការកែតម្រូវការទិញក្នុងសហភាពអឺរ៉ុប"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "A - Intra-Community acquisition"
+msgstr "A - ការទិញក្នុងសហភាពអឺរ៉ុប"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "C - Ammendments Substitutions of the employer or professional consignee"
+msgstr ""
+"C - ការកែតម្រូវការផ្លាស់ប្ដូរនិយោជក ឬអ្នកទទួលទំនិញជាអ្នកប្រកបវិជ្ជាជីវៈ"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "C - Substitutions of the employer or professional consignee"
+msgstr "C - ការផ្លាស់ប្ដូរនិយោជក ឬអ្នកទទួលទំនិញជាអ្នកប្រកបវិជ្ជាជីវៈ"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "D - Ammendments Return of goods sended previously from TAI"
+msgstr "D - ការកែតម្រូវការប្រគល់ទំនិញដែលបានផ្ញើពី TAI ត្រឡប់មកវិញ"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "D - Return of goods sended previously from TAI"
+msgstr "D - ការប្រគល់ទំនិញដែលបានផ្ញើពី TAI ត្រឡប់មកវិញ"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "E - Ammendments Intra-Community supplies"
+msgstr "E - ការកែតម្រូវការផ្គត់ផ្គង់ក្នុងសហភាពអឺរ៉ុប"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "E - Intra-Community supplies"
+msgstr "E - ការផ្គត់ផ្គង់ក្នុងសហភាពអឺរ៉ុប"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid ""
+"H - Ammendments Intra-Community supplies without taxes delivered by legal "
+"representative"
+msgstr ""
+"H - ការកែតម្រូវការផ្គត់ផ្គង់លើកលែងពន្ធក្នុងសហភាពអឺរ៉ុប ដោយតំណាងស្របច្បាប់"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid ""
+"H - Intra-Community supplies without taxes delivered by legal representative"
+msgstr "H - ការផ្គត់ផ្គង់លើកលែងពន្ធក្នុងសហភាពអឺរ៉ុប ដោយតំណាងស្របច្បាប់"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid ""
+"I - Ammendments Intra-Community services acquisitions by legal representative"
+msgstr "I - ការកែតម្រូវការទិញសេវាក្នុងសហភាពអឺរ៉ុប ដោយតំណាងស្របច្បាប់"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "I - Intra-Community services acquisitions by legal representative"
+msgstr "I - ការទិញសេវាក្នុងសហភាពអឺរ៉ុប ដោយតំណាងស្របច្បាប់"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "M - Ammendments Intra-Community supplies without taxes"
+msgstr "M - ការកែតម្រូវការផ្គត់ផ្គង់លើកលែងពន្ធក្នុងសហភាពអឺរ៉ុប"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "M - Intra-Community supplies without taxes"
+msgstr "M - ការផ្គត់ផ្គង់លើកលែងពន្ធក្នុងសហភាពអឺរ៉ុប"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "R - Ammendments Consignment sales agreements transfer"
+msgstr "R - ការកែតម្រូវការផ្ទេរតាមកិច្ចព្រមព្រៀងលក់ដោយផ្ញើទំនិញ"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "R - Consignment sales agreements transfer"
+msgstr "R - ការផ្ទេរតាមកិច្ចព្រមព្រៀងលក់ដោយផ្ញើទំនិញ"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "S - Ammendments Intra-Community services"
+msgstr "S - ការកែតម្រូវសេវាក្នុងសហភាពអឺរ៉ុប"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "S - Intra-Community services"
+msgstr "S - សេវាក្នុងសហភាពអឺរ៉ុប"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "T - Ammendments Triangular operations"
+msgstr "T - ការកែតម្រូវប្រតិបត្តិការត្រីភាគី"
+
+msgctxt "selection:aeat.349.report.ammendment,operation_key:"
+msgid "T - Triangular operations"
+msgstr "T - ប្រតិបត្តិការត្រីភាគី"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "A - Ammendments Intra-Community acquisition"
+msgstr "A - ការកែតម្រូវការទិញក្នុងសហភាពអឺរ៉ុប"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "A - Intra-Community acquisition"
+msgstr "A - ការទិញក្នុងសហភាពអឺរ៉ុប"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "C - Ammendments Substitutions of the employer or professional consignee"
+msgstr ""
+"C - ការកែតម្រូវការផ្លាស់ប្ដូរនិយោជក ឬអ្នកទទួលទំនិញជាអ្នកប្រកបវិជ្ជាជីវៈ"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "C - Substitutions of the employer or professional consignee"
+msgstr "C - ការផ្លាស់ប្ដូរនិយោជក ឬអ្នកទទួលទំនិញជាអ្នកប្រកបវិជ្ជាជីវៈ"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "D - Ammendments Return of goods sended previously from TAI"
+msgstr "D - ការកែតម្រូវការប្រគល់ទំនិញដែលបានផ្ញើពី TAI ត្រឡប់មកវិញ"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "D - Return of goods sended previously from TAI"
+msgstr "D - ការប្រគល់ទំនិញដែលបានផ្ញើពី TAI ត្រឡប់មកវិញ"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "E - Ammendments Intra-Community supplies"
+msgstr "E - ការកែតម្រូវការផ្គត់ផ្គង់ក្នុងសហភាពអឺរ៉ុប"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "E - Intra-Community supplies"
+msgstr "E - ការផ្គត់ផ្គង់ក្នុងសហភាពអឺរ៉ុប"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid ""
+"H - Ammendments Intra-Community supplies without taxes delivered by legal "
+"representative"
+msgstr ""
+"H - ការកែតម្រូវការផ្គត់ផ្គង់លើកលែងពន្ធក្នុងសហភាពអឺរ៉ុប ដោយតំណាងស្របច្បាប់"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid ""
+"H - Intra-Community supplies without taxes delivered by legal representative"
+msgstr "H - ការផ្គត់ផ្គង់លើកលែងពន្ធក្នុងសហភាពអឺរ៉ុប ដោយតំណាងស្របច្បាប់"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid ""
+"I - Ammendments Intra-Community services acquisitions by legal representative"
+msgstr "I - ការកែតម្រូវការទិញសេវាក្នុងសហភាពអឺរ៉ុប ដោយតំណាងស្របច្បាប់"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "I - Intra-Community services acquisitions by legal representative"
+msgstr "I - ការទិញសេវាក្នុងសហភាពអឺរ៉ុប ដោយតំណាងស្របច្បាប់"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "M - Ammendments Intra-Community supplies without taxes"
+msgstr "M - ការកែតម្រូវការផ្គត់ផ្គង់លើកលែងពន្ធក្នុងសហភាពអឺរ៉ុប"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "M - Intra-Community supplies without taxes"
+msgstr "M - ការផ្គត់ផ្គង់លើកលែងពន្ធក្នុងសហភាពអឺរ៉ុប"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "R - Ammendments Consignment sales agreements transfer"
+msgstr "R - ការកែតម្រូវការផ្ទេរតាមកិច្ចព្រមព្រៀងលក់ដោយផ្ញើទំនិញ"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "R - Consignment sales agreements transfer"
+msgstr "R - ការផ្ទេរតាមកិច្ចព្រមព្រៀងលក់ដោយផ្ញើទំនិញ"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "S - Ammendments Intra-Community services"
+msgstr "S - ការកែតម្រូវសេវាក្នុងសហភាពអឺរ៉ុប"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "S - Intra-Community services"
+msgstr "S - សេវាក្នុងសហភាពអឺរ៉ុប"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "T - Ammendments Triangular operations"
+msgstr "T - ការកែតម្រូវប្រតិបត្តិការត្រីភាគី"
+
+msgctxt "selection:aeat.349.report.operation,operation_key:"
+msgid "T - Triangular operations"
+msgstr "T - ប្រតិបត្តិការត្រីភាគី"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "A - Ammendments Intra-Community acquisition"
+msgstr "A - ការកែតម្រូវការទិញក្នុងសហភាពអឺរ៉ុប"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "A - Intra-Community acquisition"
+msgstr "A - ការទិញក្នុងសហភាពអឺរ៉ុប"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "C - Ammendments Substitutions of the employer or professional consignee"
+msgstr ""
+"C - ការកែតម្រូវការផ្លាស់ប្ដូរនិយោជក ឬអ្នកទទួលទំនិញជាអ្នកប្រកបវិជ្ជាជីវៈ"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "C - Substitutions of the employer or professional consignee"
+msgstr "C - ការផ្លាស់ប្ដូរនិយោជក ឬអ្នកទទួលទំនិញជាអ្នកប្រកបវិជ្ជាជីវៈ"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "D - Ammendments Return of goods sended previously from TAI"
+msgstr "D - ការកែតម្រូវការប្រគល់ទំនិញដែលបានផ្ញើពី TAI ត្រឡប់មកវិញ"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "D - Return of goods sended previously from TAI"
+msgstr "D - ការប្រគល់ទំនិញដែលបានផ្ញើពី TAI ត្រឡប់មកវិញ"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "E - Ammendments Intra-Community supplies"
+msgstr "E - ការកែតម្រូវការផ្គត់ផ្គង់ក្នុងសហភាពអឺរ៉ុប"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "E - Intra-Community supplies"
+msgstr "E - ការផ្គត់ផ្គង់ក្នុងសហភាពអឺរ៉ុប"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid ""
+"H - Ammendments Intra-Community supplies without taxes delivered by legal "
+"representative"
+msgstr ""
+"H - ការកែតម្រូវការផ្គត់ផ្គង់លើកលែងពន្ធក្នុងសហភាពអឺរ៉ុប ដោយតំណាងស្របច្បាប់"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid ""
+"H - Intra-Community supplies without taxes delivered by legal representative"
+msgstr "H - ការផ្គត់ផ្គង់លើកលែងពន្ធក្នុងសហភាពអឺរ៉ុប ដោយតំណាងស្របច្បាប់"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid ""
+"I - Ammendments Intra-Community services acquisitions by legal representative"
+msgstr "I - ការកែតម្រូវការទិញសេវាក្នុងសហភាពអឺរ៉ុប ដោយតំណាងស្របច្បាប់"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "I - Intra-Community services acquisitions by legal representative"
+msgstr "I - ការទិញសេវាក្នុងសហភាពអឺរ៉ុប ដោយតំណាងស្របច្បាប់"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "M - Ammendments Intra-Community supplies without taxes"
+msgstr "M - ការកែតម្រូវការផ្គត់ផ្គង់លើកលែងពន្ធក្នុងសហភាពអឺរ៉ុប"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "M - Intra-Community supplies without taxes"
+msgstr "M - ការផ្គត់ផ្គង់លើកលែងពន្ធក្នុងសហភាពអឺរ៉ុប"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "R - Ammendments Consignment sales agreements transfer"
+msgstr "R - ការកែតម្រូវការផ្ទេរតាមកិច្ចព្រមព្រៀងលក់ដោយផ្ញើទំនិញ"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "R - Consignment sales agreements transfer"
+msgstr "R - ការផ្ទេរតាមកិច្ចព្រមព្រៀងលក់ដោយផ្ញើទំនិញ"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "S - Ammendments Intra-Community services"
+msgstr "S - ការកែតម្រូវសេវាក្នុងសហភាពអឺរ៉ុប"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "S - Intra-Community services"
+msgstr "S - សេវាក្នុងសហភាពអឺរ៉ុប"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "T - Ammendments Triangular operations"
+msgstr "T - ការកែតម្រូវប្រតិបត្តិការត្រីភាគី"
+
+msgctxt "selection:aeat.349.type,operation_key:"
+msgid "T - Triangular operations"
+msgstr "T - ប្រតិបត្តិការត្រីភាគី"
+
+msgctxt "view:account.tax.template:"
+msgid "AEAT 349"
+msgstr "AEAT 349"
+
+msgctxt "view:account.tax:"
+msgid "AEAT 349"
+msgstr "AEAT 349"
+
+msgctxt "view:aeat.349.reasign.records.end:"
+msgid "The AEAT 349 records have been reasigned."
+msgstr "កំណត់ត្រា AEAT 349 ត្រូវបានកំណត់ឡើងវិញ។"
+
+msgctxt "view:aeat.349.reasign.records.start:"
+msgid "Select Operation Key to reasign invoices:"
+msgstr "ជ្រើសរើសកូដប្រតិបត្តិការដើម្បីកំណត់វិក្កយបត្រឡើងវិញ៖"
+
+msgctxt "view:aeat.349.report.ammendment:"
+msgid "AEAT 349 Ammendment"
+msgstr "ការកែតម្រូវ AEAT 349"
+
+msgctxt "view:aeat.349.report.operation:"
+msgid "AEAT 349 Operation"
+msgstr "ប្រតិបត្តិការ AEAT 349"
+
+msgctxt "view:aeat.349.report:"
+msgid "Ammendments"
+msgstr "ការកែតម្រូវ"
+
+msgctxt "view:aeat.349.report:"
+msgid "Declaration Number"
+msgstr "លេខសេចក្តីប្រកាស"
+
+msgctxt "view:aeat.349.report:"
+msgid "General"
+msgstr "ទូទៅ"
+
+msgctxt "view:aeat.349.report:"
+msgid "Operations"
+msgstr "ប្រតិបត្តិការ"
+
+msgctxt "view:aeat.349.report:"
+msgid "Totals"
+msgstr "ចំនួនសរុប"
+
+msgctxt "view:aeat.349.type:"
+msgid "AEAT 349 Type"
+msgstr "ប្រភេទ AEAT 349"
+
+msgctxt "wizard_button:aeat.349.reasign.records,done,end:"
+msgid "Ok"
+msgstr "យល់ព្រម"
+
+msgctxt "wizard_button:aeat.349.reasign.records,start,end:"
+msgid "Cancel"
+msgstr "បោះបង់"
+
+msgctxt "wizard_button:aeat.349.reasign.records,start,reasign:"
+msgid "Reasign"
+msgstr "កំណត់ឡើងវិញ"
+
+msgctxt "field:aeat.349.record,base:"
+msgid "Base Operation Amount"
+msgstr "ចំនួនទឹកប្រាក់មូលដ្ឋាននៃប្រតិបត្តិការ"
+
+msgctxt "field:aeat.349.record,company:"
+msgid "Company"
+msgstr "ក្រុមហ៊ុន"
+
+msgctxt "field:aeat.349.record,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "ឆ្នាំសារពើពន្ធ"
+
+msgctxt "field:aeat.349.record,invoice:"
+msgid "Invoice"
+msgstr "វិក្កយបត្រ"
+
+msgctxt "field:aeat.349.record,operation:"
+msgid "Operation"
+msgstr "ប្រតិបត្តិការ"
+
+msgctxt "field:aeat.349.record,operation_key:"
+msgid "Operation key"
+msgstr "កូដប្រតិបត្តិការ"
+
+msgctxt "field:aeat.349.record,party_name:"
+msgid "Party Name"
+msgstr "ឈ្មោះភាគី"
+
+msgctxt "field:aeat.349.record,party_vat:"
+msgid "VAT"
+msgstr "អាករលើតម្លៃបន្ថែម (VAT)"
+
+msgctxt "field:aeat.349.record,year:"
+msgid "Year"
+msgstr "ឆ្នាំ"
+
+msgctxt "field:aeat.349.report.ammendment,origins:"
+msgid "Origins"
+msgstr "ប្រភពដើម"
+
+msgctxt "field:aeat.349.report.ammendment,records:"
+msgid "AEAT 349 Records"
+msgstr "កំណត់ត្រា AEAT 349"
+
+msgctxt "field:aeat.349.report,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "ឆ្នាំសារពើពន្ធ"
+
+msgctxt "field:aeat.349.report,fiscalyear_code:"
+msgid "Fiscal Year Code"
+msgstr "កូដឆ្នាំសារពើពន្ធ"
+
+msgctxt "field:aeat.349.report.operation,origins:"
+msgid "Origins"
+msgstr "ប្រភពដើម"
+
+msgctxt "field:aeat.349.report.operation,records:"
+msgid "AEAT 349 Records"
+msgstr "កំណត់ត្រា AEAT 349"
+
+msgctxt "field:aeat.349.report.origin,ammendment:"
+msgid "349 Ammendment"
+msgstr "ការកែតម្រូវ 349"
+
+msgctxt "field:aeat.349.report.origin,operation:"
+msgid "349 Operation"
+msgstr "ប្រតិបត្តិការ 349"
+
+msgctxt "field:aeat.349.report.origin,resource:"
+msgid "Resource"
+msgstr "ធនធាន"
+
+msgctxt "field:stock.configuration.aeat349,aeat349_default_in_operation_key:"
+msgid "Default In Operation Key"
+msgstr "កូដប្រតិបត្តិការចូលលំនាំដើម"
+
+msgctxt "field:stock.configuration.aeat349,aeat349_default_out_operation_key:"
+msgid "Default Out Operation Key"
+msgstr "កូដប្រតិបត្តិការចេញលំនាំដើម"
+
+msgctxt "field:stock.configuration.aeat349,company:"
+msgid "Company"
+msgstr "ក្រុមហ៊ុន"
+
+msgctxt "field:stock.configuration,aeat349_default_in_operation_key:"
+msgid "Default In Operation Key"
+msgstr "កូដប្រតិបត្តិការចូលលំនាំដើម"
+
+msgctxt "field:stock.configuration,aeat349_default_out_operation_key:"
+msgid "Default Out Operation Key"
+msgstr "កូដប្រតិបត្តិការចេញលំនាំដើម"
+
+msgctxt "field:stock.move,aeat349_ammendment:"
+msgid "349 Ammendment"
+msgstr "ការកែតម្រូវ 349"
+
+msgctxt "field:stock.move,aeat349_operation:"
+msgid "349 Operation"
+msgstr "ប្រតិបត្តិការ 349"
+
+msgctxt "field:stock.move,aeat349_operation_key:"
+msgid "AEAT 349 Operation Key"
+msgstr "កូដប្រតិបត្តិការ AEAT 349"
+
+msgctxt "model:aeat.349.record,name:"
+msgid "AEAT 349 Record"
+msgstr "កំណត់ត្រា AEAT 349"
+
+msgctxt "model:aeat.349.report.origin,name:"
+msgid "AEAT 349 Operation/Ammendment Origin"
+msgstr "ប្រភពនៃប្រតិបត្តិការ ឬការកែតម្រូវ AEAT 349"
+
+msgctxt "model:ir.action,name:act_aeat_349_reasign_move"
+msgid "Reasign AEAT 349 Move Records"
+msgstr "កំណត់កំណត់ត្រាចលនារបស់ AEAT 349 ឡើងវិញ"
+
+msgctxt "model:stock.configuration.aeat349,name:"
+msgid "Stock Configuration AEAT 349"
+msgstr "ការកំណត់ស្តុក AEAT 349"
+
+msgctxt "selection:aeat.349.record,operation_key:"
+msgid ""
+"H - Intra-Community supplies without taxes delivered by legal representative"
+msgstr "H - ការផ្គត់ផ្គង់លើកលែងពន្ធក្នុងសហភាពអឺរ៉ុប ដោយតំណាងស្របច្បាប់"
+
+msgctxt "selection:aeat.349.record,operation_key:"
+msgid "E - Intra-Community supplies"
+msgstr "E - ការផ្គត់ផ្គង់ក្នុងសហភាពអឺរ៉ុប"
+
+msgctxt "selection:aeat.349.record,operation_key:"
+msgid "C - Substitutions of the employer or professional consignee"
+msgstr "C - ការផ្លាស់ប្ដូរនិយោជក ឬអ្នកទទួលទំនិញជាអ្នកប្រកបវិជ្ជាជីវៈ"
+
+msgctxt "selection:aeat.349.record,operation_key:"
+msgid "D - Return of goods sended previously from TAI"
+msgstr "D - ការប្រគល់ទំនិញដែលបានផ្ញើពី TAI ត្រឡប់មកវិញ"
+
+msgctxt "selection:aeat.349.record,operation_key:"
+msgid "R - Consignment sales agreements transfer"
+msgstr "R - ការផ្ទេរតាមកិច្ចព្រមព្រៀងលក់ដោយផ្ញើទំនិញ"
+
+msgctxt "selection:aeat.349.record,operation_key:"
+msgid "I - Intra-Community services acquisitions by legal representative"
+msgstr "I - ការទិញសេវាក្នុងសហភាពអឺរ៉ុប ដោយតំណាងស្របច្បាប់"
+
+msgctxt "selection:aeat.349.record,operation_key:"
+msgid "S - Intra-Community services"
+msgstr "S - សេវាក្នុងសហភាពអឺរ៉ុប"
+
+msgctxt "selection:aeat.349.record,operation_key:"
+msgid "T - Triangular operations"
+msgstr "T - ប្រតិបត្តិការត្រីភាគី"
+
+msgctxt "selection:aeat.349.record,operation_key:"
+msgid "A - Intra-Community acquisition"
+msgstr "A - ការទិញក្នុងសហភាពអឺរ៉ុប"
+
+msgctxt "selection:aeat.349.record,operation_key:"
+msgid "M - Intra-Community supplies without taxes"
+msgstr "M - ការផ្គត់ផ្គង់លើកលែងពន្ធក្នុងសហភាពអឺរ៉ុប"
+
+msgctxt "wizard_button:aeat.349.reasign.move.records,done,end:"
+msgid "Ok"
+msgstr "យល់ព្រម"
+
+msgctxt "wizard_button:aeat.349.reasign.move.records,start,end:"
+msgid "Cancel"
+msgstr "បោះបង់"
+
+msgctxt "wizard_button:aeat.349.reasign.move.records,start,reasign:"
+msgid "Reasign"
+msgstr "កំណត់ឡើងវិញ"
+
+msgctxt "wizard_button:aeat.349.recalculate.records,done,end:"
+msgid "Ok"
+msgstr "យល់ព្រម"
+
+msgctxt "wizard_button:aeat.349.recalculate.records,start,calculate:"
+msgid "Calculate"
+msgstr "គណនា"
+
+msgctxt "wizard_button:aeat.349.recalculate.records,start,end:"
+msgid "Cancel"
+msgstr "បោះបង់"
